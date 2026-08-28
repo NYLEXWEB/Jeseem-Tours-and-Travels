@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import TiltCard from "@/components/TiltCard";
+import Magnetic from "@/components/Magnetic";
+import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
 
 // Mock Data for Premium Curated Assets
 const DESTINATIONS = [
@@ -240,29 +243,37 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter text-white flex flex-col mb-8 select-none">
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              EXPLORE
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-stroke text-white/90"
-            >
-              WHAT&apos;S
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            >
-              NEXT.
-            </motion.span>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tighter text-white flex flex-col mb-8 select-none leading-none">
+            <div className="overflow-hidden relative py-1.5">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="block"
+              >
+                EXPLORE
+              </motion.span>
+            </div>
+            <div className="overflow-hidden relative py-1.5">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-stroke text-white/90"
+              >
+                WHAT&apos;S
+              </motion.span>
+            </div>
+            <div className="overflow-hidden relative py-1.5">
+              <motion.span
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="block"
+              >
+                NEXT.
+              </motion.span>
+            </div>
           </h1>
 
           <motion.p
@@ -278,20 +289,24 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 z-20"
           >
-            <Link
-              href="/packages"
-              className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
-            >
-              Explore Packages
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-4 rounded-full bg-transparent border border-white/20 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-            >
-              Plan A Trip
-            </Link>
+            <Magnetic range={30} strength={0.25}>
+              <Link
+                href="/packages"
+                className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
+              >
+                Explore Packages
+              </Link>
+            </Magnetic>
+            <Magnetic range={30} strength={0.25}>
+              <Link
+                href="/contact"
+                className="px-8 py-4 rounded-full bg-transparent border border-white/20 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+              >
+                Plan A Trip
+              </Link>
+            </Magnetic>
           </motion.div>
         </div>
 
@@ -316,44 +331,30 @@ export default function Home() {
           src="/about_banner.jpg"
           alt="Cinematic fixed travel canvas backdrop"
           fill
-          className="object-cover opacity-35"
+          className="object-cover opacity-30"
           sizes="100vw"
           priority
         />
       </div>
 
-      {/* 2. INTRODUCTION / BRAND STORY */}
       <section className="relative py-48 px-6 overflow-hidden border-t border-white/5 flex items-center justify-center min-h-[80vh] z-10 bg-transparent">
         <div className="max-w-4xl mx-auto text-center relative z-20">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-xs uppercase tracking-widest text-amber-500 font-semibold mb-6 block"
-          >
-            OUR TRAVEL PHILOSOPHY
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-3xl md:text-5xl font-extralight tracking-tight leading-snug md:leading-normal text-white text-balance"
-          >
-            We believe travel is not just about changing locations. It is about shifting perspectives. We curate bespoke journeys that feel like a symphony of private, cinematic moments designed exclusively for you.
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-8 flex justify-center"
-          >
+          <ScrollReveal variant="fade-up" duration={0.8}>
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold mb-6 block">
+              OUR TRAVEL PHILOSOPHY
+            </span>
+          </ScrollReveal>
+          <ScrollReveal variant="blur-in" duration={1.2} delay={0.2}>
+            <h2 className="text-3xl md:text-5xl font-extralight tracking-tight leading-snug md:leading-normal text-white text-balance">
+              We believe travel is not just about changing locations. It is about shifting perspectives. We curate bespoke journeys that feel like a symphony of private, cinematic moments designed exclusively for you.
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" duration={0.8} delay={0.4} className="mt-8 flex justify-center">
             <Link href="/about" className="group text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold inline-flex items-center gap-2 transition-all">
               Discover Jeseem Story
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </Link>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -380,53 +381,54 @@ export default function Home() {
           <div className="w-full overflow-hidden py-4 mask-image-reveal">
             <div className="animate-marquee">
               {[...DESTINATIONS, ...DESTINATIONS].map((dest, idx) => (
-                <motion.div
+                <div
                   key={`${dest.id}-${idx}`}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-5%" }}
-                  transition={{ duration: 0.8, delay: (idx % DESTINATIONS.length) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative min-w-[280px] md:min-w-[420px] h-[380px] md:h-[550px] rounded-3xl overflow-hidden flex flex-col justify-end p-6 md:p-8 group select-none bg-black/40 border border-white/10 shadow-2xl backdrop-blur-md"
-                  data-cursor="explore"
-                  whileHover={{ y: -8 }}
+                  className="px-2"
                 >
-                  {/* Image with zoom on hover */}
-                  <div className="absolute inset-0 z-0 overflow-hidden">
-                    <Image
-                      src={dest.image}
-                      alt={dest.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                      sizes="420px"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-                  </div>
-
-                  {/* Coordinates */}
-                  <span className="absolute top-8 right-8 text-[10px] font-mono text-white/50 tracking-wider">
-                    {dest.coords}
-                  </span>
-
-                  {/* Destination Metadata */}
-                  <div className="relative z-10 flex flex-col">
-                    <span className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-1">
-                      {dest.country}
-                    </span>
-                    <h4 className="text-3xl font-light tracking-tight text-white mb-2">
-                      {dest.name}
-                    </h4>
-                    <p className="text-sm text-[#86868B] group-hover:text-white/80 line-clamp-2 transition-colors duration-300 mb-6">
-                      {dest.desc}
-                    </p>
-                    <Link
-                      href={`/destinations#${dest.id}`}
-                      className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold"
+                  <TiltCard maxRotation={6}>
+                    <div
+                      className="relative min-w-[280px] md:min-w-[420px] h-[380px] md:h-[550px] rounded-3xl overflow-hidden flex flex-col justify-end p-6 md:p-8 group select-none bg-black/40 border border-white/10 shadow-2xl backdrop-blur-md"
+                      data-cursor="explore"
                     >
-                      View Itinerary
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </motion.div>
+                      {/* Image with zoom on hover */}
+                      <div className="absolute inset-0 z-0 overflow-hidden">
+                        <Image
+                          src={dest.image}
+                          alt={dest.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          sizes="420px"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                      </div>
+
+                      {/* Coordinates */}
+                      <span className="absolute top-8 right-8 text-[10px] font-mono text-white/50 tracking-wider">
+                        {dest.coords}
+                      </span>
+
+                      {/* Destination Metadata */}
+                      <div className="relative z-10 flex flex-col">
+                        <span className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-1">
+                          {dest.country}
+                        </span>
+                        <h4 className="text-3xl font-light tracking-tight text-white mb-2">
+                          {dest.name}
+                        </h4>
+                        <p className="text-sm text-[#86868B] group-hover:text-white/80 line-clamp-2 transition-colors duration-300 mb-6">
+                          {dest.desc}
+                        </p>
+                        <Link
+                          href={`/destinations#${dest.id}`}
+                          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold"
+                        >
+                          View Itinerary
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
+                  </TiltCard>
+                </div>
               ))}
             </div>
           </div>
@@ -528,37 +530,44 @@ export default function Home() {
             <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">LUXURY PROVISION</span>
             <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-12">The Jeseem Provision</h3>
             
-            <div className="flex flex-col gap-6">
+            <ScrollStagger className="flex flex-col gap-6">
               {SERVICES.map((srv, idx) => (
-                <div
+                <ScrollReveal
                   key={srv.number}
+                  variant="fade-up"
+                  duration={0.6}
+                  once
                   className={`border-b border-white/10 pb-6 cursor-pointer group transition-all duration-300 ${
                     activeServiceIdx === idx ? "opacity-100 pl-4" : "opacity-40 hover:opacity-75"
                   }`}
-                  onMouseEnter={() => setActiveServiceIdx(idx)}
                 >
-                  <div className="flex items-start gap-4">
-                    <span className={`text-xs font-mono font-bold mt-1 ${activeServiceIdx === idx ? "text-amber-500" : "text-white"}`}>
-                      {srv.number}
-                    </span>
-                    <div>
-                      <h4 className="text-xl md:text-2xl text-white font-normal mb-2 group-hover:text-amber-400 transition-colors">
-                        {srv.title}
-                      </h4>
-                      {activeServiceIdx === idx && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          className="text-[#86868B] text-sm leading-relaxed max-w-md font-light mt-2"
-                        >
-                          {srv.desc}
-                        </motion.p>
-                      )}
+                  <div
+                    onClick={() => setActiveServiceIdx(idx)}
+                    onMouseEnter={() => setActiveServiceIdx(idx)}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className={`text-xs font-mono font-bold mt-1 ${activeServiceIdx === idx ? "text-amber-500" : "text-white"}`}>
+                        {srv.number}
+                      </span>
+                      <div>
+                        <h4 className="text-xl md:text-2xl text-white font-normal mb-2 group-hover:text-amber-400 transition-colors">
+                          {srv.title}
+                        </h4>
+                        {activeServiceIdx === idx && (
+                          <motion.p
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            className="text-[#86868B] text-sm leading-relaxed max-w-md font-light mt-2"
+                          >
+                            {srv.desc}
+                          </motion.p>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
-            </div>
+            </ScrollStagger>
           </motion.div>
 
           {/* Interactive Cinematic Graphic Column - Glass backdrop showing active service */}
@@ -605,7 +614,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 lg:sticky lg:top-32 lg:h-[500px] lg:self-start rounded-3xl overflow-hidden border border-white/10 order-2 lg:order-1 bg-black/40 backdrop-blur-md shadow-2xl min-h-[220px]"
+            className="hidden lg:block w-full lg:w-1/2 lg:sticky lg:top-32 lg:h-[500px] lg:self-start rounded-3xl overflow-hidden border border-white/10 order-2 lg:order-1 bg-black/40 backdrop-blur-md shadow-2xl min-h-[220px]"
           >
             <div className="relative w-full h-full min-h-[220px] lg:min-h-[500px]">
               <AnimatePresence mode="wait">
@@ -639,7 +648,7 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8 }}
-            className="lg:w-1/2 flex flex-col gap-40 py-24 pb-48 order-1 lg:order-2"
+            className="w-full lg:w-1/2 flex flex-col gap-20 lg:gap-40 py-12 lg:py-24 pb-24 lg:pb-48 order-1 lg:order-2"
           >
             <div>
               <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">THE METHODOLOGY</span>
@@ -649,7 +658,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-60">
+            <div className="flex flex-col gap-20 lg:gap-60">
               {STEPS.map((step, idx) => (
                 <div
                   key={step.number}
@@ -667,6 +676,18 @@ export default function Home() {
                     {step.number}
                   </span>
                   <h4 className="text-2xl text-white font-medium">{step.title}</h4>
+                  
+                  {/* Inline visual preview for mobile */}
+                  <div className="relative w-full h-[240px] rounded-2xl overflow-hidden border border-white/10 my-4 block lg:hidden">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                  
                   <p className="text-[#86868B] text-base leading-relaxed font-light max-w-md">{step.desc}</p>
                 </div>
               ))}
@@ -751,11 +772,24 @@ export default function Home() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: mobileSlideDirection > 0 ? -40 : 40 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="w-full flex"
+                      className="w-full flex touch-pan-y"
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.6}
+                      onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = Math.abs(offset.x) > 50 || Math.abs(velocity.x) > 500;
+                        if (swipe) {
+                          if (offset.x > 0) {
+                            handlePrevMobileReview();
+                          } else {
+                            handleNextMobileReview();
+                          }
+                        }
+                      }}
                     >
-                      {activeMobileReviewIdx === 0 ? (
+                       {activeMobileReviewIdx === 0 ? (
                         /* Cover Card */
-                        <div className="w-full bg-white/90 backdrop-blur-md border border-[#dadce0]/50 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
+                        <div className="w-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-2xl p-6 rounded-2xl flex flex-col justify-between">
                           <div className="space-y-4">
                             <div className="flex items-center gap-2">
                               <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
@@ -764,26 +798,26 @@ export default function Home() {
                                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
                                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
                               </svg>
-                              <span className="text-xs uppercase tracking-widest text-[#5f6368] font-bold">Google Reviews</span>
+                              <span className="text-xs uppercase tracking-widest text-white/50 font-bold">Google Reviews</span>
                             </div>
-                            <h3 className="text-xl font-light text-[#202124] leading-snug">
+                            <h3 className="text-xl font-light text-white leading-snug">
                               Bespoke Luxury Adventures
                             </h3>
                             <div className="flex items-center gap-2">
-                              <span className="text-3xl font-extrabold text-[#202124]">4.9</span>
+                              <span className="text-3xl font-extrabold text-white">4.9</span>
                               <div>
                                 <div className="flex text-amber-500">
                                   {[...Array(5)].map((_, i) => (
                                     <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                                   ))}
                                 </div>
-                                <p className="text-[10px] text-[#5f6368]">115+ guest evaluations</p>
+                                <p className="text-[10px] text-white/50">115+ guest evaluations</p>
                               </div>
                             </div>
                           </div>
-                          <div className="text-[10px] text-amber-600 font-semibold flex items-center gap-1 mt-6">
+                          <div className="text-[10px] text-amber-500 font-semibold flex items-center gap-1 mt-6">
                             <span>Swipe to browse reviews</span>
-                            <ArrowRight className="w-3 h-3" />
+                            <ArrowRight className="w-3 h-3 text-amber-500" />
                           </div>
                         </div>
                       ) : (
@@ -794,7 +828,7 @@ export default function Home() {
                           const avatarColor = colors[(activeMobileReviewIdx - 1) % colors.length];
                           const initial = rev.author.charAt(0);
                           return (
-                            <div className="w-full bg-white/95 backdrop-blur-md border border-[#dadce0]/50 p-6 rounded-2xl shadow-sm flex flex-col justify-between text-left">
+                            <div className="w-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-2xl p-6 rounded-2xl flex flex-col justify-between text-left">
                               <div className="space-y-4">
                                 <div className="flex items-center justify-between">
                                   <div className="flex items-center gap-3">
@@ -802,8 +836,8 @@ export default function Home() {
                                       {initial}
                                     </div>
                                     <div>
-                                      <h4 className="text-sm font-semibold text-[#202124]">{rev.author}</h4>
-                                      <p className="text-[10px] text-[#5f6368]">{rev.role}</p>
+                                      <h4 className="text-sm font-semibold text-white">{rev.author}</h4>
+                                      <p className="text-[10px] text-[#86868B]">{rev.role}</p>
                                     </div>
                                   </div>
                                   <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -820,14 +854,14 @@ export default function Home() {
                                   ))}
                                 </div>
 
-                                <blockquote className="text-xs text-[#3c4043] leading-relaxed font-light line-clamp-6">
+                                <blockquote className="text-xs text-white/80 leading-relaxed font-light line-clamp-6">
                                   &ldquo;{rev.quote}&rdquo;
                                 </blockquote>
                               </div>
 
-                              <div className="border-t border-[#f1f3f4] pt-4 mt-4 flex items-center justify-between">
-                                <span className="text-[10px] text-amber-600 font-mono tracking-wider">{rev.destination}</span>
-                                <span className="text-[10px] text-[#5f6368]">2 weeks ago</span>
+                              <div className="border-t border-white/10 pt-4 mt-4 flex items-center justify-between">
+                                <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
+                                <span className="text-[10px] text-[#86868B]">2 weeks ago</span>
                               </div>
                             </div>
                           );
@@ -880,8 +914,8 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-10%" }}
                       transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      whileHover={{ y: -4, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)", borderColor: "#babcbf" }}
-                      className="bg-white/90 backdrop-blur-md border border-[#dadce0]/50 p-8 rounded-3xl space-y-6 transition-all duration-300 shadow-sm"
+                      whileHover={{ y: -4, borderColor: "rgba(255, 255, 255, 0.2)" }}
+                      className="bg-black/50 border border-white/10 p-8 rounded-3xl space-y-6 transition-all duration-300 shadow-2xl backdrop-blur-lg"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -889,8 +923,8 @@ export default function Home() {
                             {initial}
                           </div>
                           <div>
-                            <h4 className="text-sm font-semibold text-[#202124]">{rev.author}</h4>
-                            <p className="text-[10px] text-[#5f6368]">{rev.role}</p>
+                            <h4 className="text-sm font-semibold text-white">{rev.author}</h4>
+                            <p className="text-[10px] text-[#86868B]">{rev.role}</p>
                           </div>
                         </div>
                         <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -903,17 +937,17 @@ export default function Home() {
 
                       <div className="flex items-center text-amber-500">
                         {[...Array(rev.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                           <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                         ))}
                       </div>
                       
-                      <blockquote className="text-[#3c4043] text-sm leading-relaxed font-light">
+                      <blockquote className="text-white/80 text-sm leading-relaxed font-light">
                         &ldquo;{rev.quote}&rdquo;
                       </blockquote>
                       
-                      <div className="border-t border-[#f1f3f4] pt-4 flex items-center justify-between">
-                        <span className="text-[10px] text-[#5f6368]">a month ago</span>
-                        <span className="text-[10px] text-amber-600 font-mono tracking-wider">{rev.destination}</span>
+                      <div className="border-t border-white/10 pt-4 flex items-center justify-between">
+                        <span className="text-[10px] text-[#86868B]">a month ago</span>
+                        <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
                       </div>
                     </motion.div>
                   );
@@ -933,8 +967,7 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-10%" }}
                       transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      whileHover={{ y: -4, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)", borderColor: "#babcbf" }}
-                      className="bg-white/90 backdrop-blur-md border border-[#dadce0]/50 p-8 rounded-3xl space-y-6 transition-all duration-300 shadow-sm"
+                      className="bg-black/50 border border-white/10 p-8 rounded-3xl space-y-6 shadow-2xl backdrop-blur-lg"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
@@ -942,8 +975,8 @@ export default function Home() {
                             {initial}
                           </div>
                           <div>
-                            <h4 className="text-sm font-semibold text-[#202124]">{rev.author}</h4>
-                            <p className="text-[10px] text-[#5f6368]">{rev.role}</p>
+                            <h4 className="text-sm font-semibold text-white">{rev.author}</h4>
+                            <p className="text-[10px] text-[#86868B]">{rev.role}</p>
                           </div>
                         </div>
                         <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
@@ -960,13 +993,13 @@ export default function Home() {
                         ))}
                       </div>
                       
-                      <blockquote className="text-[#3c4043] text-sm leading-relaxed font-light">
+                      <blockquote className="text-white/80 text-sm leading-relaxed font-light">
                         &ldquo;{rev.quote}&rdquo;
                       </blockquote>
                       
-                      <div className="border-t border-[#f1f3f4] pt-4 flex items-center justify-between">
-                        <span className="text-[10px] text-[#5f6368]">2 weeks ago</span>
-                        <span className="text-[10px] text-amber-600 font-mono tracking-wider">{rev.destination}</span>
+                      <div className="border-t border-white/10 pt-4 flex items-center justify-between">
+                        <span className="text-[10px] text-[#86868B]">2 weeks ago</span>
+                        <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
                       </div>
                     </motion.div>
                   );

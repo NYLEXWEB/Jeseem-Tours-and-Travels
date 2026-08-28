@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, Calendar, ShieldAlert, Star, Phone, MessageSquare, MapPin, Clock } from "lucide-react";
+import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
+import Magnetic from "@/components/Magnetic";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -47,38 +49,32 @@ export default function Contact() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-center gap-2 mb-4"
-          >
-            <Calendar className="w-4 h-4 text-amber-500" />
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">CONSULTATION</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-extralight tracking-tight text-white mb-6"
-          >
-            Design Your Journey
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-[#86868B] text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed text-balance"
-          >
-            Connect with our travel design specialists. Let us arrange a bespoke itinerary tailored to your private schedule.
-          </motion.p>
+          <ScrollReveal variant="fade-up" duration={0.8}>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Calendar className="w-4 h-4 text-amber-500" />
+              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">CONSULTATION</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
+            <h1 className="text-4xl md:text-6xl font-extralight tracking-tight text-white mb-6">
+              Design Your Journey
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
+            <p className="text-[#86868B] text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed text-balance">
+              Connect with our travel design specialists. Let us arrange a bespoke itinerary tailored to your private schedule.
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Two Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
           
           {/* Left Column: Office Details */}
-          <div className="lg:col-span-2 space-y-6">
+          <ScrollStagger className="lg:col-span-2 space-y-6">
             
             {/* Trust and Reviews Card */}
-            <div className="bg-[#121212] border border-white/10 p-6 rounded-3xl">
+            <ScrollReveal variant="fade-up" duration={0.6} className="bg-[#121212] border border-white/10 p-6 rounded-3xl">
               <div className="flex items-center gap-1 mb-3">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <Star key={s} className="w-4 h-4 fill-amber-500 text-amber-500" />
@@ -88,10 +84,10 @@ export default function Contact() {
               <p className="text-xs text-[#86868B] leading-relaxed">
                 Based on <strong className="text-white font-medium">115 verified Google reviews</strong>. Highly recommended travel agency offering custom packages and premium ticket booking with expert staff.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Physical Location Address */}
-            <div className="bg-[#121212] border border-white/10 p-6 rounded-3xl space-y-4">
+            <ScrollReveal variant="fade-up" duration={0.6} className="bg-[#121212] border border-white/10 p-6 rounded-3xl space-y-4">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-amber-500" />
                 <h3 className="text-xs uppercase tracking-widest text-white font-bold">Office Address</h3>
@@ -114,32 +110,35 @@ export default function Contact() {
                   *Standard hours may vary during holidays (Ayyankali Jayanthi might affect these hours).
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Direct Communication Channels */}
-            <div className="bg-[#121212] border border-white/10 p-6 rounded-3xl space-y-4">
+            <ScrollReveal variant="fade-up" duration={0.6} className="bg-[#121212] border border-white/10 p-6 rounded-3xl space-y-4">
               <h3 className="text-xs uppercase tracking-widest text-white font-bold mb-4">Direct Channels</h3>
               <div className="flex flex-col gap-3">
-                <a
-                  href="tel:+919061858416"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded-2xl hover:bg-amber-500 hover:scale-102 transition-all duration-300"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  Call: 090618 58416
-                </a>
-                <a
-                  href="https://wa.me/919061858416"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-transparent border border-white/10 text-white font-semibold text-xs uppercase tracking-wider rounded-2xl hover:bg-white hover:text-black transition-all duration-300"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-amber-500" />
-                  Chat on WhatsApp
-                </a>
+                <Magnetic range={30} strength={0.25} className="w-full">
+                  <a
+                    href="tel:+919061858416"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded-2xl hover:bg-amber-500 transition-all duration-300"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    Call: 090618 58416
+                  </a>
+                </Magnetic>
+                <Magnetic range={30} strength={0.25} className="w-full">
+                  <a
+                    href="https://wa.me/919061858416"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-transparent border border-white/10 text-white font-semibold text-xs uppercase tracking-wider rounded-2xl hover:bg-white hover:text-black transition-all duration-300"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5 text-amber-500" />
+                    Chat on WhatsApp
+                  </a>
+                </Magnetic>
               </div>
-            </div>
-
-          </div>
+            </ScrollReveal>
+          </ScrollStagger>
 
           {/* Right Column: Inquiry Form */}
           <div className="lg:col-span-3 relative bg-[#121212] border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden">
@@ -274,14 +273,16 @@ export default function Contact() {
                       All details are encrypted and private.
                     </span>
                     
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 disabled:opacity-50 transition-all duration-300 cursor-pointer"
-                    >
-                      {isSubmitting ? "Allocating Architect..." : "Submit Inquiry"}
-                      <Send className="w-3.5 h-3.5" />
-                    </button>
+                    <Magnetic range={30} strength={0.25}>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 disabled:opacity-50 transition-all duration-300 cursor-pointer"
+                      >
+                        {isSubmitting ? "Allocating Architect..." : "Submit Inquiry"}
+                        <Send className="w-3.5 h-3.5" />
+                      </button>
+                    </Magnetic>
                   </div>
 
                 </motion.form>

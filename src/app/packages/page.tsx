@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Clock, Tag, Compass, Sparkles } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
+import TiltCard from "@/components/TiltCard";
+import Magnetic from "@/components/Magnetic";
 
 const PACKAGES = [
   {
@@ -79,30 +82,22 @@ export default function Packages() {
         
         {/* Header */}
         <div className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 mb-4"
-          >
-            <Sparkles className="w-4 h-4 text-amber-500" />
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">EXPEDITIONS</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6"
-          >
-            Bespoke Packages
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-[#86868B] text-lg max-w-xl font-light leading-relaxed"
-          >
-            Custom travel formulas crafted by our senior travel designers, complete with luxury lodgings, transport, and hand-selected outings.
-          </motion.p>
+          <ScrollReveal variant="fade-up" duration={0.8}>
+            <div className="flex items-center gap-2 mb-4">
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">EXPEDITIONS</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
+            <h1 className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6">
+              Bespoke Packages
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
+            <p className="text-[#86868B] text-lg max-w-xl font-light leading-relaxed">
+              Custom travel formulas crafted by our senior travel designers, complete with luxury lodgings, transport, and hand-selected outings.
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Category Filter */}
@@ -135,70 +130,73 @@ export default function Packages() {
                 transition={{ duration: 0.4 }}
                 className="relative bg-[#121212] border border-white/10 rounded-3xl overflow-hidden flex flex-col justify-between group"
               >
-                {/* Visual Header */}
-                <div className="relative h-[180px] sm:h-[350px] w-full overflow-hidden">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.title}
-                    fill
-                    className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent" />
-                  <span className="absolute top-6 left-6 text-[10px] uppercase tracking-widest bg-amber-500 text-black px-3 py-1 font-extrabold rounded-full">
-                    {pkg.category}
-                  </span>
-                </div>
-
-                {/* Body Content */}
-                <div className="p-8 flex flex-col flex-grow justify-between">
-                  <div>
-                    <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold mb-1 block">
-                      {pkg.subtitle}
+                <TiltCard maxRotation={4} className="flex flex-col h-full w-full">
+                  {/* Visual Header */}
+                  <div className="relative h-[180px] sm:h-[350px] w-full overflow-hidden">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.title}
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent" />
+                    <span className="absolute top-6 left-6 text-[10px] uppercase tracking-widest bg-amber-500 text-black px-3 py-1 font-extrabold rounded-full">
+                      {pkg.category}
                     </span>
-                    <h2 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">
-                      {pkg.title}
-                    </h2>
-                    <p className="text-[#86868B] text-sm leading-relaxed mb-6 font-light">
-                      {pkg.desc}
-                    </p>
+                  </div>
 
-                    {/* Metadata details */}
-                    <div className="flex gap-6 mb-6 text-xs text-[#86868B] border-t border-b border-white/5 py-4">
-                      <div className="flex items-center gap-1.5">
-                        <Clock className="w-4 h-4 text-amber-500" />
-                        <span>{pkg.duration}</span>
+                  {/* Body Content */}
+                  <div className="p-8 flex flex-col flex-grow justify-between">
+                    <div>
+                      <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold mb-1 block">
+                        {pkg.subtitle}
+                      </span>
+                      <h2 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">
+                        {pkg.title}
+                      </h2>
+                      <p className="text-[#86868B] text-sm leading-relaxed mb-6 font-light">
+                        {pkg.desc}
+                      </p>
+
+                      {/* Metadata details */}
+                      <div className="flex gap-6 mb-6 text-xs text-[#86868B] border-t border-b border-white/5 py-4">
+                        <div className="flex items-center gap-1.5">
+                          <Clock className="w-4 h-4 text-amber-500" />
+                          <span>{pkg.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Tag className="w-4 h-4 text-amber-500" />
+                          <span>{pkg.price}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1.5">
-                        <Tag className="w-4 h-4 text-amber-500" />
-                        <span>{pkg.price}</span>
+
+                      {/* Highlights Outings */}
+                      <div className="mb-8">
+                        <h3 className="text-[10px] uppercase tracking-wider text-white font-bold mb-3">Highlights Included</h3>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[#86868B]">
+                          {pkg.highlights.map((h, idx) => (
+                            <li key={idx} className="flex items-start gap-1.5">
+                              <span className="text-amber-500 font-bold">•</span>
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
 
-                    {/* Highlights Outings */}
-                    <div className="mb-8">
-                      <h3 className="text-[10px] uppercase tracking-wider text-white font-bold mb-3">Highlights Included</h3>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[#86868B]">
-                        {pkg.highlights.map((h, idx) => (
-                          <li key={idx} className="flex items-start gap-1.5">
-                            <span className="text-amber-500 font-bold">•</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="w-full">
+                      <Magnetic range={30} strength={0.3} className="w-full">
+                        <Link
+                          href={`/contact?package=${pkg.title}`}
+                          className="w-full inline-flex items-center justify-center gap-1.5 px-6 py-3.5 rounded-full border border-white/15 text-xs font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
+                        >
+                          Request Consultation
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </Magnetic>
                     </div>
                   </div>
-
-                  <div>
-                    <Link
-                      href={`/contact?package=${pkg.title}`}
-                      className="w-full inline-flex items-center justify-center gap-1.5 px-6 py-3.5 rounded-full border border-white/15 text-xs font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300"
-                    >
-                      Request Consultation
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-
+                </TiltCard>
               </motion.div>
             ))}
           </AnimatePresence>

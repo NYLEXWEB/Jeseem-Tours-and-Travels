@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ShieldCheck, Compass, Users, BadgeCheck } from "lucide-react";
+import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
+import Magnetic from "@/components/Magnetic";
 
 const VALUES = [
   {
@@ -36,37 +38,26 @@ export default function About() {
         {/* Editorial Brand Intro */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
           <div>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-4 block"
-            >
-              WHO WE ARE
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-8"
-            >
-              Jeseem Tours & Travels
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-[#86868B] text-lg font-light leading-relaxed mb-6 text-balance"
-            >
-              Founded on the belief that luxury is not in the material, but in the experiences that expand the soul. Jeseem Tours & Travels curates journeys that transcend the average.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-[#86868B] text-base font-light leading-relaxed mb-6"
-            >
-              We serve a selective client base of global leaders, artists, and families who require absolute seamless execution, authentic local entry, and complete discretion.
-            </motion.p>
+            <ScrollReveal variant="fade-up" duration={0.8}>
+              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-4 block">
+                WHO WE ARE
+              </span>
+            </ScrollReveal>
+            <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.1}>
+              <h1 className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-8">
+                Jeseem Tours & Travels
+              </h1>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
+              <p className="text-[#86868B] text-lg font-light leading-relaxed mb-6 text-balance">
+                Founded on the belief that luxury is not in the material, but in the experiences that expand the soul. Jeseem Tours & Travels curates journeys that transcend the average.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.35}>
+              <p className="text-[#86868B] text-base font-light leading-relaxed mb-6">
+                We serve a selective client base of global leaders, artists, and families who require absolute seamless execution, authentic local entry, and complete discretion.
+              </p>
+            </ScrollReveal>
           </div>
 
           {/* Cinematic Side Image */}
@@ -80,34 +71,36 @@ export default function About() {
           </div>
         </div>
 
-        {/* Pillars / Values Grid */}
         <div className="border-t border-white/10 pt-20 mb-24">
           <div className="text-center mb-16">
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block mb-2">OUR STANDARDS</span>
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight text-white">The Core Pillars</h2>
+            <ScrollReveal variant="fade-up" duration={0.8}>
+              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block mb-2">OUR STANDARDS</span>
+            </ScrollReveal>
+            <ScrollReveal variant="blur-in" duration={1.0} delay={0.15}>
+              <h2 className="text-3xl md:text-4xl font-light tracking-tight text-white">The Core Pillars</h2>
+            </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <ScrollStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {VALUES.map((val, idx) => {
               const IconComp = val.icon;
               return (
-                <motion.div
+                <ScrollReveal
                   key={val.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.6 }}
-                  className="bg-[#121212] border border-white/10 p-8 rounded-3xl flex flex-col items-start"
+                  variant="fade-up"
+                  duration={0.6}
+                  once
+                  className="bg-[#121212] border border-white/10 p-8 rounded-3xl flex flex-col items-start hover:border-amber-500/30 transition-colors duration-300"
                 >
                   <div className="p-3 bg-white/5 rounded-2xl border border-white/10 mb-6">
                     <IconComp className="w-5 h-5 text-amber-500" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-3">{val.title}</h3>
                   <p className="text-[#86868B] text-xs leading-relaxed font-light">{val.desc}</p>
-                </motion.div>
+                </ScrollReveal>
               );
             })}
-          </div>
+          </ScrollStagger>
         </div>
 
         {/* Closing Banner */}
@@ -123,16 +116,24 @@ export default function About() {
           </div>
 
           <div className="relative z-20 max-w-2xl">
-            <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">Let us design your next milestone</h3>
-            <p className="text-sm text-[#86868B] font-light leading-relaxed mb-6">
-              Our travel architects are ready to draft your bespoke itinerary. Start the discussion today.
-            </p>
-            <Link
-              href="/contact"
-              className="px-6 py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
-            >
-              Consult an Architect
-            </Link>
+            <ScrollReveal variant="fade-up" duration={0.8}>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">Let us design your next milestone</h3>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.15}>
+              <p className="text-sm text-[#86868B] font-light leading-relaxed mb-6">
+                Our travel architects are ready to draft your bespoke itinerary. Start the discussion today.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.3} className="inline-block">
+              <Magnetic range={30} strength={0.3}>
+                <Link
+                  href="/contact"
+                  className="inline-block px-6 py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 transition-all duration-300"
+                >
+                  Consult an Architect
+                </Link>
+              </Magnetic>
+            </ScrollReveal>
           </div>
         </div>
 

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, CloudSun, Compass } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
+import Magnetic from "@/components/Magnetic";
 
 const DESTINATIONS = [
   {
@@ -55,42 +57,32 @@ export default function Destinations() {
         
         {/* Header */}
         <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 mb-4"
-          >
-            <Compass className="w-4 h-4 text-amber-500" />
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">PORTFOLIO</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6"
-          >
-            The Destinations
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-[#86868B] text-lg max-w-xl font-light leading-relaxed"
-          >
-            Curated selection of our flagship regions. Each represents our standards of safety, exclusivity, and cinematic landscape beauty.
-          </motion.p>
+          <ScrollReveal variant="fade-up" duration={0.8}>
+            <div className="flex items-center gap-2 mb-4">
+              <Compass className="w-4 h-4 text-amber-500" />
+              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">PORTFOLIO</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
+            <h1 className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6">
+              The Destinations
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
+            <p className="text-[#86868B] text-lg max-w-xl font-light leading-relaxed">
+              Curated selection of our flagship regions. Each represents our standards of safety, exclusivity, and cinematic landscape beauty.
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Destination List */}
         <div className="flex flex-col gap-28">
           {DESTINATIONS.map((dest, idx) => (
-            <motion.section
+            <ScrollReveal
               key={dest.id}
-              id={dest.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.8 }}
+              variant="fade-up"
+              duration={0.8}
+              once
               className={`flex flex-col lg:flex-row gap-12 items-center ${
                 idx % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
@@ -140,15 +132,17 @@ export default function Destinations() {
                   </ul>
                 </div>
 
-                <Link
-                  href={`/contact?destination=${dest.name}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
-                >
-                  Consult Custom Route
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
+                <Magnetic range={30} strength={0.3}>
+                  <Link
+                    href={`/contact?destination=${dest.name}`}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 transition-all duration-300"
+                  >
+                    Consult Custom Route
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </Magnetic>
               </div>
-            </motion.section>
+            </ScrollReveal>
           ))}
         </div>
 
