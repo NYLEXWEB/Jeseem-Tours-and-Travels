@@ -65,7 +65,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isAtTop 
             ? "py-6 bg-transparent border-b border-transparent" 
-            : "py-4 bg-black/20 backdrop-blur-md border-b border-white/5 shadow-sm"
+            : "py-4 bg-[var(--background)]/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
         }`}
         initial={{ y: -100 }}
         animate={{ y: isVisible ? 0 : -100 }}
@@ -88,10 +88,10 @@ export default function Navbar() {
               <Link 
                 key={link.name} 
                 href={link.href} 
-                className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 group text-white/80 hover:text-white"
+                className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 group text-[var(--foreground)]/80 hover:text-[var(--foreground)]"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-white" />
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-[var(--foreground)]" />
               </Link>
             ))}
           </div>
@@ -101,7 +101,7 @@ export default function Navbar() {
             <Magnetic range={35} strength={0.3}>
               <Link 
                 href="/contact" 
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 border-white/20 text-white hover:bg-white hover:text-black"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--foreground)] hover:text-[var(--background)]"
               >
                 Plan Your Journey
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -111,7 +111,7 @@ export default function Navbar() {
           {/* Mobile Menu Trigger */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
-            className="md:hidden p-2 text-white hover:text-amber-500 transition-colors z-50 relative flex items-center justify-center"
+            className="md:hidden p-2 text-[var(--foreground)] hover:text-amber-500 transition-colors z-50 relative flex items-center justify-center"
             aria-label="Toggle menu"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">
@@ -153,7 +153,7 @@ export default function Navbar() {
 
             {/* Menu Sliding Panel */}
             <motion.div
-              className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[400px] bg-black/95 border-l border-white/10 z-30 flex flex-col justify-between p-8 pt-28 md:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[400px] bg-[var(--background)]/98 border-l border-[var(--border)] z-30 flex flex-col justify-between p-8 pt-28 md:hidden shadow-2xl"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -173,11 +173,11 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        className="text-3xl font-extralight tracking-wide text-white hover:text-amber-500 transition-colors flex items-center gap-2 group"
+                        className="text-3xl font-extralight tracking-wide text-[var(--foreground)] hover:text-amber-500 transition-colors flex items-center gap-2 group"
                         onClick={() => setIsOpen(false)}
                       >
                         <span>{link.name}</span>
-                        <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-amber-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                        <ArrowUpRight className="w-5 h-5 text-[var(--foreground)]/30 group-hover:text-amber-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                       </Link>
                     </motion.div>
                   </motion.div>
@@ -190,16 +190,16 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <div className="h-[1px] bg-white/10 w-full" />
+                <div className="h-[1px] bg-[var(--border)] w-full" />
                 <div className="flex flex-col gap-4">
                   <div>
-                    <p className="text-[9px] uppercase tracking-widest text-white/50">Curated Journeys</p>
-                    <p className="text-xs text-white/80 mt-1 font-light font-mono">{COMPANY_DETAILS.departments.reservations.email}</p>
-                    <p className="text-xs text-white/80 font-light font-mono">{COMPANY_DETAILS.departments.reservations.phone}</p>
+                    <p className="text-[9px] uppercase tracking-widest text-[var(--foreground)]/50">Curated Journeys</p>
+                    <p className="text-xs text-[var(--foreground)]/80 mt-1 font-light font-mono">{COMPANY_DETAILS.departments.reservations.email}</p>
+                    <p className="text-xs text-[var(--foreground)]/80 font-light font-mono">{COMPANY_DETAILS.departments.reservations.phone}</p>
                   </div>
                   <Link
                     href="/contact"
-                    className="w-full py-3.5 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider text-center block hover:bg-amber-500 hover:text-white transition-all active:scale-95 duration-300"
+                    className="w-full py-3.5 rounded-full bg-[var(--foreground)] text-[var(--background)] font-semibold text-xs uppercase tracking-wider text-center block hover:bg-amber-500 hover:text-white transition-all active:scale-95 duration-300"
                     onClick={() => setIsOpen(false)}
                   >
                     Plan A Trip

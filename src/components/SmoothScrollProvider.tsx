@@ -8,9 +8,11 @@ export default function SmoothScrollProvider({ children }: { children: ReactNode
     <ReactLenis
       root
       options={{
-        duration: 1.2,
-        lerp: 0.08,
+        duration: 1.4,
+        lerp: 0.06,
         smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
       }}
     >
       {children}

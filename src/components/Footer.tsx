@@ -36,7 +36,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative z-10 bg-[#080808] border-t border-white/10 pt-20 pb-10 text-[#86868B]">
+    <footer className="relative z-10 bg-[var(--background)] border-t border-[var(--border)] pt-20 pb-10 text-[var(--foreground-muted)]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-8 pb-16">
           <div className="md:col-span-2">
@@ -51,22 +51,22 @@ export default function Footer() {
             <p className="text-sm max-w-sm leading-relaxed mt-4">
               Your trusted travel partner since {COMPANY_DETAILS.established}. From flight bookings and global visa assistance to customized international holidays, we help you Save, Plan, and Go seamlessly.
             </p>
-            <div className="mt-6 text-xs flex flex-col gap-1.5 text-[#86868B]">
+            <div className="mt-6 text-xs flex flex-col gap-1.5 text-[var(--foreground-muted)]">
               <p>
-                <strong className="text-white font-medium">Office Address:</strong> {COMPANY_DETAILS.address}
+                <strong className="text-[var(--foreground)] font-medium">Office Address:</strong> {COMPANY_DETAILS.address}
               </p>
               <p>
-                <strong className="text-white font-medium">Phone:</strong> {COMPANY_DETAILS.phone} (Office) / {COMPANY_DETAILS.whatsapp} (WhatsApp)
+                <strong className="text-[var(--foreground)] font-medium">Phone:</strong> {COMPANY_DETAILS.phone} (Office) / {COMPANY_DETAILS.whatsapp} (WhatsApp)
               </p>
               <p>
-                <strong className="text-white font-medium">Email:</strong> {COMPANY_DETAILS.email}
+                <strong className="text-[var(--foreground)] font-medium">Email:</strong> {COMPANY_DETAILS.email}
               </p>
             </div>
           </div>
 
           {footerLinks.map((group) => (
             <div key={group.title} className="flex flex-col gap-4">
-              <h4 className="text-xs uppercase tracking-widest text-white font-semibold">
+              <h4 className="text-xs uppercase tracking-widest text-[var(--foreground)] font-semibold">
                 {group.title}
               </h4>
               <ul className="flex flex-col gap-2">
@@ -74,7 +74,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link 
                       href={link.href} 
-                      className="text-xs hover:text-white transition-colors duration-300"
+                      className="text-xs hover:text-[var(--foreground)] transition-colors duration-300"
                     >
                       {link.name}
                     </Link>
@@ -85,23 +85,23 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="h-[1px] bg-white/10 w-full mb-8" />
+        <div className="h-[1px] bg-[var(--border)] w-full mb-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs">
           <div className="flex flex-wrap gap-4 text-center md:text-left justify-center md:justify-start">
             <p>&copy; {currentYear} Jeseem Tours & Travels. All rights reserved.</p>
             <span className="hidden md:inline">|</span>
-            <Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Privacy Policy</Link>
             <span>•</span>
-            <Link href="/" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Terms of Service</Link>
             <span>•</span>
-            <Link href="/" className="hover:text-white transition-colors">Sitemap</Link>
+            <Link href="/" className="hover:text-[var(--foreground)] transition-colors">Sitemap</Link>
           </div>
           <div className="flex gap-6">
-            <a href={COMPANY_DETAILS.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Instagram</a>
-            <a href={COMPANY_DETAILS.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">WhatsApp</a>
-            <a href="#" className="hover:text-white transition-colors duration-300">Facebook</a>
-            <a href="#" className="hover:text-white transition-colors duration-300">LinkedIn</a>
+            <a href={COMPANY_DETAILS.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--foreground)] transition-colors duration-300">Instagram</a>
+            <a href={COMPANY_DETAILS.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--foreground)] transition-colors duration-300">WhatsApp</a>
+            <a href="#" className="hover:text-[var(--foreground)] transition-colors duration-300">Facebook</a>
+            <a href="#" className="hover:text-[var(--foreground)] transition-colors duration-300">LinkedIn</a>
           </div>
         </div>
       </div>

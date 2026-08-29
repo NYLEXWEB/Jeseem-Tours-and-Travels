@@ -33,7 +33,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="flex flex-col bg-[#080808] text-[#f5f5f7]">
+      <body className="flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <SmoothScrollProvider>
           <CustomCursor />
           <Navbar />

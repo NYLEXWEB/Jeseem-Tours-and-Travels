@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, Award, ShieldCheck, Clock } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 import Magnetic from "@/components/Magnetic";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
@@ -114,51 +114,120 @@ const STEPS = [
 
 const REVIEWS = [
   {
-    quote: "Jeseem Tours made our family holiday to Dubai completely hassle-free. From flight bookings with special fares to visa processing and hotel booking, everything was perfect.",
-    author: "Ragesh Kurup",
-    role: "Business Owner",
-    destination: "Dubai Family Tour",
+    quote: "I had an incredible experience with this agency! From start to finish, the team was professional, attentive, and handled every detail of my trip with care.",
+    author: "Vishnu N Pillai",
+    role: "Local Guide",
+    destination: "Attentive & Caring Support",
     rating: 5,
   },
   {
-    quote: "I've been booking our company's corporate flight tickets with Jeseem since 2018. Their ability to secure group bookings and series fares saves us substantial costs every year.",
-    author: "Nithin Madhavan",
-    role: "Managing Director",
-    destination: "Corporate Travel Solutions",
+    quote: "My last travelling from south africa to India was made easy wit jaseem tours n travels..they helped me to find affordable ticket on time during US Iran war",
+    author: "Dipu Chinnappan",
+    role: "International Traveler",
+    destination: "Flight Ticket Booking",
     rating: 5,
   },
   {
-    quote: "Highly recommend Jeseem's visa assistance and certificate attestation services. They handled my document attestation for the UAE visa quickly and professionally.",
-    author: "Fathima Hameed",
-    role: "Software Engineer",
-    destination: "Visa & Attestation Support",
+    quote: "I had a great experience with Jeseem Tours and Travels! Their service was professional, friendly, and very well organized. The trip went smoothly, and everything was taken care of on time. I highly recommend them for a stress-free and enjoyable travel experience. Will definitely choose them again.",
+    author: "yunus kngd",
+    role: "Frequent Traveler",
+    destination: "Seamless Tour Planning",
     rating: 5,
   },
   {
-    quote: "Our customized honeymoon tour to Kashmir was organized beautifully by their holiday team. Very professional, punctual airport transfers, and excellent hotels.",
-    author: "Dr. Anand & Anupama",
-    role: "Pediatrician",
-    destination: "Kashmir Honeymoon",
+    quote: "Wonderful people. They did all what was required & more without me asking for. Excellent customer service. There are very few people in the world who go an extra mile for their customer needs. Jeseem is one of them. I highly recommend them with my whole heart and thank them for all their service. 🫰",
+    author: "Ayza Aychu",
+    role: "Loyal Customer",
+    destination: "Extra-Mile Customer Support",
     rating: 5,
   },
   {
-    quote: "We chose Jeseem Tours for our parents' Umrah pilgrimage. The hotel bookings near the Haram, ground transport, and guidance were outstanding. Very satisfied.",
-    author: "Sharafudeen K. A.",
-    role: "Gulf Expatriate",
-    destination: "Umrah Pilgrimage Package",
-    rating: 5,
-  },
-  {
-    quote: "Reliable and fast emigration clearance and passport support. The team at the Alappuzha head office was extremely helpful and answered all questions patiently.",
-    author: "Joseph Antony",
-    role: "Merchant Navy Officer",
-    destination: "Emigration & Travel Support",
+    quote: "Highly recommend Yasim for his deep knowledge of the visa application process, attention to detail and professionalism! He did a thorough job helping my parents with a time sensitive request. Thank you!",
+    author: "Preethi Sridhar",
+    role: "Verified Client",
+    destination: "Visa Application Support",
     rating: 5,
   },
 ];
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const destinationsScrollRef = useRef<HTMLDivElement>(null);
+  const isAutoScrollingRef = useRef(true);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const pauseAutoScroll = () => {
+    isAutoScrollingRef.current = false;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isAutoScrollingRef.current = true;
+    }, 5000);
+  };
+
+  const scrollDestinations = (direction: "left" | "right") => {
+    pauseAutoScroll();
+    if (destinationsScrollRef.current) {
+      const { scrollLeft } = destinationsScrollRef.current;
+      const cardWidth = window.innerWidth < 768 ? 300 : 440;
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
+      destinationsScrollRef.current.scrollTo({
+        left: scrollLeft + scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  useEffect(() => {
+    const el = destinationsScrollRef.current;
+    if (!el) return;
+
+    let animationId: number;
+    let lastTime = performance.now();
+    const speed = 0.035; // Pixels per ms
+
+    const step = (time: number) => {
+      if (el && isAutoScrollingRef.current) {
+        const delta = time - lastTime;
+        if (delta < 200) {
+          const item0 = el.children[0] as HTMLElement;
+          const itemN = el.children[DESTINATIONS.length] as HTMLElement;
+          if (item0 && itemN) {
+            const W = itemN.offsetLeft - item0.offsetLeft;
+            let currentScroll = el.scrollLeft;
+            if (currentScroll >= W) {
+              el.scrollLeft = currentScroll % W;
+            } else if (currentScroll < 0) {
+              el.scrollLeft = (currentScroll % W) + W;
+            }
+          }
+          el.scrollLeft += speed * delta;
+        }
+      }
+      lastTime = time;
+      animationId = requestAnimationFrame(step);
+    };
+
+    animationId = requestAnimationFrame(step);
+
+    const handleMouseEnter = () => { isAutoScrollingRef.current = false; };
+    const handleMouseLeave = () => {
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      isAutoScrollingRef.current = true;
+    };
+    const handleTouchStart = () => { pauseAutoScroll(); };
+
+    el.addEventListener("mouseenter", handleMouseEnter);
+    el.addEventListener("mouseleave", handleMouseLeave);
+    el.addEventListener("touchstart", handleTouchStart);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      el.removeEventListener("mouseenter", handleMouseEnter);
+      el.removeEventListener("mouseleave", handleMouseLeave);
+      el.removeEventListener("touchstart", handleTouchStart);
+    };
+  }, []);
   
   // States for interactive UI elements
   const [activeServiceIdx, setActiveServiceIdx] = useState(0);
@@ -205,10 +274,26 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full bg-[#080808]">
+    <div ref={containerRef} className="relative w-full bg-[var(--background)]">
       {/* 1. HERO SECTION */}
       <section ref={heroRef} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden z-10 bg-transparent py-24">
-
+        {/* Hero Section Background Image */}
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+          <Image
+            src="/travel_pink_hero.png"
+            alt="Jeseem Travel Header Background"
+            fill
+            className="object-cover object-center hidden md:block"
+            priority
+          />
+          <Image
+            src="/travel_pink_hero_mobile.png"
+            alt="Jeseem Travel Mobile Header Background"
+            fill
+            className="object-cover object-center block md:hidden"
+            priority
+          />
+        </div>
 
         {/* Hero Content */}
         <div className="relative max-w-7xl mx-auto px-6 w-full z-20 flex flex-col items-start pt-20">
@@ -224,13 +309,13 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tighter text-white flex flex-col mb-8 select-none leading-none">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tighter text-[var(--foreground)] flex flex-col mb-8 select-none leading-none">
             <div className="overflow-hidden relative py-1.5">
               <motion.span
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-medium bg-gradient-to-r from-white to-[#ff9ebb] bg-clip-text text-transparent"
+                className="block font-medium text-[var(--foreground)]"
               >
                 SAVE.
               </motion.span>
@@ -240,7 +325,8 @@ export default function Home() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-stroke text-white/90"
+                className="block font-medium"
+                style={{ WebkitTextStroke: "2px var(--foreground)", color: "transparent" }}
               >
                 PLAN.
               </motion.span>
@@ -250,7 +336,7 @@ export default function Home() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-medium bg-gradient-to-r from-white to-[#ff9ebb] bg-clip-text text-transparent"
+                className="block font-medium text-[var(--foreground)]"
               >
                 GO.
               </motion.span>
@@ -306,15 +392,13 @@ export default function Home() {
 
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO) */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none">
-        {/* Cinematic dark overlay gradient to ensure high readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-10" />
         {/* Desktop Background Visual */}
         <div className="hidden md:block absolute inset-0">
           <Image
             src="/jeseem_bg.png"
             alt="Cinematic fixed travel canvas backdrop"
             fill
-            className="object-cover opacity-65"
+            className="object-cover opacity-100"
             sizes="100vw"
             priority
           />
@@ -325,7 +409,7 @@ export default function Home() {
             src="/jeseem_bg_mobile.png"
             alt="Cinematic fixed travel canvas backdrop mobile"
             fill
-            className="object-cover opacity-65"
+            className="object-cover opacity-100"
             sizes="100vw"
             priority
           />
@@ -372,17 +456,41 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* Infinite Loop Marquee Container */}
-          <div className="w-full overflow-hidden py-4 mask-image-reveal">
-            <div className="animate-marquee">
-              {[...DESTINATIONS, ...DESTINATIONS].map((dest, idx) => (
+          {/* Scrollable Track Container with Chevron Arrows */}
+          <div className="relative w-full">
+            {/* Navigation Arrows */}
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 z-30 pointer-events-none md:left-8">
+              <button
+                onClick={() => scrollDestinations("left")}
+                className="w-10 h-10 rounded-full bg-[var(--background)]/85 text-[var(--foreground)] border border-[var(--border)] shadow-md flex items-center justify-center pointer-events-auto hover:bg-amber-500 hover:text-white transition-colors cursor-pointer"
+                aria-label="Previous destination"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="absolute top-1/2 -translate-y-1/2 right-4 z-30 pointer-events-none md:right-8">
+              <button
+                onClick={() => scrollDestinations("right")}
+                className="w-10 h-10 rounded-full bg-[var(--background)]/85 text-[var(--foreground)] border border-[var(--border)] shadow-md flex items-center justify-center pointer-events-auto hover:bg-amber-500 hover:text-white transition-colors cursor-pointer"
+                aria-label="Next destination"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable track with native touch swipe */}
+            <div
+              ref={destinationsScrollRef}
+              className="w-full overflow-x-auto flex gap-6 px-12 md:px-24 py-6 no-scrollbar"
+            >
+              {[...DESTINATIONS, ...DESTINATIONS, ...DESTINATIONS, ...DESTINATIONS].map((dest, idx) => (
                 <div
                   key={`${dest.id}-${idx}`}
-                  className="px-2"
+                  className="shrink-0"
                 >
                   <TiltCard maxRotation={6}>
                     <div
-                      className="relative min-w-[280px] md:min-w-[420px] h-[380px] md:h-[550px] rounded-3xl overflow-hidden flex flex-col justify-end p-6 md:p-8 group select-none bg-black/40 border border-white/10 shadow-2xl backdrop-blur-md"
+                      className="relative w-[280px] md:w-[420px] h-[380px] md:h-[550px] rounded-3xl overflow-hidden flex flex-col justify-end p-6 md:p-8 group select-none bg-[var(--card-bg)] border border-[var(--border)] shadow-2xl"
                       data-cursor="explore"
                     >
                       {/* Image with zoom on hover */}
@@ -392,34 +500,35 @@ export default function Home() {
                           alt={dest.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          sizes="420px"
+                          sizes="(max-width: 768px) 280px, 420px"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/35 to-transparent" />
                       </div>
 
-                      {/* Coordinates */}
-                      <span className="absolute top-8 right-8 text-[10px] font-mono text-white/50 tracking-wider">
-                        {dest.coords}
-                      </span>
+                      {/* Clickable Overlay Link (covers entire card except the WhatsApp button) */}
+                      <Link 
+                        href={`/destinations#${dest.id}`}
+                        className="absolute inset-0 z-10"
+                        aria-label={`View itinerary for ${dest.name}`}
+                      />
 
-                      {/* Destination Metadata */}
-                      <div className="relative z-10 flex flex-col">
-                        <span className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-1">
-                          {dest.country}
-                        </span>
-                        <h4 className="text-3xl font-light tracking-tight text-white mb-2">
+                      {/* Destination Title (Only heading in bright yellow/gold color) */}
+                      <div className="relative z-20 flex flex-col mt-auto pointer-events-none mb-1">
+                        <h4 className="text-3xl font-bold tracking-tight text-amber-400">
                           {dest.name}
                         </h4>
-                        <p className="text-sm text-[#86868B] group-hover:text-white/80 line-clamp-2 transition-colors duration-300 mb-6">
-                          {dest.desc}
-                        </p>
-                        <Link
-                          href={`/destinations#${dest.id}`}
-                          className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold"
+                      </div>
+
+                      {/* WhatsApp Button on z-20 */}
+                      <div className="relative z-20 flex mt-2">
+                        <a
+                          href={`https://wa.me/919061858416?text=Hi,%20I%20would%20like%20to%20inquire%20about%20the%20"${encodeURIComponent(dest.name)}"%20destination%20itinerary.`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
                         >
-                          View Itinerary
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                          WhatsApp Inquiry
+                        </a>
                       </div>
                     </div>
                   </TiltCard>
@@ -461,7 +570,7 @@ export default function Home() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/85 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-neutral-950/85 via-transparent to-transparent z-10" />
               </div>
 
               {/* Package Content Details */}
@@ -549,13 +658,32 @@ export default function Home() {
                           {srv.title}
                         </h4>
                         {activeServiceIdx === idx && (
-                          <motion.p
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            className="text-[#86868B] text-sm leading-relaxed max-w-md font-light mt-2"
-                          >
-                            {srv.desc}
-                          </motion.p>
+                          <div className="mt-2">
+                            <motion.p
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              className="text-[var(--foreground-muted)] text-sm leading-relaxed max-w-md font-light mb-4"
+                            >
+                              {srv.desc}
+                            </motion.p>
+                            <motion.div
+                              initial={{ opacity: 0, y: 5 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.15 }}
+                            >
+                              <a
+                                href={`https://wa.me/919061858416?text=Hi,%20I%20would%20like%20to%20inquire%20about%20the%20"${encodeURIComponent(srv.title)}"%20service.`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                              >
+                                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.731-1.464L0 24zm6.59-4.846c1.6.95 3.197 1.451 4.785 1.453 5.422 0 9.833-4.329 9.836-9.65.002-2.577-1.002-5.001-2.827-6.828-1.826-1.828-4.254-2.831-6.837-2.832-5.43 0-9.842 4.331-9.845 9.654a9.497 9.497 0 0 0 1.492 5.097l-.988 3.606 3.792-.962zm11.233-6.612c-.3-.15-1.774-.875-2.048-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.175-.175.2-.35.225-.65.075-1.007-.504-1.684-.919-2.358-2.072-.175-.3-.175-.55-.025-.7.135-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.625-.926-2.225-.244-.588-.492-.509-.675-.518-.175-.009-.375-.01-.575-.01a1.11 1.11 0 0 0-.8.375c-.275.3-1.05 1.025-1.05 2.5 0 1.475 1.075 2.9 1.225 3.1.15.2 2.11 3.22 5.11 4.52.714.31 1.27.495 1.705.633.717.228 1.37.196 1.885.119.574-.085 1.774-.725 2.024-1.425.25-.7.25-1.3 1.75-1.425.075-.025.15-.125.075-.275z" />
+                                </svg>
+                                WhatsApp Inquiry
+                              </a>
+                            </motion.div>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -582,7 +710,7 @@ export default function Home() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="absolute inset-0 z-0"
               >
-                <div className="absolute inset-0 bg-black/40 z-10" />
+                <div className="absolute inset-0 bg-neutral-950/40 z-10" />
                 <Image
                   src={SERVICES[activeServiceIdx].image}
                   alt={SERVICES[activeServiceIdx].title}
@@ -596,6 +724,96 @@ export default function Home() {
               <p className="text-white text-xs font-mono mt-1">{SERVICES[activeServiceIdx].title}</p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* 5.5. WHY CHOOSE US SECTION */}
+      <section className="relative py-32 border-t border-white/5 px-6 overflow-hidden z-10 bg-transparent">
+        <div className="max-w-7xl mx-auto relative z-20 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold block mb-2">
+              THE JESEEM ADVANTAGE
+            </span>
+            <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white">
+              Why Travelers Choose Us
+            </h3>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Advantage 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Award className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-medium text-white mb-3">40+ Years of Experience</h4>
+              <p className="text-sm text-[#86868B] font-light leading-relaxed">
+                Guiding travelers since {COMPANY_DETAILS.established || 1985}. Over four decades of deep industry expertise, airline relations, and trusted operations.
+              </p>
+            </motion.div>
+
+            {/* Advantage 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Compass className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-medium text-white mb-3">Customized Itineraries</h4>
+              <p className="text-sm text-[#86868B] font-light leading-relaxed">
+                No cookie-cutter trips. Every holiday, corporate flight booking, or pilgrimage is personalized to fit your budget, timeline, and comfort preferences.
+              </p>
+            </motion.div>
+
+            {/* Advantage 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-medium text-white mb-3">Complete Visa Support</h4>
+              <p className="text-sm text-[#86868B] font-light leading-relaxed">
+                From fast global visa clearances to certificate attestation and emigration services, our processing desk handles the heavy paperwork.
+              </p>
+            </motion.div>
+
+            {/* Advantage 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Clock className="w-6 h-6" />
+              </div>
+              <h4 className="text-xl font-medium text-white mb-3">24/7 Ticketing Assistance</h4>
+              <p className="text-sm text-[#86868B] font-light leading-relaxed">
+                Emergency flight changes? Last-minute schedule changes? Our dedicated customer care desk coordinates allocations with major airlines day and night.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -621,7 +839,7 @@ export default function Home() {
                   transition={{ duration: 0.4 }}
                   className="absolute inset-0"
                 >
-                  <div className="absolute inset-0 bg-black/35 z-10" />
+                  <div className="absolute inset-0 bg-neutral-950/35 z-10" />
                   <Image
                     src={STEPS[activeStepIdx].image}
                     alt={STEPS[activeStepIdx].title}
@@ -741,6 +959,21 @@ export default function Home() {
                   <p className="text-xs text-white/50 font-medium">115+ Google reviews</p>
                 </div>
               </div>
+            </div>
+
+            {/* Write a review button link */}
+            <div className="pt-2">
+              <Magnetic range={30} strength={0.3}>
+                <a
+                  href="https://g.page/r/Ca2iU0gCoDpuEBE/review"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--foreground)] text-[var(--background)] hover:bg-amber-500 hover:text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 w-full sm:w-auto justify-center shadow-lg"
+                >
+                  Write a Google Review
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </Magnetic>
             </div>
           </div>
 

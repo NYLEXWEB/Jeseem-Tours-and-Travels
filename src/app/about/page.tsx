@@ -33,7 +33,7 @@ const VALUES = [
 
 export default function About() {
   return (
-    <div className="bg-[#080808] pt-32 pb-20 px-6">
+    <div className="bg-[var(--background)] pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
         
         {/* Editorial Brand Intro */}
@@ -50,12 +50,12 @@ export default function About() {
               </h1>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
-              <p className="text-[#86868B] text-lg font-light leading-relaxed mb-6 text-balance">
+              <p className="text-[var(--foreground-muted)] text-lg font-light leading-relaxed mb-6 text-balance">
                 Founded in {COMPANY_DETAILS.established} in Thiruvampady, Alappuzha, Jeseem Tours & Travels has been a trusted symbol of travel excellence for nearly four decades. Our core mission is summarized in our tagline: <b>Save - Plan - Go</b>.
               </p>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.35}>
-              <p className="text-[#86868B] text-base font-light leading-relaxed mb-6">
+              <p className="text-[var(--foreground-muted)] text-base font-light leading-relaxed mb-6">
                 Whether you require group flight tickets, custom holiday planning, document attestation, emigration support, or dedicated Hajj & Umrah pilgrimage packages, our highly experienced desks process every request with complete reliability and speed.
               </p>
             </ScrollReveal>
@@ -72,7 +72,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-20 mb-24">
+        <div className="border-t border-[var(--border)] pt-20 mb-24">
           <div className="text-center mb-16">
             <ScrollReveal variant="fade-up" duration={0.8}>
               <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block mb-2">OUR STANDARDS</span>
@@ -91,13 +91,13 @@ export default function About() {
                   variant="fade-up"
                   duration={0.6}
                   once
-                  className="bg-[#121212] border border-white/10 p-8 rounded-3xl flex flex-col items-start hover:border-amber-500/30 transition-colors duration-300"
+                  className="bg-[var(--card-bg)] border border-[var(--border)] p-8 rounded-3xl flex flex-col items-start hover:border-amber-500/30 transition-colors duration-300"
                 >
-                  <div className="p-3 bg-white/5 rounded-2xl border border-white/10 mb-6">
+                  <div className="p-3 bg-[var(--border)]/10 rounded-2xl border border-[var(--border)] mb-6">
                     <IconComp className="w-5 h-5 text-amber-500" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-3">{val.title}</h3>
-                  <p className="text-[#86868B] text-xs leading-relaxed font-light">{val.desc}</p>
+                  <h3 className="text-lg font-semibold text-[var(--foreground)] mb-3">{val.title}</h3>
+                  <p className="text-[var(--foreground-muted)] text-xs leading-relaxed font-light">{val.desc}</p>
                 </ScrollReveal>
               );
             })}
@@ -105,9 +105,9 @@ export default function About() {
         </div>
 
         {/* Closing Banner */}
-        <div className="relative rounded-3xl overflow-hidden h-[300px] flex items-center justify-center text-center p-6 border border-white/10">
+        <div className="relative rounded-3xl overflow-hidden h-[300px] flex items-center justify-center text-center p-6 border border-[var(--border)]">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-black/75 z-10" />
+            <div className="absolute inset-0 bg-neutral-950/75 z-10" />
             <Image
               src="/about_banner.jpg"
               alt="Night starry sky cabin"
@@ -118,10 +118,10 @@ export default function About() {
 
           <div className="relative z-20 max-w-2xl">
             <ScrollReveal variant="fade-up" duration={0.8}>
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">Let us plan your next journey</h3>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-neutral-50 mb-4">Let us plan your next journey</h3>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.15}>
-              <p className="text-sm text-[#86868B] font-light leading-relaxed mb-6">
+              <p className="text-sm text-neutral-300 font-light leading-relaxed mb-6">
                 Our dedicated flight, visa, and holiday coordinators are ready to help you plan your next trip. Get in touch with our team today.
               </p>
             </ScrollReveal>
@@ -129,7 +129,7 @@ export default function About() {
               <Magnetic range={30} strength={0.3}>
                 <Link
                   href="/contact"
-                  className="inline-block px-6 py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 transition-all duration-300"
+                  className="inline-block px-6 py-3 rounded-full bg-neutral-50 text-neutral-950 font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:text-neutral-50 transition-all duration-300"
                 >
                   Contact Our Desks
                 </Link>
