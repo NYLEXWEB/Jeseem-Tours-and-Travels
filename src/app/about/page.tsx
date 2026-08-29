@@ -6,27 +6,28 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Compass, Users, BadgeCheck } from "lucide-react";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
 import Magnetic from "@/components/Magnetic";
+import { COMPANY_DETAILS } from "@/constants/company";
 
 const VALUES = [
   {
     icon: Compass,
-    title: "Bespoke Artistry",
-    desc: "Every route is designed from a blank slate. We reject presets, templates, and generic travel packages in favor of highly customized itineraries."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Absolute Discretion",
-    desc: "We protect our clients' schedules, flight details, and residential details with military-grade privacy. Experience security and peace of mind."
+    title: "Save on Fares",
+    desc: "We secure exclusive group flight tickets, special airline series fares, and excellent hotel rates so you can travel affordably."
   },
   {
     icon: Users,
-    title: "VIP On-Ground Network",
-    desc: "Our localized contacts are elite guides, cultural authorities, and hospitality directors who offer immediate entry into locked gates."
+    title: "Plan Custom Routes",
+    desc: "Our team designs custom itineraries for domestic and international holidays built around your preferences and timeline."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Global Visa & Document Care",
+    desc: "We take care of hassle-free visa processing, quick certificate attestation, and reliable emigration clearance support."
   },
   {
     icon: BadgeCheck,
-    title: "Seamless Orchestration",
-    desc: "From private jet takeoff to final villa checkouts, we monitor every step. Your only task is to be fully present and explore."
+    title: "Trusted Service Since 1985",
+    desc: "Based in Alappuzha, Kerala, we bring nearly four decades of professional coordinates and travel trust to every journey."
   }
 ];
 
@@ -50,12 +51,12 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
               <p className="text-[#86868B] text-lg font-light leading-relaxed mb-6 text-balance">
-                Founded on the belief that luxury is not in the material, but in the experiences that expand the soul. Jeseem Tours & Travels curates journeys that transcend the average.
+                Founded in {COMPANY_DETAILS.established} in Thiruvampady, Alappuzha, Jeseem Tours & Travels has been a trusted symbol of travel excellence for nearly four decades. Our core mission is summarized in our tagline: <b>Save - Plan - Go</b>.
               </p>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.35}>
               <p className="text-[#86868B] text-base font-light leading-relaxed mb-6">
-                We serve a selective client base of global leaders, artists, and families who require absolute seamless execution, authentic local entry, and complete discretion.
+                Whether you require group flight tickets, custom holiday planning, document attestation, emigration support, or dedicated Hajj & Umrah pilgrimage packages, our highly experienced desks process every request with complete reliability and speed.
               </p>
             </ScrollReveal>
           </div>
@@ -117,11 +118,11 @@ export default function About() {
 
           <div className="relative z-20 max-w-2xl">
             <ScrollReveal variant="fade-up" duration={0.8}>
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">Let us design your next milestone</h3>
+              <h3 className="text-2xl md:text-3xl font-light tracking-tight text-white mb-4">Let us plan your next journey</h3>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.15}>
               <p className="text-sm text-[#86868B] font-light leading-relaxed mb-6">
-                Our travel architects are ready to draft your bespoke itinerary. Start the discussion today.
+                Our dedicated flight, visa, and holiday coordinators are ready to help you plan your next trip. Get in touch with our team today.
               </p>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.3} className="inline-block">
@@ -130,7 +131,7 @@ export default function About() {
                   href="/contact"
                   className="inline-block px-6 py-3 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 transition-all duration-300"
                 >
-                  Consult an Architect
+                  Contact Our Desks
                 </Link>
               </Magnetic>
             </ScrollReveal>

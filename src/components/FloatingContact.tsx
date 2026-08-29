@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { COMPANY_DETAILS } from "@/constants/company";
 
 export default function FloatingContact() {
-  const whatsappUrl = "https://wa.me/919061858416?text=Hi%20Jeseem%20Tours%20%26%20Travels,%20I%27m%20interested%20in%20planning%20a%20bespoke%20luxury%20journey.";
-  const instagramUrl = "https://www.instagram.com/jeseem_tours"; // Placeholder or direct handle
+  const whatsappUrl = COMPANY_DETAILS.socials.whatsapp;
+  const instagramUrl = COMPANY_DETAILS.socials.instagram;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-end pointer-events-none">

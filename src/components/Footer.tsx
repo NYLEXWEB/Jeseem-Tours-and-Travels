@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { COMPANY_DETAILS } from "@/constants/company";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,26 +11,26 @@ export default function Footer() {
       links: [
         { name: "Destinations", href: "/destinations" },
         { name: "Travel Packages", href: "/packages" },
-        { name: "Luxury Experiences", href: "/" },
-        { name: "Last Minute Deals", href: "/packages" }
+        { name: "Hajj & Umrah", href: "/packages" },
+        { name: "Honeymoon Packages", href: "/packages" }
       ]
     },
     {
       title: "Services",
       links: [
-        { name: "Personal Planning", href: "/contact" },
-        { name: "Corporate Travel", href: "/contact" },
-        { name: "Private Charters", href: "/contact" },
-        { name: "VIP Concierge", href: "/contact" }
+        { name: "Flight Booking", href: "/packages" },
+        { name: "Holiday Packages", href: "/packages" },
+        { name: "Visa Assistance", href: "/contact" },
+        { name: "Certificate Attestation", href: "/contact" }
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "Our Story", href: "/about" },
-        { name: "Careers", href: "/about" },
-        { name: "Press & Media", href: "/about" },
-        { name: "Contact Us", href: "/contact" }
+        { name: "About Us", href: "/about" },
+        { name: "Contact Us", href: "/contact" },
+        { name: "Terms of Service", href: "/" },
+        { name: "Privacy Policy", href: "/" }
       ]
     }
   ];
@@ -38,24 +40,26 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-8 pb-16">
           <div className="md:col-span-2">
-            <Link href="/" className="flex flex-col mb-4">
-              <span className="text-2xl font-extrabold tracking-widest text-white">JESEEM</span>
-              <span className="text-[10px] tracking-widest text-amber-500 font-semibold uppercase mt-0.5">
-                tours & travels
-              </span>
+            <Link href="/" className="relative block h-12 w-40 mb-4">
+              <Image
+                src="/logo.png"
+                alt="Jeseem Tours & Travels Logo"
+                fill
+                className="object-contain object-left"
+              />
             </Link>
             <p className="text-sm max-w-sm leading-relaxed mt-4">
-              Crafting bespoke luxury travel experiences for discerning global adventurers. We create journeys that linger in the memory, long after the dust has settled.
+              Your trusted travel partner since {COMPANY_DETAILS.established}. From flight bookings and global visa assistance to customized international holidays, we help you Save, Plan, and Go seamlessly.
             </p>
             <div className="mt-6 text-xs flex flex-col gap-1.5 text-[#86868B]">
               <p>
-                <strong className="text-white font-medium">Head Office:</strong> Mullathuvallappu- Valiyachudukadu Rd, Jn, Thiruvambady, P.O, Alappuzha, Kerala 688002
+                <strong className="text-white font-medium">Office Address:</strong> {COMPANY_DETAILS.address}
               </p>
               <p>
-                <strong className="text-white font-medium">Phone:</strong> +91 90618 58416
+                <strong className="text-white font-medium">Phone:</strong> {COMPANY_DETAILS.phone} (Office) / {COMPANY_DETAILS.whatsapp} (WhatsApp)
               </p>
               <p>
-                <strong className="text-white font-medium">Rating:</strong> 4.9 ★ (115 Google Reviews)
+                <strong className="text-white font-medium">Email:</strong> {COMPANY_DETAILS.email}
               </p>
             </div>
           </div>
@@ -94,8 +98,8 @@ export default function Footer() {
             <Link href="/" className="hover:text-white transition-colors">Sitemap</Link>
           </div>
           <div className="flex gap-6">
-            <a href="https://www.instagram.com/jeseem_tours" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Instagram</a>
-            <a href="https://wa.me/919061858416?text=Hi%20Jeseem%20Tours%20%26%20Travels,%20I%27m%20interested%20in%20planning%20a%20bespoke%20journey." target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">WhatsApp</a>
+            <a href={COMPANY_DETAILS.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Instagram</a>
+            <a href={COMPANY_DETAILS.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">WhatsApp</a>
             <a href="#" className="hover:text-white transition-colors duration-300">Facebook</a>
             <a href="#" className="hover:text-white transition-colors duration-300">LinkedIn</a>
           </div>

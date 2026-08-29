@@ -9,6 +9,16 @@ import Magnetic from "@/components/Magnetic";
 
 const DESTINATIONS = [
   {
+    id: "alappuzha",
+    name: "Alappuzha",
+    country: "India (Kerala)",
+    image: "/about_intro.jpg",
+    coords: "9.4981° N, 76.3388° E",
+    bestTime: "September – March",
+    description: "Known as the Venice of the East, Alappuzha is Jeseem's home base. It features a stunning network of tranquil canals, lakes, and lagoons best experienced aboard luxury houseboats.",
+    highlights: ["Overnight cruise on a luxury houseboat", "Nehru Trophy boat race tracks", "Private backwater seafood dining", "Traditional Ayurvedic wellness spa treatment"],
+  },
+  {
     id: "kyoto",
     name: "Kyoto",
     country: "Japan",
@@ -37,16 +47,6 @@ const DESTINATIONS = [
     bestTime: "December – April (Ski), June – Sept (Hike)",
     description: "An alpine paradise offering world-class skiing, pristine glacial lakes, and ultra-exclusive mountain chalets. Perfect for high-altitude rejuvenation and adventure.",
     highlights: ["Helicopter ski touring in Zermatt", "Panoramic travel on the Glacier Express VIP Cabin", "Secluded thermal spa bath stays in Vals", "Private lakeside dining at Lake Lucerne"],
-  },
-  {
-    id: "serengeti",
-    name: "Serengeti",
-    country: "Tanzania",
-    image: "/serengeti.jpg",
-    coords: "2.1540° S, 34.6857° E",
-    bestTime: "January – March, June – October",
-    description: "The classic theater of wild Africa. Witness the legendary Great Migration across sweeping golden savannahs, staying in absolute luxury inside remote safari lodges.",
-    highlights: ["Private hot-air balloon flight at sunrise", "Sunset wildlife drives guided by veteran naturalists", "Ultra-luxury tented lodge stays at Singita", "Gourmet bush dinners under starfields"],
   }
 ];
 

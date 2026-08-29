@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jeseem Tours & Travels | Bespoke Luxury Travel Agency",
-  description: "Experience global exploration at its finest. Custom curated itineraries, private charters, and exclusive premium resorts by Jeseem Tours & Travels.",
-  keywords: ["luxury travel", "private tours", "bespoke travel agency", "custom itineraries", "Jeseem Tours", "exclusive vacations"],
+  title: "Jeseem Tours & Travels | Save - Plan - Go",
+  description: "Trusted since 1985. Jeseem Tours & Travels in Alappuzha, Kerala offers professional Flight Booking (Group / Special Fares), Domestic & International Holidays, Global Visa Assistance, and Certificate Attestation.",
+  keywords: ["Jeseem Tours & Travels", "flight booking Alappuzha", "group flight bookings", "visa assistance Alappuzha", "certificate attestation Kerala", "Hajj and Umrah packages Alappuzha", "tours and travels Kerala", "customized tour packages"],
 };
 
 export default function RootLayout({

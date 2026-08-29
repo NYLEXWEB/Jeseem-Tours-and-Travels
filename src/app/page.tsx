@@ -8,30 +8,31 @@ import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, Chevro
 import TiltCard from "@/components/TiltCard";
 import Magnetic from "@/components/Magnetic";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
+import { COMPANY_DETAILS } from "@/constants/company";
 
-// Mock Data for Premium Curated Assets
+// Curated Assets and Details
 const DESTINATIONS = [
   {
-    id: "kyoto",
-    name: "Kyoto",
-    country: "Japan",
-    desc: "Ancient shrines, cherry blossoms, and timeless serenity.",
-    image: "/kyoto.jpg",
-    coords: "35.0116° N, 135.7681° E",
+    id: "alappuzha",
+    name: "Alappuzha",
+    country: "India (Kerala)",
+    desc: "Pristine houseboats, serene backwaters, and local culinary delights.",
+    image: "/about_intro.jpg",
+    coords: "9.4981° N, 76.3388° E",
   },
   {
-    id: "amalfi",
-    name: "Amalfi Coast",
-    country: "Italy",
-    desc: "Cliffside luxury villas and deep blue Mediterranean horizons.",
+    id: "dubai",
+    name: "Dubai",
+    country: "UAE",
+    desc: "Futuristic skyscrapers, desert safaris, and luxurious shopping.",
     image: "/amalfi.jpg",
-    coords: "40.6340° N, 14.6027° E",
+    coords: "25.2048° N, 55.2708° E",
   },
   {
     id: "swiss-alps",
     name: "Swiss Alps",
     country: "Switzerland",
-    desc: "Majestic snow peaks and secluded, premium mountain retreats.",
+    desc: "Majestic snow peaks and scenic panoramic train expeditions.",
     image: "/swiss_alps.jpg",
     coords: "46.8182° N, 8.2275° E",
   },
@@ -39,7 +40,7 @@ const DESTINATIONS = [
     id: "serengeti",
     name: "Serengeti",
     country: "Tanzania",
-    desc: "Exclusive tented safaris and witness the Great Migration.",
+    desc: "Wild savannah reserves and the breathtaking Great Migration.",
     image: "/serengeti.jpg",
     coords: "2.1540° S, 34.6857° E",
   },
@@ -47,12 +48,12 @@ const DESTINATIONS = [
 
 const PACKAGES = [
   {
-    id: "horizon-jet",
-    title: "The Horizon Expedition",
-    subtitle: "Private Jet World Tour",
-    price: "$145,000 / guest",
-    duration: "24 Days",
-    desc: "An ultra-exclusive journey encompassing 8 global wonders, flying by privately chartered Boeing 757, staying at Aman & One&Only properties.",
+    id: "flight-ticketing",
+    title: "Worldwide Flight Bookings",
+    subtitle: "Group & Special / Series Fares",
+    price: "Best Rates Guaranteed",
+    duration: "Flexible Dates",
+    desc: "Get exclusive access to group bookings, special flight deals, and series fares. Perfect for corporate travel, family delegations, and pilgrimage groups.",
     image: "/horizon_expedition.jpg",
   },
 ];
@@ -60,26 +61,26 @@ const PACKAGES = [
 const SERVICES = [
   {
     number: "01",
-    title: "Bespoke Itinerary Curations",
-    desc: "Journeys tailored completely around your preferences, Pace, and design of travel.",
+    title: "Flight & Ticket Bookings",
+    desc: "Access competitive group booking options, special fares, and series fares on all major airlines worldwide.",
     image: "/service_01.jpg",
   },
   {
     number: "02",
-    title: "Private Jet & Yacht Charters",
-    desc: "Exquisite transportation options tailored to secure your ultimate safety, comfort, and schedule.",
+    title: "Domestic & International Holidays",
+    desc: "Completely customized packages, honeymoon specials, and corporate retreats tailored to your timeline and budget.",
     image: "/service_02.jpg",
   },
   {
     number: "03",
-    title: "VIP On-Ground Concierge",
-    desc: "Unrestricted global access, booking private temples, VIP tables, and exclusive local entry.",
+    title: "Global Visa & Document Support",
+    desc: "Hassle-free visa assistance, document attestation services, and emigration clearance support for all countries.",
     image: "/service_03.jpg",
   },
   {
     number: "04",
-    title: "Secluded Luxury Residences",
-    desc: "Verified, ultra-premium villas, private islands, and luxury hotel suites with tailored butler care.",
+    title: "Pilgrimage, Hajj & Umrah Services",
+    desc: "Dedicated coordinates and premium hotel arrangements for holy Hajj & Umrah journeys with maximum comfort.",
     image: "/service_04.jpg",
   },
 ];
@@ -87,71 +88,71 @@ const SERVICES = [
 const STEPS = [
   {
     number: "01",
-    title: "Discover Your Vision",
-    desc: "Collaborate with an expert travel architect to articulate your wanderlust design, pace, and bespoke desires.",
+    title: "Save & Plan",
+    desc: "Consult our travel agents to find group bookings, low flight ticket rates, and custom itineraries for your destinations.",
     image: "/step_01.jpg",
   },
   {
     number: "02",
-    title: "Curate the Details",
-    desc: "Receive a fully custom, hour-by-hour itinerary including select luxury accommodations, private guides, and exclusive bookings.",
+    title: "Visa & Clearances",
+    desc: "Our documents desk processes your visa assistance, certificate attestation, and emigration clearances seamlessly.",
     image: "/step_02.jpg",
   },
   {
     number: "03",
-    title: "Experience Seamless Travel",
-    desc: "Relax completely. With 24/7 dedicated support and VIP ground coordination, your journey unfolds effortlessly.",
+    title: "Go & Experience",
+    desc: "Go on your trip confidently with pre-arranged airport transfers, comprehensive travel insurance, and 24/7 hotline support.",
     image: "/step_03.jpg",
   },
   {
     number: "04",
-    title: "Remember and Revisit",
-    desc: "Cherish the moments. We compile key photographic captures and notes from your journey for your personal vault.",
+    title: "Return & Review",
+    desc: "Arrive home with beautiful memories. Our travel desks remain ready to assist with your future tickets and packages.",
     image: "/step_04.jpg",
   },
 ];
 
 const REVIEWS = [
   {
-    quote: "Jeseem Tours and Travels reimagined how we see the world. Our journey through the temples of Kyoto and private retreats in Okinawa was orchestrated to perfection. It was travel as art.",
-    author: "Eleanor Vance",
-    role: "Collector & Global Traveler",
-    destination: "Kyoto & Okinawa, Japan",
+    quote: "Jeseem Tours made our family holiday to Dubai completely hassle-free. From flight bookings with special fares to visa processing and hotel booking, everything was perfect.",
+    author: "Ragesh Kurup",
+    role: "Business Owner",
+    destination: "Dubai Family Tour",
     rating: 5,
   },
   {
-    quote: "The seamlessness of flying from Amalfi directly into a Swiss mountain estate with zero wait, private custom dining, and personal guides was spectacular. An unmatched experience.",
-    author: "Marcus Aurelius Group",
-    role: "CEO & Philanthropist",
-    destination: "Alps & Amalfi Expedition",
+    quote: "I've been booking our company's corporate flight tickets with Jeseem since 2018. Their ability to secure group bookings and series fares saves us substantial costs every year.",
+    author: "Nithin Madhavan",
+    role: "Managing Director",
+    destination: "Corporate Travel Solutions",
     rating: 5,
   },
   {
-    quote: "We reserved the Horizon private jet tour. Aman properties, private temples in Kyoto, and absolute privacy on our flights. Their on-ground team is incredible.",
-    author: "Clara Templeton",
-    role: "Art Curator",
-    destination: "Signature Jet Tour",
+    quote: "Highly recommend Jeseem's visa assistance and certificate attestation services. They handled my document attestation for the UAE visa quickly and professionally.",
+    author: "Fathima Hameed",
+    role: "Software Engineer",
+    destination: "Visa & Attestation Support",
     rating: 5,
   },
   {
-    quote: "Booking custom retreats in Switzerland and Tanzania has never been this stress-free. Every butler, chauffeur, and local guide was vetted and outstanding.",
-    author: "Dr. Aris Vance",
-    role: "Neurosurgeon",
-    destination: "Swiss Alps & Serengeti",
+    quote: "Our customized honeymoon tour to Kashmir was organized beautifully by their holiday team. Very professional, punctual airport transfers, and excellent hotels.",
+    author: "Dr. Anand & Anupama",
+    role: "Pediatrician",
+    destination: "Kashmir Honeymoon",
     rating: 5,
   },
   {
-    quote: "We spent two weeks sailing around Positano and Capri on a private yacht. The captain was knowledgeable, the chef prepared amazing meals, and we had VIP access everywhere.",
-    author: "Sasha & David K.",
-    role: "Venture Partners",
-    destination: "Amalfi Coast Yacht Tour",
+    quote: "We chose Jeseem Tours for our parents' Umrah pilgrimage. The hotel bookings near the Haram, ground transport, and guidance were outstanding. Very satisfied.",
+    author: "Sharafudeen K. A.",
+    role: "Gulf Expatriate",
+    destination: "Umrah Pilgrimage Package",
     rating: 5,
   },
   {
-    quote: "Their discrete coordination is what keeps us coming back. Everything from flight logs to villa allocations is handled with extreme security. Highly recommended.",
-    author: "The Sterling Family",
-    role: "Private Office",
-    destination: "Custom Global Route",
+    quote: "Reliable and fast emigration clearance and passport support. The team at the Alappuzha head office was extremely helpful and answered all questions patiently.",
+    author: "Joseph Antony",
+    role: "Merchant Navy Officer",
+    destination: "Emigration & Travel Support",
     rating: 5,
   },
 ];
@@ -178,14 +179,7 @@ export default function Home() {
   // Refs for tracking sticky steps
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Scroll logic for cinematic hero scaling
   const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
 
 
@@ -213,21 +207,8 @@ export default function Home() {
   return (
     <div ref={containerRef} className="relative w-full bg-[#080808]">
       {/* 1. HERO SECTION */}
-      <section ref={heroRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10 bg-transparent">
-        {/* Background Image Panel */}
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ scale: heroScale, opacity: heroOpacity }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#080808] z-10" />
-          <Image
-            src="/hero_bg.jpg"
-            alt="Immersive landscape"
-            fill
-            priority
-            className="object-cover"
-          />
-        </motion.div>
+      <section ref={heroRef} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden z-10 bg-transparent py-24">
+
 
         {/* Hero Content */}
         <div className="relative max-w-7xl mx-auto px-6 w-full z-20 flex flex-col items-start pt-20">
@@ -237,9 +218,9 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-center gap-2 mb-6"
           >
-            <Compass className="w-4 h-4 text-amber-500 animate-pulse" />
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold">
-              BESPOKE LUXURY JOURNEYS
+            <Compass className="w-4 h-4 text-pink-300 animate-pulse" />
+            <span className="text-xs uppercase tracking-widest text-pink-200 font-semibold">
+              {COMPANY_DETAILS.tagline}
             </span>
           </motion.div>
 
@@ -249,9 +230,9 @@ export default function Home() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block"
+                className="block font-medium bg-gradient-to-r from-white to-[#ff9ebb] bg-clip-text text-transparent"
               >
-                EXPLORE
+                SAVE.
               </motion.span>
             </div>
             <div className="overflow-hidden relative py-1.5">
@@ -261,7 +242,7 @@ export default function Home() {
                 transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="block text-stroke text-white/90"
               >
-                WHAT&apos;S
+                PLAN.
               </motion.span>
             </div>
             <div className="overflow-hidden relative py-1.5">
@@ -269,9 +250,9 @@ export default function Home() {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="block"
+                className="block font-medium bg-gradient-to-r from-white to-[#ff9ebb] bg-clip-text text-transparent"
               >
-                NEXT.
+                GO.
               </motion.span>
             </div>
           </h1>
@@ -282,7 +263,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-[#86868B] text-base md:text-lg max-w-md mb-8 leading-relaxed font-light text-balance"
           >
-            Jeseem Tours & Travels designs highly personalized adventures and premium charters around the globe.
+            Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified worldwide travel. From low airfares and customized holiday packages to visa assistance and emigration support, we make your journey hassle-free.
           </motion.p>
 
           <motion.div
@@ -318,7 +299,7 @@ export default function Home() {
         >
           <span className="text-[9px] uppercase tracking-widest text-[#86868B] font-semibold">SCROLL</span>
           <div className="w-[1px] h-12 bg-white/20 relative">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-amber-500 animate-[bounce_2s_infinite]" />
+            <div className="absolute top-0 left-0 w-full h-1/2 bg-pink-300 animate-[bounce_2s_infinite]" />
           </div>
         </motion.div>
       </section>
@@ -326,15 +307,29 @@ export default function Home() {
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO) */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none">
         {/* Cinematic dark overlay gradient to ensure high readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-black/85 to-[#080808] z-10" />
-        <Image
-          src="/about_banner.jpg"
-          alt="Cinematic fixed travel canvas backdrop"
-          fill
-          className="object-cover opacity-30"
-          sizes="100vw"
-          priority
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 z-10" />
+        {/* Desktop Background Visual */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/jeseem_bg.png"
+            alt="Cinematic fixed travel canvas backdrop"
+            fill
+            className="object-cover opacity-65"
+            sizes="100vw"
+            priority
+          />
+        </div>
+        {/* Mobile Background Visual */}
+        <div className="block md:hidden absolute inset-0">
+          <Image
+            src="/jeseem_bg_mobile.png"
+            alt="Cinematic fixed travel canvas backdrop mobile"
+            fill
+            className="object-cover opacity-65"
+            sizes="100vw"
+            priority
+          />
+        </div>
       </div>
 
       <section className="relative py-48 px-6 overflow-hidden border-t border-white/5 flex items-center justify-center min-h-[80vh] z-10 bg-transparent">
@@ -346,12 +341,12 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal variant="blur-in" duration={1.2} delay={0.2}>
             <h2 className="text-3xl md:text-5xl font-extralight tracking-tight leading-snug md:leading-normal text-white text-balance">
-              We believe travel is not just about changing locations. It is about shifting perspectives. We curate bespoke journeys that feel like a symphony of private, cinematic moments designed exclusively for you.
+              We believe travel should be affordable, seamless, and memorable. From the moment you plan your flights to visa clearances and local stays, we take care of all the details, allowing you to focus entirely on the journey.
             </h2>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={0.8} delay={0.4} className="mt-8 flex justify-center">
             <Link href="/about" className="group text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold inline-flex items-center gap-2 transition-all">
-              Discover Jeseem Story
+              Discover Our {new Date().getFullYear() - COMPANY_DETAILS.established}-Year Story
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </Link>
           </ScrollReveal>
@@ -445,8 +440,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold block mb-2">LIMITED LAUNCH</span>
-            <h3 className="text-4xl md:text-6xl font-extralight tracking-tight text-white">Signature Masterpiece</h3>
+            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold block mb-2">FEATURED SERVICE</span>
+            <h3 className="text-4xl md:text-6xl font-extralight tracking-tight text-white">Flight Ticket Bookings</h3>
           </motion.div>
 
           {PACKAGES.map((pkg) => (
@@ -485,19 +480,19 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-6 mb-8 border-t border-b border-white/10 py-6">
                   <div>
                     <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Includes</span>
-                    <p className="text-sm font-semibold text-white mt-1">Global Private Flight</p>
+                    <p className="text-sm font-semibold text-white mt-1">Group Booking & Series Fares</p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Duration</span>
-                    <p className="text-sm font-semibold text-white mt-1">{pkg.duration}</p>
+                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Rates</span>
+                    <p className="text-sm font-semibold text-white mt-1">Best Market Rates</p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Pricing</span>
-                    <p className="text-sm font-semibold text-white mt-1">{pkg.price}</p>
+                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Support</span>
+                    <p className="text-sm font-semibold text-white mt-1">24/7 Ticketing Help</p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Stays</span>
-                    <p className="text-sm font-semibold text-white mt-1">Aman Residences</p>
+                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Destinations</span>
+                    <p className="text-sm font-semibold text-white mt-1">Domestic & International</p>
                   </div>
                 </div>
 
@@ -506,7 +501,7 @@ export default function Home() {
                     href={`/contact?package=${pkg.id}`}
                     className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
                   >
-                    Request Cabin Allocation
+                    Inquire Ticket Allocation
                     <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -527,8 +522,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="flex-1 flex flex-col justify-center"
           >
-            <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">LUXURY PROVISION</span>
-            <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-12">The Jeseem Provision</h3>
+            <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">OUR SERVICE RANGE</span>
+            <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-12">Core Services</h3>
             
             <ScrollStagger className="flex flex-col gap-6">
               {SERVICES.map((srv, idx) => (
@@ -651,10 +646,10 @@ export default function Home() {
             className="w-full lg:w-1/2 flex flex-col gap-20 lg:gap-40 py-12 lg:py-24 pb-24 lg:pb-48 order-1 lg:order-2"
           >
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">THE METHODOLOGY</span>
-              <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6">Designing Journeys</h3>
+              <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">OUR TAGLINE APPROACH</span>
+              <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6">Save • Plan • Go</h3>
               <p className="text-[#86868B] text-base font-light leading-relaxed max-w-md">
-                We craft tailored itineraries using a meticulous four-stage approach to ensure zero compromises and full travel alignment.
+                We simplify travel logistics using a smooth four-stage methodology to ensure your journey is safe, affordable, and stress-free.
               </p>
             </div>
 
@@ -720,7 +715,7 @@ export default function Home() {
             </h2>
             
             <p className="text-white/60 text-base leading-relaxed font-light">
-              We take pride in crafting flawless, private journeys. Here is how our clients recount their travel experiences and bespoke itineraries.
+              Trusted since {COMPANY_DETAILS.established}. Here is how our guests review their flights, holidays, and visa coordination from Alappuzha.
             </p>
             
             {/* Google Rating Badge */}
@@ -1023,17 +1018,17 @@ export default function Home() {
         >
           <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block mb-4">THE NEXT CHAPTER</span>
           <h2 className="text-4xl md:text-7xl font-extralight tracking-tight text-white mb-6 text-balance">
-            Where will you go next?
+            Save. Plan. Go.
           </h2>
           <p className="text-[#86868B] text-base md:text-lg mb-10 max-w-md mx-auto leading-relaxed font-light">
-            Contact our travel architects today to curate your next private itinerary or reserve private jet allocation.
+            Contact our dedicated support desks today to book group flight tickets, plan domestic/international holidays, or secure your visa assistance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/contact"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
             >
-              Consult an Architect
+              Get In Touch
             </Link>
             <Link
               href="/destinations"

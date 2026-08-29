@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Magnetic from "@/components/Magnetic";
+import { COMPANY_DETAILS } from "@/constants/company";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,13 +72,14 @@ export default function Navbar() {
         transition={{ type: "spring", damping: 20, stiffness: 120 }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="group flex flex-col md:flex-row md:items-baseline md:gap-2" onClick={() => setIsOpen(false)}>
-            <span className="text-xl font-extrabold tracking-widest transition-colors duration-300 text-white hover:text-amber-500">
-              JESEEM
-            </span>
-            <span className="text-[9px] tracking-widest font-semibold uppercase mt-0.5 md:mt-0 transition-colors duration-300 text-amber-500">
-              tours & travels
-            </span>
+          <Link href="/" className="relative block h-8 md:h-10 w-28 md:w-36" onClick={() => setIsOpen(false)}>
+            <Image
+              src="/logo.png"
+              alt="Jeseem Tours & Travels"
+              fill
+              className="object-contain"
+              priority
+            />
           </Link>
  
           {/* Desktop Nav Links */}
@@ -191,8 +194,8 @@ export default function Navbar() {
                 <div className="flex flex-col gap-4">
                   <div>
                     <p className="text-[9px] uppercase tracking-widest text-white/50">Curated Journeys</p>
-                    <p className="text-xs text-white/80 mt-1 font-light font-mono">info@jeseemtours.com</p>
-                    <p className="text-xs text-white/80 font-light font-mono">+91 90618 58416</p>
+                    <p className="text-xs text-white/80 mt-1 font-light font-mono">{COMPANY_DETAILS.departments.reservations.email}</p>
+                    <p className="text-xs text-white/80 font-light font-mono">{COMPANY_DETAILS.departments.reservations.phone}</p>
                   </div>
                   <Link
                     href="/contact"

@@ -5,16 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, Calendar, ShieldAlert, Star, Phone, MessageSquare, MapPin, Clock } from "lucide-react";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
 import Magnetic from "@/components/Magnetic";
+import { COMPANY_DETAILS } from "@/constants/company";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    destination: "Kyoto, Japan",
+    destination: "Flight Booking",
     duration: "1-2 Weeks",
     travelers: "2 Guests",
-    budget: "$15k - $50k",
+    budget: "Standard",
     notes: "",
   });
   
@@ -35,12 +36,13 @@ export default function Contact() {
   };
 
   const destinationsList = [
-    "Kyoto, Japan",
-    "Amalfi Coast, Italy",
-    "Swiss Alps, Switzerland",
-    "Serengeti, Tanzania",
-    "Alappuzha Houseboat, Kerala",
-    "Custom Global Journey"
+    "Flight Booking",
+    "Domestic Holiday Package",
+    "International Holiday Package",
+    "Global Visa Assistance",
+    "Certificate Attestation",
+    "Hajj & Umrah Pilgrimage",
+    "Other Travel Support"
   ];
 
   return (
@@ -94,8 +96,7 @@ export default function Contact() {
               </div>
               <p className="text-sm text-white font-light leading-relaxed">
                 Jeseem Tours & Travels<br />
-                Mullathuvallappu- Valiyachudukadu Rd, Jn,<br />
-                Thiruvambady, P.O, Alappuzha, Kerala 688002
+                {COMPANY_DETAILS.address}
               </p>
               
               <div className="h-[1px] bg-white/10 w-full" />
@@ -103,39 +104,46 @@ export default function Contact() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-amber-500" />
-                  <span className="text-[10px] uppercase tracking-widest text-[#86868B] font-bold">Office Hours</span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#86868B] font-bold">Business Hours</span>
                 </div>
-                <p className="text-xs text-white">Closed · Opens 9:30 AM Sat</p>
+                <p className="text-xs text-white">Open · {COMPANY_DETAILS.hours} (Mon – Sat)</p>
                 <p className="text-[10px] text-[#86868B] leading-relaxed">
-                  *Standard hours may vary during holidays (Ayyankali Jayanthi might affect these hours).
+                  *Standard office timing. For late reservations, contact our WhatsApp support desks.
                 </p>
               </div>
             </ScrollReveal>
 
-            {/* Direct Communication Channels */}
+            {/* Department Contacts Card */}
             <ScrollReveal variant="fade-up" duration={0.6} className="bg-[#121212] border border-white/10 p-6 rounded-3xl space-y-4">
-              <h3 className="text-xs uppercase tracking-widest text-white font-bold mb-4">Direct Channels</h3>
-              <div className="flex flex-col gap-3">
-                <Magnetic range={30} strength={0.25} className="w-full">
-                  <a
-                    href="tel:+919061858416"
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded-2xl hover:bg-amber-500 transition-all duration-300"
-                  >
-                    <Phone className="w-3.5 h-3.5" />
-                    Call: 090618 58416
-                  </a>
-                </Magnetic>
-                <Magnetic range={30} strength={0.25} className="w-full">
-                  <a
-                    href="https://wa.me/919061858416"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-transparent border border-white/10 text-white font-semibold text-xs uppercase tracking-wider rounded-2xl hover:bg-white hover:text-black transition-all duration-300"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5 text-amber-500" />
-                    Chat on WhatsApp
-                  </a>
-                </Magnetic>
+              <h3 className="text-xs uppercase tracking-widest text-white font-bold mb-2">Our Departments</h3>
+              
+              <div className="space-y-4 text-xs">
+                {/* Reservations */}
+                <div className="border-b border-white/5 pb-3">
+                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.reservations.label}</p>
+                  <p className="text-white mt-1">Phone/WhatsApp: <a href={`tel:${COMPANY_DETAILS.departments.reservations.phone}`} className="hover:text-amber-500 font-mono font-semibold">{COMPANY_DETAILS.departments.reservations.phone}</a></p>
+                  <p className="text-[#86868B]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.reservations.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.reservations.email}</a></p>
+                </div>
+
+                {/* Holidays */}
+                <div className="border-b border-white/5 pb-3">
+                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.holidays.label}</p>
+                  <p className="text-white mt-1">Phone/WhatsApp: <a href={`tel:${COMPANY_DETAILS.departments.holidays.phone}`} className="hover:text-amber-500 font-mono font-semibold">{COMPANY_DETAILS.departments.holidays.phone}</a></p>
+                  <p className="text-[#86868B]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.holidays.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.holidays.email}</a></p>
+                </div>
+
+                {/* Visa Team */}
+                <div className="border-b border-white/5 pb-3">
+                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.visas.label}</p>
+                  <p className="text-[#86868B] mt-1">Email: <a href={`mailto:${COMPANY_DETAILS.departments.visas.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.visas.email}</a></p>
+                </div>
+
+                {/* Admin */}
+                <div>
+                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.admin.label}</p>
+                  <p className="text-white mt-1">Official Phone: <a href={`tel:${COMPANY_DETAILS.departments.admin.phone}`} className="hover:text-amber-500 font-mono font-semibold">{COMPANY_DETAILS.departments.admin.phone}</a></p>
+                  <p className="text-[#86868B]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.admin.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.admin.email}</a></p>
+                </div>
               </div>
             </ScrollReveal>
           </ScrollStagger>
@@ -183,7 +191,7 @@ export default function Contact() {
                         <option value="1 Guest">Solo Traveler</option>
                         <option value="2 Guests">Couple (2 Guests)</option>
                         <option value="3-5 Guests">Small Family (3-5 Guests)</option>
-                        <option value="6+ Guests">Private Delegation (6+ Guests)</option>
+                        <option value="6+ Guests">Group Booking (6+ Guests)</option>
                       </select>
                     </div>
 
@@ -204,16 +212,16 @@ export default function Contact() {
 
                     {/* Budget scale */}
                     <div className="flex flex-col gap-2">
-                      <label className="text-[10px] uppercase tracking-widest text-[#86868B] font-bold">Budget (USD)</label>
+                      <label className="text-[10px] uppercase tracking-widest text-[#86868B] font-bold">Expected Budget</label>
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-amber-500 transition-colors"
                       >
-                        <option value="$10k - $25k">$10k - $25k per guest</option>
-                        <option value="$25k - $50k">$25k - $50k per guest</option>
-                        <option value="$50k - $100k">$50k - $100k per guest</option>
-                        <option value="$100k+">$100k+ Charter level</option>
+                        <option value="Economy">Budget Friendly (Economy)</option>
+                        <option value="Standard">Mid-Range (Standard)</option>
+                        <option value="Premium">Premium / Luxury</option>
+                        <option value="Group Fare">Group Fare / Corporate Packages</option>
                       </select>
                     </div>
                   </div>
