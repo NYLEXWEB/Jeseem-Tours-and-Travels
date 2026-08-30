@@ -54,7 +54,7 @@ const PACKAGES = [
     price: "Best Rates Guaranteed",
     duration: "Flexible Dates",
     desc: "Get exclusive access to group bookings, special flight deals, and series fares. Perfect for corporate travel, family delegations, and pilgrimage groups.",
-    image: "/horizon_expedition.jpg",
+    image: "/service_01.jpg",
   },
 ];
 
