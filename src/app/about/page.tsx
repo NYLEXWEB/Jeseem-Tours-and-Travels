@@ -89,7 +89,6 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3 text-center">
                     <span className="text-[10px] uppercase tracking-widest text-black bg-amber-500 font-bold px-3 py-1 rounded-full shadow-md inline-block">FOUNDER</span>
-                    <span className="text-xs text-white font-mono block mt-1">1985 – 2022</span>
                   </div>
                 </div>
               </div>
