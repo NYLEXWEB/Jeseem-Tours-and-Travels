@@ -315,17 +315,17 @@ export default function Home() {
         {/* Background Layer (Full Image View, No Dark Fade Overlay) */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <Image
-            src="/travel_blue_hero.png"
+            src="/hero_background.jpg"
             alt="Jeseem Travel Header Background"
             fill
-            className="object-cover object-center hidden md:block"
+            className="object-cover object-bottom hidden md:block"
             priority
           />
           <Image
-            src="/travel_blue_hero_mobile.png"
+            src="/hero_background_mobile.png"
             alt="Jeseem Travel Mobile Header Background"
             fill
-            className="object-cover object-center block md:hidden"
+            className="object-cover object-bottom block md:hidden"
             priority
           />
           {/* Soft foggy blend transition to the white section below */}
