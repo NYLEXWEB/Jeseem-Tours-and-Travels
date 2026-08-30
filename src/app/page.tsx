@@ -114,6 +114,41 @@ const STEPS = [
 
 const REVIEWS = [
   {
+    quote: "I had a great experience with Jeseem Travels. The team was extremely professional, competent in getting the best prices; at our convenient travel timings; and continuously updating the flight changes. Highly recommend to reach out to them for anyone looking for hassle free and quality travel plans...",
+    author: "K Kuriakose",
+    role: "Verified Customer",
+    destination: "Hassle Free & Quality Travel Plans",
+    rating: 5,
+  },
+  {
+    quote: "It's a long time I am travelling by Jaseem travels. Till now I am more than happy that jaseem travels gives a clear picture of the process and service with end to end clearance. Keep it up. Looking forward for more business with you.. Thank you for the good services",
+    author: "Firoze Aslam",
+    role: "Local Guide",
+    destination: "End-to-End Clearance & Service",
+    rating: 5,
+  },
+  {
+    quote: "This is an unique place in Alappuzha or probably in Kerala. You may approach them with your requirements and you will get a satisfying response. I would recommend to the fullest from my deep heart. The ambiance and courteous behavior, attitude and approach to you and your issues will be very satisfying. I will merit them 5star.",
+    author: "Pradeep Nayar",
+    role: "Verified Customer",
+    destination: "Courteous & Satisfying Response",
+    rating: 5,
+  },
+  {
+    quote: "The travel agency provided exceptional service, efficiently handling all aspects of my trip. Their attention to detail and personalized assistance made mytravel experience seamless and enjoyable.",
+    author: "Linu Albin",
+    role: "Local Guide",
+    destination: "Exceptional & Personalized Assistance",
+    rating: 5,
+  },
+  {
+    quote: "Everything was very well arranged by yaseem. Extremely cordial and helpful, will recommend everyone.",
+    author: "Akash Deep Singh",
+    role: "Verified Customer",
+    destination: "Cordial & Well Arranged",
+    rating: 5,
+  },
+  {
     quote: "I had an incredible experience with this agency! From start to finish, the team was professional, attentive, and handled every detail of my trip with care.",
     author: "Vishnu N Pillai",
     role: "Local Guide",
@@ -419,23 +454,81 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="relative py-48 px-6 overflow-hidden border-t border-white/5 flex items-center justify-center min-h-[80vh] z-10 bg-transparent">
-        <div className="max-w-4xl mx-auto text-center relative z-20">
-          <ScrollReveal variant="fade-up" duration={0.8}>
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold mb-6 block">
-              OUR TRAVEL PHILOSOPHY
-            </span>
-          </ScrollReveal>
-          <ScrollReveal variant="blur-in" duration={1.2} delay={0.2}>
-            <h2 className="text-3xl md:text-5xl font-extralight tracking-tight leading-snug md:leading-normal text-white text-balance">
-              We believe travel should be affordable, seamless, and memorable. From the moment you plan your flights to visa clearances and local stays, we take care of all the details, allowing you to focus entirely on the journey.
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-up" duration={0.8} delay={0.4} className="mt-8 flex justify-center">
-            <Link href="/about" className="group text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold inline-flex items-center gap-2 transition-all">
-              Discover Our {new Date().getFullYear() - COMPANY_DETAILS.established}-Year Story
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-            </Link>
+      {/* 2. OUR TRAVEL PHILOSOPHY & FOUNDER TRIBUTE SECTION */}
+      <section className="relative py-28 md:py-36 px-6 overflow-hidden border-t border-black/5 flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent">
+        <div className="max-w-6xl mx-auto w-full relative z-20">
+          {/* Philosophy Statement */}
+          <div className="max-w-4xl mx-auto text-center mb-20">
+            <ScrollReveal variant="fade-up" duration={0.8}>
+              <span className="text-xs uppercase tracking-widest text-sky-600 font-bold mb-4 block">
+                OUR TRAVEL PHILOSOPHY
+              </span>
+            </ScrollReveal>
+            <ScrollReveal variant="blur-in" duration={1.2} delay={0.2}>
+              <h2 className="text-3xl md:text-5xl font-extralight tracking-tight leading-snug md:leading-normal text-[#171717] text-balance">
+                We believe travel should be affordable, seamless, and memorable. From the moment you plan your flights to visa clearances and local stays, we take care of all the details, allowing you to focus entirely on the journey.
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.4} className="mt-8 flex justify-center">
+              <Link href="/about" className="group text-xs uppercase tracking-widest text-[#171717] hover:text-sky-600 font-bold inline-flex items-center gap-2 transition-all">
+                Discover Our {new Date().getFullYear() - COMPANY_DETAILS.established}-Year Story
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+            </ScrollReveal>
+          </div>
+
+          {/* FOUNDER TRIBUTE CARD (Late KUNJUMON ISMAIL) - Clean White Luxury Theme */}
+          <ScrollReveal variant="fade-up" duration={1.0} delay={0.2}>
+            <div className="relative w-full rounded-3xl overflow-hidden bg-white text-[#171717] p-8 md:p-14 border border-amber-500/30 shadow-2xl flex flex-col lg:flex-row items-center gap-10 md:gap-14">
+              {/* Founder Image Frame */}
+              <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-xl group bg-amber-50">
+                <Image
+                  src="/Father photo.png"
+                  alt="KUNJUMON ISMAIL - Founder of Jeseem Tours & Travels"
+                  fill
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+                <div className="absolute bottom-3 left-3 right-3 z-20 text-center">
+                  <span className="px-3.5 py-1 rounded-full bg-amber-500 text-black text-[10px] uppercase font-bold tracking-widest inline-block shadow-md">
+                    In Loving Memory
+                  </span>
+                </div>
+              </div>
+
+              {/* Founder Bio & Tribute Content */}
+              <div className="flex-1 flex flex-col justify-center items-start text-left">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 text-xs uppercase tracking-widest font-mono font-bold mb-4">
+                  <Award className="w-3.5 h-3.5 text-amber-600" />
+                  FOUNDER TRIBUTE & HERITAGE
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-[#171717] mb-2 font-outfit">
+                  Late KUNJUMON ISMAIL
+                </h3>
+                <p className="text-amber-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
+                  Founder & Visionary &bull; (Late in 2022)
+                </p>
+
+                <blockquote className="text-[#374151] text-base md:text-lg leading-relaxed font-light italic border-l-2 border-amber-500 pl-5 mb-6">
+                  &ldquo;Travel is more than reaching a destination; it is about building trust, creating lifetime memories, and serving every passenger with utmost sincerity and dedication.&rdquo;
+                </blockquote>
+
+                <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light max-w-2xl mb-8">
+                  Founded in {COMPANY_DETAILS.established} by Late Kunjumon Ismail, Jeseem Tours & Travels was established with a singular mission: to make international and domestic travel effortless, transparent, and accessible for everyone. His principles of honesty, customer care, and excellence remain our guiding compass every single day.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/about"
+                    className="px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20 inline-flex items-center gap-2"
+                  >
+                    Read Our Full Founder Story
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -675,7 +768,7 @@ export default function Home() {
                               className="flex flex-wrap items-center gap-3"
                             >
                               <Link
-                                href={`/contact?service=${encodeURIComponent(srv.title)}`}
+                                href="/packages"
                                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
                               >
                                 More Details
