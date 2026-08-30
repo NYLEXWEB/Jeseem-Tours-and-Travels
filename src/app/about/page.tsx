@@ -82,7 +82,7 @@ export default function About() {
                 <div className="relative w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden border-2 border-amber-500/50 shadow-xl group bg-amber-50">
                   <Image
                     src="/Father photo.png"
-                    alt="Late KUNJUMON ISMAIL (Founder)"
+                    alt="KUNJUMON ISMAIL (Founder)"
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />

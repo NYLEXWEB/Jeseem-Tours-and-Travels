@@ -504,7 +504,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-[#171717] mb-2 font-outfit">
-                  Late KUNJUMON ISMAIL
+                  KUNJUMON ISMAIL
                 </h3>
                 <p className="text-amber-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
                   Founder & Visionary &bull; (Late in 2022)
