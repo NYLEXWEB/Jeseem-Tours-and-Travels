@@ -1,6 +1,6 @@
 export const COMPANY_DETAILS = {
   name: "Jeseem Tours & Travels",
-  tagline: "Save - Plan - Go",
+  tagline: "Save the money plan for travel go to the destination",
   established: 1985,
   address: "Thiruvampady P.O, Alappuzha - 688002, Kerala, India.",
   phone: "0477 2266007",
@@ -43,7 +43,7 @@ export const COMPANY_DETAILS = {
     },
     {
       title: "Global Visa Assistance",
-      desc: "Expert guidance and processing support for tourist, business, and family visas globally."
+      desc: "Expert guidance for tourist, business, and family visas globally. Note: Job Visas are not provided."
     },
     {
       title: "Certificate Attestation",

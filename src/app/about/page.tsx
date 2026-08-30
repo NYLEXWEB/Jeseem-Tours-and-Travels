@@ -35,7 +35,7 @@ export default function About() {
   return (
     <div className="bg-[var(--background)] pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Editorial Brand Intro */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
           <div>
@@ -69,6 +69,64 @@ export default function About() {
               fill
               className="object-cover"
             />
+          </div>
+        </div>
+
+        {/* FOUNDER & HERITAGE TRIBUTE SECTION */}
+        <div className="border-t border-[var(--border)] pt-20 mb-24">
+          <div className="bg-[var(--card-bg)] border border-amber-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+
+              {/* Founder Portrait Photo */}
+              <div className="lg:col-span-4 flex justify-center">
+                <div className="relative w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-xl group">
+                  <Image
+                    src="/Father photo.png"
+                    alt="Late KUNJUMON ISMAIL (Founder)"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3 text-center">
+                    <span className="text-[10px] uppercase tracking-widest text-amber-400 font-bold block">FOUNDER</span>
+                    <span className="text-xs text-white/90 font-mono">1985 – 2022</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Founder Narrative Text */}
+              <div className="lg:col-span-8 space-y-4 text-left">
+                <ScrollReveal variant="fade-up" duration={0.6}>
+                  <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block">
+                    IN LOVING MEMORY & HERITAGE
+                  </span>
+                </ScrollReveal>
+
+                <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
+                  <h2 className="text-3xl md:text-4xl font-light text-white tracking-tight">
+                    KUNJUMON ISMAIL <span className="text-sm font-normal text-amber-400/90 block sm:inline sm:ml-2">( late on 2022 )</span>
+                  </h2>
+                </ScrollReveal>
+
+                <ScrollReveal variant="fade-up" duration={0.8} delay={0.2}>
+                  <p className="text-[var(--foreground-muted)] text-base font-light leading-relaxed">
+                    Jeseem Tours & Travels was established in 1985 under the visionary leadership of <strong>Late KUNJUMON ISMAIL</strong>. For 37 dedication-filled years—from 1985 until his passing in late 2022—he personally nurtured the agency with unwavering honesty, warm hospitality, and deep commitment to every traveler.
+                  </p>
+                </ScrollReveal>
+
+                <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
+                  <p className="text-[var(--foreground-muted)] text-sm font-light leading-relaxed">
+                    Today, his family and son carry forward his enduring legacy with the same values of trust and individual care that he instilled from day one.
+                  </p>
+                </ScrollReveal>
+
+                <div className="pt-2 flex items-center gap-3">
+                  <div className="w-8 h-[1px] bg-amber-500/50" />
+                  <span className="text-xs text-amber-400/80 font-mono italic">37+ Years of Trusted Foundation</span>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 

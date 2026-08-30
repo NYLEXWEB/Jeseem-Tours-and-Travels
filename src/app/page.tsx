@@ -74,7 +74,7 @@ const SERVICES = [
   {
     number: "03",
     title: "Global Visa & Document Support",
-    desc: "Hassle-free visa assistance, document attestation services, and emigration clearance support for all countries.",
+    desc: "Hassle-free tourist, business & family visa assistance, document attestation, and emigration clearance. (Note: Job Visas are not provided).",
     image: "/service_03.jpg",
   },
   {
@@ -228,7 +228,7 @@ export default function Home() {
       el.removeEventListener("touchstart", handleTouchStart);
     };
   }, []);
-  
+
   // States for interactive UI elements
   const [activeServiceIdx, setActiveServiceIdx] = useState(0);
   const [activeStepIdx, setActiveStepIdx] = useState(0);
@@ -244,7 +244,7 @@ export default function Home() {
     setMobileSlideDirection(1);
     setActiveMobileReviewIdx((prev) => (prev === REVIEWS.length ? 0 : prev + 1));
   };
-  
+
   // Refs for tracking sticky steps
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -309,36 +309,26 @@ export default function Home() {
             </span>
           </motion.div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tighter text-[var(--foreground)] flex flex-col mb-8 select-none leading-none">
-            <div className="overflow-hidden relative py-1.5">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tighter text-[var(--foreground)] flex flex-col mb-8 select-none leading-tight">
+            <div className="overflow-hidden relative py-1">
               <motion.span
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="block font-medium text-[var(--foreground)]"
               >
-                SAVE.
+                SAVE THE MONEY PLAN FOR TRAVEL
               </motion.span>
             </div>
-            <div className="overflow-hidden relative py-1.5">
+            <div className="overflow-hidden relative py-1">
               <motion.span
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-medium"
-                style={{ WebkitTextStroke: "2px var(--foreground)", color: "transparent" }}
+                className="block font-medium text-pink-300"
+                style={{ WebkitTextStroke: "1px var(--foreground)" }}
               >
-                PLAN.
-              </motion.span>
-            </div>
-            <div className="overflow-hidden relative py-1.5">
-              <motion.span
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-medium text-[var(--foreground)]"
-              >
-                GO.
+                GO TO THE DESTINATION
               </motion.span>
             </div>
           </h1>
@@ -506,7 +496,7 @@ export default function Home() {
                       </div>
 
                       {/* Clickable Overlay Link (covers entire card except the WhatsApp button) */}
-                      <Link 
+                      <Link
                         href={`/destinations#${dest.id}`}
                         className="absolute inset-0 z-10"
                         aria-label={`View itinerary for ${dest.name}`}
@@ -633,7 +623,7 @@ export default function Home() {
           >
             <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">OUR SERVICE RANGE</span>
             <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-12">Core Services</h3>
-            
+
             <ScrollStagger className="flex flex-col gap-6">
               {SERVICES.map((srv, idx) => (
                 <ScrollReveal
@@ -641,9 +631,8 @@ export default function Home() {
                   variant="fade-up"
                   duration={0.6}
                   once
-                  className={`border-b border-white/10 pb-6 cursor-pointer group transition-all duration-300 ${
-                    activeServiceIdx === idx ? "opacity-100 pl-4" : "opacity-40 hover:opacity-75"
-                  }`}
+                  className={`border-b border-white/10 pb-6 cursor-pointer group transition-all duration-300 ${activeServiceIdx === idx ? "opacity-100 pl-4" : "opacity-40 hover:opacity-75"
+                    }`}
                 >
                   <div
                     onClick={() => setActiveServiceIdx(idx)}
@@ -670,7 +659,15 @@ export default function Home() {
                               initial={{ opacity: 0, y: 5 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.15 }}
+                              className="flex flex-wrap items-center gap-3"
                             >
+                              <Link
+                                href={`/contact?service=${encodeURIComponent(srv.title)}`}
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                              >
+                                More Details
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                              </Link>
                               <a
                                 href={`https://wa.me/919061858416?text=Hi,%20I%20would%20like%20to%20inquire%20about%20the%20"${encodeURIComponent(srv.title)}"%20service.`}
                                 target="_blank"
@@ -737,9 +734,6 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold block mb-2">
-              THE JESEEM ADVANTAGE
-            </span>
             <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white">
               Why Travelers Choose Us
             </h3>
@@ -820,7 +814,7 @@ export default function Home() {
       {/* 6. SCROLL STORYTELLING SECTION (Sticky timeline) */}
       <section className="relative py-32 border-t border-white/5 px-6 min-h-screen flex flex-col justify-center z-10 bg-transparent">
         <div className="max-w-7xl mx-auto relative z-20 w-full flex flex-col lg:flex-row gap-16 relative">
-          
+
           {/* Left Side: Sticky Visual Preview Panel (translucent frosted-glass card overlay) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -865,7 +859,7 @@ export default function Home() {
           >
             <div>
               <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">OUR TAGLINE APPROACH</span>
-              <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6">Save • Plan • Go</h3>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-white mb-6">Save the money plan for travel go to the destination</h3>
               <p className="text-[#86868B] text-base font-light leading-relaxed max-w-md">
                 We simplify travel logistics using a smooth four-stage methodology to ensure your journey is safe, affordable, and stress-free.
               </p>
@@ -889,7 +883,7 @@ export default function Home() {
                     {step.number}
                   </span>
                   <h4 className="text-2xl text-white font-medium">{step.title}</h4>
-                  
+
                   {/* Inline visual preview for mobile */}
                   <div className="relative w-full h-[240px] rounded-2xl overflow-hidden border border-white/10 my-4 block lg:hidden">
                     <Image
@@ -900,7 +894,7 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  
+
                   <p className="text-[#86868B] text-base leading-relaxed font-light max-w-md">{step.desc}</p>
                 </div>
               ))}
@@ -913,38 +907,38 @@ export default function Home() {
       {/* 7. PREMIUM REVIEWS (Google Styled Reviews with Horizontal Scroll on Mobile) */}
       <section id="reviews" className="relative py-32 border-t border-white/5 px-6 bg-transparent z-10">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 relative z-20">
-          
+
           {/* Left Column: Sticky Title & Info */}
           <div className="lg:w-1/3 lg:sticky lg:top-32 self-start space-y-6">
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
               </svg>
               <span className="text-xs uppercase tracking-widest text-white/70 font-bold">
                 GOOGLE REVIEWS
               </span>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white leading-tight">
               What our distinguished guests say.
             </h2>
-            
+
             <p className="text-white/60 text-base leading-relaxed font-light">
               Trusted since {COMPANY_DETAILS.established}. Here is how our guests review their flights, holidays, and visa coordination from Alappuzha.
             </p>
-            
+
             {/* Google Rating Badge */}
             <div className="p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md shadow-sm space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10">
                   <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                   </svg>
                 </div>
                 <div>
@@ -1015,16 +1009,16 @@ export default function Home() {
                         }
                       }}
                     >
-                       {activeMobileReviewIdx === 0 ? (
+                      {activeMobileReviewIdx === 0 ? (
                         /* Cover Card */
                         <div className="w-full bg-black/50 border border-white/10 backdrop-blur-lg shadow-2xl p-6 rounded-2xl flex flex-col justify-between">
                           <div className="space-y-4">
                             <div className="flex items-center gap-2">
                               <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                               </svg>
                               <span className="text-xs uppercase tracking-widest text-white/50 font-bold">Google Reviews</span>
                             </div>
@@ -1069,10 +1063,10 @@ export default function Home() {
                                     </div>
                                   </div>
                                   <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                                   </svg>
                                 </div>
 
@@ -1118,9 +1112,8 @@ export default function Home() {
                       setMobileSlideDirection(i > activeMobileReviewIdx ? 1 : -1);
                       setActiveMobileReviewIdx(i);
                     }}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      activeMobileReviewIdx === i ? "w-4 bg-amber-500" : "w-1.5 bg-white/20"
-                    }`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${activeMobileReviewIdx === i ? "w-4 bg-amber-500" : "w-1.5 bg-white/20"
+                      }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
@@ -1156,23 +1149,23 @@ export default function Home() {
                           </div>
                         </div>
                         <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                         </svg>
                       </div>
 
                       <div className="flex items-center text-amber-500">
                         {[...Array(rev.rating)].map((_, i) => (
-                           <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                         ))}
                       </div>
-                      
+
                       <blockquote className="text-white/80 text-sm leading-relaxed font-light">
                         &ldquo;{rev.quote}&rdquo;
                       </blockquote>
-                      
+
                       <div className="border-t border-white/10 pt-4 flex items-center justify-between">
                         <span className="text-[10px] text-[#86868B]">a month ago</span>
                         <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
@@ -1208,10 +1201,10 @@ export default function Home() {
                           </div>
                         </div>
                         <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                         </svg>
                       </div>
 
@@ -1220,11 +1213,11 @@ export default function Home() {
                           <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                         ))}
                       </div>
-                      
+
                       <blockquote className="text-white/80 text-sm leading-relaxed font-light">
                         &ldquo;{rev.quote}&rdquo;
                       </blockquote>
-                      
+
                       <div className="border-t border-white/10 pt-4 flex items-center justify-between">
                         <span className="text-[10px] text-[#86868B]">2 weeks ago</span>
                         <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
@@ -1234,9 +1227,9 @@ export default function Home() {
                 })}
               </div>
             </div>
-            
+
           </div>
-          
+
         </div>
       </section>
 

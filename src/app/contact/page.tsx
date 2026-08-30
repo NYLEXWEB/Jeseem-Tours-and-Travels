@@ -18,7 +18,7 @@ export default function Contact() {
     budget: "Standard",
     notes: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -27,7 +27,7 @@ export default function Contact() {
     if (!formData.name || !formData.email) return;
 
     setIsSubmitting(true);
-    
+
     // Simulate API request delay
     setTimeout(() => {
       setIsSubmitting(false);
@@ -36,6 +36,7 @@ export default function Contact() {
   };
 
   const destinationsList = [
+    "Custom Destination Inquiry",
     "Flight Booking",
     "Domestic Holiday Package",
     "International Holiday Package",
@@ -48,7 +49,7 @@ export default function Contact() {
   return (
     <div className="bg-[var(--background)] pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header */}
         <div className="text-center mb-16">
           <ScrollReveal variant="fade-up" duration={0.8}>
@@ -71,10 +72,10 @@ export default function Contact() {
 
         {/* Two Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-          
+
           {/* Left Column: Office Details */}
           <ScrollStagger className="lg:col-span-2 space-y-6">
-            
+
             {/* Trust and Reviews Card */}
             <ScrollReveal variant="fade-up" duration={0.6} className="bg-[var(--card-bg)] border border-[var(--border)] p-6 rounded-3xl">
               <div className="flex items-center gap-1 mb-3">
@@ -98,9 +99,9 @@ export default function Contact() {
                 Jeseem Tours & Travels<br />
                 {COMPANY_DETAILS.address}
               </p>
-              
+
               <div className="h-[1px] bg-[var(--border)] w-full" />
-              
+
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-amber-500" />
@@ -116,7 +117,7 @@ export default function Contact() {
             {/* Department Contacts Card */}
             <ScrollReveal variant="fade-up" duration={0.6} className="bg-[var(--card-bg)] border border-[var(--border)] p-6 rounded-3xl space-y-4">
               <h3 className="text-xs uppercase tracking-widest text-[var(--foreground)] font-bold mb-2">Our Departments</h3>
-              
+
               <div className="space-y-4 text-xs">
                 {/* Reservations */}
                 <div className="border-b border-[var(--border)] pb-3">
@@ -150,7 +151,7 @@ export default function Contact() {
 
           {/* Right Column: Inquiry Form */}
           <div className="lg:col-span-3 relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-8 md:p-12 overflow-hidden">
-            
+
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.form
@@ -161,7 +162,7 @@ export default function Contact() {
                   onSubmit={handleSubmit}
                   className="space-y-8"
                 >
-                  
+
                   {/* Destination Dropdown */}
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] uppercase tracking-widest text-amber-500 font-bold">Select Destination</label>
@@ -280,7 +281,7 @@ export default function Contact() {
                       <ShieldAlert className="w-3.5 h-3.5 text-amber-500" />
                       All details are encrypted and private.
                     </span>
-                    
+
                     <Magnetic range={30} strength={0.25}>
                       <button
                         type="submit"
