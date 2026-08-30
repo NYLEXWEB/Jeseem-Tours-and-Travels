@@ -74,7 +74,7 @@ export default function About() {
 
         {/* FOUNDER & HERITAGE TRIBUTE SECTION - Clean White Theme */}
         <div className="border-t border-[var(--border)] pt-20 mb-24">
-          <div className="bg-white text-[#171717] border border-amber-500/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
+          <div className="bg-white text-zinc-100 border border-amber-500/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
 
               {/* Founder Portrait Photo */}
@@ -97,32 +97,32 @@ export default function About() {
               {/* Founder Narrative Text */}
               <div className="lg:col-span-8 space-y-4 text-left">
                 <ScrollReveal variant="fade-up" duration={0.6}>
-                  <span className="text-xs uppercase tracking-widest text-amber-700 font-bold block">
+                  <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block">
                     IN LOVING MEMORY & HERITAGE
                   </span>
                 </ScrollReveal>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
-                  <h2 className="text-3xl md:text-4xl font-light text-[#171717] tracking-tight">
-                    KUNJUMON ISMAIL <span className="text-sm font-bold text-amber-600 block sm:inline sm:ml-2">( late on 2022 )</span>
+                  <h2 className="text-3xl md:text-4xl font-light text-zinc-50 tracking-tight">
+                    KUNJUMON ISMAIL <span className="text-sm font-bold text-amber-500 block sm:inline sm:ml-2">( late on 2022 )</span>
                   </h2>
                 </ScrollReveal>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.2}>
-                  <p className="text-[#374151] text-base font-light leading-relaxed">
+                  <p className="text-zinc-300 text-base font-light leading-relaxed">
                     Jeseem Tours & Travels was established in 1985 under the visionary leadership of <strong>Late KUNJUMON ISMAIL</strong>. For 37 dedication-filled years—from 1985 until his passing in late 2022—he personally nurtured the agency with unwavering honesty, warm hospitality, and deep commitment to every traveler.
                   </p>
                 </ScrollReveal>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
-                  <p className="text-[#4b5563] text-sm font-light leading-relaxed">
+                  <p className="text-zinc-400 text-sm font-light leading-relaxed">
                     Today, his family and son carry forward his enduring legacy with the same values of trust and individual care that he instilled from day one.
                   </p>
                 </ScrollReveal>
 
                 <div className="pt-2 flex items-center gap-3">
                   <div className="w-8 h-[1px] bg-amber-500/50" />
-                  <span className="text-xs text-amber-700 font-mono font-semibold italic">37+ Years of Trusted Foundation</span>
+                  <span className="text-xs text-amber-400 font-mono font-semibold italic">37+ Years of Trusted Foundation</span>
                 </div>
               </div>
 
