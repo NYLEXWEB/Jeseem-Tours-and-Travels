@@ -16,6 +16,14 @@ export default function Contact() {
     duration: "1-2 Weeks",
     travelers: "2 Guests",
     budget: "Standard",
+    // Certificate Attestation specific state
+    documentType: "Degree / Educational Certificate",
+    issuingState: "India (Kerala)",
+    attestationType: "UAE Attestation",
+    // Global Visa Assistance specific state
+    visaCategory: "Tourist / Visit Visa",
+    targetCountry: "UAE / GCC Countries",
+    processingUrgency: "Standard Processing (1 Month)",
     notes: "",
   });
 
@@ -32,19 +40,22 @@ export default function Contact() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 2000);
+    }, 1500);
   };
 
   const destinationsList = [
-    "Custom Destination Inquiry",
     "Flight Booking",
     "Domestic Holiday Package",
     "International Holiday Package",
     "Global Visa Assistance",
     "Certificate Attestation",
     "Hajj & Umrah Pilgrimage",
+    "Custom Destination Inquiry",
     "Other Travel Support"
   ];
+
+  const isAttestation = formData.destination === "Certificate Attestation";
+  const isVisa = formData.destination === "Global Visa Assistance";
 
   return (
     <div className="bg-[var(--background)] pt-32 pb-20 px-6">
@@ -59,13 +70,13 @@ export default function Contact() {
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
-            <h1 className="text-4xl md:text-6xl font-extralight tracking-tight text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-extralight tracking-tight text-[var(--foreground)] mb-6">
               Design Your Journey
             </h1>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
-            <p className="text-[#86868B] text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed text-balance">
-              Connect with our travel design specialists. Let us arrange a bespoke itinerary tailored to your private schedule.
+            <p className="text-[var(--foreground-muted)] text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed text-balance">
+              Connect with our travel & document specialists. Let us arrange a bespoke itinerary or fast-track your document clearances.
             </p>
           </ScrollReveal>
         </div>
@@ -85,7 +96,7 @@ export default function Contact() {
                 <span className="text-sm font-semibold text-[var(--foreground)] ml-2">4.9 / 5.0 Rating</span>
               </div>
               <p className="text-xs text-[var(--foreground-muted)] leading-relaxed">
-                Based on <strong className="text-[var(--foreground)] font-medium">115 verified Google reviews</strong>. Highly recommended travel agency offering custom packages and premium ticket booking with expert staff.
+                Based on <strong className="text-[var(--foreground)] font-medium">115 verified Google reviews</strong>. Highly recommended travel agency offering custom packages, 100% quality document care, and premium ticket booking with expert staff.
               </p>
             </ScrollReveal>
 
@@ -109,7 +120,7 @@ export default function Contact() {
                 </div>
                 <p className="text-xs text-[var(--foreground)]">Open · {COMPANY_DETAILS.hours} (Mon – Sat)</p>
                 <p className="text-[10px] text-[var(--foreground-muted)] leading-relaxed">
-                  *Standard office timing. For late reservations, contact our WhatsApp support desks.
+                  *Standard office timing. For urgent document verification or late flight tickets, contact our WhatsApp support desks.
                 </p>
               </div>
             </ScrollReveal>
@@ -133,9 +144,9 @@ export default function Contact() {
                   <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.holidays.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.holidays.email}</a></p>
                 </div>
 
-                {/* Visa Team */}
+                {/* Visa & Attestation Team */}
                 <div className="border-b border-[var(--border)] pb-3">
-                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.visas.label}</p>
+                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">Visa & Attestation Desk</p>
                   <p className="text-[var(--foreground-muted)] mt-1">Email: <a href={`mailto:${COMPANY_DETAILS.departments.visas.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.visas.email}</a></p>
                 </div>
 
@@ -150,7 +161,7 @@ export default function Contact() {
           </ScrollStagger>
 
           {/* Right Column: Inquiry Form */}
-          <div className="lg:col-span-3 relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-8 md:p-12 overflow-hidden">
+          <div className="lg:col-span-3 relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-8 md:p-12 overflow-hidden shadow-sm">
 
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
@@ -163,13 +174,13 @@ export default function Contact() {
                   className="space-y-8"
                 >
 
-                  {/* Destination Dropdown */}
+                  {/* Destination / Service Dropdown */}
                   <div className="flex flex-col gap-2">
-                    <label className="text-[10px] uppercase tracking-widest text-amber-500 font-bold">Select Destination</label>
+                    <label className="text-[10px] uppercase tracking-widest text-amber-500 font-bold">Select Service / Destination</label>
                     <select
                       value={formData.destination}
                       onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                      className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                      className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors font-medium"
                     >
                       {destinationsList.map((d) => (
                         <option key={d} value={d} className="bg-[var(--card-bg)] text-[var(--foreground)]">
@@ -179,55 +190,203 @@ export default function Contact() {
                     </select>
                   </div>
 
-                  {/* Grid Inputs for traveler, duration, budget */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Travelers selection */}
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Travelers</label>
-                      <select
-                        value={formData.travelers}
-                        onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
-                        className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                  {/* DYNAMIC TOP 3 INPUT FIELDS */}
+                  <AnimatePresence mode="wait">
+                    {isAttestation ? (
+                      /* CERTIFICATE ATTESTATION FIELDS */
+                      <motion.div
+                        key="attestation-fields"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6"
                       >
-                        <option value="1 Guest" className="bg-[var(--card-bg)] text-[var(--foreground)]">Solo Traveler</option>
-                        <option value="2 Guests" className="bg-[var(--card-bg)] text-[var(--foreground)]">Couple (2 Guests)</option>
-                        <option value="3-5 Guests" className="bg-[var(--card-bg)] text-[var(--foreground)]">Small Family (3-5 Guests)</option>
-                        <option value="6+ Guests" className="bg-[var(--card-bg)] text-[var(--foreground)]">Group Booking (6+ Guests)</option>
-                      </select>
-                    </div>
+                        {/* 1. Document Type */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-amber-600 font-bold flex items-center gap-1">
+                            Document / Certificate Type
+                          </label>
+                          <select
+                            value={formData.documentType}
+                            onChange={(e) => setFormData({ ...formData, documentType: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="Degree / Educational Certificate">Degree / Educational Certificate</option>
+                            <option value="Birth Certificate">Birth Certificate</option>
+                            <option value="Marriage Certificate">Marriage Certificate</option>
+                            <option value="Diploma / Technical Certificate">Diploma / Technical Certificate</option>
+                            <option value="Commercial / Company Documents">Commercial / Company Documents</option>
+                            <option value="Police Clearance (PCC)">Police Clearance Certificate (PCC)</option>
+                            <option value="Other Personal Documents">Other Personal Documents</option>
+                          </select>
+                        </div>
 
-                    {/* Duration selection */}
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Duration</label>
-                      <select
-                        value={formData.duration}
-                        onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                        className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                        {/* 2. Issuing State / Country */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-amber-600 font-bold flex items-center gap-1">
+                            Issuing Country / State
+                          </label>
+                          <select
+                            value={formData.issuingState}
+                            onChange={(e) => setFormData({ ...formData, issuingState: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="India (Kerala)">India (Kerala)</option>
+                            <option value="India (Other States)">India (Other States)</option>
+                            <option value="UAE / Gulf Region">UAE / Gulf Region</option>
+                            <option value="United Kingdom / Europe">United Kingdom / Europe</option>
+                            <option value="USA / Canada">USA / Canada</option>
+                            <option value="Other Foreign State">Other Foreign State</option>
+                          </select>
+                        </div>
+
+                        {/* 3. Target Attestation / Purpose */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-amber-600 font-bold flex items-center gap-1">
+                            Target Attestation / Purpose
+                          </label>
+                          <select
+                            value={formData.attestationType}
+                            onChange={(e) => setFormData({ ...formData, attestationType: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="UAE Attestation">UAE Attestation</option>
+                            <option value="Qatar Attestation">Qatar Attestation</option>
+                            <option value="Saudi Arabia Attestation">Saudi Arabia Attestation</option>
+                            <option value="Kuwait Attestation">Kuwait Attestation</option>
+                            <option value="Oman Attestation">Oman Attestation</option>
+                            <option value="Bahrain Attestation">Bahrain Attestation</option>
+                            <option value="Apostille / MEA India">Apostille / MEA India</option>
+                            <option value="Other Country Attestation">Other Country Attestation</option>
+                          </select>
+                        </div>
+                      </motion.div>
+                    ) : isVisa ? (
+                      /* GLOBAL VISA ASSISTANCE FIELDS */
+                      <motion.div
+                        key="visa-fields"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6"
                       >
-                        <option value="Under 1 Week" className="bg-[var(--card-bg)] text-[var(--foreground)]">Under 1 Week</option>
-                        <option value="1-2 Weeks" className="bg-[var(--card-bg)] text-[var(--foreground)]">1 - 2 Weeks</option>
-                        <option value="2-3 Weeks" className="bg-[var(--card-bg)] text-[var(--foreground)]">2 - 3 Weeks</option>
-                        <option value="3+ Weeks" className="bg-[var(--card-bg)] text-[var(--foreground)]">Extended Expedition (3+ Weeks)</option>
-                      </select>
-                    </div>
+                        {/* 1. Visa Category */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-sky-600 font-bold flex items-center gap-1">
+                            Visa Category
+                          </label>
+                          <select
+                            value={formData.visaCategory}
+                            onChange={(e) => setFormData({ ...formData, visaCategory: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="Tourist / Visit Visa">Tourist / Visit Visa</option>
+                            <option value="Business / Conference Visa">Business / Conference Visa</option>
+                            <option value="Family / Dependent Visa">Family / Dependent Visa</option>
+                            <option value="Student / Training Visa">Student / Training Visa</option>
+                            <option value="Transit Visa">Transit Visa</option>
+                            <option value="Other Visa Support">Other Visa Support (Job Visas Excluded)</option>
+                          </select>
+                        </div>
 
-                    {/* Budget scale */}
-                    <div className="flex flex-col gap-2">
-                      <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Expected Budget</label>
-                      <select
-                        value={formData.budget}
-                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                        {/* 2. Target Country / Region */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-sky-600 font-bold flex items-center gap-1">
+                            Target Country / Region
+                          </label>
+                          <select
+                            value={formData.targetCountry}
+                            onChange={(e) => setFormData({ ...formData, targetCountry: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="UAE / GCC Countries">UAE / GCC Countries</option>
+                            <option value="Schengen (Europe)">Schengen (Europe)</option>
+                            <option value="United Kingdom (UK)">United Kingdom (UK)</option>
+                            <option value="USA & Canada">USA & Canada</option>
+                            <option value="South East Asia (Malaysia/Singapore/Thailand)">South East Asia (Malaysia/Singapore/Thailand)</option>
+                            <option value="Australia & New Zealand">Australia & New Zealand</option>
+                            <option value="Other Destinations">Other Destinations</option>
+                          </select>
+                        </div>
+
+                        {/* 3. Processing Urgency */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-sky-600 font-bold flex items-center gap-1">
+                            Processing Urgency
+                          </label>
+                          <select
+                            value={formData.processingUrgency}
+                            onChange={(e) => setFormData({ ...formData, processingUrgency: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="Express / Urgent Processing">Express / Urgent Processing</option>
+                            <option value="Within 1 - 2 Weeks">Within 1 - 2 Weeks</option>
+                            <option value="Standard Processing (1 Month)">Standard Processing (1 Month)</option>
+                            <option value="Flexible / Planning Phase">Flexible / Planning Phase</option>
+                          </select>
+                        </div>
+                      </motion.div>
+                    ) : (
+                      /* DEFAULT TRAVEL / HOLIDAY / FLIGHT FIELDS */
+                      <motion.div
+                        key="default-fields"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6"
                       >
-                        <option value="Economy" className="bg-[var(--card-bg)] text-[var(--foreground)]">Budget Friendly (Economy)</option>
-                        <option value="Standard" className="bg-[var(--card-bg)] text-[var(--foreground)]">Mid-Range (Standard)</option>
-                        <option value="Premium" className="bg-[var(--card-bg)] text-[var(--foreground)]">Premium / Luxury</option>
-                        <option value="Group Fare" className="bg-[var(--card-bg)] text-[var(--foreground)]">Group Fare / Corporate Packages</option>
-                      </select>
-                    </div>
-                  </div>
+                        {/* Travelers selection */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Travelers</label>
+                          <select
+                            value={formData.travelers}
+                            onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="1 Guest">Solo Traveler (1 Guest)</option>
+                            <option value="2 Guests">Couple (2 Guests)</option>
+                            <option value="3-5 Guests">Small Family (3-5 Guests)</option>
+                            <option value="6+ Guests">Group Booking (6+ Guests)</option>
+                          </select>
+                        </div>
 
-                  {/* Personal Information */}
+                        {/* Duration selection */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Duration</label>
+                          <select
+                            value={formData.duration}
+                            onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="Under 1 Week">Under 1 Week</option>
+                            <option value="1-2 Weeks">1 - 2 Weeks</option>
+                            <option value="2-3 Weeks">2 - 3 Weeks</option>
+                            <option value="3+ Weeks">Extended Expedition (3+ Weeks)</option>
+                          </select>
+                        </div>
+
+                        {/* Budget scale */}
+                        <div className="flex flex-col gap-2">
+                          <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Expected Budget</label>
+                          <select
+                            value={formData.budget}
+                            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                          >
+                            <option value="Economy">Budget Friendly (Economy)</option>
+                            <option value="Standard">Mid-Range (Standard)</option>
+                            <option value="Premium">Premium / Luxury</option>
+                            <option value="Group Fare">Group Fare / Corporate Packages</option>
+                          </select>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Personal Information (UNCHANGED LOWER FIELDS) */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[var(--border)]">
                     <div className="flex flex-col gap-2">
                       <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Full Name</label>
@@ -237,7 +396,7 @@ export default function Contact() {
                         placeholder="e.g. Eleanor Vance"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/40 focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -248,7 +407,7 @@ export default function Contact() {
                         placeholder="e.g. eleanor@domain.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/40 focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -258,20 +417,28 @@ export default function Contact() {
                         placeholder="e.g. +91 90618 58416"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/40 focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Additional Notes */}
                   <div className="flex flex-col gap-2">
-                    <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Additional Requests or Flight Logistics</label>
+                    <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">
+                      {isAttestation ? "Document & HRD Details or Remarks" : isVisa ? "Visa Requirements & Passport Details" : "Additional Requests or Flight Logistics"}
+                    </label>
                     <textarea
                       rows={4}
-                      placeholder="Tell us about specific food allergies, room layouts, local private bookings, private jet clearances, or pace of exploration..."
+                      placeholder={
+                        isAttestation
+                          ? "Specify total certificates, HRD / Home Department status, embassy requirements, or preferred delivery timeline..."
+                          : isVisa
+                            ? "Mention traveler nationalities, planned entry dates, passport validity, or specific visa requirements (Job Visas are not provided)..."
+                            : "Tell us about specific food allergies, room layouts, local private bookings, group flight fares, or pace of exploration..."
+                      }
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full bg-[var(--background)]/60 border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/40 focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                      className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors resize-none"
                     />
                   </div>
 
@@ -279,16 +446,16 @@ export default function Contact() {
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-[var(--border)]">
                     <span className="text-[10px] text-[var(--foreground-muted)] flex items-center gap-1">
                       <ShieldAlert className="w-3.5 h-3.5 text-amber-500" />
-                      All details are encrypted and private.
+                      100% Quality-Ensured Service & Confidentiality.
                     </span>
 
                     <Magnetic range={30} strength={0.25}>
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[var(--foreground)] text-[var(--background)] font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:text-neutral-50 disabled:opacity-50 transition-all duration-300 cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-amber-500 text-black font-bold text-xs uppercase tracking-wider hover:bg-amber-600 hover:scale-105 disabled:opacity-50 transition-all duration-300 cursor-pointer shadow-md"
                       >
-                        {isSubmitting ? "Allocating Architect..." : "Submit Inquiry"}
+                        {isSubmitting ? "Dispatching Inquiry..." : "Submit Inquiry"}
                         <Send className="w-3.5 h-3.5" />
                       </button>
                     </Magnetic>
@@ -305,7 +472,7 @@ export default function Contact() {
                   <CheckCircle2 className="w-16 h-16 text-amber-500 mb-6" />
                   <h3 className="text-3xl font-light text-[var(--foreground)] tracking-tight mb-4">Inquiry Received</h3>
                   <p className="text-sm text-[var(--foreground-muted)] leading-relaxed mb-8">
-                    Thank you, <b>{formData.name}</b>. Your travel vision is securely dispatched. A travel architect will reach out to <b>{formData.email}</b> within 24 hours with custom routes.
+                    Thank you, <b>{formData.name}</b>. Your inquiry for <b>{formData.destination}</b> has been securely received by our desk. Our travel & document team will contact <b>{formData.email}</b> or call you within 24 hours.
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
@@ -324,3 +491,4 @@ export default function Contact() {
     </div>
   );
 }
+

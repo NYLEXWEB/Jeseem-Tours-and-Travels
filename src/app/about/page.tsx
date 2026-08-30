@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ShieldCheck, Compass, Users, BadgeCheck } from "lucide-react";
+import { ShieldCheck, Compass, Users, BadgeCheck, Target, Eye, Award, CheckCircle2, Sparkles } from "lucide-react";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
 import Magnetic from "@/components/Magnetic";
 import { COMPANY_DETAILS } from "@/constants/company";
@@ -45,7 +45,7 @@ export default function About() {
               </span>
             </ScrollReveal>
             <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.1}>
-              <h1 className="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-8">
+              <h1 className="text-5xl md:text-7xl font-extralight tracking-tight text-[var(--foreground)] mb-8">
                 Jeseem Tours & Travels
               </h1>
             </ScrollReveal>
@@ -56,13 +56,13 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.35}>
               <p className="text-[var(--foreground-muted)] text-base font-light leading-relaxed mb-6">
-                Whether you require group flight tickets, custom holiday planning, document attestation, emigration support, or dedicated Hajj & Umrah pilgrimage packages, our highly experienced desks process every request with complete reliability and speed.
+                Whether you require group flight tickets, custom holiday planning, document attestation, emigration support, or dedicated Hajj & Umrah pilgrimage packages, our highly experienced desks process every request with complete reliability, speed, and 100% quality-ensured standards.
               </p>
             </ScrollReveal>
           </div>
 
           {/* Cinematic Side Image */}
-          <div className="relative h-[220px] md:h-[450px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative h-[220px] md:h-[450px] rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl">
             <Image
               src="/about.jpg"
               alt="Jeseem Tours & Travels About Intro"
@@ -72,9 +72,96 @@ export default function About() {
           </div>
         </div>
 
-        {/* FOUNDER & HERITAGE TRIBUTE SECTION - Clean White Theme */}
+        {/* MISSION & VISION & 100% QUALITY GUARANTEE SECTION */}
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <ScrollReveal variant="fade-up" duration={0.8}>
+              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block mb-2">OUR PURPOSE & COMMITMENT</span>
+            </ScrollReveal>
+            <ScrollReveal variant="blur-in" duration={1.0} delay={0.15}>
+              <h2 className="text-3xl md:text-5xl font-light tracking-tight text-[var(--foreground)]">Mission & Vision</h2>
+            </ScrollReveal>
+          </div>
+
+          {/* Grid of Mission & Vision */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            {/* Mission Card */}
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
+              <div className="bg-[var(--card-bg)] border border-[var(--border)] p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-amber-500/30 transition-colors">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6">
+                    <Target className="w-6 h-6 text-amber-500" />
+                  </div>
+                  <span className="text-xs uppercase tracking-widest text-amber-600 font-bold block mb-2">OUR MISSION</span>
+                  <h3 className="text-2xl md:text-3xl font-light text-[var(--foreground)] tracking-tight mb-4">
+                    Transparent & Seamless Global Travel
+                  </h3>
+                  <p className="text-[var(--foreground-muted)] text-sm md:text-base leading-relaxed font-light">
+                    To deliver world-class, 100% quality-ensured travel solutions—from group flight ticket allocations and customized holiday packages to swift document attestations and visa clearances—empowering every client with transparent pricing, utmost comfort, and peace of mind.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-xs font-semibold text-amber-600">
+                  <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                  Client-Centric Excellence Since 1985
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Vision Card */}
+            <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
+              <div className="bg-[var(--card-bg)] border border-[var(--border)] p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/30 transition-colors">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-6">
+                    <Eye className="w-6 h-6 text-sky-500" />
+                  </div>
+                  <span className="text-xs uppercase tracking-widest text-sky-600 font-bold block mb-2">OUR VISION</span>
+                  <h3 className="text-2xl md:text-3xl font-light text-[var(--foreground)] tracking-tight mb-4">
+                    The Gold Standard in Travel Trust
+                  </h3>
+                  <p className="text-[var(--foreground-muted)] text-sm md:text-base leading-relaxed font-light">
+                    To be recognized as the premier travel consultancy in Kerala and worldwide, celebrated for unyielding integrity, zero-compromise quality standards, zero hidden costs, and nurturing lifelong relationships with every passenger we serve.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-xs font-semibold text-sky-600">
+                  <Sparkles className="w-4 h-4 text-sky-500" />
+                  Building Lifelong Journeys & Trust
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* 100% QUALITY ASSURANCE BANNER CARD */}
+          <ScrollReveal variant="fade-up" duration={1.0} delay={0.3}>
+            <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-sky-500/10 border border-amber-500/30 p-8 md:p-12 rounded-3xl shadow-md relative overflow-hidden">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+                <div className="max-w-2xl">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-black font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    100% QUALITY ENSURED &middot; NO COMPROMISE
+                  </div>
+                  <h3 className="text-2xl md:text-4xl font-light text-[var(--foreground)] tracking-tight mb-3">
+                    Zero Compromise on Quality of Service
+                  </h3>
+                  <p className="text-[var(--foreground-muted)] text-sm md:text-base font-light leading-relaxed">
+                    At Jeseem Tours & Travels, service quality is absolute. We do not compromise on accuracy, safety, or timing. Every airline ticket, document attestation file, and travel itinerary undergoes multi-stage verification to ensure 100% precision and total satisfaction.
+                  </p>
+                </div>
+                <div className="shrink-0">
+                  <Link
+                    href="/contact"
+                    className="px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-md inline-flex items-center gap-2"
+                  >
+                    Consult Quality Desks
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* FOUNDER & HERITAGE TRIBUTE SECTION - Clean White Light Theme with High Contrast Text */}
         <div className="border-t border-[var(--border)] pt-20 mb-24">
-          <div className="bg-white text-zinc-100 border border-amber-500/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl">
+          <div className="bg-[var(--card-bg)] text-zinc-900 border border-amber-500/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
 
               {/* Founder Portrait Photo */}
@@ -96,32 +183,32 @@ export default function About() {
               {/* Founder Narrative Text */}
               <div className="lg:col-span-8 space-y-4 text-left">
                 <ScrollReveal variant="fade-up" duration={0.6}>
-                  <span className="text-xs uppercase tracking-widest text-amber-400 font-bold block">
+                  <span className="text-xs uppercase tracking-widest text-amber-600 font-bold block">
                     IN LOVING MEMORY & HERITAGE
                   </span>
                 </ScrollReveal>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
-                  <h2 className="text-3xl md:text-4xl font-light text-zinc-50 tracking-tight">
-                    KUNJUMON ISMAIL <span className="text-sm font-bold text-amber-500 block sm:inline sm:ml-2">( late on 2022 )</span>
+                  <h2 className="text-3xl md:text-4xl font-light text-zinc-900 tracking-tight">
+                    KUNJUMON ISMAIL <span className="text-sm font-bold text-amber-600 block sm:inline sm:ml-2">( late on 2022 )</span>
                   </h2>
                 </ScrollReveal>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.2}>
-                  <p className="text-zinc-300 text-base font-light leading-relaxed">
+                  <p className="text-zinc-700 text-base font-light leading-relaxed">
                     Jeseem Tours & Travels was established in 1985 under the visionary leadership of <strong>Late KUNJUMON ISMAIL</strong>. For 37 dedication-filled years—from 1985 until his passing in late 2022—he personally nurtured the agency with unwavering honesty, warm hospitality, and deep commitment to every traveler.
                   </p>
                 </ScrollReveal>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.3}>
-                  <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                  <p className="text-zinc-600 text-sm font-light leading-relaxed">
                     Today, his family and son carry forward his enduring legacy with the same values of trust and individual care that he instilled from day one.
                   </p>
                 </ScrollReveal>
 
                 <div className="pt-2 flex items-center gap-3">
                   <div className="w-8 h-[1px] bg-amber-500/50" />
-                  <span className="text-xs text-amber-400 font-mono font-semibold italic">37+ Years of Trusted Foundation</span>
+                  <span className="text-xs text-amber-600 font-mono font-semibold italic">37+ Years of Trusted Foundation</span>
                 </div>
               </div>
 

@@ -479,7 +479,7 @@ export default function Home() {
 
           {/* FOUNDER TRIBUTE CARD (Late KUNJUMON ISMAIL) - Clean White Luxury Theme */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.2}>
-            <div className="relative w-full rounded-3xl overflow-hidden bg-white text-zinc-100 p-8 md:p-14 border border-amber-500/30 shadow-2xl flex flex-col lg:flex-row items-center gap-10 md:gap-14">
+            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-8 md:p-14 border border-amber-500/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
               {/* Founder Image Frame */}
               <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-xl group bg-amber-50">
                 <Image
@@ -498,30 +498,30 @@ export default function Home() {
 
               {/* Founder Bio & Tribute Content */}
               <div className="flex-1 flex flex-col justify-center items-start text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs uppercase tracking-widest font-mono font-bold mb-4">
-                  <Award className="w-3.5 h-3.5 text-amber-400" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 text-xs uppercase tracking-widest font-mono font-bold mb-4">
+                  <Award className="w-3.5 h-3.5 text-amber-500" />
                   FOUNDER TRIBUTE & HERITAGE
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-50 mb-2 font-outfit">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit">
                   KUNJUMON ISMAIL
                 </h3>
-                <p className="text-amber-500 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
+                <p className="text-amber-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
                   Founder & Visionary &bull; (Late in 2022)
                 </p>
 
-                <blockquote className="text-zinc-300 text-base md:text-lg leading-relaxed font-light italic border-l-2 border-amber-500 pl-5 mb-6">
+                <blockquote className="text-zinc-700 text-base md:text-lg leading-relaxed font-light italic border-l-2 border-amber-500 pl-5 mb-6">
                   &ldquo;Travel is more than reaching a destination; it is about building trust, creating lifetime memories, and serving every passenger with utmost sincerity and dedication.&rdquo;
                 </blockquote>
 
-                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light max-w-2xl mb-8">
-                  Founded in {COMPANY_DETAILS.established} by Late Kunjumon Ismail, Jeseem Tours & Travels was established with a singular mission: to make international and domestic travel effortless, transparent, and accessible for everyone. His principles of honesty, customer care, and excellence remain our guiding compass every single day.
+                <p className="text-zinc-600 text-sm md:text-base leading-relaxed font-light max-w-2xl mb-8">
+                  Founded in {COMPANY_DETAILS.established} by Late Kunjumon Ismail, Jeseem Tours & Travels was established with a singular mission: to make international and domestic travel effortless, transparent, and accessible for everyone. His principles of honesty, customer care, and 100% quality-ensured service remain our guiding compass every single day.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">
                   <Link
                     href="/about"
-                    className="px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-amber-500/20 inline-flex items-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-md inline-flex items-center gap-2"
                   >
                     Read Our Full Founder Story
                     <ArrowUpRight className="w-4 h-4" />
