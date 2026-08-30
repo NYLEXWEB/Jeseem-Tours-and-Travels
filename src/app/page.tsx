@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, Award, ShieldCheck, Clock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, Award, ShieldCheck, Clock, Target, Eye, CheckCircle2, Sparkles } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 import Magnetic from "@/components/Magnetic";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
