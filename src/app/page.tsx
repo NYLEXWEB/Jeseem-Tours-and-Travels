@@ -275,9 +275,9 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
-      {/* 1. HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden z-10 bg-transparent py-24">
-        {/* Hero Section Background Image */}
+      {/* 1. HERO SECTION (Single-Screen Viewport Layout with Full Background Image) */}
+      <section ref={heroRef} className="relative h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-8 md:pt-28 md:pb-10 px-6 sm:px-12">
+        {/* Background Layer (Full Image View, No Dark Fade Overlay) */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <Image
             src="/travel_pink_hero.png"
@@ -295,89 +295,128 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative max-w-7xl mx-auto px-6 w-full z-20 flex flex-col items-start pt-20">
+        {/* Hero Central Content */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-center items-start my-auto">
+          {/* Frosted Glass Tagline Pill with Pink Accent */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex items-center gap-2 mb-6"
+            className="px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-pink-500/30 inline-flex items-center gap-2 mb-6 shadow-xl"
           >
-            <Compass className="w-4 h-4 text-pink-300 animate-pulse" />
-            <span className="text-xs uppercase tracking-widest text-pink-200 font-semibold">
-              {COMPANY_DETAILS.tagline}
+            <Compass className="w-3.5 h-3.5 text-pink-400 animate-pulse" />
+            <span className="text-[11px] uppercase tracking-widest text-pink-300 font-bold">
+              Est. {COMPANY_DETAILS.established} &bull; {COMPANY_DETAILS.tagline}
             </span>
           </motion.div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tighter text-[var(--foreground)] flex flex-col mb-8 select-none leading-tight">
-            <div className="overflow-hidden relative py-1">
+          {/* Main Stylish Headline */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight text-white flex flex-col mb-6 select-none leading-[1.06]">
+            <div className="overflow-hidden relative py-0.5">
               <motion.span
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-medium text-[var(--foreground)]"
+                className="block font-normal text-white"
               >
                 SAVE THE MONEY PLAN FOR TRAVEL
               </motion.span>
             </div>
-            <div className="overflow-hidden relative py-1">
+            <div className="overflow-hidden relative py-0.5">
               <motion.span
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-medium text-pink-300"
-                style={{ WebkitTextStroke: "1px var(--foreground)" }}
+                className="block font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500 drop-shadow-lg"
               >
                 GO TO THE DESTINATION
               </motion.span>
             </div>
           </h1>
 
+          {/* Subtitle Description */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-[#86868B] text-base md:text-lg max-w-md mb-8 leading-relaxed font-light text-balance"
+            className="text-white/90 text-sm sm:text-base md:text-lg max-w-xl mb-8 leading-relaxed font-light text-balance drop-shadow-sm"
           >
-            Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified worldwide travel. From low airfares and customized holiday packages to visa assistance and emigration support, we make your journey hassle-free.
+            Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys. Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support.
           </motion.p>
 
+          {/* Call-to-Action Buttons with Pink Accent Theme */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-4 z-20"
+            className="flex flex-wrap items-center gap-4 z-20"
           >
             <Magnetic range={30} strength={0.25}>
               <Link
-                href="/packages"
-                className="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
+                href="/destinations"
+                className="px-8 py-4 rounded-full bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 text-white font-bold text-xs uppercase tracking-wider hover:brightness-110 hover:scale-105 transition-all duration-300 shadow-lg shadow-pink-500/30 flex items-center gap-2"
               >
-                Explore Packages
+                Explore Destinations
+                <ArrowUpRight className="w-4 h-4 text-white" />
               </Link>
             </Magnetic>
+
+            <Magnetic range={30} strength={0.25}>
+              <a
+                href="https://wa.me/919061858416?text=Hi,%20I%20would%20like%20to%20plan%20a%20trip%20with%20Jeseem%20Tours."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 rounded-full bg-emerald-600/90 hover:bg-emerald-500 border border-emerald-400/30 text-white font-bold text-xs uppercase tracking-wider backdrop-blur-md hover:scale-105 transition-all duration-300 flex items-center gap-2 shadow-lg"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.731-1.464L0 24zm6.59-4.846c1.6.95 3.197 1.451 4.785 1.453 5.422 0 9.833-4.329 9.836-9.65.002-2.577-1.002-5.001-2.827-6.828-1.826-1.828-4.254-2.831-6.837-2.832-5.43 0-9.842 4.331-9.845 9.654a9.497 9.497 0 0 0 1.492 5.097l-.988 3.606 3.792-.962zm11.233-6.612c-.3-.15-1.774-.875-2.048-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.175-.175.2-.35.225-.65.075-1.007-.504-1.684-.919-2.358-2.072-.175-.3-.175-.55-.025-.7.135-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.625-.926-2.225-.244-.588-.492-.509-.675-.518-.175-.009-.375-.01-.575-.01a1.11 1.11 0 0 0-.8.375c-.275.3-1.05 1.025-1.05 2.5 0 1.475 1.075 2.9 1.225 3.1.15.2 2.11 3.22 5.11 4.52.714.31 1.27.495 1.705.633.717.228 1.37.196 1.885.119.574-.085 1.774-.725 2.024-1.425.25-.7.25-1.3 1.75-1.425.075-.025.15-.125.075-.275z" />
+                </svg>
+                WhatsApp Consultation
+              </a>
+            </Magnetic>
+
             <Magnetic range={30} strength={0.25}>
               <Link
-                href="/contact"
-                className="px-8 py-4 rounded-full bg-transparent border border-white/20 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+                href="/packages"
+                className="px-6 py-4 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
               >
-                Plan A Trip
+                Our Packages
               </Link>
             </Magnetic>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
-        >
-          <span className="text-[9px] uppercase tracking-widest text-[#86868B] font-semibold">SCROLL</span>
-          <div className="w-[1px] h-12 bg-white/20 relative">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-pink-300 animate-[bounce_2s_infinite]" />
+        {/* Hero Footer: Compact Trust Badges & Scroll Indicator */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/15">
+          <div className="flex items-center gap-6 text-white/80 text-xs font-mono tracking-wider">
+            <span className="flex items-center gap-1.5">
+              <Award className="w-3.5 h-3.5 text-pink-400" />
+              40+ Years Legacy
+            </span>
+            <span className="hidden sm:inline text-white/30">&bull;</span>
+            <span className="hidden sm:flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-pink-400" />
+              Verified Visa Care
+            </span>
+            <span className="hidden md:inline text-white/30">&bull;</span>
+            <span className="hidden md:flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-pink-400" />
+              24/7 Airline Booking Desk
+            </span>
           </div>
-        </motion.div>
+
+          {/* Compact Scroll Down Indicator */}
+          <motion.div
+            animate={{ y: [0, 4, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="flex items-center gap-2 text-white/70 text-[10px] uppercase tracking-widest pointer-events-none"
+          >
+            <span>Scroll</span>
+            <div className="w-3.5 h-3.5 rounded-full border border-white/40 flex items-center justify-center">
+              <div className="w-1 h-1 bg-pink-400 rounded-full animate-ping" />
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO) */}
