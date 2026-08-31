@@ -689,7 +689,7 @@ export default function Home() {
                 >
                   <TiltCard maxRotation={6}>
                     <div
-                      className="relative w-[280px] md:w-[420px] h-[380px] md:h-[550px] rounded-3xl overflow-hidden flex flex-col justify-end p-6 md:p-8 group select-none bg-[var(--card-bg)] border border-[var(--border)] shadow-2xl"
+                      className="relative w-[320px] sm:w-[480px] md:w-[580px] aspect-[16/9] rounded-3xl overflow-hidden flex flex-col justify-end p-4 md:p-5 group select-none bg-[var(--card-bg)] border border-[var(--border)] shadow-2xl"
                       data-cursor="explore"
                     >
                       {/* Image with zoom on hover */}
@@ -699,9 +699,9 @@ export default function Home() {
                           alt={dest.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          sizes="(max-width: 768px) 280px, 420px"
+                          sizes="(max-width: 768px) 320px, 580px"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/35 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
                       </div>
 
                       {/* Clickable Overlay Link (covers entire card except the WhatsApp button) */}
@@ -711,22 +711,33 @@ export default function Home() {
                         aria-label={`View itinerary for ${dest.name}`}
                       />
 
-                      {/* Destination Title (Logo Gradient text styling) */}
-                      <div className="relative z-20 flex flex-col mt-auto pointer-events-none mb-1">
-                        <h4 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-rose-200 to-pink-400">
-                          {dest.name}
-                        </h4>
-                      </div>
-
-                      {/* WhatsApp Button on z-20 */}
-                      <div className="relative z-20 flex mt-2">
+                      {/* Transparent Bottom Overlay Row (No dark block background, 100% Legible White Text & Official WhatsApp Green) */}
+                      <div className="relative z-20 flex items-center justify-between mt-auto pointer-events-auto w-full pt-2">
+                        <div className="flex items-center gap-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
+                          <span
+                            className="text-base uppercase tracking-wider font-extrabold"
+                            style={{ color: '#ffffff', textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}
+                          >
+                            {dest.name}
+                          </span>
+                          <span
+                            className="text-xs uppercase tracking-widest font-bold"
+                            style={{ color: '#ff66c4', textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}
+                          >
+                            · {dest.country}
+                          </span>
+                        </div>
                         <a
                           href={`https://wa.me/919061858416?text=Hi,%20I%20would%20like%20to%20inquire%20about%20the%20"${encodeURIComponent(dest.name)}"%20destination%20itinerary.`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full hover:brightness-110 text-white text-[11px] uppercase tracking-wider font-bold transition-all duration-300 shadow-lg hover:scale-105 shrink-0"
+                          style={{ backgroundColor: '#25D366' }}
                         >
-                          WhatsApp Inquiry
+                          <svg className="w-4 h-4 fill-current text-white" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.731-1.464L0 24zm6.59-4.846c1.6.95 3.197 1.451 4.785 1.453 5.422 0 9.833-4.329 9.836-9.65.002-2.577-1.002-5.001-2.827-6.828-1.826-1.828-4.254-2.831-6.837-2.832-5.43 0-9.842 4.331-9.845 9.654a9.497 9.497 0 0 0 1.492 5.097l-.988 3.606 3.792-.962zm11.233-6.612c-.3-.15-1.774-.875-2.048-.975-.276-.1-.476-.15-.676.15-.2.3-.775.975-.95 1.175-.175.2-.35.225-.65.075-1.007-.504-1.684-.919-2.358-2.072-.175-.3-.175-.55-.025-.7.135-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.625-.926-2.225-.244-.588-.492-.509-.675-.518-.175-.009-.375-.01-.575-.01a1.11 1.11 0 0 0-.8.375c-.275.3-1.05 1.025-1.05 2.5 0 1.475 1.075 2.9 1.225 3.1.15.2 2.11 3.22 5.11 4.52.714.31 1.27.495 1.705.633.717.228 1.37.196 1.885.119.574-.085 1.774-.725 2.024-1.425.25-.7.25-1.3 1.75-1.425.075-.025.15-.125.075-.275z" />
+                          </svg>
+                          WhatsApp
                         </a>
                       </div>
                     </div>

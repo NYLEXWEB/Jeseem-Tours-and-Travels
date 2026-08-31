@@ -107,7 +107,7 @@ export default function Destinations() {
                 }`}
             >
               {/* Destination Image Showcase */}
-              <div className="w-full lg:w-1/2 relative h-[200px] sm:h-[450px] rounded-3xl overflow-hidden border border-white/10 group">
+              <div className="w-full lg:w-1/2 relative aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 group shadow-xl">
                 <Image
                   src={dest.image}
                   alt={dest.name}
