@@ -63,15 +63,15 @@ export default function Navbar() {
     <>
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isAtTop
-            ? "py-6 bg-transparent border-b border-transparent"
-            : "py-4 bg-[var(--background)]/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
+          ? "py-6 bg-transparent border-b border-transparent"
+          : "py-4 bg-[var(--background)]/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
           }`}
         initial={{ y: -100 }}
         animate={{ y: isVisible ? 0 : -100 }}
         transition={{ type: "spring", damping: 20, stiffness: 120 }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="relative block h-8 md:h-10 w-28 md:w-36" onClick={() => setIsOpen(false)}>
+          <Link href="/" className="relative block h-11 md:h-14 w-44 md:w-56" onClick={() => setIsOpen(false)}>
             <Image
               src="/logo.png"
               alt="Jeseem Tours & Travels"

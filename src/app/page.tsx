@@ -1248,9 +1248,9 @@ export default function Home() {
                             <div className="flex items-center gap-2">
                               <span className="text-3xl font-extrabold text-white">4.9</span>
                               <div>
-                                <div className="flex text-[#ff007f]">
+                                <div className="flex text-[#f59e0b]">
                                   {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
+                                    <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b] drop-shadow-[0_1px_4px_rgba(245,158,11,0.5)]" />
                                   ))}
                                 </div>
                                 <p className="text-[10px] text-white/50">115+ guest evaluations</p>
@@ -1290,9 +1290,9 @@ export default function Home() {
                                   </svg>
                                 </div>
 
-                                <div className="flex items-center text-[#ff007f]">
+                                <div className="flex items-center text-[#f59e0b]">
                                   {[...Array(rev.rating)].map((_, i) => (
-                                    <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
+                                    <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b] drop-shadow-[0_1px_4px_rgba(245,158,11,0.5)]" />
                                   ))}
                                 </div>
 
@@ -1376,9 +1376,9 @@ export default function Home() {
                         </svg>
                       </div>
 
-                      <div className="flex items-center text-[#ff007f]">
+                      <div className="flex items-center text-[#f59e0b]">
                         {[...Array(rev.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b] drop-shadow-[0_1px_4px_rgba(245,158,11,0.5)]" />
                         ))}
                       </div>
 
@@ -1428,9 +1428,9 @@ export default function Home() {
                         </svg>
                       </div>
 
-                      <div className="flex items-center text-[#ff007f]">
+                      <div className="flex items-center text-[#f59e0b]">
                         {[...Array(rev.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b] drop-shadow-[0_1px_4px_rgba(245,158,11,0.5)]" />
                         ))}
                       </div>
 
