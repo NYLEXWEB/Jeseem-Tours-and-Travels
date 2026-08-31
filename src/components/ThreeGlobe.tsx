@@ -8,10 +8,12 @@ interface ThreeGlobeProps {
 }
 
 const DESTINATION_COORDS = [
-  { id: "kyoto", lat: 35.0116, lng: 135.7681, name: "Kyoto" },
-  { id: "amalfi", lat: 40.6340, lng: 14.6027, name: "Amalfi Coast" },
-  { id: "swiss-alps", lat: 46.8182, lng: 8.2275, name: "Swiss Alps" },
-  { id: "serengeti", lat: -2.1540, lng: 34.6857, name: "Serengeti" },
+  { id: "kerala", lat: 10.8505, lng: 76.2711, name: "Kerala" },
+  { id: "lakshadweep", lat: 10.5667, lng: 72.6417, name: "Lakshadweep" },
+  { id: "georgia", lat: 41.7151, lng: 44.8271, name: "Georgia" },
+  { id: "maldives", lat: 3.2028, lng: 73.2207, name: "Maldives" },
+  { id: "dubai", lat: 25.2048, lng: 55.2708, name: "Dubai" },
+  { id: "malaysia", lat: 3.1390, lng: 101.6869, name: "Malaysia" },
 ];
 
 export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
@@ -46,9 +48,9 @@ export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
     mainLight.position.set(5, 3, 10);
     scene.add(mainLight);
 
-    const goldLight = new THREE.PointLight(0xd4af37, 2, 50);
-    goldLight.position.set(-10, 5, -10);
-    scene.add(goldLight);
+    const brandLight = new THREE.PointLight(0xc4007b, 2.5, 50);
+    brandLight.position.set(-10, 5, -10);
+    scene.add(brandLight);
 
     // 3. Create Dotted Globe
     const globeRadius = 6.5;
@@ -61,7 +63,7 @@ export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
     const colors = new Float32Array(dotCount * 3);
 
     const color1 = new THREE.Color("#444444"); // Muted dark dots
-    const color2 = new THREE.Color("#d4af37"); // Highlighted gold dots
+    const color2 = new THREE.Color("#ff007f"); // Highlighted brand pink dots
 
     for (let i = 0; i < dotCount; i++) {
       // Fibonacci sphere algorithm to distribute dots evenly
@@ -152,8 +154,8 @@ export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
       // Create glowing pin geometry
       const pinGeo = new THREE.SphereGeometry(0.18, 16, 16);
       const pinMat = new THREE.MeshStandardMaterial({
-        color: 0xd4af37,
-        emissive: 0xd4af37,
+        color: 0xff007f,
+        emissive: 0xc4007b,
         emissiveIntensity: 1.5,
         roughness: 0.1,
         metalness: 0.8,
@@ -166,7 +168,7 @@ export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
       // Pulse ring around pin
       const ringGeo = new THREE.RingGeometry(0.24, 0.28, 32);
       const ringMat = new THREE.MeshBasicMaterial({
-        color: 0xd4af37,
+        color: 0xff007f,
         side: THREE.DoubleSide,
         transparent: true,
         opacity: 0.5,
@@ -256,7 +258,7 @@ export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
             p.mesh.scale.set(1.4, 1.4, 1.4);
           } else {
             mat.emissiveIntensity = 0.8;
-            mat.color.setHex(0xd4af37);
+            mat.color.setHex(0xff007f);
             p.mesh.scale.set(1, 1, 1);
           }
         });
@@ -270,7 +272,7 @@ export default function ThreeGlobe({ activeDestinationId }: ThreeGlobeProps) {
         pins.forEach((p) => {
           const mat = p.mesh.material as THREE.MeshStandardMaterial;
           mat.emissiveIntensity = 1.0;
-          mat.color.setHex(0xd4af37);
+          mat.color.setHex(0xff007f);
           p.mesh.scale.set(1, 1, 1);
         });
       }

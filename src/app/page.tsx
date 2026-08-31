@@ -13,36 +13,52 @@ import { COMPANY_DETAILS } from "@/constants/company";
 // Curated Assets and Details
 const DESTINATIONS = [
   {
-    id: "alappuzha",
-    name: "Alappuzha",
-    country: "India (Kerala)",
-    desc: "Pristine houseboats, serene backwaters, and local culinary delights.",
-    image: "/about_intro.jpg",
-    coords: "9.4981° N, 76.3388° E",
+    id: "kerala",
+    name: "Kerala",
+    country: "India",
+    desc: "Pristine houseboats, emerald tea gardens, serene backwaters, and beach retreats.",
+    image: "/destinations/Kerala.png",
+    coords: "10.8505° N, 76.2711° E",
+  },
+  {
+    id: "lakshadweep",
+    name: "Lakshadweep",
+    country: "India",
+    desc: "Crystal-clear turquoise lagoons, coral reefs, and tranquil white sand island beaches.",
+    image: "/destinations/Lakshadweep.png",
+    coords: "10.5667° N, 72.6417° E",
+  },
+  {
+    id: "georgia",
+    name: "Georgia",
+    country: "Caucasus",
+    desc: "Historic monasteries, snow-capped Caucasus peaks, and rich cultural traditions.",
+    image: "/destinations/Georgia.png",
+    coords: "41.7151° N, 44.8271° E",
+  },
+  {
+    id: "maldives",
+    name: "Maldives",
+    country: "Indian Ocean",
+    desc: "Luxury overwater bungalows, vibrant marine life, and private island sanctuaries.",
+    image: "/destinations/Maldives.png",
+    coords: "3.2028° N, 73.2207° E",
   },
   {
     id: "dubai",
     name: "Dubai",
     country: "UAE",
-    desc: "Futuristic skyscrapers, desert safaris, and luxurious shopping.",
-    image: "/amalfi.jpg",
+    desc: "Futuristic skyscrapers, desert dune safaris, and high-end shopping destinations.",
+    image: "/destinations/Dubai.png",
     coords: "25.2048° N, 55.2708° E",
   },
   {
-    id: "swiss-alps",
-    name: "Swiss Alps",
-    country: "Switzerland",
-    desc: "Majestic snow peaks and scenic panoramic train expeditions.",
-    image: "/swiss_alps.jpg",
-    coords: "46.8182° N, 8.2275° E",
-  },
-  {
-    id: "serengeti",
-    name: "Serengeti",
-    country: "Tanzania",
-    desc: "Wild savannah reserves and the breathtaking Great Migration.",
-    image: "/serengeti.jpg",
-    coords: "2.1540° S, 34.6857° E",
+    id: "malaysia",
+    name: "Malaysia",
+    country: "Southeast Asia",
+    desc: "Iconic Petronas Twin Towers, tropical rainforests, and Langkawi beach resorts.",
+    image: "/destinations/Malaysia.png",
+    coords: "3.1390° N, 101.6869° E",
   },
 ];
 
@@ -481,7 +497,7 @@ export default function Home() {
           <div className="mb-20">
             <div className="text-center mb-12">
               <ScrollReveal variant="fade-up" duration={0.8}>
-                <span className="text-xs uppercase tracking-widest text-amber-600 font-bold block mb-2">OUR PURPOSE & QUALITY COMMITMENT</span>
+                <span className="text-xs uppercase tracking-widest text-brand-gradient font-bold block mb-2">OUR PURPOSE & QUALITY COMMITMENT</span>
               </ScrollReveal>
               <ScrollReveal variant="blur-in" duration={1.0} delay={0.15}>
                 <h3 className="text-3xl md:text-5xl font-light tracking-tight text-[#171717]">Mission & Vision</h3>
@@ -492,12 +508,12 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* Mission Card */}
               <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
-                <div className="bg-[var(--card-bg)] border border-[var(--border)] p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-amber-500/30 transition-colors text-left">
+                <div className="bg-[var(--card-bg)] border border-[#c4007b]/20 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-[#c4007b]/40 transition-colors text-left">
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6">
-                      <Target className="w-6 h-6 text-amber-500" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/10 border border-[#c4007b]/20 flex items-center justify-center mb-6">
+                      <Target className="w-6 h-6 text-[#c4007b]" />
                     </div>
-                    <span className="text-xs uppercase tracking-widest text-amber-600 font-bold block mb-2">OUR MISSION</span>
+                    <span className="text-xs uppercase tracking-widest text-[#c4007b] font-bold block mb-2">OUR MISSION</span>
                     <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4">
                       Transparent & Seamless Global Travel
                     </h4>
@@ -505,8 +521,8 @@ export default function Home() {
                       To deliver world-class, 100% quality-ensured travel solutions—from group flight ticket allocations and customized holiday packages to swift document attestations and visa clearances—empowering every client with transparent pricing, utmost comfort, and peace of mind.
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-xs font-semibold text-amber-600">
-                    <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                  <div className="mt-8 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-xs font-semibold text-[#c4007b]">
+                    <CheckCircle2 className="w-4 h-4 text-[#ff007f]" />
                     Client-Centric Excellence Since 1985
                   </div>
                 </div>
@@ -514,7 +530,7 @@ export default function Home() {
 
               {/* Vision Card */}
               <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
-                <div className="bg-[var(--card-bg)] border border-[var(--border)] p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/30 transition-colors text-left">
+                <div className="bg-[var(--card-bg)] border border-sky-500/20 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/40 transition-colors text-left">
                   <div>
                     <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-6">
                       <Eye className="w-6 h-6 text-sky-500" />
@@ -537,10 +553,10 @@ export default function Home() {
 
             {/* 100% QUALITY ASSURANCE BANNER CARD */}
             <ScrollReveal variant="fade-up" duration={1.0} delay={0.3}>
-              <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-sky-500/10 border border-amber-500/30 p-8 md:p-10 rounded-3xl shadow-sm relative overflow-hidden text-left">
+              <div className="bg-brand-gradient-light border border-brand-gradient-light p-8 md:p-10 rounded-3xl shadow-sm relative overflow-hidden text-left">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
                   <div className="max-w-2xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500 text-black font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient text-white font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       100% QUALITY ENSURED &middot; NO COMPROMISE
                     </div>
@@ -554,7 +570,7 @@ export default function Home() {
                   <div className="shrink-0">
                     <Link
                       href="/contact"
-                      className="px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-md inline-flex items-center gap-2"
+                      className="px-8 py-4 rounded-full bg-brand-gradient-btn font-bold text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2"
                     >
                       Consult Quality Desks
                     </Link>
@@ -566,9 +582,9 @@ export default function Home() {
 
           {/* FOUNDER TRIBUTE CARD (Late KUNJUMON ISMAIL) - Clean White Luxury Theme */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.2}>
-            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-8 md:p-14 border border-amber-500/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
+            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-8 md:p-14 border border-[#c4007b]/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
               {/* Founder Image Frame */}
-              <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-xl group bg-amber-50">
+              <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-[#c4007b]/40 shadow-xl group bg-purple-50">
                 <Image
                   src="/Father photo.png"
                   alt="KUNJUMON ISMAIL - Founder of Jeseem Tours & Travels"
@@ -577,7 +593,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                 <div className="absolute bottom-3 left-3 right-3 z-20 text-center">
-                  <span className="px-3.5 py-1 rounded-full bg-amber-500 text-black text-[10px] uppercase font-bold tracking-widest inline-block shadow-md">
+                  <span className="px-3.5 py-1 rounded-full bg-brand-gradient text-white text-[10px] uppercase font-bold tracking-widest inline-block shadow-md">
                     In Loving Memory
                   </span>
                 </div>
@@ -585,19 +601,19 @@ export default function Home() {
 
               {/* Founder Bio & Tribute Content */}
               <div className="flex-1 flex flex-col justify-center items-start text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-600 text-xs uppercase tracking-widest font-mono font-bold mb-4">
-                  <Award className="w-3.5 h-3.5 text-amber-500" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient-light border border-[#c4007b]/30 text-[#c4007b] text-xs uppercase tracking-widest font-mono font-bold mb-4">
+                  <Award className="w-3.5 h-3.5 text-[#ff007f]" />
                   FOUNDER TRIBUTE & HERITAGE
                 </div>
 
                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit">
                   KUNJUMON ISMAIL
                 </h3>
-                <p className="text-amber-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
+                <p className="text-[#c4007b] text-sm font-mono tracking-widest uppercase mb-6 font-bold">
                   Founder & Visionary &bull; (Late in 2022)
                 </p>
 
-                <blockquote className="text-zinc-700 text-base md:text-lg leading-relaxed font-light italic border-l-2 border-amber-500 pl-5 mb-6">
+                <blockquote className="text-zinc-700 text-base md:text-lg leading-relaxed font-light italic border-l-2 border-[#c4007b] pl-5 mb-6">
                   &ldquo;Travel is more than reaching a destination; it is about building trust, creating lifetime memories, and serving every passenger with utmost sincerity and dedication.&rdquo;
                 </blockquote>
 
@@ -608,7 +624,7 @@ export default function Home() {
                 <div className="flex flex-wrap items-center gap-4">
                   <Link
                     href="/about"
-                    className="px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase tracking-wider transition-all shadow-md inline-flex items-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-brand-gradient-btn font-bold text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2"
                   >
                     Read Our Full Founder Story
                     <ArrowUpRight className="w-4 h-4" />
@@ -634,7 +650,7 @@ export default function Home() {
               <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-2">CURATED LOCATIONS</span>
               <h3 className="text-4xl md:text-5xl font-light tracking-tight text-white">Bespoke Destinations</h3>
             </div>
-            <Link href="/destinations" className="text-xs uppercase tracking-widest text-white hover:text-amber-500 font-semibold inline-flex items-center gap-1">
+            <Link href="/destinations" className="text-xs uppercase tracking-widest text-white hover:text-[#ff007f] font-semibold inline-flex items-center gap-1">
               Browse All Destinations <ArrowUpRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -645,7 +661,7 @@ export default function Home() {
             <div className="absolute top-1/2 -translate-y-1/2 left-4 z-30 pointer-events-none md:left-8">
               <button
                 onClick={() => scrollDestinations("left")}
-                className="w-10 h-10 rounded-full bg-[var(--background)]/85 text-[var(--foreground)] border border-[var(--border)] shadow-md flex items-center justify-center pointer-events-auto hover:bg-amber-500 hover:text-white transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-full bg-[var(--background)]/85 text-[var(--foreground)] border border-[var(--border)] shadow-md flex items-center justify-center pointer-events-auto hover:bg-[#c4007b] hover:text-white transition-colors cursor-pointer"
                 aria-label="Previous destination"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -654,7 +670,7 @@ export default function Home() {
             <div className="absolute top-1/2 -translate-y-1/2 right-4 z-30 pointer-events-none md:right-8">
               <button
                 onClick={() => scrollDestinations("right")}
-                className="w-10 h-10 rounded-full bg-[var(--background)]/85 text-[var(--foreground)] border border-[var(--border)] shadow-md flex items-center justify-center pointer-events-auto hover:bg-amber-500 hover:text-white transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-full bg-[var(--background)]/85 text-[var(--foreground)] border border-[var(--border)] shadow-md flex items-center justify-center pointer-events-auto hover:bg-[#c4007b] hover:text-white transition-colors cursor-pointer"
                 aria-label="Next destination"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -695,9 +711,9 @@ export default function Home() {
                         aria-label={`View itinerary for ${dest.name}`}
                       />
 
-                      {/* Destination Title (Only heading in bright yellow/gold color) */}
+                      {/* Destination Title (Logo Gradient text styling) */}
                       <div className="relative z-20 flex flex-col mt-auto pointer-events-none mb-1">
-                        <h4 className="text-3xl font-bold tracking-tight text-amber-400">
+                        <h4 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-rose-200 to-pink-400">
                           {dest.name}
                         </h4>
                       </div>
@@ -732,7 +748,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold block mb-2">FEATURED SERVICE</span>
+            <span className="text-xs uppercase tracking-widest text-brand-gradient font-bold block mb-2">FEATURED SERVICE</span>
             <h3 className="text-4xl md:text-6xl font-extralight tracking-tight text-white">Flight Ticket Bookings</h3>
           </motion.div>
 
@@ -758,7 +774,7 @@ export default function Home() {
 
               {/* Package Content Details */}
               <div className="flex-1 p-8 md:p-16 flex flex-col justify-center relative z-20">
-                <span className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-2">
+                <span className="text-xs uppercase tracking-widest text-[#ff007f] font-bold mb-2">
                   {pkg.subtitle}
                 </span>
                 <h4 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6">
@@ -791,7 +807,7 @@ export default function Home() {
                 <div>
                   <Link
                     href={`/contact?package=${pkg.id}`}
-                    className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-gradient-btn text-white font-bold text-xs uppercase tracking-wider shadow-md"
                   >
                     Inquire Ticket Allocation
                     <ArrowUpRight className="w-4 h-4" />
@@ -832,11 +848,11 @@ export default function Home() {
                     onMouseEnter={() => setActiveServiceIdx(idx)}
                   >
                     <div className="flex items-start gap-4">
-                      <span className={`text-xs font-mono font-bold mt-1 ${activeServiceIdx === idx ? "text-amber-500" : "text-white"}`}>
+                      <span className={`text-xs font-mono font-bold mt-1 ${activeServiceIdx === idx ? "text-[#ff007f]" : "text-white"}`}>
                         {srv.number}
                       </span>
                       <div>
-                        <h4 className="text-xl md:text-2xl text-white font-normal mb-2 group-hover:text-amber-400 transition-colors">
+                        <h4 className="text-xl md:text-2xl text-white font-normal mb-2 group-hover:text-[#ff007f] transition-colors">
                           {srv.title}
                         </h4>
                         {activeServiceIdx === idx && (
@@ -910,7 +926,7 @@ export default function Home() {
               </motion.div>
             </AnimatePresence>
             <div className="absolute bottom-8 left-8 z-20">
-              <span className="text-[10px] uppercase tracking-widest text-amber-500 font-bold">PREVIEW</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#ff007f] font-bold">PREVIEW</span>
               <p className="text-white text-xs font-mono mt-1">{SERVICES[activeServiceIdx].title}</p>
             </div>
           </motion.div>
@@ -939,9 +955,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-[#c4007b]/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/20 flex items-center justify-center text-[#ff007f] mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Award className="w-6 h-6" />
               </div>
               <h4 className="text-xl font-medium text-white mb-3">40+ Years of Experience</h4>
@@ -956,9 +972,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-[#c4007b]/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/20 flex items-center justify-center text-[#ff007f] mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Compass className="w-6 h-6" />
               </div>
               <h4 className="text-xl font-medium text-white mb-3">Customized Itineraries</h4>
@@ -973,9 +989,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-[#c4007b]/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/20 flex items-center justify-center text-[#ff007f] mb-6 group-hover:scale-110 transition-transform duration-300">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <h4 className="text-xl font-medium text-white mb-3">Complete Visa Support</h4>
@@ -990,9 +1006,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-amber-500/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
+              className="group p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 hover:border-[#c4007b]/40 hover:bg-black/50 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/20 flex items-center justify-center text-[#ff007f] mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Clock className="w-6 h-6" />
               </div>
               <h4 className="text-xl font-medium text-white mb-3">24/7 Ticketing Assistance</h4>
@@ -1037,7 +1053,7 @@ export default function Home() {
               </AnimatePresence>
               <div className="absolute bottom-8 left-8 z-20">
                 <span className="text-[10px] uppercase tracking-widest text-[#86868B] font-bold">STAGE</span>
-                <p className="text-amber-500 text-lg font-bold">{STEPS[activeStepIdx].number} — {STEPS[activeStepIdx].title}</p>
+                <p className="text-[#ff007f] text-lg font-bold">{STEPS[activeStepIdx].number} — {STEPS[activeStepIdx].title}</p>
               </div>
             </div>
           </motion.div>
@@ -1069,10 +1085,10 @@ export default function Home() {
                   {activeStepIdx === idx && (
                     <motion.div
                       layoutId="step-indicator"
-                      className="absolute top-0 bottom-0 left-[-2px] w-[2px] bg-amber-500"
+                      className="absolute top-0 bottom-0 left-[-2px] w-[2px] bg-brand-gradient"
                     />
                   )}
-                  <span className={`text-sm font-mono font-bold ${activeStepIdx === idx ? "text-amber-500" : "text-white/40"}`}>
+                  <span className={`text-sm font-mono font-bold ${activeStepIdx === idx ? "text-[#ff007f]" : "text-white/40"}`}>
                     {step.number}
                   </span>
                   <h4 className="text-2xl text-white font-medium">{step.title}</h4>
@@ -1137,9 +1153,9 @@ export default function Home() {
                 <div>
                   <div className="flex items-center gap-1">
                     <span className="text-lg font-bold text-white">4.9</span>
-                    <div className="flex items-center text-amber-500">
+                    <div className="flex items-center text-[#ff007f]">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                        <Star key={i} className="w-4 h-4 fill-[#ff007f] text-[#ff007f]" />
                       ))}
                     </div>
                   </div>
@@ -1155,7 +1171,7 @@ export default function Home() {
                   href="https://g.page/r/Ca2iU0gCoDpuEBE/review"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--foreground)] text-[var(--background)] hover:bg-amber-500 hover:text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 w-full sm:w-auto justify-center shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-brand-gradient-btn font-semibold text-xs uppercase tracking-wider shadow-lg"
                 >
                   Write a Google Review
                   <ArrowUpRight className="w-4 h-4" />
@@ -1221,18 +1237,18 @@ export default function Home() {
                             <div className="flex items-center gap-2">
                               <span className="text-3xl font-extrabold text-white">4.9</span>
                               <div>
-                                <div className="flex text-amber-500">
+                                <div className="flex text-[#ff007f]">
                                   {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                                    <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
                                   ))}
                                 </div>
                                 <p className="text-[10px] text-white/50">115+ guest evaluations</p>
                               </div>
                             </div>
                           </div>
-                          <div className="text-[10px] text-amber-500 font-semibold flex items-center gap-1 mt-6">
+                          <div className="text-[10px] text-[#ff007f] font-semibold flex items-center gap-1 mt-6">
                             <span>Swipe to browse reviews</span>
-                            <ArrowRight className="w-3 h-3 text-amber-500" />
+                            <ArrowRight className="w-3 h-3 text-[#ff007f]" />
                           </div>
                         </div>
                       ) : (
@@ -1263,9 +1279,9 @@ export default function Home() {
                                   </svg>
                                 </div>
 
-                                <div className="flex items-center text-amber-500">
+                                <div className="flex items-center text-[#ff007f]">
                                   {[...Array(rev.rating)].map((_, i) => (
-                                    <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                                    <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
                                   ))}
                                 </div>
 
@@ -1275,7 +1291,7 @@ export default function Home() {
                               </div>
 
                               <div className="border-t border-white/10 pt-4 mt-4 flex items-center justify-between">
-                                <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
+                                <span className="text-[10px] text-[#ff007f] font-mono tracking-wider">{rev.destination}</span>
                                 <span className="text-[10px] text-[#86868B]">2 weeks ago</span>
                               </div>
                             </div>
@@ -1305,7 +1321,7 @@ export default function Home() {
                       setMobileSlideDirection(i > activeMobileReviewIdx ? 1 : -1);
                       setActiveMobileReviewIdx(i);
                     }}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${activeMobileReviewIdx === i ? "w-4 bg-amber-500" : "w-1.5 bg-white/20"
+                    className={`h-1.5 rounded-full transition-all duration-300 ${activeMobileReviewIdx === i ? "w-4 bg-[#ff007f]" : "w-1.5 bg-white/20"
                       }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
@@ -1349,9 +1365,9 @@ export default function Home() {
                         </svg>
                       </div>
 
-                      <div className="flex items-center text-amber-500">
+                      <div className="flex items-center text-[#ff007f]">
                         {[...Array(rev.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
                         ))}
                       </div>
 
@@ -1361,7 +1377,7 @@ export default function Home() {
 
                       <div className="border-t border-white/10 pt-4 flex items-center justify-between">
                         <span className="text-[10px] text-[#86868B]">a month ago</span>
-                        <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
+                        <span className="text-[10px] text-[#ff007f] font-mono tracking-wider">{rev.destination}</span>
                       </div>
                     </motion.div>
                   );
@@ -1401,9 +1417,9 @@ export default function Home() {
                         </svg>
                       </div>
 
-                      <div className="flex items-center text-amber-500">
+                      <div className="flex items-center text-[#ff007f]">
                         {[...Array(rev.rating)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#ff007f] text-[#ff007f]" />
                         ))}
                       </div>
 
@@ -1413,7 +1429,7 @@ export default function Home() {
 
                       <div className="border-t border-white/10 pt-4 flex items-center justify-between">
                         <span className="text-[10px] text-[#86868B]">2 weeks ago</span>
-                        <span className="text-[10px] text-amber-500 font-mono tracking-wider">{rev.destination}</span>
+                        <span className="text-[10px] text-[#ff007f] font-mono tracking-wider">{rev.destination}</span>
                       </div>
                     </motion.div>
                   );
@@ -1435,7 +1451,7 @@ export default function Home() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-3xl mx-auto px-6 text-center z-20"
         >
-          <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block mb-4">THE NEXT CHAPTER</span>
+          <span className="text-xs uppercase tracking-widest text-[#ff007f] font-bold block mb-4">THE NEXT CHAPTER</span>
           <h2 className="text-4xl md:text-7xl font-extralight tracking-tight text-white mb-6 text-balance">
             Save. Plan. Go.
           </h2>
@@ -1445,7 +1461,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-gradient-btn text-white font-bold text-xs uppercase tracking-wider shadow-lg"
             >
               Get In Touch
             </Link>

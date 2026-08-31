@@ -9,45 +9,65 @@ import Magnetic from "@/components/Magnetic";
 
 const DESTINATIONS = [
   {
-    id: "alappuzha",
-    name: "Alappuzha",
-    country: "India (Kerala)",
-    image: "/about_intro.jpg",
-    coords: "9.4981° N, 76.3388° E",
+    id: "kerala",
+    name: "Kerala",
+    country: "India",
+    image: "/destinations/Kerala.png",
+    coords: "10.8505° N, 76.2711° E",
     bestTime: "September – March",
-    description: "Known as the Venice of the East, Alappuzha is Jeseem's home base. It features a stunning network of tranquil canals, lakes, and lagoons best experienced aboard luxury houseboats.",
-    highlights: ["Overnight cruise on a luxury houseboat", "Nehru Trophy boat race tracks", "Private backwater seafood dining", "Traditional Ayurvedic wellness spa treatment"],
+    description: "Experience God's Own Country with serene backwaters, emerald tea gardens, palm-fringed beaches, and luxurious houseboat cruises tailored to your preference.",
+    highlights: ["Private luxury houseboat cruise in Alappuzha", "Tea estate walks & mountain mist in Munnar", "Traditional Ayurvedic wellness & spa stays", "Wayanad wildlife sanctuaries & Kovalam beach resorts"],
   },
   {
-    id: "kyoto",
-    name: "Kyoto",
-    country: "Japan",
-    image: "/kyoto.jpg",
-    coords: "35.0116° N, 135.7681° E",
+    id: "lakshadweep",
+    name: "Lakshadweep",
+    country: "India",
+    image: "/destinations/Lakshadweep.png",
+    coords: "10.5667° N, 72.6417° E",
     bestTime: "October – May",
-    description: "Immerse yourself in Japan's cultural heart. Kyoto's ancient wooden temples, serene Zen rock gardens, and traditional teahouses offer an unparalleled voyage back in time.",
-    highlights: ["Fushimi Inari-taisha Shrine at dawn", "Private bamboo forest walk in Arashiyama", "Geisha district custom dining in Gion", "Traditional tea ceremony guided by a master"],
+    description: "A breathtaking tropical archipelago surrounded by turquoise lagoons, thriving coral reefs, and white-sand beaches. Perfect for secluded luxury and ocean adventures.",
+    highlights: ["Scuba diving & snorkeling in Bangaram atoll", "Lagoon kayaking & glass-bottom coral tours", "Exclusive island resort & beach villa stays", "Full permit assistance & island transfer support"],
   },
   {
-    id: "amalfi",
-    name: "Amalfi Coast",
-    country: "Italy",
-    image: "/amalfi.jpg",
-    coords: "40.6340° N, 14.6027° E",
-    bestTime: "May – September",
-    description: "A vertical wonderland of pastel-colored towns clinging to rugged cliffs above the shimmering Tyrrhenian Sea. The Amalfi Coast represents the epitome of Mediterranean coastal luxury.",
-    highlights: ["Sailing around Capri on a private yacht", "Secluded dining at cliffside Michelin restaurants", "Hiking the Path of the Gods with local guides", "Exploring historic lemon groves in Ravello"],
+    id: "georgia",
+    name: "Georgia",
+    country: "Caucasus / Europe",
+    image: "/destinations/Georgia.png",
+    coords: "41.7151° N, 44.8271° E",
+    bestTime: "May – October",
+    description: "A land of ancient Orthodox mountain monasteries, snow-capped Caucasus peaks, historic cobblestone streets, and legendary hospitality.",
+    highlights: ["Tbilisi Old Town & cable car mountain vista", "Kazbegi mountain expedition & Gergeti church", "Sighnaghi wine region private tasting", "Batumi Black Sea coastal boulevard walks"],
   },
   {
-    id: "swiss-alps",
-    name: "Swiss Alps",
-    country: "Switzerland",
-    image: "/swiss_alps.jpg",
-    coords: "46.8182° N, 8.2275° E",
-    bestTime: "December – April (Ski), June – Sept (Hike)",
-    description: "An alpine paradise offering world-class skiing, pristine glacial lakes, and ultra-exclusive mountain chalets. Perfect for high-altitude rejuvenation and adventure.",
-    highlights: ["Helicopter ski touring in Zermatt", "Panoramic travel on the Glacier Express VIP Cabin", "Secluded thermal spa bath stays in Vals", "Private lakeside dining at Lake Lucerne"],
-  }
+    id: "maldives",
+    name: "Maldives",
+    country: "Indian Ocean",
+    image: "/destinations/Maldives.png",
+    coords: "3.2028° N, 73.2207° E",
+    bestTime: "November – April",
+    description: "The gold standard for romantic island luxury. Discover pristine overwater villas, private island dining, and vibrant coral reef marine sanctuaries.",
+    highlights: ["Private overwater bungalow & villa stays", "Snorkeling with manta rays & sea turtles", "Underwater glass dining experience", "Scenic seaplane transfers across tropical atolls"],
+  },
+  {
+    id: "dubai",
+    name: "Dubai",
+    country: "UAE",
+    image: "/destinations/Dubai.png",
+    coords: "25.2048° N, 55.2708° E",
+    bestTime: "October – April",
+    description: "A dazzling desert metropolis where world-record architecture, luxury shopping, desert dune safaris, and Arabian hospitality converge.",
+    highlights: ["Burj Khalifa VIP observatory access", "Desert safari with private dune bashing & BBQ", "Luxury yacht cruise around Dubai Marina", "Fast-tracked UAE tourist visa processing"],
+  },
+  {
+    id: "malaysia",
+    name: "Malaysia",
+    country: "Southeast Asia",
+    image: "/destinations/Malaysia.png",
+    coords: "3.1390° N, 101.6869° E",
+    bestTime: "Year-Round",
+    description: "A captivating blend of futuristic cityscapes, UNESCO heritage towns, ancient rainforests, and idyllic island beaches in Langkawi.",
+    highlights: ["Petronas Twin Towers & Kuala Lumpur skyline", "Langkawi island hopping & skycab ride", "Genting Highlands theme park & cable car", "Batu Caves heritage guided tour"],
+  },
 ];
 
 export default function Destinations() {
@@ -59,8 +79,8 @@ export default function Destinations() {
         <div className="mb-20">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="flex items-center gap-2 mb-4">
-              <Compass className="w-4 h-4 text-amber-500" />
-              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">PORTFOLIO</span>
+              <Compass className="w-4 h-4 text-[#ff007f]" />
+              <span className="text-xs uppercase tracking-widest text-brand-gradient font-bold">PORTFOLIO</span>
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
@@ -102,7 +122,7 @@ export default function Destinations() {
 
               {/* Destination Text Content */}
               <div className="w-full lg:w-1/2 flex flex-col items-start">
-                <span className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-2">
+                <span className="text-xs uppercase tracking-widest text-[#ff007f] font-bold mb-2">
                   {dest.country}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-light tracking-tight text-[var(--foreground)] mb-6">
@@ -114,7 +134,7 @@ export default function Destinations() {
 
                 {/* Best Season */}
                 <div className="flex items-center gap-2 mb-6 text-xs text-[var(--foreground)] bg-[var(--card-bg)] px-4 py-2.5 rounded-full border border-[var(--border)]">
-                  <CloudSun className="w-4 h-4 text-amber-500" />
+                  <CloudSun className="w-4 h-4 text-[#ff007f]" />
                   <span>Best Season: <b>{dest.bestTime}</b></span>
                 </div>
 
@@ -124,7 +144,7 @@ export default function Destinations() {
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--foreground-muted)]">
                     {dest.highlights.map((h, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="text-amber-500 font-bold mt-0.5">•</span>
+                        <span className="text-[#ff007f] font-bold mt-0.5">•</span>
                         <span>{h}</span>
                       </li>
                     ))}
@@ -135,7 +155,7 @@ export default function Destinations() {
                   <Magnetic range={30} strength={0.3}>
                     <Link
                       href={`/contact?destination=${dest.name}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--foreground)] text-[var(--background)] font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:text-white transition-all duration-300 w-full sm:w-auto justify-center"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-gradient-btn font-semibold text-xs uppercase tracking-wider shadow-md w-full sm:w-auto justify-center"
                     >
                       Consult Custom Route
                       <ArrowUpRight className="w-4 h-4" />
@@ -163,9 +183,9 @@ export default function Destinations() {
         {/* CUSTOM DESTINATION INQUIRY BANNER */}
         <div className="mt-28 border-t border-[var(--border)] pt-20">
           <ScrollReveal variant="fade-up" duration={0.8}>
-            <div className="bg-[var(--card-bg)] border border-amber-500/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="bg-[var(--card-bg)] border border-[#c4007b]/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="max-w-2xl space-y-4 text-left">
-                <span className="text-xs uppercase tracking-widest text-amber-500 font-bold block">
+                <span className="text-xs uppercase tracking-widest text-[#ff007f] font-bold block">
                   CAN'T FIND YOUR DREAM LOCATION?
                 </span>
                 <h2 className="text-3xl md:text-4xl font-light text-white tracking-tight">
@@ -180,7 +200,7 @@ export default function Destinations() {
                 <Magnetic range={30} strength={0.3}>
                   <Link
                     href="/contact?destination=Custom+Destination+Inquiry"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-amber-500 hover:text-white transition-all duration-300 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-gradient-btn text-white font-bold text-xs uppercase tracking-wider shadow-lg w-full sm:w-auto"
                   >
                     Custom Destination Inquiry
                     <ArrowUpRight className="w-4 h-4" />

@@ -79,13 +79,13 @@ export default function Packages() {
   return (
     <div className="bg-[var(--background)] pt-32 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header */}
         <div className="mb-16">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">EXPEDITIONS</span>
+              <Sparkles className="w-4 h-4 text-[#ff007f]" />
+              <span className="text-xs uppercase tracking-widest text-brand-gradient font-bold">EXPEDITIONS</span>
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
@@ -106,11 +106,10 @@ export default function Packages() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                activeCategory === cat
+              className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${activeCategory === cat
                   ? "bg-white text-black font-bold scale-105"
                   : "bg-transparent text-[#86868B] border border-white/10 hover:text-white hover:border-white/30"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -139,7 +138,7 @@ export default function Packages() {
                       fill
                       className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
                     />
-                    <span className="absolute top-6 left-6 text-[10px] uppercase tracking-widest bg-amber-500 text-black px-3 py-1 font-extrabold rounded-full">
+                    <span className="absolute top-6 left-6 text-[10px] uppercase tracking-widest bg-brand-gradient text-white px-3 py-1 font-extrabold rounded-full shadow-md">
                       {pkg.category}
                     </span>
                   </div>
@@ -160,11 +159,11 @@ export default function Packages() {
                       {/* Metadata details */}
                       <div className="flex gap-6 mb-6 text-xs text-[var(--foreground-muted)] border-t border-b border-[var(--border)] py-4">
                         <div className="flex items-center gap-1.5">
-                          <Clock className="w-4 h-4 text-amber-500" />
+                          <Clock className="w-4 h-4 text-[#ff007f]" />
                           <span>{pkg.duration}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <Tag className="w-4 h-4 text-amber-500" />
+                          <Tag className="w-4 h-4 text-[#ff007f]" />
                           <span>{pkg.price}</span>
                         </div>
                       </div>
@@ -175,7 +174,7 @@ export default function Packages() {
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[var(--foreground-muted)]">
                           {pkg.highlights.map((h, idx) => (
                             <li key={idx} className="flex items-start gap-1.5">
-                              <span className="text-amber-500 font-bold">•</span>
+                              <span className="text-[#ff007f] font-bold">•</span>
                               <span>{h}</span>
                             </li>
                           ))}

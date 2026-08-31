@@ -44,6 +44,12 @@ export default function Contact() {
   };
 
   const destinationsList = [
+    "Kerala, India",
+    "Lakshadweep, India",
+    "Georgia",
+    "Maldives",
+    "Dubai, UAE",
+    "Malaysia",
     "Flight Booking",
     "Domestic Holiday Package",
     "International Holiday Package",
@@ -65,8 +71,8 @@ export default function Contact() {
         <div className="text-center mb-16">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Calendar className="w-4 h-4 text-amber-500" />
-              <span className="text-xs uppercase tracking-widest text-amber-500 font-bold">CONSULTATION</span>
+              <Calendar className="w-4 h-4 text-[#ff007f]" />
+              <span className="text-xs uppercase tracking-widest text-brand-gradient font-bold">CONSULTATION</span>
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
@@ -91,7 +97,7 @@ export default function Contact() {
             <ScrollReveal variant="fade-up" duration={0.6} className="bg-[var(--card-bg)] border border-[var(--border)] p-6 rounded-3xl">
               <div className="flex items-center gap-1 mb-3">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                  <Star key={s} className="w-4 h-4 fill-[#ff007f] text-[#ff007f]" />
                 ))}
                 <span className="text-sm font-semibold text-[var(--foreground)] ml-2">4.9 / 5.0 Rating</span>
               </div>
@@ -103,7 +109,7 @@ export default function Contact() {
             {/* Physical Location Address */}
             <ScrollReveal variant="fade-up" duration={0.6} className="bg-[var(--card-bg)] border border-[var(--border)] p-6 rounded-3xl space-y-4">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-amber-500" />
+                <MapPin className="w-4 h-4 text-[#ff007f]" />
                 <h3 className="text-xs uppercase tracking-widest text-[var(--foreground)] font-bold">Office Address</h3>
               </div>
               <p className="text-sm text-[var(--foreground)] font-light leading-relaxed">
@@ -115,7 +121,7 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-amber-500" />
+                  <Clock className="w-4 h-4 text-[#ff007f]" />
                   <span className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">Business Hours</span>
                 </div>
                 <p className="text-xs text-[var(--foreground)]">Open · {COMPANY_DETAILS.hours} (Mon – Sat)</p>
@@ -132,29 +138,29 @@ export default function Contact() {
               <div className="space-y-4 text-xs">
                 {/* Reservations */}
                 <div className="border-b border-[var(--border)] pb-3">
-                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.reservations.label}</p>
-                  <p className="text-[var(--foreground)] mt-1">Phone/WhatsApp: <a href={`tel:${COMPANY_DETAILS.departments.reservations.phone}`} className="hover:text-amber-500 font-mono font-semibold">{COMPANY_DETAILS.departments.reservations.phone}</a></p>
-                  <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.reservations.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.reservations.email}</a></p>
+                  <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.reservations.label}</p>
+                  <p className="text-[var(--foreground)] mt-1">Phone/WhatsApp: <a href={`tel:${COMPANY_DETAILS.departments.reservations.phone}`} className="hover:text-[#c4007b] font-mono font-semibold">{COMPANY_DETAILS.departments.reservations.phone}</a></p>
+                  <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.reservations.email}`} className="hover:text-[#c4007b] font-mono">{COMPANY_DETAILS.departments.reservations.email}</a></p>
                 </div>
 
                 {/* Holidays */}
                 <div className="border-b border-[var(--border)] pb-3">
-                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.holidays.label}</p>
-                  <p className="text-[var(--foreground)] mt-1">Phone/WhatsApp: <a href={`tel:${COMPANY_DETAILS.departments.holidays.phone}`} className="hover:text-amber-500 font-mono font-semibold">{COMPANY_DETAILS.departments.holidays.phone}</a></p>
-                  <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.holidays.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.holidays.email}</a></p>
+                  <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.holidays.label}</p>
+                  <p className="text-[var(--foreground)] mt-1">Phone/WhatsApp: <a href={`tel:${COMPANY_DETAILS.departments.holidays.phone}`} className="hover:text-[#c4007b] font-mono font-semibold">{COMPANY_DETAILS.departments.holidays.phone}</a></p>
+                  <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.holidays.email}`} className="hover:text-[#c4007b] font-mono">{COMPANY_DETAILS.departments.holidays.email}</a></p>
                 </div>
 
                 {/* Visa & Attestation Team */}
                 <div className="border-b border-[var(--border)] pb-3">
-                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">Visa & Attestation Desk</p>
-                  <p className="text-[var(--foreground-muted)] mt-1">Email: <a href={`mailto:${COMPANY_DETAILS.departments.visas.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.visas.email}</a></p>
+                  <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">Visa & Attestation Desk</p>
+                  <p className="text-[var(--foreground-muted)] mt-1">Email: <a href={`mailto:${COMPANY_DETAILS.departments.visas.email}`} className="hover:text-[#c4007b] font-mono">{COMPANY_DETAILS.departments.visas.email}</a></p>
                 </div>
 
                 {/* Admin */}
                 <div>
-                  <p className="font-bold text-amber-500 uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.admin.label}</p>
-                  <p className="text-[var(--foreground)] mt-1">Official Phone: <a href={`tel:${COMPANY_DETAILS.departments.admin.phone}`} className="hover:text-amber-500 font-mono font-semibold">{COMPANY_DETAILS.departments.admin.phone}</a></p>
-                  <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.admin.email}`} className="hover:text-amber-500 font-mono">{COMPANY_DETAILS.departments.admin.email}</a></p>
+                  <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">{COMPANY_DETAILS.departments.admin.label}</p>
+                  <p className="text-[var(--foreground)] mt-1">Official Phone: <a href={`tel:${COMPANY_DETAILS.departments.admin.phone}`} className="hover:text-[#c4007b] font-mono font-semibold">{COMPANY_DETAILS.departments.admin.phone}</a></p>
+                  <p className="text-[var(--foreground-muted)]">Email: <a href={`mailto:${COMPANY_DETAILS.departments.admin.email}`} className="hover:text-[#c4007b] font-mono">{COMPANY_DETAILS.departments.admin.email}</a></p>
                 </div>
               </div>
             </ScrollReveal>
@@ -176,11 +182,11 @@ export default function Contact() {
 
                   {/* Destination / Service Dropdown */}
                   <div className="flex flex-col gap-2">
-                    <label className="text-[10px] uppercase tracking-widest text-amber-500 font-bold">Select Service / Destination</label>
+                    <label className="text-[10px] uppercase tracking-widest text-[#c4007b] font-bold">Select Service / Destination</label>
                     <select
                       value={formData.destination}
                       onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                      className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors font-medium"
+                      className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors font-medium"
                     >
                       {destinationsList.map((d) => (
                         <option key={d} value={d} className="bg-[var(--card-bg)] text-[var(--foreground)]">
@@ -204,13 +210,13 @@ export default function Contact() {
                       >
                         {/* 1. Document Type */}
                         <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-amber-600 font-bold flex items-center gap-1">
+                          <label className="text-[10px] uppercase tracking-widest text-[#c4007b] font-bold flex items-center gap-1">
                             Document / Certificate Type
                           </label>
                           <select
                             value={formData.documentType}
                             onChange={(e) => setFormData({ ...formData, documentType: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="Degree / Educational Certificate">Degree / Educational Certificate</option>
                             <option value="Birth Certificate">Birth Certificate</option>
@@ -224,13 +230,13 @@ export default function Contact() {
 
                         {/* 2. Issuing State / Country */}
                         <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-amber-600 font-bold flex items-center gap-1">
+                          <label className="text-[10px] uppercase tracking-widest text-[#c4007b] font-bold flex items-center gap-1">
                             Issuing Country / State
                           </label>
                           <select
                             value={formData.issuingState}
                             onChange={(e) => setFormData({ ...formData, issuingState: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="India (Kerala)">India (Kerala)</option>
                             <option value="India (Other States)">India (Other States)</option>
@@ -243,13 +249,13 @@ export default function Contact() {
 
                         {/* 3. Target Attestation / Purpose */}
                         <div className="flex flex-col gap-2">
-                          <label className="text-[10px] uppercase tracking-widest text-amber-600 font-bold flex items-center gap-1">
+                          <label className="text-[10px] uppercase tracking-widest text-[#c4007b] font-bold flex items-center gap-1">
                             Target Attestation / Purpose
                           </label>
                           <select
                             value={formData.attestationType}
                             onChange={(e) => setFormData({ ...formData, attestationType: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="UAE Attestation">UAE Attestation</option>
                             <option value="Qatar Attestation">Qatar Attestation</option>
@@ -280,7 +286,7 @@ export default function Contact() {
                           <select
                             value={formData.visaCategory}
                             onChange={(e) => setFormData({ ...formData, visaCategory: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="Tourist / Visit Visa">Tourist / Visit Visa</option>
                             <option value="Business / Conference Visa">Business / Conference Visa</option>
@@ -299,7 +305,7 @@ export default function Contact() {
                           <select
                             value={formData.targetCountry}
                             onChange={(e) => setFormData({ ...formData, targetCountry: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="UAE / GCC Countries">UAE / GCC Countries</option>
                             <option value="Schengen (Europe)">Schengen (Europe)</option>
@@ -319,7 +325,7 @@ export default function Contact() {
                           <select
                             value={formData.processingUrgency}
                             onChange={(e) => setFormData({ ...formData, processingUrgency: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="Express / Urgent Processing">Express / Urgent Processing</option>
                             <option value="Within 1 - 2 Weeks">Within 1 - 2 Weeks</option>
@@ -344,7 +350,7 @@ export default function Contact() {
                           <select
                             value={formData.travelers}
                             onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="1 Guest">Solo Traveler (1 Guest)</option>
                             <option value="2 Guests">Couple (2 Guests)</option>
@@ -359,7 +365,7 @@ export default function Contact() {
                           <select
                             value={formData.duration}
                             onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="Under 1 Week">Under 1 Week</option>
                             <option value="1-2 Weeks">1 - 2 Weeks</option>
@@ -374,7 +380,7 @@ export default function Contact() {
                           <select
                             value={formData.budget}
                             onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-amber-500 transition-colors"
+                            className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] focus:outline-none focus:border-[#c4007b] transition-colors"
                           >
                             <option value="Economy">Budget Friendly (Economy)</option>
                             <option value="Standard">Mid-Range (Standard)</option>
@@ -396,7 +402,7 @@ export default function Contact() {
                         placeholder="e.g. Eleanor Vance"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-[#c4007b] transition-colors"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -407,7 +413,7 @@ export default function Contact() {
                         placeholder="e.g. eleanor@domain.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-[#c4007b] transition-colors"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -417,7 +423,7 @@ export default function Contact() {
                         placeholder="e.g. +91 90618 58416"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-[#c4007b] transition-colors"
                       />
                     </div>
                   </div>
@@ -438,14 +444,14 @@ export default function Contact() {
                       }
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                      className="w-full bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-xs text-[var(--foreground)] placeholder-[var(--foreground-muted)]/50 focus:outline-none focus:border-[#c4007b] transition-colors resize-none"
                     />
                   </div>
 
                   {/* Submit Action */}
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-[var(--border)]">
                     <span className="text-[10px] text-[var(--foreground-muted)] flex items-center gap-1">
-                      <ShieldAlert className="w-3.5 h-3.5 text-amber-500" />
+                      <ShieldAlert className="w-3.5 h-3.5 text-[#ff007f]" />
                       100% Quality-Ensured Service & Confidentiality.
                     </span>
 
@@ -453,7 +459,7 @@ export default function Contact() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-amber-500 text-black font-bold text-xs uppercase tracking-wider hover:bg-amber-600 hover:scale-105 disabled:opacity-50 transition-all duration-300 cursor-pointer shadow-md"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-gradient-btn text-white font-bold text-xs uppercase tracking-wider disabled:opacity-50 transition-all duration-300 cursor-pointer shadow-md"
                       >
                         {isSubmitting ? "Dispatching Inquiry..." : "Submit Inquiry"}
                         <Send className="w-3.5 h-3.5" />
@@ -469,7 +475,7 @@ export default function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 flex flex-col items-center text-center max-w-md mx-auto"
                 >
-                  <CheckCircle2 className="w-16 h-16 text-amber-500 mb-6" />
+                  <CheckCircle2 className="w-16 h-16 text-[#ff007f] mb-6" />
                   <h3 className="text-3xl font-light text-[var(--foreground)] tracking-tight mb-4">Inquiry Received</h3>
                   <p className="text-sm text-[var(--foreground-muted)] leading-relaxed mb-8">
                     Thank you, <b>{formData.name}</b>. Your inquiry for <b>{formData.destination}</b> has been securely received by our desk. Our travel & document team will contact <b>{formData.email}</b> or call you within 24 hours.
