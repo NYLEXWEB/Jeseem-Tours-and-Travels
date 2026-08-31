@@ -313,16 +313,16 @@ export default function Home() {
       {/* 1. HERO SECTION (Single-Screen Viewport Layout with Full Background Image) */}
       <section ref={heroRef} className="relative h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-8 md:pt-28 md:pb-10 px-6 sm:px-12">
         {/* Background Layer (Full Image View, No Dark Fade Overlay) */}
-        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none bg-[#fbe4ea]">
           <Image
-            src="/hero_background.jpg"
+            src="/travel_pink_hero_new.png"
             alt="Jeseem Travel Header Background"
             fill
-            className="object-cover object-bottom hidden md:block"
+            className="object-cover object-right-bottom hidden md:block"
             priority
           />
           <Image
-            src="/hero_background_mobile.png"
+            src="/travel_pink_hero_mobile_new.jpg"
             alt="Jeseem Travel Mobile Header Background"
             fill
             className="object-cover object-bottom block md:hidden"
@@ -333,9 +333,9 @@ export default function Home() {
         </div>
 
         {/* Hero Central Content */}
-        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-start md:justify-center items-start md:items-end my-auto pt-8 md:pt-0 md:pr-0 lg:pr-4">
-          {/* Main Stylish Headline & Structure (Right-Aligned on Desktop, Left-Text-Aligned) */}
-          <div className="flex flex-col items-start max-w-xl text-left md:translate-x-10">
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-center items-start md:items-start my-auto pt-16 md:pt-0 md:pr-0 lg:pr-4">
+          {/* Main Stylish Headline & Structure (Left-Aligned to fit the pink background visual) */}
+          <div className="flex flex-col items-start max-w-xl text-left md:translate-x-0">
             {/* Small main heading (H1) */}
             <motion.h1
               initial={{ opacity: 0, y: 10 }}
@@ -387,7 +387,7 @@ export default function Home() {
             <Magnetic range={30} strength={0.25}>
               <Link
                 href="/packages"
-                className="px-6 py-4 rounded-full bg-black/40 hover:bg-black/60 border border-[#ffffff]/20 text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
+                className="px-6 py-4 rounded-full border border-[#171717]/20 text-[#171717] bg-[#171717]/5 hover:bg-[#171717] hover:text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
               >
                 Our Packages
               </Link>
