@@ -711,22 +711,15 @@ export default function Home() {
                         aria-label={`View itinerary for ${dest.name}`}
                       />
 
-                      {/* Transparent Bottom Overlay Row (No dark block background, 100% Legible White Text & Official WhatsApp Green) */}
+                      {/* Transparent Bottom Overlay Row (More Details Yellow Fade Button & Official WhatsApp Green) */}
                       <div className="relative z-20 flex items-center justify-between mt-auto pointer-events-auto w-full pt-2">
-                        <div className="flex items-center gap-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
-                          <span
-                            className="text-base uppercase tracking-wider font-extrabold"
-                            style={{ color: '#ffffff', textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}
-                          >
-                            {dest.name}
-                          </span>
-                          <span
-                            className="text-xs uppercase tracking-widest font-bold"
-                            style={{ color: '#ff66c4', textShadow: '0 2px 4px rgba(0,0,0,0.95)' }}
-                          >
-                            · {dest.country}
-                          </span>
-                        </div>
+                        <Link
+                          href={`/destinations#${dest.id}`}
+                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-500 text-neutral-950 text-[11px] uppercase tracking-wider font-extrabold transition-all duration-300 shadow-md hover:scale-105 shrink-0"
+                        >
+                          More Details
+                          <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                        </Link>
                         <a
                           href={`https://wa.me/919061858416?text=Hi,%20I%20would%20like%20to%20inquire%20about%20the%20"${encodeURIComponent(dest.name)}"%20destination%20itinerary.`}
                           target="_blank"
