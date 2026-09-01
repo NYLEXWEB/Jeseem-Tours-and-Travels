@@ -14,8 +14,6 @@ textarea,
 }
 
 @theme {
-  --color-white: var(--foreground);
-  --color-black: var(--background);
   --font-bebas: var(--font-bebas-neue);
   --font-outfit: var(--font-outfit);
 }
