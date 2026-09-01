@@ -1161,7 +1161,7 @@ export default function Home() {
                     <span className="text-lg font-bold text-white">4.9</span>
                     <div className="flex items-center text-[#ff007f]">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#ff007f] text-[#ff007f]" />
+                        <Star key={i} className="w-4 h-4 fill-[#f59e0b] text-[#f59e0b]" />
                       ))}
                     </div>
                   </div>
