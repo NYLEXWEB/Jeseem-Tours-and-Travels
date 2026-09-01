@@ -431,31 +431,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO) */}
-      <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none">
-        {/* Desktop Background Visual */}
-        <div className="hidden md:block absolute inset-0">
-          <Image
-            src="/jeseem_bg.png"
-            alt="Cinematic fixed travel canvas backdrop"
-            fill
-            className="object-cover opacity-100"
-            sizes="100vw"
-            priority
-          />
-        </div>
-        {/* Mobile Background Visual */}
-        <div className="block md:hidden absolute inset-0">
-          <Image
-            src="/jeseem_bg_mobile.png"
-            alt="Cinematic fixed travel canvas backdrop mobile"
-            fill
-            className="object-cover opacity-100"
-            sizes="100vw"
-            priority
-          />
-        </div>
-      </div>
+      {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO: PURE WHITE) */}
+      <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none bg-black" />
 
       {/* 2. OUR TRAVEL PHILOSOPHY & FOUNDER TRIBUTE SECTION */}
       <section className="relative py-28 md:py-36 px-6 overflow-hidden border-t border-black/5 flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent">
