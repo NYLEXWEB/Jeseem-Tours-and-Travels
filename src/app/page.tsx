@@ -9,6 +9,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 import TiltCard from "@/components/TiltCard";
 import Magnetic from "@/components/Magnetic";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
+import HeroBackgroundCarousel from "@/components/HeroBackgroundCarousel";
 import { COMPANY_DETAILS } from "@/constants/company";
 
 // Curated Assets and Details
@@ -329,24 +330,9 @@ export default function Home() {
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
       {/* 1. HERO SECTION (Single-Screen Viewport Layout with Full Background Image) */}
       <section ref={heroRef} className="relative h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-8 md:pt-28 md:pb-10 px-6 sm:px-12">
-        {/* Background Layer (Full Image View, No Dark Fade Overlay) */}
-        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none bg-[#fbe4ea]">
-          <Image
-            src="/travel_pink_hero_new.png"
-            alt="Jeseem Travel Header Background"
-            fill
-            className="object-cover object-right-bottom hidden md:block"
-            priority
-          />
-          <Image
-            src="/travel_pink_hero_mobile_new.jpg"
-            alt="Jeseem Travel Mobile Header Background"
-            fill
-            className="object-cover object-bottom block md:hidden"
-            priority
-          />
-          {/* Soft foggy blend transition to the white section below */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#ffffff] to-transparent" />
+        {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+          <HeroBackgroundCarousel />
         </div>
 
         {/* Hero Central Content */}
