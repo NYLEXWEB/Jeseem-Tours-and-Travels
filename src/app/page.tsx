@@ -491,7 +491,7 @@ export default function Home() {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative bg-white/80 backdrop-blur-md border border-[#c4007b]/20 hover:border-[#c4007b]/50 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-lg shadow-[#c4007b]/5 hover:shadow-2xl hover:shadow-[#c4007b]/15 transition-all duration-500 text-left overflow-hidden"
+                  className="group relative bg-black border border-neutral-200 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-500 text-left overflow-hidden"
                 >
                   {/* Subtle Top Accent Glow */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-[#912D6B]/15 via-[#C72F62]/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
@@ -510,19 +510,19 @@ export default function Home() {
                     <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4 group-hover:text-[#912D6B] transition-colors">
                       Transparent & Seamless Global Travel
                     </h4>
-                    <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light mb-6">
+                    <p className="text-neutral-600 text-sm md:text-base leading-relaxed font-light mb-6">
                       To deliver world-class, 100% quality-ensured travel solutions—from group flight ticket allocations and customized holiday packages to swift document attestations and visa clearances—empowering every client with transparent pricing, utmost comfort, and peace of mind.
                     </p>
 
                     {/* Interactive Feature Pills */}
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200">
                         &bull; Group Flight Allocations
                       </span>
-                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200">
                         &bull; Rapid Visa Support
                       </span>
-                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200">
                         &bull; 100% Transparent Fares
                       </span>
                     </div>
@@ -543,7 +543,7 @@ export default function Home() {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative bg-white/80 backdrop-blur-md border border-sky-500/20 hover:border-sky-500/50 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-lg shadow-sky-500/5 hover:shadow-2xl hover:shadow-sky-500/15 transition-all duration-500 text-left overflow-hidden"
+                  className="group relative bg-black border border-neutral-200 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-500 text-left overflow-hidden"
                 >
                   {/* Subtle Top Accent Glow */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-sky-400/15 via-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
@@ -562,19 +562,19 @@ export default function Home() {
                     <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4 group-hover:text-sky-600 transition-colors">
                       The Gold Standard in Travel Trust
                     </h4>
-                    <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light mb-6">
+                    <p className="text-neutral-600 text-sm md:text-base leading-relaxed font-light mb-6">
                       To be recognized as the premier travel consultancy in Kerala and worldwide, celebrated for unyielding integrity, zero-compromise quality standards, zero hidden costs, and nurturing lifelong relationships with every passenger we serve.
                     </p>
 
                     {/* Interactive Feature Pills */}
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200">
                         &bull; Premier Global Reputation
                       </span>
-                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200">
                         &bull; Zero Hidden Costs
                       </span>
-                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-neutral-100 text-neutral-800 text-xs font-semibold border border-neutral-200">
                         &bull; 24/7 Passenger Support
                       </span>
                     </div>
@@ -596,31 +596,28 @@ export default function Home() {
               <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative bg-gradient-to-r from-neutral-900 via-neutral-950 to-black border border-neutral-800 p-8 md:p-12 rounded-3xl shadow-2xl overflow-hidden text-left"
+                className="relative bg-black border border-neutral-200 p-8 md:p-12 rounded-3xl shadow-xl overflow-hidden text-left"
               >
                 {/* Top Animated Brand Gradient Bar */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#912D6B] via-[#C72F62] to-[#D92F60]" />
-
-                {/* Ambient Decorative Background Shapes */}
-                <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-gradient-to-br from-[#912D6B]/20 via-[#D92F60]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700" />
 
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
                   <div className="max-w-3xl">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#912D6B] to-[#D92F60] text-white font-bold text-[10px] uppercase tracking-widest mb-4 shadow-md">
-                      <ShieldCheck className="w-4 h-4" />
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200 font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
+                      <ShieldCheck className="w-4 h-4 text-sky-600" />
                       100% QUALITY ENSURED &middot; NO COMPROMISE
                     </div>
-                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white tracking-tight mb-3">
+                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#171717] tracking-tight mb-3">
                       Zero Compromise on Quality of Service
                     </h4>
-                    <p className="text-neutral-300 text-sm md:text-base font-light leading-relaxed">
+                    <p className="text-neutral-600 text-sm md:text-base font-light leading-relaxed">
                       At Jeseem Tours & Travels, service quality is absolute. We do not compromise on accuracy, safety, or timing. Every airline ticket, document attestation file, and travel itinerary undergoes multi-stage verification to guarantee 100% precision and satisfaction.
                     </p>
                   </div>
                   <div className="shrink-0 w-full lg:w-auto">
                     <Link
                       href="/contact"
-                      className="w-full lg:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-sky-500/25 hover:scale-105 hover:brightness-110 transition-all flex items-center justify-center gap-2"
+                      className="w-full lg:w-auto px-8 py-4 rounded-full bg-brand-gradient-btn hover:bg-neutral-800 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2"
                     >
                       Consult Quality Desks
                       <ArrowUpRight className="w-4 h-4" />
@@ -633,9 +630,9 @@ export default function Home() {
 
           {/* FOUNDER TRIBUTE CARD (Late KUNJUMON ISMAIL) - Clean White Luxury Theme */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.2}>
-            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-8 md:p-14 border border-[#c4007b]/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
+            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-8 md:p-14 border border-sky-600/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
               {/* Founder Image Frame */}
-              <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-[#c4007b]/40 shadow-xl group bg-purple-50">
+              <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-sky-600/40 shadow-xl group bg-purple-50">
                 <Image
                   src="/Father photo.png"
                   alt="KUNJUMON ISMAIL - Founder of Jeseem Tours & Travels"
@@ -644,7 +641,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
                 <div className="absolute bottom-3 left-3 right-3 z-20 text-center">
-                  <span className="px-3.5 py-1 rounded-full bg-brand-gradient text-white text-[10px] uppercase font-bold tracking-widest inline-block shadow-md">
+                  <span className="px-3.5 py-1 rounded-full bg-white text-black text-[10px] uppercase font-bold tracking-widest inline-block shadow-md">
                     In Loving Memory
                   </span>
                 </div>
@@ -652,19 +649,19 @@ export default function Home() {
 
               {/* Founder Bio & Tribute Content */}
               <div className="flex-1 flex flex-col justify-center items-start text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient-light border border-[#c4007b]/30 text-[#c4007b] text-xs uppercase tracking-widest font-mono font-bold mb-4">
-                  <Award className="w-3.5 h-3.5 text-[#ff007f]" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient-light border border-sky-600/30 text-sky-600 text-xs uppercase tracking-widest font-mono font-bold mb-4">
+                  <Award className="w-3.5 h-3.5 text-sky-600" />
                   FOUNDER TRIBUTE & HERITAGE
                 </div>
 
                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit">
                   KUNJUMON ISMAIL
                 </h3>
-                <p className="text-[#c4007b] text-sm font-mono tracking-widest uppercase mb-6 font-bold">
+                <p className="text-sky-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
                   Founder & Visionary &bull; (Late in 2022)
                 </p>
 
-                <blockquote className="text-zinc-700 text-base md:text-lg leading-relaxed font-light italic border-l-2 border-[#c4007b] pl-5 mb-6">
+                <blockquote className="text-zinc-700 text-base md:text-lg leading-relaxed font-light italic border-l-2 border-sky-600 pl-5 mb-6">
                   &ldquo;Travel is more than reaching a destination; it is about building trust, creating lifetime memories, and serving every passenger with utmost sincerity and dedication.&rdquo;
                 </blockquote>
 
@@ -675,7 +672,7 @@ export default function Home() {
                 <div className="flex flex-wrap items-center gap-4">
                   <Link
                     href="/about"
-                    className="px-6 py-3.5 rounded-full bg-brand-gradient-btn font-bold text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2"
+                    className="px-6 py-3.5 rounded-full bg-white font-bold text-black text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2"
                   >
                     Read Our Full Founder Story
                     <ArrowUpRight className="w-4 h-4" />
