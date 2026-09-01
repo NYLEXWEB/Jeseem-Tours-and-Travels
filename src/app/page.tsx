@@ -437,24 +437,40 @@ export default function Home() {
       {/* 2. OUR TRAVEL PHILOSOPHY & FOUNDER TRIBUTE SECTION */}
       <section className="relative py-28 md:py-36 px-6 overflow-hidden border-t border-black/5 flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent">
         <div className="max-w-6xl mx-auto w-full relative z-20">
-          {/* Philosophy Statement */}
-          <div className="max-w-4xl mx-auto text-center mb-20">
-            <ScrollReveal variant="fade-up" duration={0.8}>
-              <span className="text-xs uppercase tracking-widest text-sky-600 font-bold mb-4 block">
-                OUR TRAVEL PHILOSOPHY
-              </span>
+          {/* Philosophy Statement: 2-Column Layout (Image Left, Text Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-24">
+            {/* Left Column: Visual Image */}
+            <ScrollReveal variant="fade-up" duration={0.8} className="relative w-full h-[360px] sm:h-[440px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl border border-black/10">
+              <Image
+                src="/travel_image.png"
+                alt="Jeseem Travel Philosophy Visual"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
             </ScrollReveal>
-            <ScrollReveal variant="blur-in" duration={1.2} delay={0.2}>
-              <h2 className="text-3xl md:text-5xl font-extralight tracking-tight leading-snug md:leading-normal text-[#171717] text-balance">
-                We believe travel should be affordable, seamless, and memorable. From the moment you plan your flights to visa clearances and local stays, we take care of all the details, allowing you to focus entirely on the journey.
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal variant="fade-up" duration={0.8} delay={0.4} className="mt-8 flex justify-center">
-              <Link href="/about" className="group text-xs uppercase tracking-widest text-[#171717] hover:text-sky-600 font-bold inline-flex items-center gap-2 transition-all">
-                Discover Our {new Date().getFullYear() - COMPANY_DETAILS.established}-Year Story
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-              </Link>
-            </ScrollReveal>
+
+            {/* Right Column: Philosophy Details */}
+            <div className="flex flex-col items-start text-left">
+              <ScrollReveal variant="fade-up" duration={0.8}>
+                <span className="text-xs uppercase tracking-widest text-sky-600 font-bold mb-4 block">
+                  OUR TRAVEL PHILOSOPHY
+                </span>
+              </ScrollReveal>
+              <ScrollReveal variant="blur-in" duration={1.2} delay={0.2}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-relaxed text-[#171717] mb-6">
+                  We believe travel should be affordable, seamless, and memorable. From the moment you plan your flights to visa clearances and local stays, we take care of all the details, allowing you to focus entirely on the journey.
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal variant="fade-up" duration={0.8} delay={0.4} className="mt-2">
+                <Link href="/about" className="group text-xs uppercase tracking-widest text-[#171717] hover:text-sky-600 font-bold inline-flex items-center gap-2 transition-all">
+                  Discover Our {new Date().getFullYear() - COMPANY_DETAILS.established}-Year Story
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                </Link>
+              </ScrollReveal>
+            </div>
           </div>
 
           {/* MISSION & VISION & 100% QUALITY ASSURANCE SECTION ON HOME PAGE */}
