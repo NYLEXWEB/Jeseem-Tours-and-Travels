@@ -485,78 +485,149 @@ export default function Home() {
             </div>
 
             {/* Grid of Mission & Vision */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
               {/* Mission Card */}
               <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
-                <div className="bg-[var(--card-bg)] border border-[#c4007b]/20 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-[#c4007b]/40 transition-colors text-left">
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="group relative bg-white/80 backdrop-blur-md border border-[#c4007b]/20 hover:border-[#c4007b]/50 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-lg shadow-[#c4007b]/5 hover:shadow-2xl hover:shadow-[#c4007b]/15 transition-all duration-500 text-left overflow-hidden"
+                >
+                  {/* Subtle Top Accent Glow */}
+                  <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-[#912D6B]/15 via-[#C72F62]/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/10 border border-[#c4007b]/20 flex items-center justify-center mb-6">
-                      <Target className="w-6 h-6 text-[#c4007b]" />
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#912D6B]/15 to-[#D92F60]/15 border border-[#c4007b]/30 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-300">
+                        <Target className="w-7 h-7 text-[#c4007b] animate-pulse" />
+                      </div>
+                      <span className="px-3 py-1 rounded-full bg-[#c4007b]/10 text-[#c4007b] text-[10px] font-bold uppercase tracking-widest border border-[#c4007b]/20">
+                        Purpose Driven
+                      </span>
                     </div>
+
                     <span className="text-xs uppercase tracking-widest text-[#c4007b] font-bold block mb-2">OUR MISSION</span>
-                    <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4">
+                    <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4 group-hover:text-[#912D6B] transition-colors">
                       Transparent & Seamless Global Travel
                     </h4>
-                    <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light">
+                    <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light mb-6">
                       To deliver world-class, 100% quality-ensured travel solutions—from group flight ticket allocations and customized holiday packages to swift document attestations and visa clearances—empowering every client with transparent pricing, utmost comfort, and peace of mind.
                     </p>
+
+                    {/* Interactive Feature Pills */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                        &bull; Group Flight Allocations
+                      </span>
+                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                        &bull; Rapid Visa Support
+                      </span>
+                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                        &bull; 100% Transparent Fares
+                      </span>
+                    </div>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-xs font-semibold text-[#c4007b]">
-                    <CheckCircle2 className="w-4 h-4 text-[#ff007f]" />
-                    Client-Centric Excellence Since 1985
+
+                  <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs font-semibold text-[#c4007b]">
+                    <span className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#ff007f]" />
+                      Client-Centric Excellence Since 1985
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </div>
-                </div>
+                </motion.div>
               </ScrollReveal>
 
               {/* Vision Card */}
               <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
-                <div className="bg-[var(--card-bg)] border border-sky-500/20 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/40 transition-colors text-left">
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="group relative bg-white/80 backdrop-blur-md border border-sky-500/20 hover:border-sky-500/50 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-lg shadow-sky-500/5 hover:shadow-2xl hover:shadow-sky-500/15 transition-all duration-500 text-left overflow-hidden"
+                >
+                  {/* Subtle Top Accent Glow */}
+                  <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-sky-400/15 via-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-6">
-                      <Eye className="w-6 h-6 text-sky-500" />
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500/15 to-indigo-500/15 border border-sky-500/30 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-300">
+                        <Eye className="w-7 h-7 text-sky-600 animate-pulse" />
+                      </div>
+                      <span className="px-3 py-1 rounded-full bg-sky-500/10 text-sky-600 text-[10px] font-bold uppercase tracking-widest border border-sky-500/20">
+                        Long-Term Trust
+                      </span>
                     </div>
+
                     <span className="text-xs uppercase tracking-widest text-sky-600 font-bold block mb-2">OUR VISION</span>
-                    <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4">
+                    <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-4 group-hover:text-sky-600 transition-colors">
                       The Gold Standard in Travel Trust
                     </h4>
-                    <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light">
+                    <p className="text-[#4b5563] text-sm md:text-base leading-relaxed font-light mb-6">
                       To be recognized as the premier travel consultancy in Kerala and worldwide, celebrated for unyielding integrity, zero-compromise quality standards, zero hidden costs, and nurturing lifelong relationships with every passenger we serve.
                     </p>
+
+                    {/* Interactive Feature Pills */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                        &bull; Premier Global Reputation
+                      </span>
+                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                        &bull; Zero Hidden Costs
+                      </span>
+                      <span className="px-3 py-1 rounded-lg bg-neutral-100 text-neutral-700 text-xs font-medium border border-neutral-200">
+                        &bull; 24/7 Passenger Support
+                      </span>
+                    </div>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-[var(--border)] flex items-center gap-2 text-xs font-semibold text-sky-600">
-                    <Sparkles className="w-4 h-4 text-sky-500" />
-                    Building Lifelong Journeys & Trust
+
+                  <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs font-semibold text-sky-600">
+                    <span className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-sky-500" />
+                      Building Lifelong Journeys & Trust
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </div>
-                </div>
+                </motion.div>
               </ScrollReveal>
             </div>
 
             {/* 100% QUALITY ASSURANCE BANNER CARD */}
             <ScrollReveal variant="fade-up" duration={1.0} delay={0.3}>
-              <div className="bg-brand-gradient-light border border-brand-gradient-light p-8 md:p-10 rounded-3xl shadow-sm relative overflow-hidden text-left">
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-                  <div className="max-w-2xl">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient text-white font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
-                      <ShieldCheck className="w-3.5 h-3.5" />
+              <motion.div
+                whileHover={{ scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative bg-gradient-to-r from-neutral-900 via-neutral-950 to-black border border-neutral-800 p-8 md:p-12 rounded-3xl shadow-2xl overflow-hidden text-left"
+              >
+                {/* Top Animated Brand Gradient Bar */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#912D6B] via-[#C72F62] to-[#D92F60]" />
+
+                {/* Ambient Decorative Background Shapes */}
+                <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-gradient-to-br from-[#912D6B]/20 via-[#D92F60]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
+                  <div className="max-w-3xl">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#912D6B] to-[#D92F60] text-white font-bold text-[10px] uppercase tracking-widest mb-4 shadow-md">
+                      <ShieldCheck className="w-4 h-4" />
                       100% QUALITY ENSURED &middot; NO COMPROMISE
                     </div>
-                    <h4 className="text-2xl md:text-3xl font-light text-[#171717] tracking-tight mb-3">
+                    <h4 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white tracking-tight mb-3">
                       Zero Compromise on Quality of Service
                     </h4>
-                    <p className="text-[#4b5563] text-sm md:text-base font-light leading-relaxed">
+                    <p className="text-neutral-300 text-sm md:text-base font-light leading-relaxed">
                       At Jeseem Tours & Travels, service quality is absolute. We do not compromise on accuracy, safety, or timing. Every airline ticket, document attestation file, and travel itinerary undergoes multi-stage verification to guarantee 100% precision and satisfaction.
                     </p>
                   </div>
-                  <div className="shrink-0">
+                  <div className="shrink-0 w-full lg:w-auto">
                     <Link
                       href="/contact"
-                      className="px-8 py-4 rounded-full bg-brand-gradient-btn font-bold text-xs uppercase tracking-wider shadow-md inline-flex items-center gap-2"
+                      className="w-full lg:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-sky-500/25 hover:scale-105 hover:brightness-110 transition-all flex items-center justify-center gap-2"
                     >
                       Consult Quality Desks
+                      <ArrowUpRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </ScrollReveal>
           </div>
 
