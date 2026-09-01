@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import FloatingContact from "@/components/FloatingContact";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
     >
       <body className="flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <SmoothScrollProvider>
+          <ScrollProgress />
           <CustomCursor />
           <Navbar />
           <main className="flex-grow">{children}</main>

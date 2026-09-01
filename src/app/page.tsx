@@ -929,9 +929,11 @@ export default function Home() {
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute bottom-8 left-8 z-20">
-              <span className="text-[10px] uppercase tracking-widest text-[#ff007f] font-bold">PREVIEW</span>
-              <p className="text-white text-xs font-mono mt-1">{SERVICES[activeServiceIdx].title}</p>
+            <div className="absolute bottom-6 left-6 z-20 bg-neutral-950/70 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 shadow-2xl">
+              <span className="text-[10px] uppercase tracking-widest text-[#D92F60] font-extrabold block">PREVIEW</span>
+              <p className="text-white text-sm font-bold tracking-wide mt-0.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
+                {SERVICES[activeServiceIdx].title}
+              </p>
             </div>
           </motion.div>
         </div>
