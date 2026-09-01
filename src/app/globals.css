@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Hide default OS cursor site-wide */
+html,
+body,
+*,
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+  cursor: none !important;
+}
+
 @theme {
   --color-white: var(--foreground);
   --color-black: var(--background);
