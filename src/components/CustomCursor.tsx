@@ -9,7 +9,7 @@ interface CustomCursorProps {
   rotationAngle?: number;
 }
 
-export default function CustomCursor({ rotationAngle = -90 }: CustomCursorProps) {
+export default function CustomCursor({ rotationAngle = -99 }: CustomCursorProps) {
   const [hidden, setHidden] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [cursorText, setCursorText] = useState("");

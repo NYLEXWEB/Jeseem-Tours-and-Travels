@@ -762,7 +762,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full rounded-3xl overflow-hidden bg-black/50 backdrop-blur-lg border border-white/10 flex flex-col lg:flex-row min-h-[500px] shadow-2xl"
+              className="relative w-full rounded-3xl overflow-hidden bg-[#0d0d0e] border border-white/15 flex flex-col lg:flex-row min-h-[500px] shadow-2xl"
             >
               {/* Flight Wing Cinematic Visual */}
               <div className="relative flex-1 min-h-[220px] lg:min-h-[500px] overflow-hidden">
@@ -772,38 +772,38 @@ export default function Home() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-neutral-950/85 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0d0d0e] via-transparent to-transparent z-10" />
               </div>
 
               {/* Package Content Details */}
-              <div className="flex-1 p-8 md:p-16 flex flex-col justify-center relative z-20">
-                <span className="text-xs uppercase tracking-widest text-[#ff007f] font-bold mb-2">
+              <div className="flex-1 p-8 md:p-16 flex flex-col justify-center relative z-20 bg-[#0d0d0e]">
+                <span className="text-xs uppercase tracking-widest font-extrabold mb-2" style={{ color: '#D92F60' }}>
                   {pkg.subtitle}
                 </span>
-                <h4 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6">
+                <h4 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6" style={{ color: '#ffffff' }}>
                   {pkg.title}
                 </h4>
-                <p className="text-[#86868B] text-base leading-relaxed mb-8 font-light">
+                <p className="text-base leading-relaxed mb-8 font-light" style={{ color: '#d4d4d4' }}>
                   {pkg.desc}
                 </p>
 
                 {/* Highlights List */}
-                <div className="grid grid-cols-2 gap-6 mb-8 border-t border-b border-white/10 py-6">
+                <div className="grid grid-cols-2 gap-6 mb-8 border-t border-b border-white/15 py-6">
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Includes</span>
-                    <p className="text-sm font-semibold text-white mt-1">Group Booking & Series Fares</p>
+                    <span className="text-[10px] uppercase tracking-wider font-bold block" style={{ color: '#a3a3a3' }}>Includes</span>
+                    <p className="text-sm font-semibold text-white mt-1" style={{ color: '#ffffff' }}>Group Booking & Series Fares</p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Rates</span>
-                    <p className="text-sm font-semibold text-white mt-1">Best Market Rates</p>
+                    <span className="text-[10px] uppercase tracking-wider font-bold block" style={{ color: '#a3a3a3' }}>Rates</span>
+                    <p className="text-sm font-semibold text-white mt-1" style={{ color: '#ffffff' }}>Best Market Rates</p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Support</span>
-                    <p className="text-sm font-semibold text-white mt-1">24/7 Ticketing Help</p>
+                    <span className="text-[10px] uppercase tracking-wider font-bold block" style={{ color: '#a3a3a3' }}>Support</span>
+                    <p className="text-sm font-semibold text-white mt-1" style={{ color: '#ffffff' }}>24/7 Ticketing Help</p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#86868B]">Destinations</span>
-                    <p className="text-sm font-semibold text-white mt-1">Domestic & International</p>
+                    <span className="text-[10px] uppercase tracking-wider font-bold block" style={{ color: '#a3a3a3' }}>Destinations</span>
+                    <p className="text-sm font-semibold text-white mt-1" style={{ color: '#ffffff' }}>Domestic & International</p>
                   </div>
                 </div>
 
@@ -811,6 +811,7 @@ export default function Home() {
                   <Link
                     href={`/contact?package=${pkg.id}`}
                     className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-gradient-btn text-white font-bold text-xs uppercase tracking-wider shadow-md"
+                    style={{ color: '#ffffff' }}
                   >
                     Inquire Ticket Allocation
                     <ArrowUpRight className="w-4 h-4" />
@@ -928,9 +929,9 @@ export default function Home() {
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute bottom-6 left-6 z-20 bg-neutral-950/70 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/20 shadow-2xl">
+            <div className="absolute bottom-6 left-6 z-20 bg-neutral-950/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/25 shadow-2xl">
               <span className="text-[10px] uppercase tracking-widest text-[#D92F60] font-extrabold block">PREVIEW</span>
-              <p className="text-white text-sm font-bold tracking-wide mt-0.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
+              <p className="text-white text-sm font-bold tracking-wide mt-0.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]" style={{ color: '#ffffff' }}>
                 {SERVICES[activeServiceIdx].title}
               </p>
             </div>
