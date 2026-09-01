@@ -44,12 +44,6 @@ export default function Contact() {
   };
 
   const destinationsList = [
-    "Kerala, India",
-    "Lakshadweep, India",
-    "Georgia",
-    "Maldives",
-    "Dubai, UAE",
-    "Malaysia",
     "Flight Booking",
     "Domestic Holiday Package",
     "International Holiday Package",
