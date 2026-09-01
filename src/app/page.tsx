@@ -364,7 +364,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-[#374151] text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
+              className="text-gray-900 text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
             >
               Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys. Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support.
             </motion.p>
@@ -380,7 +380,7 @@ export default function Home() {
             <Magnetic range={30} strength={0.25}>
               <Link
                 href="/destinations"
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 text-[#ffffff] font-outfit font-bold text-xs uppercase tracking-wider hover:brightness-110 hover:scale-105 transition-all duration-300 shadow-lg shadow-sky-500/30 flex items-center gap-2"
+                className="px-8 py-4 rounded-full bg-brand-gradient-btn text-[#ffffff] font-outfit font-bold text-xs uppercase tracking-wider hover:brightness-110 hover:scale-105 transition-all duration-300 flex items-center gap-2"
               >
                 Explore Destinations
                 <ArrowUpRight className="w-4 h-4 text-[#ffffff]" />
@@ -390,7 +390,7 @@ export default function Home() {
             <Magnetic range={30} strength={0.25}>
               <Link
                 href="/packages"
-                className="px-6 py-4 rounded-full border border-[#171717]/20 text-[#171717] bg-[#171717]/5 hover:bg-[#171717] hover:text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
+                className="px-6 py-4 rounded-full border border-[#171717]/20 text-[#ffff] bg-white hover:bg-[#171717] hover:text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
               >
                 Our Packages
               </Link>

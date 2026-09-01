@@ -116,8 +116,12 @@ export default function HeroBackgroundCarousel() {
                 )}
             </AnimatePresence>
 
+            {/* 3. Luxury Pink Brand Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#912D6B]/45 via-[#C72F62]/25 to-transparent z-15 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-[#912D6B]/15 z-15 pointer-events-none" />
+
             {/* Soft foggy blend transition to the white section below */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#ffffff] to-transparent z-20 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
         </div>
     );
 }
