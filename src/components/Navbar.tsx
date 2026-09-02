@@ -61,16 +61,16 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-3 md:top-5 left-0 right-0 z-40 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
+      <div className="fixed top-2.5 md:top-3.5 left-0 right-0 z-40 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
         <motion.nav
-          className={`pointer-events-auto w-full transition-all duration-500 rounded-2xl border border-black bg-[#ffff] shadow-xl ${isAtTop ? "py-3.5 md:py-4 px-6 md:px-8" : "py-3 px-6 md:px-8"
+          className={`pointer-events-auto w-full transition-all duration-500 rounded-xl border border-black bg-[#ffff] shadow-xl ${isAtTop ? "py-2 md:py-2.5 px-5 md:px-6" : "py-1.5 md:py-2 px-5 md:px-6"
             }`}
           initial={{ y: -100 }}
           animate={{ y: isVisible ? 0 : -100 }}
           transition={{ type: "spring", damping: 22, stiffness: 140 }}
         >
           <div className="w-full flex items-center justify-between">
-            <Link href="/" className="relative block h-10 md:h-12 w-40 md:w-52" onClick={() => setIsOpen(false)}>
+            <Link href="/" className="relative block h-7 md:h-9 w-32 md:w-44" onClick={() => setIsOpen(false)}>
               <Image
                 src="/logo.png"
                 alt="Jeseem Tours & Travels"
@@ -81,12 +81,12 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-7">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 group text-white/80 hover:text-white font-medium"
+                  className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-0.5 group text-white/80 hover:text-white font-medium"
                 >
                   {link.name}
                   <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-white" />
@@ -99,10 +99,10 @@ export default function Navbar() {
               <Magnetic range={35} strength={0.3}>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 border-white/30 text-white hover:bg-white hover:text-black"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 border-white/30 text-white hover:bg-white hover:text-black"
                 >
                   Plan Your Journey
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:text-black" />
+                  <ArrowUpRight className="w-3 h-3 text-white group-hover:text-black" />
                 </Link>
               </Magnetic>
             </div>
