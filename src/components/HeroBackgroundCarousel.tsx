@@ -14,21 +14,12 @@ const HERO_IMAGES = [
 
 // Display duration per image (5 seconds)
 const DISPLAY_DURATION_MS = 5000;
-// Slide transition animation duration (1.3 seconds)
-const TRANSITION_DURATION_SEC = 1.3;
+// Cross-fade animation duration (1.5 seconds)
+const FADE_DURATION_SEC = 1.5;
 
 export default function HeroBackgroundCarousel() {
     const prefersReducedMotion = useReducedMotion();
-
-    // Current base image index (0..4)
-    const [baseIndex, setBaseIndex] = useState(0);
-
-    // Active incoming layer state during transition
-    const [incoming, setIncoming] = useState<{
-        index: number;
-        direction: "right-to-left" | "left-to-right";
-    } | null>(null);
-
+    const [currentIndex, setCurrentIndex] = useState(0);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Preload all 5 hero images immediately on mount
@@ -39,84 +30,46 @@ export default function HeroBackgroundCarousel() {
         });
     }, []);
 
-    // Main carousel interval logic
+    // Main carousel interval logic (Cross-fade cycle)
     useEffect(() => {
-        // If reduced motion is requested, do not run slide sequence
         if (prefersReducedMotion) return;
 
-        // Start 5-second timer for the next slide transition
         timerRef.current = setTimeout(() => {
-            const nextIdx = (baseIndex + 1) % HERO_IMAGES.length;
-
-            // Determine alternating direction:
-            // Transition 0->1 (1->2): FROM RIGHT TO LEFT
-            // Transition 1->2 (2->3): FROM LEFT TO RIGHT
-            // Transition 2->3 (3->4): FROM RIGHT TO LEFT
-            // Transition 3->4 (4->5): FROM LEFT TO RIGHT
-            // Transition 4->0 (5->1): FROM RIGHT TO LEFT
-            const isRightToLeft = baseIndex % 2 === 0;
-            const direction = isRightToLeft ? "right-to-left" : "left-to-right";
-
-            setIncoming({ index: nextIdx, direction });
+            setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
         }, DISPLAY_DURATION_MS);
 
         return () => {
             if (timerRef.current) clearTimeout(timerRef.current);
         };
-    }, [baseIndex, prefersReducedMotion]);
-
-    // Handle completion of slide animation
-    const handleAnimationComplete = () => {
-        if (incoming !== null) {
-            setBaseIndex(incoming.index);
-            setIncoming(null);
-        }
-    };
+    }, [currentIndex, prefersReducedMotion]);
 
     return (
         <div className="relative w-full h-full overflow-hidden bg-white">
-            {/* 1. Underlying Base Image Layer (Remains visible underneath incoming slide) */}
-            <div className="absolute inset-0 z-0 w-full h-full">
-                <Image
-                    src={HERO_IMAGES[baseIndex]}
-                    alt={`Hero Background ${baseIndex + 1}`}
-                    fill
-                    className="object-cover object-center"
-                    priority
-                    sizes="100vw"
-                />
-            </div>
-
-            {/* 2. Top Incoming Image Layer (Slides physically over base image) */}
-            <AnimatePresence>
-                {incoming !== null && (
-                    <motion.div
-                        key={`incoming-${incoming.index}`}
-                        initial={{
-                            x: incoming.direction === "right-to-left" ? "100%" : "-100%",
-                        }}
-                        animate={{ x: "0%" }}
-                        exit={{ opacity: 1 }}
-                        transition={{
-                            duration: TRANSITION_DURATION_SEC,
-                            ease: [0.25, 1, 0.5, 1], // Smooth cinematic curve
-                        }}
-                        onAnimationComplete={handleAnimationComplete}
-                        className="absolute inset-0 z-10 w-full h-full shadow-2xl"
-                    >
-                        <Image
-                            src={HERO_IMAGES[incoming.index]}
-                            alt={`Hero Background ${incoming.index + 1}`}
-                            fill
-                            className="object-cover object-center"
-                            priority
-                            sizes="100vw"
-                        />
-                    </motion.div>
-                )}
+            {/* Smooth Cross-Fade Image Layer */}
+            <AnimatePresence mode="sync">
+                <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                        opacity: { duration: FADE_DURATION_SEC, ease: [0.4, 0, 0.2, 1] },
+                        scale: { duration: 6, ease: "easeOut" },
+                    }}
+                    className="absolute inset-0 z-0 w-full h-full"
+                >
+                    <Image
+                        src={HERO_IMAGES[currentIndex]}
+                        alt={`Hero Background ${currentIndex + 1}`}
+                        fill
+                        className="object-cover object-center"
+                        priority
+                        sizes="100vw"
+                    />
+                </motion.div>
             </AnimatePresence>
 
-            {/* Minimal Left-to-Right Black Gradient Fade for Text Legibility */}
+            {/* Minimal Left-to-Right Fade Gradient Overlay */}
             <div className="absolute inset-0 z-15 bg-gradient-to-r from-white/80 via-white/45 to-transparent pointer-events-none" />
 
             {/* Soft foggy blend transition to the white section below */}
