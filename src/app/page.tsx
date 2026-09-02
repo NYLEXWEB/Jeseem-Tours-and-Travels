@@ -344,19 +344,19 @@ export default function Home() {
             <HeroBackgroundCarousel />
           </div>
 
-          {/* Scroll-Driven Slide-In Overlay Image (/side image.png) - Flush to bottom edge */}
+          {/* Scroll-Driven Slide-In Overlay Image (/side image.png) - Prominent Extra Large & Flush to bottom edge */}
           <motion.div
             style={{ x: sideImageX, opacity: sideImageOpacity }}
-            className="absolute bottom-0 right-0 z-10 w-full sm:w-1/2 md:w-[48%] h-full pointer-events-none flex items-end justify-end"
+            className="absolute bottom-0 right-0 z-10 w-full sm:w-7/12 md:w-[58%] lg:w-[62%] xl:w-[65%] h-full pointer-events-none flex items-end justify-end"
           >
-            <div className="relative w-full h-[88%] md:h-[94%] max-h-[780px]">
+            <div className="relative w-full h-[95%] md:h-[100%] max-h-[920px] lg:max-h-[1020px]">
               <Image
                 src="/side image.png"
                 alt="Jeseem Tours Side Feature"
                 fill
-                className="object-contain object-bottom-right drop-shadow-2xl"
+                className="object-contain object-bottom-right drop-shadow-2xl scale-105 md:scale-110 origin-bottom-right"
                 priority
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, 65vw"
               />
             </div>
           </motion.div>
