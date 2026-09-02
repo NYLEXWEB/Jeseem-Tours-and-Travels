@@ -301,13 +301,17 @@ export default function Home() {
   // Refs for tracking sticky steps
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const heroContainerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Ultra-smooth scroll-driven animation for /side image.png
-  const { scrollY } = useScroll();
-  const smoothScrollY = useSpring(scrollY, { stiffness: 50, damping: 22, mass: 0.6 });
-  const sideImageX = useTransform(smoothScrollY, [0, 160], ["100%", "0%"]);
-  const sideImageOpacity = useTransform(smoothScrollY, [0, 20, 140], [0, 0.9, 1]);
+  // Scroll-driven pinned animation for /side image.png (Hero remains pinned while image glides in and locks into place)
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroContainerRef,
+    offset: ["start start", "end end"],
+  });
+  const smoothHeroProgress = useSpring(heroScrollProgress, { stiffness: 60, damping: 22, mass: 0.5 });
+  const sideImageX = useTransform(smoothHeroProgress, [0, 0.65], ["100%", "0%"]);
+  const sideImageOpacity = useTransform(smoothHeroProgress, [0, 0.08, 0.5], [0, 0.85, 1]);
 
   // Setup Step Intersection Observers
   useEffect(() => {
@@ -332,125 +336,127 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
-      {/* 1. HERO SECTION (Single-Screen Viewport Layout with Full Background Image) */}
-      <section ref={heroRef} className="relative h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-0 md:pt-28 px-6 sm:px-12">
-        {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
-        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
-          <HeroBackgroundCarousel />
-        </div>
-
-        {/* Scroll-Driven Slide-In Overlay Image (/side image.png) - Flush to bottom edge */}
-        <motion.div
-          style={{ x: sideImageX, opacity: sideImageOpacity }}
-          className="absolute bottom-0 right-0 z-10 w-full sm:w-1/2 md:w-[48%] h-full pointer-events-none flex items-end justify-end"
-        >
-          <div className="relative w-full h-[88%] md:h-[94%] max-h-[780px]">
-            <Image
-              src="/side image.png"
-              alt="Jeseem Tours Side Feature"
-              fill
-              className="object-contain object-bottom-right drop-shadow-2xl"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-        </motion.div>
-
-        {/* Hero Central Content */}
-        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-center items-start md:items-start my-auto pt-16 md:pt-0 md:pr-0 lg:pr-4">
-          {/* Main Stylish Headline & Structure (Left-Aligned to fit the pink background visual) */}
-          <div className="flex flex-col items-start max-w-xl text-left md:translate-x-0">
-            {/* Small main heading (H1) */}
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-sm sm:text-base md:text-lg font-bebas tracking-[0.15em] text-[#171717] uppercase mb-2 font-normal"
-            >
-              SAVE THE MONEY PLAN FOR TRAVEL
-            </motion.h1>
-
-            {/* Destination Heading (H2) */}
-            <motion.h2
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-[38px] sm:text-[48px] md:text-[60px] lg:text-[72px] xl:text-[80px] font-bebas tracking-[0.02em] text-[#171717] uppercase mb-4 leading-[1.0] md:leading-[0.95]"
-            >
-              GO TO THE DESTINATION
-            </motion.h2>
-
-            {/* Subtitle/Description (H3 equivalent) */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="text-gray-900 text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
-            >
-              Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys. Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support.
-            </motion.p>
+      {/* 1. HERO SECTION WRAPPER (Sticky pinned scroll until side image finishes sliding into place) */}
+      <div ref={heroContainerRef} className="relative w-full h-[175vh]">
+        <section ref={heroRef} className="sticky top-0 h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-0 md:pt-28 px-6 sm:px-12">
+          {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
+          <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+            <HeroBackgroundCarousel />
           </div>
 
-          {/* Call-to-Action Buttons with Light Blue Accent Theme */}
+          {/* Scroll-Driven Slide-In Overlay Image (/side image.png) - Flush to bottom edge */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap items-center gap-4 z-20"
+            style={{ x: sideImageX, opacity: sideImageOpacity }}
+            className="absolute bottom-0 right-0 z-10 w-full sm:w-1/2 md:w-[48%] h-full pointer-events-none flex items-end justify-end"
           >
-            <Magnetic range={30} strength={0.25}>
-              <Link
-                href="/destinations"
-                className="px-8 py-4 rounded-full bg-brand-gradient-btn text-[#ffffff] font-outfit font-bold text-xs uppercase tracking-wider hover:brightness-110 hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                Explore Destinations
-                <ArrowUpRight className="w-4 h-4 text-[#ffffff]" />
-              </Link>
-            </Magnetic>
-
-            <Magnetic range={30} strength={0.25}>
-              <Link
-                href="/packages"
-                className="px-6 py-4 rounded-full border border-[#171717]/20 text-[#ffff] bg-white hover:bg-[#171717] hover:text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
-              >
-                Our Packages
-              </Link>
-            </Magnetic>
-          </motion.div>
-        </div>
-
-        {/* Hero Footer: Compact Trust Badges & Scroll Indicator */}
-        <div className="relative max-w-7xl mx-auto w-full z-20 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#171717]/15">
-          <div className="flex items-center gap-6 text-[#171717]/80 text-xs font-outfit font-medium tracking-wider">
-            <span className="flex items-center gap-1.5">
-              <Award className="w-3.5 h-3.5 text-[#171717]" />
-              40+ Years Legacy
-            </span>
-            <span className="hidden sm:inline text-[#171717]/30">&bull;</span>
-            <span className="hidden sm:flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#171717]" />
-              Verified Visa Care
-            </span>
-            <span className="hidden md:inline text-[#171717]/30">&bull;</span>
-            <span className="hidden md:flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-[#171717]" />
-              24/7 Airline Booking Desk
-            </span>
-          </div>
-
-          {/* Compact Scroll Down Indicator */}
-          <motion.div
-            animate={{ y: [0, 4, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="flex items-center gap-2 text-[#171717]/70 text-[10px] font-outfit uppercase tracking-widest pointer-events-none"
-          >
-            <span>Scroll</span>
-            <div className="w-3.5 h-3.5 rounded-full border border-[#171717]/40 flex items-center justify-center">
-              <div className="w-1 h-1 bg-[#171717] rounded-full animate-ping" />
+            <div className="relative w-full h-[88%] md:h-[94%] max-h-[780px]">
+              <Image
+                src="/side image.png"
+                alt="Jeseem Tours Side Feature"
+                fill
+                className="object-contain object-bottom-right drop-shadow-2xl"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
           </motion.div>
-        </div>
-      </section>
+
+          {/* Hero Central Content */}
+          <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-center items-start md:items-start my-auto pt-16 md:pt-0 md:pr-0 lg:pr-4">
+            {/* Main Stylish Headline & Structure (Left-Aligned to fit the pink background visual) */}
+            <div className="flex flex-col items-start max-w-xl text-left md:translate-x-0">
+              {/* Small main heading (H1) */}
+              <motion.h1
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-sm sm:text-base md:text-lg font-bebas tracking-[0.15em] text-[#171717] uppercase mb-2 font-normal"
+              >
+                SAVE THE MONEY PLAN FOR TRAVEL
+              </motion.h1>
+
+              {/* Destination Heading (H2) */}
+              <motion.h2
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-[38px] sm:text-[48px] md:text-[60px] lg:text-[72px] xl:text-[80px] font-bebas tracking-[0.02em] text-[#171717] uppercase mb-4 leading-[1.0] md:leading-[0.95]"
+              >
+                GO TO THE DESTINATION
+              </motion.h2>
+
+              {/* Subtitle/Description (H3 equivalent) */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="text-gray-900 text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
+              >
+                Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys. Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support.
+              </motion.p>
+            </div>
+
+            {/* Call-to-Action Buttons with Light Blue Accent Theme */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap items-center gap-4 z-20"
+            >
+              <Magnetic range={30} strength={0.25}>
+                <Link
+                  href="/destinations"
+                  className="px-8 py-4 rounded-full bg-brand-gradient-btn text-[#ffffff] font-outfit font-bold text-xs uppercase tracking-wider hover:brightness-110 hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                >
+                  Explore Destinations
+                  <ArrowUpRight className="w-4 h-4 text-[#ffffff]" />
+                </Link>
+              </Magnetic>
+
+              <Magnetic range={30} strength={0.25}>
+                <Link
+                  href="/packages"
+                  className="px-6 py-4 rounded-full border border-[#171717]/20 text-[#ffff] bg-white hover:bg-[#171717] hover:text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
+                >
+                  Our Packages
+                </Link>
+              </Magnetic>
+            </motion.div>
+          </div>
+
+          {/* Hero Footer: Compact Trust Badges & Scroll Indicator */}
+          <div className="relative max-w-7xl mx-auto w-full z-20 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#171717]/15">
+            <div className="flex items-center gap-6 text-[#171717]/80 text-xs font-outfit font-medium tracking-wider">
+              <span className="flex items-center gap-1.5">
+                <Award className="w-3.5 h-3.5 text-[#171717]" />
+                40+ Years Legacy
+              </span>
+              <span className="hidden sm:inline text-[#171717]/30">&bull;</span>
+              <span className="hidden sm:flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#171717]" />
+                Verified Visa Care
+              </span>
+              <span className="hidden md:inline text-[#171717]/30">&bull;</span>
+              <span className="hidden md:flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-[#171717]" />
+                24/7 Airline Booking Desk
+              </span>
+            </div>
+
+            {/* Compact Scroll Down Indicator */}
+            <motion.div
+              animate={{ y: [0, 4, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="flex items-center gap-2 text-[#171717]/70 text-[10px] font-outfit uppercase tracking-widest pointer-events-none"
+            >
+              <span>Scroll</span>
+              <div className="w-3.5 h-3.5 rounded-full border border-[#171717]/40 flex items-center justify-center">
+                <div className="w-1 h-1 bg-[#171717] rounded-full animate-ping" />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO: PURE WHITE) */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none bg-black" />
