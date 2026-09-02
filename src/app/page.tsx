@@ -370,7 +370,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-sm sm:text-base md:text-lg font-bebas tracking-[0.15em] text-[#171717] uppercase mb-2 font-normal"
+                className="text-sm sm:text-base md:text-lg font-bebas tracking-[0.15em] text-black uppercase mb-2 font-normal"
               >
                 SAVE THE MONEY PLAN FOR TRAVEL
               </motion.h1>
@@ -380,7 +380,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-[38px] sm:text-[48px] md:text-[60px] lg:text-[72px] xl:text-[80px] font-bebas tracking-[0.02em] text-[#171717] uppercase mb-4 leading-[1.0] md:leading-[0.95]"
+                className="text-[38px] sm:text-[48px] md:text-[60px] lg:text-[72px] xl:text-[80px] font-bebas tracking-[0.02em] text-black uppercase mb-4 leading-[1.0] md:leading-[0.95]"
               >
                 GO TO THE DESTINATION
               </motion.h2>
@@ -390,7 +390,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="text-gray-900 text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
+                className="text-black text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
               >
                 Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys. Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support.
               </motion.p>
