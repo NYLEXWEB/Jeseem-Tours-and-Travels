@@ -303,7 +303,10 @@ export default function Home() {
 
   const heroRef = useRef<HTMLDivElement>(null);
 
-
+  // Scroll-driven animation for /side image.png (hidden at scroll top y=0, slides in quickly on initial scroll 0-80px)
+  const { scrollY } = useScroll();
+  const sideImageX = useTransform(scrollY, [0, 80], ["100%", "0%"]);
+  const sideImageOpacity = useTransform(scrollY, [0, 10, 75], [0, 0.9, 1]);
 
   // Setup Step Intersection Observers
   useEffect(() => {
@@ -329,11 +332,28 @@ export default function Home() {
   return (
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
       {/* 1. HERO SECTION (Single-Screen Viewport Layout with Full Background Image) */}
-      <section ref={heroRef} className="relative h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-8 md:pt-28 md:pb-10 px-6 sm:px-12">
+      <section ref={heroRef} className="relative h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-0 md:pt-28 px-6 sm:px-12">
         {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <HeroBackgroundCarousel />
         </div>
+
+        {/* Scroll-Driven Slide-In Overlay Image (/side image.png) - Flush to bottom edge */}
+        <motion.div
+          style={{ x: sideImageX, opacity: sideImageOpacity }}
+          className="absolute bottom-0 right-0 z-10 w-full sm:w-1/2 md:w-[48%] h-full pointer-events-none flex items-end justify-end"
+        >
+          <div className="relative w-full h-[88%] md:h-[94%] max-h-[780px]">
+            <Image
+              src="/side image.png"
+              alt="Jeseem Tours Side Feature"
+              fill
+              className="object-contain object-bottom-right drop-shadow-2xl"
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </motion.div>
 
         {/* Hero Central Content */}
         <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-center items-start md:items-start my-auto pt-16 md:pt-0 md:pr-0 lg:pr-4">
