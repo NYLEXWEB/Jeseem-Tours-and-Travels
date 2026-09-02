@@ -61,81 +61,83 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isAtTop
-          ? "py-6 bg-transparent border-b border-transparent"
-          : "py-4 bg-[var(--background)]/85 backdrop-blur-md border-b border-[var(--border)] shadow-sm"
-          }`}
-        initial={{ y: -100 }}
-        animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ type: "spring", damping: 20, stiffness: 120 }}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="relative block h-11 md:h-14 w-44 md:w-56" onClick={() => setIsOpen(false)}>
-            <Image
-              src="/logo.png"
-              alt="Jeseem Tours & Travels"
-              fill
-              className="object-contain"
-              priority
-            />
-          </Link>
+      <div className="fixed top-3 md:top-5 left-0 right-0 z-40 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
+        <motion.nav
+          className={`pointer-events-auto w-full transition-all duration-500 rounded-2xl border ${isAtTop
+            ? "py-3 md:py-4 px-6 md:px-8 bg-white/70 backdrop-blur-md border-neutral-200/60 shadow-sm"
+            : "py-3 px-6 md:px-8 bg-white/90 backdrop-blur-md border-neutral-200 shadow-md"
+            }`}
+          initial={{ y: -100 }}
+          animate={{ y: isVisible ? 0 : -100 }}
+          transition={{ type: "spring", damping: 22, stiffness: 140 }}
+        >
+          <div className="w-full flex items-center justify-between">
+            <Link href="/" className="relative block h-10 md:h-12 w-40 md:w-52" onClick={() => setIsOpen(false)}>
+              <Image
+                src="/logo.png"
+                alt="Jeseem Tours & Travels"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </Link>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 group text-[var(--foreground)]/80 hover:text-[var(--foreground)]"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-[var(--foreground)]" />
-              </Link>
-            ))}
-          </div>
+            {/* Desktop Nav Links */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 group text-[var(--foreground)]/80 hover:text-[var(--foreground)]"
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-[var(--foreground)]" />
+                </Link>
+              ))}
+            </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Magnetic range={35} strength={0.3}>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--foreground)] hover:text-[var(--background)]"
-              >
-                Plan Your Journey
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
-            </Magnetic>
+            {/* Desktop CTA */}
+            <div className="hidden md:block">
+              <Magnetic range={35} strength={0.3}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border text-xs font-semibold uppercase tracking-wider transition-all duration-300 border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+                >
+                  Plan Your Journey
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </Magnetic>
+            </div>
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-[var(--foreground)] hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center"
+              aria-label="Toggle menu"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">
+                <motion.line
+                  x1="4" y1="6" x2="20" y2="6"
+                  animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ originX: "12px", originY: "6px" }}
+                />
+                <motion.line
+                  x1="4" y1="12" x2="20" y2="12"
+                  animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ originX: "12px", originY: "12px" }}
+                />
+                <motion.line
+                  x1="4" y1="18" x2="20" y2="18"
+                  animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ originX: "12px", originY: "18px" }}
+                />
+              </svg>
+            </button>
           </div>
-          {/* Mobile Menu Trigger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-[var(--foreground)] hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center"
-            aria-label="Toggle menu"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">
-              <motion.line
-                x1="4" y1="6" x2="20" y2="6"
-                animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                style={{ originX: "12px", originY: "6px" }}
-              />
-              <motion.line
-                x1="4" y1="12" x2="20" y2="12"
-                animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.2 }}
-                style={{ originX: "12px", originY: "12px" }}
-              />
-              <motion.line
-                x1="4" y1="18" x2="20" y2="18"
-                animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                style={{ originX: "12px", originY: "18px" }}
-              />
-            </svg>
-          </button>
-        </div>
-      </motion.nav>
+        </motion.nav>
+      </div>
 
       {/* Mobile Screen Takeover */}
       <AnimatePresence>

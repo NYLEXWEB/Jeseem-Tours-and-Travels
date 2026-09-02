@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, Award, ShieldCheck, Clock, Target, Eye, CheckCircle2, Sparkles } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 import TiltCard from "@/components/TiltCard";
@@ -303,10 +303,11 @@ export default function Home() {
 
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Scroll-driven animation for /side image.png (hidden at scroll top y=0, slides in quickly on initial scroll 0-80px)
+  // Ultra-smooth scroll-driven animation for /side image.png
   const { scrollY } = useScroll();
-  const sideImageX = useTransform(scrollY, [0, 80], ["100%", "0%"]);
-  const sideImageOpacity = useTransform(scrollY, [0, 10, 75], [0, 0.9, 1]);
+  const smoothScrollY = useSpring(scrollY, { stiffness: 50, damping: 22, mass: 0.6 });
+  const sideImageX = useTransform(smoothScrollY, [0, 160], ["100%", "0%"]);
+  const sideImageOpacity = useTransform(smoothScrollY, [0, 20, 140], [0, 0.9, 1]);
 
   // Setup Step Intersection Observers
   useEffect(() => {

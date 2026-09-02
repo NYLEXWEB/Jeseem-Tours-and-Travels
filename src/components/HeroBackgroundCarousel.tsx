@@ -74,7 +74,7 @@ export default function HeroBackgroundCarousel() {
     };
 
     return (
-        <div className="relative w-full h-full overflow-hidden bg-[#fbe4ea]">
+        <div className="relative w-full h-full overflow-hidden bg-white">
             {/* 1. Underlying Base Image Layer (Remains visible underneath incoming slide) */}
             <div className="absolute inset-0 z-0 w-full h-full">
                 <Image
