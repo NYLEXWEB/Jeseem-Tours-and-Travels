@@ -1,15 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-interface CustomCursorProps {
-  /** Rotation angle in degrees to align arrow pointer direction (Default: -90) */
-  rotationAngle?: number;
-}
-
-export default function CustomCursor({ rotationAngle = -99 }: CustomCursorProps) {
+export default function CustomCursor() {
   const [hidden, setHidden] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [cursorText, setCursorText] = useState("");
@@ -17,7 +11,7 @@ export default function CustomCursor({ rotationAngle = -99 }: CustomCursorProps)
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 28, stiffness: 350, mass: 0.4 };
+  const springConfig = { damping: 26, stiffness: 380, mass: 0.3 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -30,9 +24,9 @@ export default function CustomCursor({ rotationAngle = -99 }: CustomCursorProps)
     setHidden(false);
 
     const moveCursor = (e: MouseEvent) => {
-      // Hotspot calibrated to exact top-left tip of custom cursor.png
-      cursorX.set(e.clientX - 2);
-      cursorY.set(e.clientY - 2);
+      // Center 32px ring on cursor coordinates
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -73,41 +67,31 @@ export default function CustomCursor({ rotationAngle = -99 }: CustomCursorProps)
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-start gap-2 select-none"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border border-black/60 flex items-center justify-center select-none shadow-sm"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,
       }}
+      animate={{
+        width: hovered ? (cursorText ? 82 : 44) : 32,
+        height: hovered ? (cursorText ? 34 : 44) : 32,
+        backgroundColor: hovered ? (cursorText ? "rgba(23, 23, 23, 0.95)" : "rgba(23, 23, 23, 0.12)") : "rgba(23, 23, 23, 0.04)",
+        borderColor: hovered ? (cursorText ? "rgba(23, 23, 23, 0.95)" : "rgba(23, 23, 23, 0.8)") : "rgba(23, 23, 23, 0.4)",
+        scale: hovered ? 1.12 : 1,
+      }}
+      transition={{ type: "spring", damping: 24, stiffness: 360, mass: 0.3 }}
     >
-      {/* 3D Arrow Image from public/custom cursor.png with Code Rotation Option */}
-      <motion.div
-        animate={{
-          scale: hovered ? (cursorText ? 1.35 : 1.2) : 1,
-          rotate: hovered ? rotationAngle - 8 : rotationAngle,
-        }}
-        transition={{ type: "spring", damping: 22, stiffness: 350 }}
-        className="relative w-8 h-8 md:w-9 md:h-9 shrink-0 drop-shadow-[0_4px_12px_rgba(217,47,96,0.65)]"
-      >
-        <Image
-          src="/custom cursor.png"
-          alt="Custom Cursor"
-          width={36}
-          height={36}
-          className="w-full h-full object-contain pointer-events-none"
-          priority
-        />
-      </motion.div>
-
-      {/* Hover Text Badge (EXPLORE / VIEW) */}
-      {cursorText && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, x: -4 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          className="mt-1 px-2.5 py-1 rounded-full bg-[linear-gradient(99deg,#912D6B_0%,#A12E69_25%,#B32E65_50%,#C72F62_75%,#D92F60_100%)] text-white text-[9px] font-extrabold uppercase tracking-widest shadow-xl border border-white/20"
-        >
+      {/* Center Dot or Hover Text */}
+      {cursorText ? (
+        <span className="text-[9px] font-extrabold uppercase tracking-widest text-white px-2.5">
           {cursorText}
-        </motion.div>
+        </span>
+      ) : (
+        <motion.div
+          animate={{ scale: hovered ? 1.5 : 1 }}
+          transition={{ type: "spring", damping: 20, stiffness: 300 }}
+          className="w-2 h-2 rounded-full bg-[#171717]"
+        />
       )}
     </motion.div>
   );
