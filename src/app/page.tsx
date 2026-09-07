@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, Award, ShieldCheck, Clock, Target, Eye, CheckCircle2, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, ChevronDown, Award, ShieldCheck, Clock, Target, Eye, CheckCircle2, Sparkles } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 import TiltCard from "@/components/TiltCard";
 import Magnetic from "@/components/Magnetic";
@@ -301,17 +301,7 @@ export default function Home() {
   // Refs for tracking sticky steps
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const heroContainerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-
-  // Scroll-driven pinned animation for /side image.png (Hero remains pinned while image glides in and locks into place)
-  const { scrollYProgress: heroScrollProgress } = useScroll({
-    target: heroContainerRef,
-    offset: ["start start", "end end"],
-  });
-  const smoothHeroProgress = useSpring(heroScrollProgress, { stiffness: 60, damping: 22, mass: 0.5 });
-  const sideImageX = useTransform(smoothHeroProgress, [0, 0.65], ["100%", "0%"]);
-  const sideImageOpacity = useTransform(smoothHeroProgress, [0, 0.08, 0.5], [0, 0.85, 1]);
 
   // Setup Step Intersection Observers
   useEffect(() => {
@@ -336,127 +326,36 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
-      {/* 1. HERO SECTION WRAPPER (Sticky pinned scroll until side image finishes sliding into place) */}
-      <div ref={heroContainerRef} className="relative w-full h-[175vh]">
-        <section ref={heroRef} className="sticky top-0 h-screen min-h-[640px] max-h-[1080px] w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-0 md:pt-28 px-6 sm:px-12">
-          {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
-          <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
-            <HeroBackgroundCarousel />
-          </div>
+      {/* 1. HERO SECTION */}
+      <section ref={heroRef} className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-6 sm:px-12">
+        {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+          <HeroBackgroundCarousel />
+        </div>
 
-          {/* Scroll-Driven Slide-In Overlay Image (/side image.png) - Prominent Extra Large & Flush to bottom edge */}
-          <motion.div
-            style={{ x: sideImageX, opacity: sideImageOpacity }}
-            className="absolute bottom-0 right-0 z-10 w-full sm:w-7/12 md:w-[58%] lg:w-[62%] xl:w-[65%] h-full pointer-events-none flex items-end justify-end"
+        {/* Hero Central Content: Single Bold Headline (Reference Image Inspired) */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-end items-start pb-16 md:pb-24">
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[42px] sm:text-[64px] md:text-[80px] lg:text-[96px] font-extrabold text-[#171717] tracking-tight leading-[1.02] max-w-4xl font-outfit"
           >
-            <div className="relative w-full h-[95%] md:h-[100%] max-h-[920px] lg:max-h-[1020px]">
-              <Image
-                src="/side image.png"
-                alt="Jeseem Tours Side Feature"
-                fill
-                className="object-contain object-bottom-right drop-shadow-2xl scale-105 md:scale-110 origin-bottom-right"
-                priority
-                sizes="(max-width: 768px) 100vw, 65vw"
-              />
-            </div>
+            Be inspired to experience Jeseem Tours & Travels
+          </motion.h1>
+        </div>
+
+        {/* Hero Bottom: Minimal Circular Scroll Button */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex justify-center items-center pb-2">
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-black/40 bg-white/40 backdrop-blur-sm flex items-center justify-center text-[#171717] pointer-events-none shadow-sm"
+          >
+            <ChevronDown className="w-5 h-5 text-[#171717]" />
           </motion.div>
-
-          {/* Hero Central Content */}
-          <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-center items-start md:items-start my-auto pt-16 md:pt-0 md:pr-0 lg:pr-4">
-            {/* Main Stylish Headline & Structure (Left-Aligned to fit the pink background visual) */}
-            <div className="flex flex-col items-start max-w-xl text-left md:translate-x-0">
-              {/* Small main heading (H1) */}
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-sm sm:text-base md:text-lg font-bebas tracking-[0.15em] text-black uppercase mb-2 font-normal"
-              >
-                SAVE THE MONEY PLAN FOR TRAVEL
-              </motion.h1>
-
-              {/* Destination Heading (H2) */}
-              <motion.h2
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-[38px] sm:text-[48px] md:text-[60px] lg:text-[72px] xl:text-[80px] font-bebas tracking-[0.02em] text-black uppercase mb-4 leading-[1.0] md:leading-[0.95]"
-              >
-                GO TO THE DESTINATION
-              </motion.h2>
-
-              {/* Subtitle/Description (H3 equivalent) */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="text-black text-xs sm:text-sm md:text-base max-w-md md:max-w-lg mb-8 leading-relaxed font-outfit font-normal text-left"
-              >
-                Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys. Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support.
-              </motion.p>
-            </div>
-
-            {/* Call-to-Action Buttons with Light Blue Accent Theme */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-4 z-20"
-            >
-              <Magnetic range={30} strength={0.25}>
-                <Link
-                  href="/destinations"
-                  className="px-8 py-4 rounded-full bg-brand-gradient-btn text-[#ffffff] font-outfit font-bold text-xs uppercase tracking-wider hover:brightness-110 hover:scale-105 transition-all duration-300 flex items-center gap-2"
-                >
-                  Explore Destinations
-                  <ArrowUpRight className="w-4 h-4 text-[#ffffff]" />
-                </Link>
-              </Magnetic>
-
-              <Magnetic range={30} strength={0.25}>
-                <Link
-                  href="/packages"
-                  className="px-6 py-4 rounded-full border border-[#171717]/20 text-[#ffff] bg-white hover:bg-[#171717] hover:text-[#ffffff] font-outfit font-semibold text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300"
-                >
-                  Our Packages
-                </Link>
-              </Magnetic>
-            </motion.div>
-          </div>
-
-          {/* Hero Footer: Compact Trust Badges & Scroll Indicator */}
-          <div className="relative max-w-7xl mx-auto w-full z-20 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#171717]/15">
-            <div className="flex items-center gap-6 text-[#171717]/80 text-xs font-outfit font-medium tracking-wider">
-              <span className="flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5 text-[#171717]" />
-                40+ Years Legacy
-              </span>
-              <span className="hidden sm:inline text-[#171717]/30">&bull;</span>
-              <span className="hidden sm:flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#171717]" />
-                Verified Visa Care
-              </span>
-              <span className="hidden md:inline text-[#171717]/30">&bull;</span>
-              <span className="hidden md:flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#171717]" />
-                24/7 Airline Booking Desk
-              </span>
-            </div>
-
-            {/* Compact Scroll Down Indicator */}
-            <motion.div
-              animate={{ y: [0, 4, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="flex items-center gap-2 text-[#171717]/70 text-[10px] font-outfit uppercase tracking-widest pointer-events-none"
-            >
-              <span>Scroll</span>
-              <div className="w-3.5 h-3.5 rounded-full border border-[#171717]/40 flex items-center justify-center">
-                <div className="w-1 h-1 bg-[#171717] rounded-full animate-ping" />
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO: PURE WHITE) */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none bg-black" />
@@ -681,9 +580,44 @@ export default function Home() {
                   FOUNDER TRIBUTE & HERITAGE
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit">
-                  KUNJUMON ISMAIL
-                </h3>
+                <motion.h3
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05,
+                        delayChildren: 0.15,
+                      },
+                    },
+                  }}
+                  className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit flex flex-wrap"
+                >
+                  {"KUNJUMON ISMAIL".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      variants={{
+                        hidden: { opacity: 0, y: 22, filter: "blur(6px)", scale: 0.85 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          filter: "blur(0px)",
+                          scale: 1,
+                          transition: {
+                            type: "spring",
+                            stiffness: 220,
+                            damping: 16,
+                          },
+                        },
+                      }}
+                      className="inline-block"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                </motion.h3>
                 <p className="text-sky-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
                   Founder & Visionary &bull; (Late in 2022)
                 </p>

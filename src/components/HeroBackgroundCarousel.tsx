@@ -69,11 +69,6 @@ export default function HeroBackgroundCarousel() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Minimal Left-to-Right Fade Gradient Overlay */}
-            <div className="absolute inset-0 z-15 bg-gradient-to-r from-white/80 via-white/45 to-transparent pointer-events-none" />
-
-            {/* Soft foggy blend transition to the white section below */}
-            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none" />
         </div>
     );
 }

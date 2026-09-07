@@ -188,11 +188,45 @@ export default function About() {
                   </span>
                 </ScrollReveal>
 
-                <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
-                  <h2 className="text-3xl md:text-4xl font-light text-zinc-900 tracking-tight">
-                    KUNJUMON ISMAIL <span className="text-sm font-bold text-[#c4007b] block sm:inline sm:ml-2">( late on 2022 )</span>
-                  </h2>
-                </ScrollReveal>
+                <motion.h2
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05,
+                        delayChildren: 0.15,
+                      },
+                    },
+                  }}
+                  className="text-3xl md:text-4xl font-light text-zinc-900 tracking-tight flex flex-wrap items-baseline gap-x-1"
+                >
+                  {"KUNJUMON ISMAIL".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      variants={{
+                        hidden: { opacity: 0, y: 20, filter: "blur(6px)", scale: 0.85 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          filter: "blur(0px)",
+                          scale: 1,
+                          transition: {
+                            type: "spring",
+                            stiffness: 220,
+                            damping: 16,
+                          },
+                        },
+                      }}
+                      className="inline-block"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                  <span className="text-sm font-bold text-[#c4007b] block sm:inline sm:ml-2">( late on 2022 )</span>
+                </motion.h2>
 
                 <ScrollReveal variant="fade-up" duration={0.8} delay={0.2}>
                   <p className="text-zinc-700 text-base font-light leading-relaxed">
