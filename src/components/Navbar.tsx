@@ -66,7 +66,7 @@ export default function Navbar() {
           className={`pointer-events-auto max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${
             isAtTop
               ? "bg-transparent border-transparent shadow-none py-2 px-2"
-              : "bg-white/95 backdrop-blur-md border border-black/15 shadow-2xl py-2.5 px-5 md:px-6"
+              : "bg-black/95 backdrop-blur-md border border-black/15 shadow-2xl py-2.5 px-5 md:px-6"
           }`}
           initial={{ y: -100 }}
           animate={{ y: isVisible ? 0 : -100 }}
@@ -99,12 +99,14 @@ export default function Navbar() {
                     href={link.href}
                     className={`text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 font-bold group ${
                       isAtTop
-                        ? "text-[#171717] hover:text-[#c4007b] drop-shadow-sm"
+                        ? "text-black hover:text-white/80 drop-shadow-md"
                         : "text-[#171717] hover:text-[#c4007b]"
                     }`}
                   >
                     {link.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 bg-[#c4007b]" />
+                    <span className={`absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 ${
+                      isAtTop ? "bg-black" : "bg-[#c4007b]"
+                    }`} />
                   </Link>
                 ))}
               </div>
@@ -115,7 +117,7 @@ export default function Navbar() {
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-brand-gradient-btn text-white text-xs font-bold uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300"
                 >
                   Plan Your Journey
-                  <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-black" />
                 </Link>
               </Magnetic>
             </div>
@@ -123,7 +125,11 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2.5 rounded-xl bg-white/90 border border-black/10 text-black hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center shadow-sm"
+              className={`md:hidden p-2.5 rounded-xl border transition-colors z-50 relative flex items-center justify-center shadow-sm ${
+                isAtTop
+                  ? "bg-black/30 backdrop-blur-sm border-white/20 text-white hover:text-white"
+                  : "bg-white border-neutral-200 text-black hover:text-[#c4007b]"
+              }`}
               aria-label="Toggle menu"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">

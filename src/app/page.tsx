@@ -333,13 +333,13 @@ export default function Home() {
           <HeroBackgroundCarousel />
         </div>
 
-        {/* Hero Central Content: Single Bold Headline (Reference Image Inspired) */}
+        {/* Hero Central Content: Single Bold White Headline (Reference Image Inspired) */}
         <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-end items-start pb-16 md:pb-24">
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[42px] sm:text-[64px] md:text-[80px] lg:text-[96px] font-extrabold text-[#171717] tracking-tight leading-[1.02] max-w-4xl font-outfit"
+            className="text-[42px] sm:text-[64px] md:text-[80px] lg:text-[96px] font-extrabold text-black drop-shadow-2xl tracking-tight leading-[1.02] max-w-4xl font-outfit"
           >
             Be inspired to experience Jeseem Tours & Travels
           </motion.h1>
@@ -350,9 +350,9 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-black/40 bg-white/40 backdrop-blur-sm flex items-center justify-center text-[#171717] pointer-events-none shadow-sm"
+            className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/50 bg-black/30 backdrop-blur-sm flex items-center justify-center text-white pointer-events-none shadow-md"
           >
-            <ChevronDown className="w-5 h-5 text-[#171717]" />
+            <ChevronDown className="w-5 h-5 text-white" />
           </motion.div>
         </div>
       </section>
