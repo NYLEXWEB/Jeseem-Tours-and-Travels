@@ -4,28 +4,23 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Magnetic from "@/components/Magnetic";
 import { COMPANY_DETAILS } from "@/constants/company";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [isAtTop, setIsAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Determine if navbar is at the top of the page
+      // Keep navbar visible near top, or hide on fast scroll down and show on scroll up
       if (currentScrollY < 50) {
-        setIsAtTop(true);
         setIsVisible(true);
       } else {
-        setIsAtTop(false);
-
-        // Hide navbar on scroll down, show on scroll up
         if (currentScrollY > lastScrollY && currentScrollY > 150) {
           setIsVisible(false);
         } else {
@@ -53,21 +48,19 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Destinations", href: "/destinations" },
-    { name: "Packages", href: "/packages" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Destinations", href: "/destinations", title: "Explore Holiday Destinations" },
+    { name: "Packages", href: "/packages", title: "View Holiday Packages & Flight Bookings" },
+    { name: "About Us", href: "/about", title: "About Jeseem Tours & Travels Alappuzha" },
+    { name: "Contact", href: "/contact", title: "Contact Travel & Visa Desks" },
   ];
 
   return (
-    <>
+    <header role="banner">
       <div className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-8 py-3 md:py-4 transition-all duration-500 pointer-events-none">
         <motion.nav
-          className={`pointer-events-auto max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${
-            isAtTop
-              ? "bg-transparent border-transparent shadow-none py-2 px-2"
-              : "bg-black/95 backdrop-blur-md border border-black/15 shadow-2xl py-2.5 px-5 md:px-6"
-          }`}
+          role="navigation"
+          aria-label="Main Navigation"
+          className="pointer-events-auto max-w-7xl mx-auto w-full transition-all duration-300 bg-transparent border-transparent shadow-none py-2 px-2"
           initial={{ y: -100 }}
           animate={{ y: isVisible ? 0 : -100 }}
           transition={{ type: "spring", damping: 22, stiffness: 140 }}
@@ -78,11 +71,12 @@ export default function Navbar() {
               href="/"
               className="relative inline-flex items-center justify-center transition-transform duration-300 hover:scale-102 shrink-0 py-1"
               onClick={() => setIsOpen(false)}
+              title="Jeseem Tours & Travels - Best Travel Agency in Alappuzha Kerala"
             >
               <div className="relative h-11 md:h-14 w-48 md:w-68">
                 <Image
                   src="/logo.png"
-                  alt="Jeseem Tours & Travels"
+                  alt="Jeseem Tours & Travels - Premier Tour Operator in Alappuzha, Kerala"
                   fill
                   className="object-contain object-left"
                   priority
@@ -97,16 +91,12 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 font-bold group ${
-                      isAtTop
-                        ? "text-black hover:text-white/80 drop-shadow-md"
-                        : "text-[#171717] hover:text-[#c4007b]"
-                    }`}
+                    title={link.title}
+                    className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 font-bold text-[#111111] hover:text-[#c4007b] group"
+                    style={{ color: "#111111" }}
                   >
                     {link.name}
-                    <span className={`absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 ${
-                      isAtTop ? "bg-black" : "bg-[#c4007b]"
-                    }`} />
+                    <span className="absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 bg-[#c4007b]" />
                   </Link>
                 ))}
               </div>
@@ -114,10 +104,11 @@ export default function Navbar() {
               <Magnetic range={35} strength={0.3}>
                 <Link
                   href="/contact"
+                  title="Plan Your Travel & Book Flights"
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-brand-gradient-btn text-white text-xs font-bold uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300"
                 >
                   Plan Your Journey
-                  <ArrowUpRight className="w-3.5 h-3.5 text-black" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                 </Link>
               </Magnetic>
             </div>
@@ -125,12 +116,9 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-2.5 rounded-xl border transition-colors z-50 relative flex items-center justify-center shadow-sm ${
-                isAtTop
-                  ? "bg-black/30 backdrop-blur-sm border-white/20 text-white hover:text-white"
-                  : "bg-white border-neutral-200 text-black hover:text-[#c4007b]"
-              }`}
-              aria-label="Toggle menu"
+              className="md:hidden p-2.5 rounded-xl border-none bg-transparent text-black hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isOpen}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">
                 <motion.line
@@ -168,6 +156,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
+              aria-hidden="true"
             />
 
             {/* Menu Sliding Panel */}
@@ -192,6 +181,7 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
+                        title={link.title}
                         className="text-3xl font-extralight tracking-wide text-[var(--foreground)] hover:text-[#c4007b] transition-colors flex items-center gap-2 group"
                         onClick={() => setIsOpen(false)}
                       >
@@ -229,6 +219,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 }
