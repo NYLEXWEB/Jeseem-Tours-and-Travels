@@ -63,8 +63,11 @@ export default function Navbar() {
     <>
       <div className="fixed top-2.5 md:top-3.5 left-0 right-0 z-40 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
         <motion.nav
-          className={`pointer-events-auto w-full transition-all duration-500 rounded-xl border border-black bg-[#ffff] shadow-xl ${isAtTop ? "py-2 md:py-2.5 px-5 md:px-6" : "py-1.5 md:py-2 px-5 md:px-6"
-            }`}
+          className={`pointer-events-auto w-full transition-all duration-500 rounded-2xl ${
+            isAtTop
+              ? "bg-transparent border border-transparent shadow-none py-3.5 md:py-4 px-4 md:px-6"
+              : "bg-[#ffffff]/95 backdrop-blur-md border border-[#121212]/10 shadow-lg py-2 md:py-2.5 px-5 md:px-6"
+          }`}
           initial={{ y: -100 }}
           animate={{ y: isVisible ? 0 : -100 }}
           transition={{ type: "spring", damping: 22, stiffness: 140 }}
@@ -86,10 +89,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-0.5 group text-white/80 hover:text-white font-medium"
+                  className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-0.5 group text-[#121212]/80 hover:text-[#121212] font-medium"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-white" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-brand-gradient" />
                 </Link>
               ))}
             </div>
@@ -99,17 +102,21 @@ export default function Navbar() {
               <Magnetic range={35} strength={0.3}>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 border-white/30 text-white hover:bg-white hover:text-black"
+                  className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
+                    isAtTop
+                      ? "border-[#121212]/20 text-[#121212] hover:bg-[#121212] hover:text-white"
+                      : "bg-brand-gradient-btn text-white border-transparent shadow-sm hover:brightness-110"
+                  }`}
                 >
                   Plan Your Journey
-                  <ArrowUpRight className="w-3 h-3 text-white group-hover:text-black" />
+                  <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </Magnetic>
             </div>
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-white hover:text-gray-300 transition-colors z-50 relative flex items-center justify-center"
+              className="md:hidden p-2 text-[#121212] hover:text-gray-600 transition-colors z-50 relative flex items-center justify-center"
               aria-label="Toggle menu"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">

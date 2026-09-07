@@ -57,7 +57,11 @@ textarea,
   }
 }
 
-/* Custom Brand Logo Gradient Utilities */
+/* Custom Brand Logo & Typography Utilities */
+@utility font-apple {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 @utility bg-brand-gradient {
   background-image: linear-gradient(90deg, #912D6B 0%, #A12E69 25%, #B32E65 50%, #C72F62 75%, #D92F60 100%);
 }
