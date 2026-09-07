@@ -61,62 +61,75 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-2.5 md:top-3.5 left-0 right-0 z-40 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-8 py-3 md:py-4 transition-all duration-500 pointer-events-none">
         <motion.nav
-          className={`pointer-events-auto w-full transition-all duration-500 rounded-2xl ${
+          className={`pointer-events-auto max-w-7xl mx-auto w-full transition-all duration-500 rounded-2xl ${
             isAtTop
-              ? "bg-transparent border border-transparent shadow-none py-3.5 md:py-4 px-4 md:px-6"
-              : "bg-[#ffffff]/95 backdrop-blur-md border border-[#121212]/10 shadow-lg py-2 md:py-2.5 px-5 md:px-6"
+              ? "bg-transparent border-transparent shadow-none py-2 px-2"
+              : "bg-black/95 backdrop-blur-md border border-black/15 shadow-2xl py-2.5 px-5 md:px-6"
           }`}
           initial={{ y: -100 }}
           animate={{ y: isVisible ? 0 : -100 }}
           transition={{ type: "spring", damping: 22, stiffness: 140 }}
         >
           <div className="w-full flex items-center justify-between">
-            <Link href="/" className="relative block h-7 md:h-9 w-32 md:w-44" onClick={() => setIsOpen(false)}>
-              <Image
-                src="/logo.png"
-                alt="Jeseem Tours & Travels"
-                fill
-                className="object-contain object-left"
-                priority
-              />
+            {/* Transparent Logo without box container */}
+            <Link
+              href="/"
+              className="relative inline-flex items-center justify-center transition-transform duration-300 hover:scale-102 shrink-0 py-1"
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="relative h-11 md:h-14 w-48 md:w-68">
+                <Image
+                  src="/logo.png"
+                  alt="Jeseem Tours & Travels"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
             </Link>
 
-            {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-7">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-xs uppercase tracking-widest transition-colors duration-300 relative py-0.5 group text-[#121212]/80 hover:text-[#121212] font-medium"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] group-hover:w-full transition-all duration-300 bg-brand-gradient" />
-                </Link>
-              ))}
-            </div>
+            {/* Desktop Navigation Links & CTA (Moved to Right Side) */}
+            <div className="hidden md:flex items-center gap-7 lg:gap-9">
+              <div className="flex items-center gap-6 lg:gap-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`text-xs uppercase tracking-widest transition-colors duration-300 relative py-1 font-bold group ${
+                      isAtTop
+                        ? "text-black hover:text-white/80 drop-shadow-md"
+                        : "text-[#171717] hover:text-[#c4007b]"
+                    }`}
+                  >
+                    {link.name}
+                    <span className={`absolute bottom-0 left-0 w-0 h-[2px] group-hover:w-full transition-all duration-300 ${
+                      isAtTop ? "bg-black" : "bg-[#c4007b]"
+                    }`} />
+                  </Link>
+                ))}
+              </div>
 
-            {/* Desktop CTA */}
-            <div className="hidden md:block">
               <Magnetic range={35} strength={0.3}>
                 <Link
                   href="/contact"
-                  className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
-                    isAtTop
-                      ? "border-[#121212]/20 text-[#121212] hover:bg-[#121212] hover:text-white"
-                      : "bg-brand-gradient-btn text-white border-transparent shadow-sm hover:brightness-110"
-                  }`}
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-brand-gradient-btn text-white text-xs font-bold uppercase tracking-wider shadow-md hover:scale-105 transition-all duration-300"
                 >
                   Plan Your Journey
-                  <ArrowUpRight className="w-3 h-3" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-black" />
                 </Link>
               </Magnetic>
             </div>
+
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-[#121212] hover:text-gray-600 transition-colors z-50 relative flex items-center justify-center"
+              className={`md:hidden p-2.5 rounded-xl border transition-colors z-50 relative flex items-center justify-center shadow-sm ${
+                isAtTop
+                  ? "bg-black/30 backdrop-blur-sm border-white/20 text-white hover:text-white"
+                  : "bg-white border-neutral-200 text-black hover:text-[#c4007b]"
+              }`}
               aria-label="Toggle menu"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">

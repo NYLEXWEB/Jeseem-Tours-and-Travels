@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, Award, ShieldCheck, Clock, Target, Eye, CheckCircle2, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ArrowUpRight, Compass, Calendar, User, MapPin, Star, ChevronLeft, ChevronRight, ChevronDown, Award, ShieldCheck, Clock, Target, Eye, CheckCircle2, Sparkles } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 import TiltCard from "@/components/TiltCard";
 import Magnetic from "@/components/Magnetic";
 import ScrollReveal, { ScrollStagger } from "@/components/ScrollReveal";
+import HeroBackgroundCarousel from "@/components/HeroBackgroundCarousel";
 import { COMPANY_DETAILS } from "@/constants/company";
 
 // Curated Assets and Details
@@ -202,204 +203,11 @@ const REVIEWS = [
   },
 ];
 
-/* ─── Flowing silk thread canvas ─────────────────────────────────────────── */
-interface Thread {
-  points: { x: number; y: number }[];
-  speed: number;
-  offset: number;
-  opacity: number;
-  width: number;
-  color: string;
-}
-
-function SilkCanvas({ mouseX, mouseY }: { mouseX: number; mouseY: number }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const threads = useRef<Thread[]>([]);
-  const animRef = useRef<number>(0);
-  const mouseRef = useRef({ x: 0.5, y: 0.5 });
-  const timeRef = useRef(0);
-
-  useEffect(() => {
-    mouseRef.current = { x: mouseX, y: mouseY };
-  }, [mouseX, mouseY]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initThreads();
-    };
-
-    const COLORS = [
-      "rgba(199,47,98,",
-      "rgba(145,45,107,",
-      "rgba(217,47,96,",
-      "rgba(179,46,101,",
-      "rgba(161,46,105,",
-    ];
-
-    const initThreads = () => {
-      threads.current = Array.from({ length: 18 }, (_, i) => ({
-        points: Array.from({ length: 8 }, (_, j) => ({
-          x: (canvas.width / 17) * i + (Math.random() - 0.5) * 80,
-          y: (canvas.height / 7) * j + (Math.random() - 0.5) * 60,
-        })),
-        speed: 0.0004 + Math.random() * 0.0006,
-        offset: Math.random() * Math.PI * 2,
-        opacity: 0.06 + Math.random() * 0.11,
-        width: 0.6 + Math.random() * 1.2,
-        color: COLORS[i % COLORS.length],
-      }));
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-
-    const draw = (time: number) => {
-      timeRef.current = time * 0.001;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const mx = mouseRef.current.x;
-      const my = mouseRef.current.y;
-
-      threads.current.forEach((thread) => {
-        const t = timeRef.current;
-        ctx.beginPath();
-        ctx.lineWidth = thread.width;
-        ctx.strokeStyle = `${thread.color}${thread.opacity})`;
-
-        const pts = thread.points.map((p, j) => {
-          const wave1 = Math.sin(t * thread.speed * 800 + thread.offset + j * 0.9) * 28;
-          const wave2 = Math.cos(t * thread.speed * 500 + thread.offset * 1.3 + j * 0.6) * 18;
-          const mousePull = {
-            x: (mx - p.x / canvas.width) * 40 * Math.exp(-Math.abs(j - 3.5) * 0.4),
-            y: (my - p.y / canvas.height) * 30 * Math.exp(-Math.abs(j - 3.5) * 0.4),
-          };
-          return {
-            x: p.x + wave1 + mousePull.x,
-            y: p.y + wave2 + mousePull.y,
-          };
-        });
-
-        ctx.moveTo(pts[0].x, pts[0].y);
-        for (let i = 1; i < pts.length - 2; i++) {
-          const cpX = (pts[i].x + pts[i + 1].x) / 2;
-          const cpY = (pts[i].y + pts[i + 1].y) / 2;
-          ctx.quadraticCurveTo(pts[i].x, pts[i].y, cpX, cpY);
-        }
-        ctx.stroke();
-      });
-
-      animRef.current = requestAnimationFrame(draw);
-    };
-
-    animRef.current = requestAnimationFrame(draw);
-    return () => {
-      cancelAnimationFrame(animRef.current);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.85 }}
-    />
-  );
-}
-
-/* ─── Floating dust particles ─────────────────────────────────────────────── */
-function DustParticles() {
-  const [particles, setParticles] = useState<
-    Array<{
-      width: string;
-      height: string;
-      left: string;
-      top: string;
-      background: string;
-      opacity: number;
-      animation: string;
-    }>
-  >([]);
-
-  useEffect(() => {
-    setParticles(
-      Array.from({ length: 24 }, (_, i) => ({
-        width: `${1 + Math.random() * 2}px`,
-        height: `${1 + Math.random() * 2}px`,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        background: i % 3 === 0 ? "#C72F62" : "#121212",
-        opacity: 0.12 + Math.random() * 0.18,
-        animation: `dustFloat ${8 + Math.random() * 12}s ease-in-out ${Math.random() * 8}s infinite`,
-      }))
-    );
-  }, []);
-
-  if (particles.length === 0) return null;
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((p, i) => (
-        <div key={i} className="absolute rounded-full" style={p} />
-      ))}
-    </div>
-  );
-}
-
-/* ─── Rotating destination words & synced background ─────────────────────── */
-const HERO_DESTINATIONS = [
-  { name: "Kerala", image: "/destinations/Kerala.png" },
-  { name: "Lakshadweep", image: "/destinations/Lakshadweep.png" },
-  { name: "Georgia", image: "/destinations/Georgia.png" },
-  { name: "Maldives", image: "/destinations/Maldives.png" },
-  { name: "Dubai", image: "/destinations/Dubai.png" },
-  { name: "Malaysia", image: "/destinations/Malaysia.png" },
-];
-
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const destinationsScrollRef = useRef<HTMLDivElement>(null);
   const isAutoScrollingRef = useRef(true);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
-  const [loaded, setLoaded] = useState(false);
-  const [heroIndex, setHeroIndex] = useState(0);
-  const [heroTextVisible, setHeroTextVisible] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setHeroTextVisible(false);
-      setTimeout(() => {
-        setHeroIndex((i) => (i + 1) % HERO_DESTINATIONS.length);
-        setHeroTextVisible(true);
-      }, 500);
-    }, 3400);
-    return () => clearInterval(t);
-  }, []);
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMouse({ x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight });
-    };
-    window.addEventListener("mousemove", handleMouse, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
-  const px = (factor: number, axis: "x" | "y") =>
-    ((axis === "x" ? mouse.x : mouse.y) - 0.5) * factor;
 
   const pauseAutoScroll = () => {
     isAutoScrollingRef.current = false;
@@ -493,6 +301,8 @@ export default function Home() {
   // Refs for tracking sticky steps
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const heroRef = useRef<HTMLDivElement>(null);
+
   // Setup Step Intersection Observers
   useEffect(() => {
     const observers = stepRefs.current.map((ref, idx) => {
@@ -516,332 +326,36 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
-      {/* ── HERO SECTION ── */}
-      <section className="relative w-full min-h-screen overflow-hidden bg-[#fafafa] flex items-center pt-24 pb-16">
-        {/* Hero Section Background Image (/hero_section_bg.png) */}
-        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden">
-          <img
-            src="/hero_section_bg.png"
-            alt="Hero Section Background"
-            className="w-full h-full object-cover object-center"
-          />
+      {/* 1. HERO SECTION */}
+      <section ref={heroRef} className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-6 sm:px-12">
+        {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
+          <HeroBackgroundCarousel />
         </div>
 
-        {/* Silk thread canvas background */}
-        <SilkCanvas mouseX={mouse.x} mouseY={mouse.y} />
-
-        {/* Atmospheric dust */}
-        <DustParticles />
-
-        {/* Radial gradient orb — top right */}
-        <div
-          className="absolute top-[-10%] right-[-5%] w-[55vw] h-[55vw] pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(199,47,98,0.08) 0%, rgba(145,45,107,0.03) 40%, transparent 70%)",
-            transform: `translate(${px(18, "x")}px, ${px(12, "y")}px)`,
-            transition: "transform 1.2s cubic-bezier(0.16,1,0.3,1)",
-          }}
-        />
-
-        {/* Radial orb — bottom left */}
-        <div
-          className="absolute bottom-[-15%] left-[-8%] w-[45vw] h-[45vw] pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(18,18,18,0.03) 0%, transparent 65%)",
-            transform: `translate(${px(-12, "x")}px, ${px(-8, "y")}px)`,
-            transition: "transform 1.2s cubic-bezier(0.16,1,0.3,1)",
-          }}
-        />
-
-        {/* Orbiting abstract ring — right side */}
-        <div
-          className="absolute right-[8%] top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none z-0"
-          style={{
-            transform: `translate(${px(20, "x")}px, calc(-50% + ${px(14, "y")}px))`,
-            transition: "transform 1s cubic-bezier(0.16,1,0.3,1)",
-          }}
-        >
-          {/* Outer pulse ring */}
-          <div
-            className="absolute inset-[-40px] rounded-full border border-[rgba(199,47,98,0.15)]"
-            style={{ animation: "pulseRing 4s ease-in-out infinite" }}
-          />
-          {/* Main ring */}
-          <div
-            className="w-[340px] h-[340px] rounded-full border border-[rgba(199,47,98,0.18)] relative"
-            style={{ animation: "rotateSlow 40s linear infinite" }}
+        {/* Hero Central Content: Single Bold White Headline (Reference Image Inspired) */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-end items-start pb-16 md:pb-24">
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[42px] sm:text-[64px] md:text-[80px] lg:text-[96px] font-extrabold text-black drop-shadow-2xl tracking-tight leading-[1.02] max-w-4xl font-outfit"
           >
-            {/* Orbit dot 1 */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ animation: "orbitSlow 18s linear infinite" }}
-            >
-              <div className="w-2.5 h-2.5 rounded-full bg-[#C72F62] opacity-80 shadow-[0_0_8px_rgba(199,47,98,0.6)]" />
-            </div>
-            {/* Orbit dot 2 */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ animation: "orbitSlow2 28s linear infinite" }}
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#912D6B] opacity-50" />
-            </div>
-            {/* Orbit dot 3 */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ animation: "orbitSlow3 22s linear infinite" }}
-            >
-              <div className="w-[6px] h-[6px] rounded-full bg-[#D92F60] opacity-60" />
-            </div>
-          </div>
-          {/* Inner ring */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-dashed border-[rgba(18,18,18,0.08)]"
-            style={{ animation: "rotateSlow 25s linear infinite reverse" }}
-          />
-          {/* Center cross */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] flex items-center justify-center">
-            <div className="relative">
-              <div className="w-[1px] h-8 bg-[rgba(199,47,98,0.35)] mx-auto" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[1px] w-8 bg-[rgba(199,47,98,0.35)]" />
-            </div>
-          </div>
+            Be inspired to experience Jeseem Tours & Travels
+          </motion.h1>
         </div>
 
-        {/* Fine grid pattern */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(18,18,18,1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(18,18,18,1) 1px, transparent 1px)
-            `,
-            backgroundSize: "80px 80px",
-          }}
-        />
-
-        {/* Main content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 w-full pt-16 md:pt-20 pb-20">
-          <div className="max-w-2xl">
-
-            {/* Eyebrow */}
-            <div
-              className={`flex items-center gap-3.5 mb-8 transition-all duration-700 ${loaded ? "opacity-100" : "opacity-0 translate-y-4"}`}
-              style={{
-                transitionDelay: "0.1s",
-                transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
-                transform: loaded
-                  ? `translate(${px(-5, "x")}px, ${px(-3, "y")}px)`
-                  : "translateY(16px)",
-              }}
-            >
-              <div
-                className="h-px w-10 bg-brand-gradient origin-left"
-                style={{ animation: loaded ? "lineGrow 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both" : "none" }}
-              />
-              <span className="text-[12px] tracking-[0.16em] uppercase font-apple font-semibold text-[#C72F62]">
-                Since {COMPANY_DETAILS.established} &bull; Award-winning travel curation
-              </span>
-            </div>
-
-            {/* Headline */}
-            <div
-              style={{
-                transform: `translate(${px(-16, "x")}px, ${px(-10, "y")}px)`,
-                transition: "transform 1s cubic-bezier(0.16,1,0.3,1)",
-              }}
-            >
-              <h1
-                className="font-apple text-[#1d1d1f] leading-[1.05] mb-3"
-                style={{ fontSize: "clamp(3rem, 5.8vw, 6.2rem)", fontWeight: 400, letterSpacing: "-0.035em" }}
-              >
-                <span
-                  className="block font-normal"
-                  style={{ animation: loaded ? "fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.25s both" : "none" }}
-                >
-                  Journey to
-                </span>
-                <span
-                  className="block py-1"
-                  style={{ animation: loaded ? "fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.42s both" : "none" }}
-                >
-                  <span
-                    className="inline-block font-apple italic font-medium text-brand-gradient"
-                    style={{
-                      opacity: heroTextVisible ? 1 : 0,
-                      transform: heroTextVisible ? "translateY(0)" : "translateY(12px)",
-                      transition: "opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1)",
-                    }}
-                  >
-                    {HERO_DESTINATIONS[heroIndex].name}
-                  </span>
-                </span>
-                <span
-                  className="block text-[#1d1d1f] font-normal"
-                  style={{ animation: loaded ? "fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.58s both" : "none" }}
-                >
-                  & beyond.
-                </span>
-              </h1>
-            </div>
-
-            {/* Divider */}
-            <div
-              className="w-16 h-px bg-[rgba(29,29,31,0.12)] my-8 origin-left"
-              style={{ animation: loaded ? "lineGrow 0.8s cubic-bezier(0.16,1,0.3,1) 0.7s both" : "none" }}
-            />
-
-            {/* Description */}
-            <p
-              className="text-[#515154] leading-[1.47] mb-10 max-w-lg font-apple text-[17px] sm:text-[19px] font-normal tracking-[-0.018em]"
-              style={{
-                animation: loaded ? "fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.78s both" : "none",
-                transform: `translate(${px(-8, "x")}px, ${px(-5, "y")}px)`,
-                transition: "transform 1s cubic-bezier(0.16,1,0.3,1)",
-              }}
-            >
-              Since {COMPANY_DETAILS.established}, Jeseem Tours & Travels has simplified global journeys.
-              Low airfares, bespoke holiday packages, rapid visa assistance, and emigration support tailored with quiet precision.
-            </p>
-
-            {/* CTAs */}
-            <div
-              className="flex flex-wrap items-center gap-4"
-              style={{
-                animation: loaded ? "fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.92s both" : "none",
-                transform: `translate(${px(-6, "x")}px, ${px(-4, "y")}px)`,
-                transition: "transform 1s cubic-bezier(0.16,1,0.3,1)",
-              }}
-            >
-              <Magnetic range={30} strength={0.25}>
-                <Link
-                  href="/destinations"
-                  className="group relative overflow-hidden inline-flex items-center gap-3 bg-brand-gradient-btn text-white px-8 py-[15px] text-[12px] tracking-[0.08em] uppercase font-apple font-semibold rounded-full shadow-lg hover:shadow-xl hover:brightness-110 transition-all duration-300"
-                >
-                  <span className="relative z-10">Explore Destinations</span>
-                  <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Link>
-              </Magnetic>
-
-              <Magnetic range={30} strength={0.25}>
-                <Link
-                  href="/packages"
-                  className="group inline-flex items-center gap-3 border border-[#1d1d1f]/20 text-[#1d1d1f] px-8 py-[15px] text-[12px] tracking-[0.08em] uppercase font-apple font-semibold rounded-full hover:border-[#1d1d1f] hover:bg-[#1d1d1f] hover:text-white transition-all duration-400"
-                >
-                  Our Packages
-                  <ArrowRight className="w-4 h-4 text-[#C72F62] group-hover:text-white transition-transform duration-400 group-hover:translate-x-1" />
-                </Link>
-              </Magnetic>
-            </div>
-
-            {/* Stats row */}
-            <div
-              className="mt-16 flex items-center gap-10 md:gap-14"
-              style={{ animation: loaded ? "fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 1.1s both" : "none" }}
-            >
-              {[
-                { value: "40+", label: "Years Legacy" },
-                { value: "12K+", label: "Journeys Crafted" },
-                { value: "98%", label: "Return Travellers" },
-              ].map((stat, i) => (
-                <div key={i} className={i > 0 ? "border-l border-[rgba(29,29,31,0.1)] pl-10 md:pl-14" : ""}>
-                  <div className="font-apple text-[#1d1d1f] text-3xl font-semibold tracking-[-0.03em] leading-none mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-[11px] tracking-[0.12em] uppercase font-apple text-[#86868b] font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Vertical label — right side */}
-        <div className="absolute right-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-5 pointer-events-none">
-          <span
-            className="text-[9px] tracking-[0.3em] uppercase font-['Outfit'] text-[#6B6560] opacity-60"
-            style={{ writingMode: "vertical-rl" }}
+        {/* Hero Bottom: Minimal Circular Scroll Button */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex justify-center items-center pb-2">
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/50 bg-black/30 backdrop-blur-sm flex items-center justify-center text-white pointer-events-none shadow-md"
           >
-            Curated escapes 2026
-          </span>
-          <div className="w-px h-12 bg-[rgba(18,18,18,0.12)] relative overflow-hidden">
-            <div
-              className="absolute top-0 left-0 w-full h-1/2 bg-[#C72F62] opacity-70"
-              style={{ animation: "scrollLine 2.5s ease-in-out infinite" }}
-            />
-          </div>
-        </div>
-
-        {/* Bottom destinations ticker */}
-        <div
-          className="absolute bottom-0 left-0 right-0 border-t border-[rgba(18,18,18,0.07)] py-4 bg-white/50 backdrop-blur-sm"
-          style={{ animation: loaded ? "fadeSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.2s both" : "none" }}
-        >
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
-            <div className="flex items-center gap-6 md:gap-10 overflow-x-auto scrollbar-hide">
-              {["Kerala", "Lakshadweep", "Georgia", "Maldives", "Dubai", "Malaysia", "Hajj & Umrah", "Flight Bookings"].map((dest, i) => (
-                <Link
-                  key={dest}
-                  href="/destinations"
-                  className="text-[11px] tracking-[0.15em] uppercase font-['Outfit'] text-[#6B6560] hover:text-[#C72F62] transition-colors duration-300 whitespace-nowrap"
-                  style={{ transitionDelay: `${i * 30}ms` }}
-                >
-                  {dest}
-                </Link>
-              ))}
-            </div>
-            <Link href="/destinations" className="hidden md:flex items-center gap-2 text-[11px] tracking-[0.12em] font-['Outfit'] text-[#C72F62] hover:underline">
-              <span className="text-[#6B6560] opacity-80">All destinations</span>
-              <ChevronRight className="w-3.5 h-3.5 opacity-80" />
-            </Link>
-          </div>
+            <ChevronDown className="w-5 h-5 text-white" />
+          </motion.div>
         </div>
       </section>
-
-      {/* Hero Animation Styles */}
-      <style>{`
-        @keyframes dustFloat {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
-          33%       { transform: translate(12px, -18px) scale(1.3); opacity: 0.25; }
-          66%       { transform: translate(-8px, -10px) scale(0.8); opacity: 0.1; }
-        }
-        @keyframes lineGrow {
-          from { transform: scaleX(0); opacity: 0; }
-          to   { transform: scaleX(1); opacity: 1; }
-        }
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(32px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes orbitSlow {
-          from { transform: rotate(0deg) translateX(180px) rotate(0deg); }
-          to   { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
-        }
-        @keyframes orbitSlow2 {
-          from { transform: rotate(120deg) translateX(260px) rotate(-120deg); }
-          to   { transform: rotate(480deg) translateX(260px) rotate(-480deg); }
-        }
-        @keyframes orbitSlow3 {
-          from { transform: rotate(240deg) translateX(220px) rotate(-240deg); }
-          to   { transform: rotate(600deg) translateX(220px) rotate(-600deg); }
-        }
-        @keyframes pulseRing {
-          0%   { transform: scale(0.9); opacity: 0.35; }
-          50%  { transform: scale(1.08); opacity: 0.12; }
-          100% { transform: scale(0.9); opacity: 0.35; }
-        }
-        @keyframes rotateSlow {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-        @keyframes scrollLine {
-          0%   { transform: translateY(-100%); }
-          70%  { transform: translateY(300%); }
-          100% { transform: translateY(-100%); }
-        }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
 
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS (POST-HERO: PURE WHITE) */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none bg-black" />
@@ -1066,9 +580,44 @@ export default function Home() {
                   FOUNDER TRIBUTE & HERITAGE
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit">
-                  KUNJUMON ISMAIL
-                </h3>
+                <motion.h3
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05,
+                        delayChildren: 0.15,
+                      },
+                    },
+                  }}
+                  className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-zinc-900 mb-2 font-outfit flex flex-wrap"
+                >
+                  {"KUNJUMON ISMAIL".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      variants={{
+                        hidden: { opacity: 0, y: 22, filter: "blur(6px)", scale: 0.85 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          filter: "blur(0px)",
+                          scale: 1,
+                          transition: {
+                            type: "spring",
+                            stiffness: 220,
+                            damping: 16,
+                          },
+                        },
+                      }}
+                      className="inline-block"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                </motion.h3>
                 <p className="text-sky-600 text-sm font-mono tracking-widest uppercase mb-6 font-bold">
                   Founder & Visionary &bull; (Late in 2022)
                 </p>
