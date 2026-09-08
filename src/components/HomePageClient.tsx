@@ -425,9 +425,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               >
                 {
                   [
-                    "Explore the World with Kerala’s Trusted Travel Agency",
-                    "Unforgettable Custom Tour Packages & Family Holidays",
-                    "Fast-Track Visas & Guaranteed Best Flight Ticket Deals",
+                    "SAVE PLAN GO",
+                    "SAVE PLAN GO",
+                     "SAVE PLAN GO",
                   ][heroSlideIndex % 3]
                 }
               </motion.h1>
@@ -441,9 +441,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               >
                 {
                   [
-                    "Customized international holiday packages, lowest group flight fares, and fast-track visa assistance backed by four decades of trust.",
-                    "From tranquil hill retreats to exotic worldwide destinations, experience tailor-made travel itineraries crafted for lifelong memories.",
-                    "Hassle-free visa processing, document attestation, and guaranteed lowest airfares for individuals, family vacations, and tour groups.",
+                    "Save the money plan for travel go to the destination ",
+                    "Save the money plan for travel go to the destination ",
+                    "Save the money plan for travel go to the destination ",
                   ][heroSlideIndex % 3]
                 }
               </motion.p>
