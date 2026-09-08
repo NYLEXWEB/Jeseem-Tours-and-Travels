@@ -23,14 +23,17 @@ const MOBILE_SLIDES = [
     {
         src: "/hero_section_mobile/1.jpg",
         alt: "Best Travel Agency in Alappuzha Kerala - Jeseem Tours & Travels",
+        objectPosition: "35% 65%",
     },
     {
         src: "/hero_section_mobile/mobile2.jpg",
         alt: "Munnar tea gardens and misty mountain lake vacation in Kerala - Jeseem Tours",
+        objectPosition: "35% 60%",
     },
     {
         src: "/hero_section_mobile/mobile3.jpg",
         alt: "Tropical paradise beach and turquoise ocean coastline tour packages - Jeseem Travels",
+        objectPosition: "35% 60%",
     },
 ];
 
@@ -109,7 +112,7 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                 </AnimatePresence>
             </div>
 
-            {/* Mobile Hero Carousel Layer (below md) */}
+            {/* Mobile Hero Carousel Layer (below md: tuned objectPosition 35% 65%) */}
             <div className="block md:hidden absolute inset-0 w-full h-full z-0">
                 <AnimatePresence mode="sync">
                     <motion.div
@@ -127,7 +130,8 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                             src={MOBILE_SLIDES[currentIndex].src}
                             alt={MOBILE_SLIDES[currentIndex].alt}
                             fill
-                            className="object-cover object-center"
+                            className="object-cover"
+                            style={{ objectPosition: MOBILE_SLIDES[currentIndex].objectPosition || "35% 65%" }}
                             priority={currentIndex === 0}
                             sizes="(max-width: 767px) 100vw, 1px"
                         />
@@ -135,11 +139,9 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                 </AnimatePresence>
             </div>
 
-            {/* Uniform Semi-Transparent Dark Overlay across the ENTIRE Hero Section */}
-            <div className="absolute inset-0 z-10 pointer-events-none bg-white/75" />
-            
-            {/* Seamless Bottom Edge Transition: Soft white fade that merges Hero section into Section 2 */}
-            <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-44 md:h-56 z-15 pointer-events-none bg-gradient-to-b from-transparent via-white/50 to-white" />
+            {/* Subtle Dark Gradient Overlay for Readability */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-white/80 via-white/40 to-white/20" />
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white/70 via-white/30 to-transparent max-w-4xl" />
         </div>
     );
 }
