@@ -425,9 +425,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               >
                 {
                   [
-                    "Explore the World with Kerala’s Trusted Travel Agency",
-                    "Unforgettable Custom Tour Packages & Family Holidays",
-                    "Fast-Track Visas & Guaranteed Best Flight Ticket Deals",
+                    "SAVE PLAN GO",
+                    "SAVE PLAN GO",
+                    "SAVE PLAN GO",
                   ][heroSlideIndex % 3]
                 }
               </motion.h1>
