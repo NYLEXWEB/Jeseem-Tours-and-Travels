@@ -425,14 +425,14 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               >
                 {
                   [
-                    "SAVE PLAN GO",
-                    "SAVE PLAN GO",
-                     "SAVE PLAN GO",
+                    "Explore the World with Kerala’s Trusted Travel Agency",
+                    "Unforgettable Custom Tour Packages & Family Holidays",
+                    "Fast-Track Visas & Guaranteed Best Flight Ticket Deals",
                   ][heroSlideIndex % 3]
                 }
               </motion.h1>
 
-              {/* SEO-Optimized Description Paragraph */}
+              {/* SEO-Optimized Expanded Description Paragraph */}
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -441,9 +441,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               >
                 {
                   [
-                    "Save the money plan for travel go to the destination ",
-                    "Save the money plan for travel go to the destination ",
-                    "Save the money plan for travel go to the destination ",
+                    "Save money, plan your travel, and go to your dream destination with Kerala’s trusted agency — featuring customized international holiday packages, lowest group flight fares, and fast-track visa assistance.",
+                    "Save money, plan your travel, and go to your dream destination with tailor-made tour itineraries, serene mountain retreats, and unforgettable worldwide family vacations.",
+                    "Save money, plan your travel, and go to your dream destination with guaranteed lowest airfares, instant visa processing, and hassle-free document attestation.",
                   ][heroSlideIndex % 3]
                 }
               </motion.p>
