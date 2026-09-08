@@ -73,7 +73,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               title="Jeseem Tours & Travels - Best Travel Agency in Alappuzha Kerala"
             >
-              <div className="relative h-11 md:h-14 w-48 md:w-68">
+              <div className="relative h-9 sm:h-11 md:h-14 w-36 sm:w-44 md:w-68">
                 <Image
                   src="/logo.png"
                   alt="Jeseem Tours & Travels - Premier Tour Operator in Alappuzha, Kerala"
@@ -161,7 +161,7 @@ export default function Navbar() {
 
             {/* Menu Sliding Panel */}
             <motion.div
-              className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[400px] bg-[var(--background)]/98 border-l border-[var(--border)] z-30 flex flex-col justify-between p-8 pt-28 md:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[360px] sm:max-w-[400px] bg-[var(--background)]/98 border-l border-[var(--border)] z-30 flex flex-col justify-between p-6 pt-20 pb-8 sm:p-8 sm:pt-28 md:hidden shadow-2xl overflow-y-auto max-h-screen"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

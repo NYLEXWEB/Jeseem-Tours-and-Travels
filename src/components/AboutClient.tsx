@@ -55,7 +55,7 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
   ];
 
   return (
-    <div className="bg-[var(--background)] pt-32 pb-20 px-6">
+    <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Visual Breadcrumb Navigation */}
         <Breadcrumbs items={breadcrumbItems} />
@@ -69,7 +69,7 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
               </span>
             </ScrollReveal>
             <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-[var(--foreground)] mb-8">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-[var(--foreground)] mb-8">
                 About Jeseem Tours & Travels
               </h1>
             </ScrollReveal>
@@ -117,7 +117,7 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Mission Card */}
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
-              <div className="bg-[var(--card-bg)] border border-[#c4007b]/20 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-[#c4007b]/40 transition-colors">
+              <div className="bg-[var(--card-bg)] border border-[#c4007b]/20 p-5 sm:p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-[#c4007b]/40 transition-colors">
                 <div>
                   <div className="w-12 h-12 rounded-2xl bg-[#7b0062]/10 border border-[#c4007b]/20 flex items-center justify-center mb-6">
                     <Target className="w-6 h-6 text-[#c4007b]" />
@@ -141,7 +141,7 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
 
             {/* Vision Card */}
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
-              <div className="bg-[var(--card-bg)] border border-sky-500/20 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/40 transition-colors">
+              <div className="bg-[var(--card-bg)] border border-sky-500/20 p-5 sm:p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/40 transition-colors">
                 <div>
                   <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-6">
                     <Eye className="w-6 h-6 text-sky-500" />
@@ -166,7 +166,7 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
 
           {/* 100% QUALITY ASSURANCE BANNER CARD */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.3}>
-            <div className="bg-brand-gradient-light border border-brand-gradient-light p-8 md:p-12 rounded-3xl shadow-md relative overflow-hidden">
+            <div className="bg-brand-gradient-light border border-brand-gradient-light p-5 sm:p-8 md:p-12 rounded-3xl shadow-md relative overflow-hidden">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
                 <div className="max-w-2xl">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient text-white font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
@@ -196,7 +196,7 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
 
         {/* FOUNDER & HERITAGE TRIBUTE SECTION */}
         <div className="border-t border-[var(--border)] pt-20 mb-24">
-          <div className="bg-[var(--card-bg)] text-zinc-900 border border-[#c4007b]/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-sm">
+          <div className="bg-[var(--card-bg)] text-zinc-900 border border-[#c4007b]/30 rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
               {/* Founder Portrait Photo */}
               <div className="lg:col-span-4 flex justify-center">

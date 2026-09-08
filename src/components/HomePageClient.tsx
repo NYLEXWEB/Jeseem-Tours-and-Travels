@@ -389,77 +389,132 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       <section
         ref={heroRef}
         aria-label="Welcome to Jeseem Tours & Travels"
-        className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-6 sm:px-12"
+        className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-4 sm:px-8 md:px-12"
       >
         {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
-          <HeroBackgroundCarousel onSlideChange={setHeroSlideIndex} />
+          <HeroBackgroundCarousel
+            onSlideChange={setHeroSlideIndex}
+            activeSlideIndex={heroSlideIndex}
+          />
         </div>
 
-        {/* Hero Central Content (Visible only on first slide 1.png / 1.jpg) */}
-        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-end items-start pb-6 sm:pb-8 md:pb-10 min-h-[240px]">
+        {/* Hero Central Content (Adaptive & visible across ALL 3 slides) */}
+        <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-end items-start pb-6 sm:pb-8 md:pb-10 min-h-[260px]">
           <AnimatePresence mode="wait">
-            {heroSlideIndex === 0 && (
-              <motion.div
-                key="hero-first-slide-content"
-                initial={{ opacity: 0, y: 24 }}
+            <motion.div
+              key={`hero-slide-${heroSlideIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12, transition: { duration: 0.35, ease: "easeOut" } }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-start w-full max-w-3xl"
+            >
+
+              {/* Main H1 Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16, transition: { duration: 0.45, ease: "easeOut" } }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col items-start w-full"
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+                style={{
+                  fontFamily:
+                    "var(--font-cormorant), 'Playfair Display', Georgia, serif",
+                }}
               >
-                {/* Main H1 Headline for SEO & Google Ranking */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl"
-                  style={{
-                    color: "#000000",
-                    fontFamily:
-                      "var(--font-cormorant), 'Playfair Display', Georgia, serif",
-                  }}
-                >
-                  Explore the World with Kerala’s Trusted Travel Agency
-                </motion.h1>
+                {
+                  [
+                    "Explore the World with Kerala’s Trusted Travel Agency",
+                    "Unforgettable Custom Tour Packages & Family Holidays",
+                    "Fast-Track Visas & Guaranteed Best Flight Ticket Deals",
+                  ][heroSlideIndex % 3]
+                }
+              </motion.h1>
 
-                {/* SEO-Optimized Compact Description */}
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="mt-2 font-medium text-xs sm:text-sm md:text-base max-w-xl leading-relaxed tracking-normal"
-                  style={{ color: "#000000" }}
-                >
-                  Customized international holiday packages, lowest group flight
-                  fares, and fast-track visa assistance backed by four decades of
-                  trust.
-                </motion.p>
+              {/* SEO-Optimized Description Paragraph */}
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-3 font-medium text-xs sm:text-sm md:text-base max-w-xl leading-relaxed text-slate-100 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]"
+              >
+                {
+                  [
+                    "Customized international holiday packages, lowest group flight fares, and fast-track visa assistance backed by four decades of trust.",
+                    "From tranquil hill retreats to exotic worldwide destinations, experience tailor-made travel itineraries crafted for lifelong memories.",
+                    "Hassle-free visa processing, document attestation, and guaranteed lowest airfares for individuals, family vacations, and tour groups.",
+                  ][heroSlideIndex % 3]
+                }
+              </motion.p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.4 }}
-                  className="mt-4 flex flex-wrap items-center gap-4 sm:gap-6"
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mt-5 flex flex-wrap items-center gap-3 sm:gap-5"
+              >
+                <Link
+                  href={
+                    [
+                      "/packages",
+                      "/destinations",
+                      "/contact",
+                    ][heroSlideIndex % 3]
+                  }
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-neutral-950 text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-xl hover:shadow-amber-400/30 hover:scale-[1.02] active:scale-95 group"
                 >
-                  <Link
-                    href="/packages"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-black bg-transparent hover:bg-black hover:text-white text-black text-xs uppercase tracking-wider font-bold transition-all shadow-xs group"
-                  >
-                    <span>Explore Tour Packages</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-1.5 text-black hover:opacity-70 text-xs uppercase tracking-wider font-bold transition-all group py-2"
-                  >
-                    <span>Book Flight Tickets</span>
-                    <ArrowUpRight className="w-4 h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </Link>
-                </motion.div>
+                  <span>
+                    {
+                      [
+                        "Explore Tour Packages",
+                        "Discover Destinations",
+                        "Get Flight Deals",
+                      ][heroSlideIndex % 3]
+                    }
+                  </span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href={
+                    [
+                      "/contact",
+                      "/contact",
+                      "/about",
+                    ][heroSlideIndex % 3]
+                  }
+                  className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-xl hover:border-white/60 hover:scale-[1.02] active:scale-95 group"
+                >
+                  <span>
+                    {
+                      [
+                        "Book Flight Tickets",
+                        "Plan My Holiday",
+                        "Visa Assistance",
+                      ][heroSlideIndex % 3]
+                    }
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
               </motion.div>
-            )}
+            </motion.div>
           </AnimatePresence>
+
+          {/* Interactive Slide Indicator Dots */}
+          <div className="mt-8 flex items-center gap-2.5 z-20">
+            {[0, 1, 2].map((idx) => (
+              <button
+                key={`hero-dot-${idx}`}
+                onClick={() => setHeroSlideIndex(idx)}
+                aria-label={`Switch to slide ${idx + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${
+                  heroSlideIndex % 3 === idx
+                    ? "w-9 bg-amber-400 shadow-md shadow-amber-400/40"
+                    : "w-2.5 bg-white/40 hover:bg-white/75"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Hero Bottom: Minimal Circular Scroll Button */}
@@ -467,10 +522,10 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
           <motion.div
             animate={{ y: [0, 5, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-black/15 bg-white/70 backdrop-blur-md flex items-center justify-center text-[#111111] pointer-events-none shadow-sm"
+            className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/20 bg-black/40 backdrop-blur-md flex items-center justify-center text-white pointer-events-none shadow-sm"
             aria-label="Scroll down to explore"
           >
-            <ChevronDown className="w-4 h-4 text-[#111111]" />
+            <ChevronDown className="w-4 h-4 text-white" />
           </motion.div>
         </div>
       </section>
@@ -481,7 +536,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 2. OUR TRAVEL PHILOSOPHY & FOUNDER TRIBUTE SECTION */}
       <section
         aria-label="Our Travel Philosophy and Founder Heritage"
-        className="relative py-28 md:py-36 px-6 overflow-hidden border-t border-black/5 flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-12 overflow-hidden border-t border-black/5 flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent"
       >
         <div className="max-w-6xl mx-auto w-full relative z-20">
           {/* Philosophy Statement */}
@@ -559,7 +614,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative bg-black border border-neutral-200 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-500 text-left overflow-hidden"
+                  className="group relative bg-black border border-neutral-200 p-5 sm:p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-500 text-left overflow-hidden"
                 >
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-[#912D6B]/15 via-[#C72F62]/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
 
@@ -615,7 +670,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group relative bg-black border border-neutral-200 p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-500 text-left overflow-hidden"
+                  className="group relative bg-black border border-neutral-200 p-5 sm:p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-xl hover:shadow-2xl transition-all duration-500 text-left overflow-hidden"
                 >
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-sky-400/15 via-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
 
@@ -672,7 +727,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative bg-black border border-neutral-200 p-8 md:p-12 rounded-3xl shadow-xl overflow-hidden text-left"
+                className="relative bg-black border border-neutral-200 p-5 sm:p-8 md:p-12 rounded-3xl shadow-xl overflow-hidden text-left"
               >
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700" />
 
@@ -709,7 +764,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
 
           {/* FOUNDER TRIBUTE CARD */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.2}>
-            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-8 md:p-14 border border-sky-600/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
+            <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-5 sm:p-8 md:p-14 border border-sky-600/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
               {/* Founder Image Frame */}
               <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-sky-600/40 shadow-xl group bg-purple-50">
                 <Image
@@ -812,7 +867,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 3. DESTINATIONS SECTION (Horizontal showcase) */}
       <section
         aria-label="Popular Holiday Destinations from Kerala"
-        className="relative py-32 border-t border-white/5 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
       >
         <div className="relative z-20">
           <motion.div
@@ -820,7 +875,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8 }}
-            className="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4"
+            className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4"
           >
             <div>
               <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-2">
@@ -861,14 +916,14 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
 
             <div
               ref={destinationsScrollRef}
-              className="w-full overflow-x-auto flex gap-6 px-12 md:px-24 py-6 hide-scrollbar"
+              className="w-full max-w-full overflow-x-auto flex gap-4 sm:gap-6 px-4 sm:px-8 md:px-24 py-6 hide-scrollbar"
             >
               {[...DESTINATIONS, ...DESTINATIONS, ...DESTINATIONS].map(
                 (dest, idx) => (
                   <div key={`${dest.id}-${idx}`} className="shrink-0">
                     <TiltCard maxRotation={6}>
                       <div
-                        className="relative w-[320px] sm:w-[480px] md:w-[580px] aspect-[16/9] rounded-3xl overflow-hidden flex flex-col justify-end p-4 md:p-5 group select-none bg-[var(--card-bg)] border border-[var(--border)] shadow-2xl"
+                        className="relative w-[280px] sm:w-[420px] md:w-[580px] aspect-[16/9] rounded-3xl overflow-hidden flex flex-col justify-end p-4 md:p-5 group select-none bg-[var(--card-bg)] border border-[var(--border)] shadow-2xl"
                         data-cursor="explore"
                       >
                         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -922,7 +977,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 4. FEATURED FLIGHT TICKETING SERVICE */}
       <section
         aria-label="Flight Ticket Booking and Group Airline Deals"
-        className="relative py-32 border-t border-white/5 px-6 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
       >
         <div className="max-w-7xl mx-auto relative z-20 w-full">
           <motion.div
@@ -959,7 +1014,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0d0d0e] via-transparent to-transparent z-10" />
               </div>
 
-              <div className="flex-1 p-8 md:p-16 flex flex-col justify-center relative z-20 bg-[#0d0d0e]">
+              <div className="flex-1 p-5 sm:p-8 md:p-16 flex flex-col justify-center relative z-20 bg-[#0d0d0e]">
                 <span
                   className="text-xs uppercase tracking-widest font-extrabold mb-2"
                   style={{ color: "#D92F60" }}
@@ -1057,9 +1112,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 5. INTERACTIVE SERVICES */}
       <section
         aria-label="Core Travel Services in Alappuzha Kerala"
-        className="relative py-32 border-t border-white/5 px-6 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
       >
-        <div className="max-w-7xl mx-auto px-6 relative z-20 w-full flex flex-col lg:flex-row gap-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-20 w-full flex flex-col lg:flex-row gap-16">
           {/* Text List Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -1191,7 +1246,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 5.5. WHY CHOOSE US SECTION */}
       <section
         aria-label="Why Choose Jeseem Tours and Travels"
-        className="relative py-32 border-t border-white/5 px-6 overflow-hidden z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 overflow-hidden z-10 bg-transparent"
       >
         <div className="max-w-7xl mx-auto relative z-20 w-full">
           <motion.div
@@ -1293,7 +1348,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 6. SCROLL STORYTELLING SECTION */}
       <section
         aria-label="Our Travel Methodology"
-        className="relative py-32 border-t border-white/5 px-6 min-h-screen flex flex-col justify-center z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 min-h-screen flex flex-col justify-center z-10 bg-transparent"
       >
         <div className="max-w-7xl mx-auto relative z-20 w-full flex flex-col lg:flex-row gap-16 relative">
           <motion.div
@@ -1401,7 +1456,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       <section
         id="reviews"
         aria-label="Google Customer Reviews & Testimonials"
-        className="relative py-32 border-t border-white/5 px-6 bg-transparent z-10"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 bg-transparent z-10"
       >
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 relative z-20">
           {/* Left Column: Sticky Title & Info */}
@@ -1520,7 +1575,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                   <ChevronLeft className="w-4 h-4 text-white" />
                 </button>
 
-                <div className="flex-1 max-w-[76vw] min-h-[350px] relative overflow-hidden flex items-stretch">
+                <div className="flex-1 max-w-full w-full min-h-[350px] relative overflow-hidden flex items-stretch">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={activeMobileReviewIdx}

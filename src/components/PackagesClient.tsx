@@ -119,7 +119,7 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
   ];
 
   return (
-    <div className="bg-[var(--background)] pt-32 pb-20 px-6">
+    <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Visual Breadcrumbs */}
         <Breadcrumbs items={breadcrumbItems} />
@@ -135,7 +135,7 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-white mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-white mb-6">
               Bespoke Tour Packages
             </h1>
           </ScrollReveal>
@@ -192,7 +192,7 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-8 flex flex-col flex-grow justify-between">
+                  <div className="p-5 sm:p-8 flex flex-col flex-grow justify-between">
                     <div>
                       <span className="text-xs uppercase tracking-widest text-[var(--foreground-muted)] font-semibold mb-1 block">
                         {pkg.subtitle}

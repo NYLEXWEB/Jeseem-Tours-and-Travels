@@ -80,7 +80,7 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
   ];
 
   return (
-    <div className="bg-[var(--background)] pt-32 pb-20 px-6">
+    <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Visual Breadcrumb Navigation */}
         <Breadcrumbs items={breadcrumbItems} />
@@ -96,7 +96,7 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extralight tracking-tight text-[var(--foreground)] mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tight text-[var(--foreground)] mb-6">
               Contact Best Travel Agency in Alappuzha
             </h1>
           </ScrollReveal>
@@ -294,7 +294,7 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
           </ScrollStagger>
 
           {/* Right Column: Inquiry Form */}
-          <div className="lg:col-span-3 relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-8 md:p-12 overflow-hidden shadow-sm">
+          <div className="lg:col-span-3 relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-5 sm:p-8 md:p-12 overflow-hidden shadow-sm">
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.form

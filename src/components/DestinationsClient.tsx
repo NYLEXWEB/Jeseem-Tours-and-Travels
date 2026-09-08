@@ -124,7 +124,7 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
   ];
 
   return (
-    <div className="bg-[var(--background)] pt-32 pb-20 px-6">
+    <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Visual Breadcrumb Navigation */}
         <Breadcrumbs items={breadcrumbItems} />
@@ -140,7 +140,7 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
             </div>
           </ScrollReveal>
           <ScrollReveal variant="mask-reveal" duration={1.2} delay={0.15}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-white mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-white mb-6">
               Bespoke Tour Destinations
             </h1>
           </ScrollReveal>

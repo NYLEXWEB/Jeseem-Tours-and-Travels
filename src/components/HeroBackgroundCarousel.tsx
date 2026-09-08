@@ -41,11 +41,19 @@ const FADE_DURATION_SEC = 1.5;
 
 interface HeroBackgroundCarouselProps {
     onSlideChange?: (index: number) => void;
+    activeSlideIndex?: number;
 }
 
-export default function HeroBackgroundCarousel({ onSlideChange }: HeroBackgroundCarouselProps) {
+export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex }: HeroBackgroundCarouselProps) {
     const prefersReducedMotion = useReducedMotion();
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    // Sync with controlled activeSlideIndex if provided
+    useEffect(() => {
+        if (activeSlideIndex !== undefined && activeSlideIndex !== currentIndex) {
+            setCurrentIndex(activeSlideIndex);
+        }
+    }, [activeSlideIndex]);
 
     // Preload hero images immediately on mount based on screen width
     useEffect(() => {
@@ -74,9 +82,9 @@ export default function HeroBackgroundCarousel({ onSlideChange }: HeroBackground
     }, [currentIndex, onSlideChange]);
 
     return (
-        <div className="relative w-full h-full overflow-hidden bg-white" aria-hidden="true">
+        <div className="relative w-full h-full overflow-hidden bg-black" aria-hidden="true">
             {/* Desktop Hero Carousel Layer (md and above) */}
-            <div className="hidden md:block absolute inset-0 w-full h-full">
+            <div className="hidden md:block absolute inset-0 w-full h-full z-0">
                 <AnimatePresence mode="sync">
                     <motion.div
                         key={`desktop-${currentIndex}`}
@@ -102,7 +110,7 @@ export default function HeroBackgroundCarousel({ onSlideChange }: HeroBackground
             </div>
 
             {/* Mobile Hero Carousel Layer (below md) */}
-            <div className="block md:hidden absolute inset-0 w-full h-full">
+            <div className="block md:hidden absolute inset-0 w-full h-full z-0">
                 <AnimatePresence mode="sync">
                     <motion.div
                         key={`mobile-${currentIndex}`}
@@ -126,6 +134,13 @@ export default function HeroBackgroundCarousel({ onSlideChange }: HeroBackground
                     </motion.div>
                 </AnimatePresence>
             </div>
+
+            {/* Multi-layered Contrast Protection Scrim Overlays */}
+            {/* 1. Bottom-up gradient for high contrast behind title, description and CTA buttons */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
+            
+            {/* 2. Left-to-right gradient overlay for text readability on desktop and mobile */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/75 via-black/40 to-transparent max-w-4xl" />
         </div>
     );
 }

@@ -159,12 +159,12 @@ export default function RootLayout({
         <JsonLd schema={travelAgencySchema} />
         <JsonLd schema={organizationSchema} />
       </head>
-      <body className="flex flex-col bg-[var(--background)] text-[var(--foreground)] min-h-screen">
+      <body className="flex flex-col bg-[var(--background)] text-[var(--foreground)] min-h-screen max-w-full overflow-x-hidden w-full">
         <SmoothScrollProvider>
           <ScrollProgress />
           <CustomCursor />
           <Navbar />
-          <main id="main-content" className="flex-grow">{children}</main>
+          <main id="main-content" className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
           <FloatingContact />
           <Footer />
         </SmoothScrollProvider>
