@@ -518,17 +518,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
           </div>
         </div>
 
-        {/* Hero Bottom: Minimal Circular Scroll Button */}
-        <div className="relative max-w-7xl mx-auto w-full z-20 flex justify-center items-center pb-2">
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-neutral-300 bg-white/80 backdrop-blur-md flex items-center justify-center text-neutral-800 pointer-events-none shadow-sm"
-            aria-label="Scroll down to explore"
-          >
-            <ChevronDown className="w-4 h-4 text-neutral-800" />
-          </motion.div>
-        </div>
+
       </section>
 
       {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS */}
