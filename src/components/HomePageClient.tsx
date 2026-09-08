@@ -418,7 +418,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl text-neutral-900"
                 style={{
-                  color: "#111111",
+                  color: "#ffffffff",
                   fontFamily:
                     "var(--font-cormorant), 'Playfair Display', Georgia, serif",
                 }}
@@ -437,7 +437,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-3 font-medium text-xs sm:text-sm md:text-base max-w-xl leading-relaxed text-neutral-700"
+                className="mt-3 font-medium text-xs sm:text-sm md:text-base max-w-xl leading-relaxed text-black"
               >
                 {
                   [
