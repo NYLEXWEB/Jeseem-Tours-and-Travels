@@ -135,12 +135,12 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                 </AnimatePresence>
             </div>
 
-            {/* Multi-layered Contrast Protection Scrim Overlays */}
-            {/* 1. Left/Bottom dark scrim for crisp text readability */}
-            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-tr from-black/75 via-black/30 to-transparent max-w-5xl" />
+            {/* Restored White Fade Overlays */}
+            {/* 1. Bottom-to-Top White Gradient: Luminous white fade at bottom, fading to transparent towards top */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black via-black/60 to-transparent" />
             
-            {/* 2. Seamless Bottom Edge Transition: Feathered fade into the next section (eliminates sharp cutting line) */}
-            <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-40 md:h-52 z-10 pointer-events-none bg-gradient-to-b from-transparent via-white/50 to-white" />
+            {/* 2. Seamless Bottom Edge Transition: Soft white fade that merges Hero section into Section 2 with zero cutting line */}
+            <div className="absolute bottom-0 left-0 right-0 h-36 sm:h-52 md:h-64 z-15 pointer-events-none bg-gradient-to-b from-transparent via-black/80 to-black" />
         </div>
     );
 }
