@@ -36,8 +36,8 @@ const MOBILE_SLIDES = [
 
 // Display duration per image (5 seconds)
 const DISPLAY_DURATION_MS = 5000;
-// Cross-fade animation duration (1.5 seconds)
-const FADE_DURATION_SEC = 1.5;
+// Cross-fade animation duration (0.8 seconds)
+const FADE_DURATION_SEC = 0.8;
 
 interface HeroBackgroundCarouselProps {
     onSlideChange?: (index: number) => void;
