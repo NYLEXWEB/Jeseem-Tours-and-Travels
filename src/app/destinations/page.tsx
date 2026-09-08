@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Jeseem Tours & Travels",
     images: [
       {
-        url: "/destinations/Dubai.png",
+        url: "/destinations/dubai-abu-dhabi-desert-safari-tour-packages-kerala.png",
         width: 1200,
         height: 630,
         alt: "Tour Destinations from Kerala - Jeseem Tours & Travels",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Tour Destinations from Kerala | Jeseem Tours & Travels",
     description:
       "Custom tour packages for Dubai, Maldives, Georgia, Malaysia, Kerala, and Lakshadweep.",
-    images: ["/destinations/Dubai.png"],
+    images: ["/destinations/dubai-abu-dhabi-desert-safari-tour-packages-kerala.png"],
   },
 };
 
@@ -73,8 +73,9 @@ export default function DestinationsPage() {
         "position": 1,
         "item": {
           "@type": "TouristDestination",
-          "name": "Dubai, UAE",
+          "name": "Dubai & Abu Dhabi, UAE",
           "description": "Desert safari, Burj Khalifa VIP tours, and luxury shopping packages from Kerala.",
+          "image": `${SITE_URL}/destinations/dubai-abu-dhabi-desert-safari-tour-packages-kerala.png`,
           "url": `${SITE_URL}/destinations#dubai`
         }
       },
@@ -85,6 +86,7 @@ export default function DestinationsPage() {
           "@type": "TouristDestination",
           "name": "Maldives",
           "description": "Luxury overwater villas, coral reef snorkeling, and private island honeymoon packages.",
+          "image": `${SITE_URL}/destinations/maldives-overwater-villa-honeymoon-packages-kerala.png`,
           "url": `${SITE_URL}/destinations#maldives`
         }
       },
@@ -95,6 +97,7 @@ export default function DestinationsPage() {
           "@type": "TouristDestination",
           "name": "Georgia, Caucasus",
           "description": "Caucasus mountains, historic Tbilisi monasteries, and wine valley holiday tours.",
+          "image": `${SITE_URL}/destinations/georgia-caucasus-mountain-tour-packages-kerala.png`,
           "url": `${SITE_URL}/destinations#georgia`
         }
       },
@@ -105,6 +108,7 @@ export default function DestinationsPage() {
           "@type": "TouristDestination",
           "name": "Malaysia & Langkawi",
           "description": "Kuala Lumpur city tour, Petronas Towers, and Langkawi island beach holidays.",
+          "image": `${SITE_URL}/destinations/malaysia-kuala-lumpur-langkawi-tour-packages-kerala.png`,
           "url": `${SITE_URL}/destinations#malaysia`
         }
       },
@@ -115,6 +119,7 @@ export default function DestinationsPage() {
           "@type": "TouristDestination",
           "name": "Kerala Backwaters & Hills",
           "description": "Alappuzha private luxury houseboats, Munnar tea garden resorts, and Ayurvedic wellness stays.",
+          "image": `${SITE_URL}/destinations/kerala-backwaters-houseboat-munnar-tourism-packages.png`,
           "url": `${SITE_URL}/destinations#kerala`
         }
       },
@@ -125,6 +130,7 @@ export default function DestinationsPage() {
           "@type": "TouristDestination",
           "name": "Lakshadweep Islands",
           "description": "Turquoise lagoons, coral reefs, scuba diving, and permit assistance.",
+          "image": `${SITE_URL}/destinations/lakshadweep-islands-scuba-diving-tour-packages-kerala.png`,
           "url": `${SITE_URL}/destinations#lakshadweep`
         }
       }

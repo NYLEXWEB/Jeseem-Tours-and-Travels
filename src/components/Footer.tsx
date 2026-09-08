@@ -44,7 +44,6 @@ export default function Footer() {
         { name: "Founder Legacy & Story", href: "/about" },
         { name: "Guest Reviews & Ratings", href: "/#reviews" },
         { name: "Contact Travel Desks", href: "/contact" },
-        { name: "XML Sitemap", href: "/sitemap.xml" },
       ],
     },
   ];
@@ -56,7 +55,6 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 md:gap-8 pb-14">
-          {/* Brand & Local NAP Details */}
           <div className="md:col-span-2">
             <Link
               href="/"
@@ -77,7 +75,6 @@ export default function Footer() {
               assistance, and certificate attestation.
             </p>
 
-            {/* Semantic NAP for Local SEO */}
             <address className="not-italic mt-6 text-xs flex flex-col gap-3 text-neutral-800">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C72F62] shrink-0 mt-0.5" />
@@ -131,7 +128,6 @@ export default function Footer() {
             </address>
           </div>
 
-          {/* Nav Categories */}
           {footerLinks.map((group) => (
             <div key={group.title} className="flex flex-col gap-4">
               <h3 className="text-xs uppercase tracking-widest text-neutral-950 font-bold">
@@ -162,13 +158,6 @@ export default function Footer() {
             </p>
             <span className="hidden md:inline text-neutral-300">|</span>
             <span className="text-neutral-700">Alappuzha, Kerala, India</span>
-            <span className="text-neutral-300">•</span>
-            <Link
-              href="/sitemap.xml"
-              className="text-[#C72F62] hover:underline font-bold transition-colors"
-            >
-              HTML/XML Sitemap
-            </Link>
           </div>
           <div className="flex gap-6 font-semibold">
             <a

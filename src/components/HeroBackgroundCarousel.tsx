@@ -1,45 +1,43 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const DESKTOP_SLIDES = [
     {
-        src: "/hero_section/1.png",
+        src: "/hero_section/best-travel-agency-alappuzha-kerala-flights-holidays.png",
         alt: "Jeseem Tours & Travels - Best Travel Agency in Alappuzha Kerala since 1985",
     },
     {
-        src: "/hero_section/2.png",
+        src: "/hero_section/customized-international-holiday-packages-from-kerala.png",
         alt: "Customized International Tour Packages and Group Flight Bookings from Kerala by Jeseem Travels",
     },
     {
-        src: "/hero_section/3.png",
+        src: "/hero_section/global-visa-assistance-certificate-attestation-alappuzha.png",
         alt: "Global Visa Assistance, Document Attestation, and Luxury Holiday Tours in Alappuzha Kerala",
     },
 ];
 
 const MOBILE_SLIDES = [
     {
-        src: "/hero_section_mobile/1.jpg",
+        src: "/hero_section_mobile/mobile-best-travel-agency-alappuzha-kerala.jpg",
         alt: "Best Travel Agency in Alappuzha Kerala - Jeseem Tours & Travels",
         objectPosition: "35% 65%",
     },
     {
-        src: "/hero_section_mobile/mobile2.jpg",
+        src: "/hero_section_mobile/mobile-munnar-kerala-holiday-packages.jpg",
         alt: "Munnar tea gardens and misty mountain lake vacation in Kerala - Jeseem Tours",
         objectPosition: "35% 60%",
     },
     {
-        src: "/hero_section_mobile/mobile3.jpg",
+        src: "/hero_section_mobile/mobile-tropical-beach-international-tour-packages.jpg",
         alt: "Tropical paradise beach and turquoise ocean coastline tour packages - Jeseem Travels",
         objectPosition: "35% 60%",
     },
 ];
 
-// Display duration per image (5 seconds)
 const DISPLAY_DURATION_MS = 5000;
-// Cross-fade animation duration (0.8 seconds)
 const FADE_DURATION_SEC = 0.8;
 
 interface HeroBackgroundCarouselProps {
@@ -49,18 +47,23 @@ interface HeroBackgroundCarouselProps {
 
 export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex }: HeroBackgroundCarouselProps) {
     const prefersReducedMotion = useReducedMotion();
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [internalIndex, setInternalIndex] = useState(0);
 
-    // Sync with controlled activeSlideIndex if provided
-    useEffect(() => {
-        if (activeSlideIndex !== undefined && activeSlideIndex !== currentIndex) {
-            setCurrentIndex(activeSlideIndex);
-        }
-    }, [activeSlideIndex]);
+    const isControlled = activeSlideIndex !== undefined;
+    const currentIndex = isControlled ? activeSlideIndex : internalIndex;
 
-    // Preload hero images immediately on mount based on screen width
+    const onSlideChangeRef = useRef(onSlideChange);
     useEffect(() => {
-        const isMobile = window.innerWidth < 768;
+        onSlideChangeRef.current = onSlideChange;
+    }, [onSlideChange]);
+
+    const currentIndexRef = useRef(currentIndex);
+    useEffect(() => {
+        currentIndexRef.current = currentIndex;
+    }, [currentIndex]);
+
+    useEffect(() => {
+        const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
         const slidesToPreload = isMobile ? MOBILE_SLIDES : DESKTOP_SLIDES;
         slidesToPreload.forEach((slide) => {
             const img = new window.Image();
@@ -68,25 +71,23 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
         });
     }, []);
 
-    // Main carousel interval logic (Cross-fade cycle)
     useEffect(() => {
         if (prefersReducedMotion) return;
 
         const interval = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % DESKTOP_SLIDES.length);
+            const nextIndex = (currentIndexRef.current + 1) % DESKTOP_SLIDES.length;
+            if (!isControlled) {
+                setInternalIndex(nextIndex);
+            }
+            onSlideChangeRef.current?.(nextIndex);
         }, DISPLAY_DURATION_MS);
 
         return () => clearInterval(interval);
-    }, [prefersReducedMotion]);
-
-    // Notify parent component on slide change after render
-    useEffect(() => {
-        onSlideChange?.(currentIndex);
-    }, [currentIndex, onSlideChange]);
+    }, [prefersReducedMotion, isControlled]);
 
     return (
         <div className="relative w-full h-full overflow-hidden bg-black" aria-hidden="true">
-            {/* Desktop Hero Carousel Layer (md and above) */}
+            
             <div className="hidden md:block absolute inset-0 w-full h-full z-0">
                 <AnimatePresence mode="sync">
                     <motion.div
@@ -112,7 +113,6 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                 </AnimatePresence>
             </div>
 
-            {/* Mobile Hero Carousel Layer (below md: tuned objectPosition 35% 65%) */}
             <div className="block md:hidden absolute inset-0 w-full h-full z-0">
                 <AnimatePresence mode="sync">
                     <motion.div
@@ -139,11 +139,9 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                 </AnimatePresence>
             </div>
 
-            {/* Multi-layered Contrast Protection Scrim Overlays */}
             <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-white/80 via-white/30 to-white/20" />
             <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white/65 via-white/25 to-transparent max-w-4xl" />
             
-            {/* Smooth Bottom Black Edge Transition: Merges Hero section into Section 2 with a continuous black fade */}
             <div className="absolute bottom-0 left-0 right-0 h-40 sm:h-56 md:h-72 pointer-events-none z-20 bg-gradient-to-b from-transparent via-white/60 to-white" />
         </div>
     );

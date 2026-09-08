@@ -57,10 +57,9 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
   return (
     <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Visual Breadcrumb Navigation */}
+        
         <Breadcrumbs items={breadcrumbItems} />
 
-        {/* Editorial Brand Intro */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-center">
           <div>
             <ScrollReveal variant="fade-up" duration={0.8}>
@@ -85,10 +84,9 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
             </ScrollReveal>
           </div>
 
-          {/* Cinematic Side Image */}
           <div className="relative h-[280px] sm:h-[380px] md:h-[450px] rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl">
             <Image
-              src="/about.jpg"
+              src="/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg"
               alt="Jeseem Tours & Travels - Best Travel Agency in Alappuzha Kerala since 1985"
               fill
               className="object-cover"
@@ -98,7 +96,6 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
           </div>
         </div>
 
-        {/* MISSION & VISION & QUALITY COMMITMENT */}
         <div className="mb-24">
           <div className="text-center mb-12">
             <ScrollReveal variant="fade-up" duration={0.8}>
@@ -113,9 +110,8 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
             </ScrollReveal>
           </div>
 
-          {/* Grid of Mission & Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            {/* Mission Card */}
+            
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
               <div className="bg-[var(--card-bg)] border border-[#c4007b]/20 p-5 sm:p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-[#c4007b]/40 transition-colors">
                 <div>
@@ -139,7 +135,6 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
               </div>
             </ScrollReveal>
 
-            {/* Vision Card */}
             <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
               <div className="bg-[var(--card-bg)] border border-sky-500/20 p-5 sm:p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:border-sky-500/40 transition-colors">
                 <div>
@@ -164,7 +159,6 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
             </ScrollReveal>
           </div>
 
-          {/* 100% QUALITY ASSURANCE BANNER CARD */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.3}>
             <div className="bg-brand-gradient-light border border-brand-gradient-light p-5 sm:p-8 md:p-12 rounded-3xl shadow-md relative overflow-hidden">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
@@ -194,15 +188,14 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
           </ScrollReveal>
         </div>
 
-        {/* FOUNDER & HERITAGE TRIBUTE SECTION */}
         <div className="border-t border-[var(--border)] pt-20 mb-24">
           <div className="bg-[var(--card-bg)] text-zinc-900 border border-[#c4007b]/30 rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-              {/* Founder Portrait Photo */}
+              
               <div className="lg:col-span-4 flex justify-center">
                 <div className="relative w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden border-2 border-[#c4007b]/50 shadow-xl group bg-purple-50">
                   <Image
-                    src="/Father photo.png"
+                    src="/founder-late-kunjumon-ismail-jeseem-tours-alappuzha.png"
                     alt="Late KUNJUMON ISMAIL - Founder of Jeseem Tours & Travels Alappuzha"
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
@@ -216,7 +209,6 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
                 </div>
               </div>
 
-              {/* Founder Narrative Text */}
               <div className="lg:col-span-8 space-y-4 text-left">
                 <ScrollReveal variant="fade-up" duration={0.6}>
                   <span className="text-xs uppercase tracking-widest text-[#c4007b] font-bold block">
@@ -289,7 +281,6 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
           </div>
         </div>
 
-        {/* CORE PILLARS SECTION */}
         <div className="border-t border-[var(--border)] pt-20 mb-24">
           <div className="text-center mb-16">
             <ScrollReveal variant="fade-up" duration={0.8}>
@@ -330,7 +321,6 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
           </ScrollStagger>
         </div>
 
-        {/* ABOUT PAGE FAQ SECTION */}
         <FaqAccordion
           items={faqItems}
           title="About Jeseem Tours FAQs"
@@ -338,12 +328,11 @@ export default function AboutClient({ faqItems }: AboutClientProps) {
           badge="AGENCY CREDENTIALS FAQ"
         />
 
-        {/* Closing Call to Action Banner */}
         <div className="relative rounded-3xl overflow-hidden h-[300px] flex items-center justify-center text-center p-6 border border-[var(--border)] mt-12">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-neutral-950/75 z-10" />
             <Image
-              src="/about_banner.jpg"
+              src="/kerala-holiday-packages-flight-booking-travel-agency.jpg"
               alt="Travel night sky - Jeseem Tours and Travels Alappuzha"
               fill
               className="object-cover opacity-30"

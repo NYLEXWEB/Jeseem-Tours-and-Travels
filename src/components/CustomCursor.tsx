@@ -16,7 +16,7 @@ export default function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Disable custom cursor on touch devices
+    
     if (window.matchMedia("(pointer: coarse)").matches) {
       return;
     }
@@ -24,7 +24,7 @@ export default function CustomCursor() {
     setHidden(false);
 
     const moveCursor = (e: MouseEvent) => {
-      // Center 32px ring on cursor coordinates
+      
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
     };
@@ -81,7 +81,7 @@ export default function CustomCursor() {
       }}
       transition={{ type: "spring", damping: 24, stiffness: 360, mass: 0.3 }}
     >
-      {/* Center Dot or Hover Text */}
+      
       {cursorText ? (
         <span className="text-[9px] font-extrabold uppercase tracking-widest text-white px-2.5">
           {cursorText}

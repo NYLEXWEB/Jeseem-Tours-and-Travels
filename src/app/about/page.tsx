@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Jeseem Tours & Travels",
     images: [
       {
-        url: "/about.jpg",
+        url: "/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg",
         width: 1200,
         height: 630,
         alt: "About Jeseem Tours & Travels Alappuzha Kerala",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "About Us | Jeseem Tours & Travels Alappuzha",
     description:
       "Trusted travel partner in Kerala since 1985. Four decades of excellence in flights, holidays, and visa processing.",
-    images: ["/about.jpg"],
+    images: ["/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg"],
   },
 };
 

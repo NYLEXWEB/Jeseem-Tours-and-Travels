@@ -8,7 +8,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import FloatingContact from "@/components/FloatingContact";
 import JsonLd from "@/components/JsonLd";
-import { getTravelAgencySchema, getOrganizationSchema, SITE_URL } from "@/lib/schema";
+import { getTravelAgencySchema, getOrganizationSchema, getWebSiteSchema, SITE_URL } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     template: "%s | Jeseem Tours & Travels",
   },
   description:
-    "Trusted since 1985. Jeseem Tours & Travels is the best travel agency in Alappuzha, Kerala offering group flight bookings, international holiday packages (Dubai, Maldives, Georgia), fast visa assistance & certificate attestation.",
+    "Trusted since 1985. Jeseem Tours & Travels is the best travel agency in Alappuzha, Kerala offering group flight ticket bookings, series airfares, customized international holiday packages (Dubai, Maldives, Georgia, Malaysia), fast-track visa assistance & certificate attestation.",
   applicationName: "Jeseem Tours & Travels",
   authors: [{ name: "Jeseem Tours & Travels", url: SITE_URL }],
   creator: "Jeseem Tours & Travels",
@@ -71,18 +71,29 @@ export const metadata: Metadata = {
     "Travel agency near me",
     "Flight ticket booking Alappuzha",
     "Group flight bookings Kerala",
+    "Series fares flight booking Kerala",
     "International tour packages from Kerala",
     "Domestic tour packages Kerala",
     "Dubai tour packages from Kerala",
+    "Dubai desert safari holiday Kerala",
     "Maldives tour packages from Kerala",
+    "Maldives honeymoon packages Kerala",
     "Georgia tour packages Kerala",
+    "Georgia Caucasus holiday packages",
     "Malaysia tour packages Kerala",
     "Kerala houseboat packages Alappuzha",
+    "Alappuzha backwater tours",
+    "Lakshadweep island tour packages Kerala",
     "Global visa assistance Kerala",
+    "Dubai visa services Alappuzha",
+    "Schengen visa assistance Kerala",
     "Certificate attestation Alappuzha",
+    "HRD MEA attestation Kerala",
     "Hajj and Umrah packages Kerala",
     "Honeymoon packages Kerala",
     "Jeseem Tours and Travels",
+    "Jeseem Travels Alappuzha",
+    "Jaseem Tours and Travels",
   ],
   alternates: {
     canonical: "/",
@@ -101,7 +112,7 @@ export const metadata: Metadata = {
       "Save, Plan & Go with Jeseem Tours & Travels. 40+ years of trusted flight bookings, holiday packages, global visas, and document attestations in Alappuzha, Kerala.",
     images: [
       {
-        url: "/about.jpg",
+        url: "/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg",
         width: 1200,
         height: 630,
         alt: "Jeseem Tours & Travels - Best Travel Agency in Alappuzha Kerala",
@@ -113,8 +124,8 @@ export const metadata: Metadata = {
     title: "Best Travel Agency in Alappuzha Kerala | Jeseem Tours & Travels",
     description:
       "40+ years of travel excellence. Group flight tickets, custom international tours (Dubai, Maldives, Georgia), visa assistance & document attestation in Alappuzha.",
-    images: ["/about.jpg"],
-    creator: "@jeseem_tours",
+    images: ["/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg"],
+    creator: "@__jeseem.tours__",
   },
   robots: {
     index: true,
@@ -149,6 +160,7 @@ export default function RootLayout({
 }) {
   const travelAgencySchema = getTravelAgencySchema();
   const organizationSchema = getOrganizationSchema();
+  const webSiteSchema = getWebSiteSchema();
 
   return (
     <html
@@ -158,6 +170,7 @@ export default function RootLayout({
       <head>
         <JsonLd schema={travelAgencySchema} />
         <JsonLd schema={organizationSchema} />
+        <JsonLd schema={webSiteSchema} />
       </head>
       <body className="flex flex-col bg-[var(--background)] text-[var(--foreground)] min-h-screen max-w-full overflow-x-clip w-full">
         <SmoothScrollProvider>

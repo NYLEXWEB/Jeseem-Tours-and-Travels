@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Jeseem Tours & Travels",
     images: [
       {
-        url: "/about.jpg",
+        url: "/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Jeseem Tours & Travels in Alappuzha Kerala",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Contact Jeseem Tours & Travels | Alappuzha Kerala",
     description:
       "Call 0477 2266007 or WhatsApp +91 9061858416 for flight bookings, holiday packages, and visa guidance.",
-    images: ["/about.jpg"],
+    images: ["/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg"],
   },
 };
 
@@ -74,6 +74,7 @@ export default function ContactPage() {
       "name": COMPANY_DETAILS.name,
       "telephone": COMPANY_DETAILS.phone,
       "email": COMPANY_DETAILS.email,
+      "image": `${SITE_URL}/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Thiruvampady P.O",

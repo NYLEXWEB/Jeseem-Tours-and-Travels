@@ -83,7 +83,7 @@ export const COMPANY_DETAILS = {
     }
   ],
   socials: {
-    instagram: "https://www.instagram.com/jeseem_tours",
+    instagram: "https://www.instagram.com/__jeseem.tours__",
     whatsapp: "https://wa.me/919061858416?text=Hi%20Jeseem%20Tours%20%26%20Travels,%20I%27m%20interested%20in%20planning%20my%20next%20trip.",
     facebook: "#",
     linkedin: "#"

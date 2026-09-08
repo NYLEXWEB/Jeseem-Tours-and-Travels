@@ -12,9 +12,27 @@ export interface FaqItem {
   answer: string;
 }
 
-/**
- * Generates comprehensive TravelAgency + LocalBusiness Schema (JSON-LD)
- */
+export function getWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    "url": SITE_URL,
+    "name": COMPANY_DETAILS.name,
+    "alternateName": [
+      "Jaseem Tours and Travels",
+      "Jeseem Travels Alappuzha",
+      "Jeseem Tours",
+      "Jeseem Holidays Kerala"
+    ],
+    "description": "Best Travel Agency in Alappuzha, Kerala. Offering worldwide group flight bookings, international holiday tour packages, visa assistance, and certificate attestation since 1985.",
+    "publisher": {
+      "@id": `${SITE_URL}/#organization`
+    },
+    "inLanguage": "en-IN"
+  };
+}
+
 export function getTravelAgencySchema() {
   return {
     "@context": "https://schema.org",
@@ -30,16 +48,19 @@ export function getTravelAgencySchema() {
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo.png`,
     "image": [
-      `${SITE_URL}/about.jpg`,
-      `${SITE_URL}/travel_image.png`,
-      `${SITE_URL}/service_01.jpg`
+      `${SITE_URL}/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg`,
+      `${SITE_URL}/international-holiday-packages-visa-assistance-kerala.png`,
+      `${SITE_URL}/group-flight-ticket-booking-series-fares-alappuzha.jpg`,
+      `${SITE_URL}/alappuzha-backwaters-luxury-houseboat-packages-kerala.jpg`,
+      `${SITE_URL}/dubai-desert-safari-holiday-tour-packages-kerala.jpg`,
+      `${SITE_URL}/founder-late-kunjumon-ismail-jeseem-tours-alappuzha.png`
     ],
     "description": "Premier travel agency and tour operator in Alappuzha, Kerala since 1985. Specialized in group flight bookings, series fares, customized domestic & international tour packages (Dubai, Maldives, Georgia, Malaysia, Kerala), global visa assistance, certificate attestation, and Hajj & Umrah pilgrimage.",
     "telephone": [COMPANY_DETAILS.phone, "+91 90618 58416", "+91 96331 33977"],
     "email": COMPANY_DETAILS.email,
     "priceRange": "$$",
-    "currenciesAccepted": "INR, AED, USD, EUR",
-    "paymentAccepted": "Cash, Credit Card, Debit Card, UPI, Bank Transfer",
+    "currenciesAccepted": "INR, AED, USD, EUR, SAR",
+    "paymentAccepted": "Cash, Credit Card, Debit Card, UPI, Bank Transfer, Net Banking",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Thiruvampady P.O",
@@ -87,9 +108,32 @@ export function getTravelAgencySchema() {
         "name": "Kottayam"
       },
       {
+        "@type": "AdministrativeArea",
+        "name": "Trivandrum"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Kozhikode"
+      },
+      {
         "@type": "Country",
         "name": "India"
       }
+    ],
+    "knowsAbout": [
+      "Best travel agency in Alappuzha Kerala",
+      "Worldwide flight ticket booking",
+      "Group flight allocations & series fares",
+      "Dubai tour packages from Kerala",
+      "Maldives luxury resort & honeymoon packages",
+      "Georgia Caucasus mountain tour packages",
+      "Malaysia & Langkawi holiday packages",
+      "Alappuzha backwater luxury houseboat cruise",
+      "Lakshadweep island tour packages",
+      "Global visa assistance & tourist e-visas",
+      "HRD & MEA certificate attestation Alappuzha",
+      "Emigration clearance support",
+      "Hajj and Umrah pilgrimage tour packages"
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -149,7 +193,7 @@ export function getTravelAgencySchema() {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Group Flight Bookings & Series Fares",
-                "description": "Affordable group flight reservations, series fares, and special corporate airline ticketing worldwide."
+                "description": "Affordable group flight reservations, series fares, and special corporate airline ticketing worldwide from Kerala airports."
               }
             }
           ]
@@ -163,7 +207,7 @@ export function getTravelAgencySchema() {
               "itemOffered": {
                 "@type": "Service",
                 "name": "International Tour Packages (Dubai, Maldives, Georgia, Malaysia)",
-                "description": "Customized international holiday packages from Kerala with hotel reservations, transfers, and sightseeing."
+                "description": "Customized international holiday packages departing from Kerala with hotel reservations, transfers, and sightseeing."
               }
             },
             {
@@ -171,7 +215,7 @@ export function getTravelAgencySchema() {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Domestic & Kerala Tourism Packages",
-                "description": "Kerala backwater houseboat tours, Munnar hill station getaways, and Lakshadweep island expeditions."
+                "description": "Kerala backwater luxury houseboat tours in Alappuzha, Munnar hill station getaways, and Lakshadweep island expeditions."
               }
             }
           ]
@@ -185,7 +229,21 @@ export function getTravelAgencySchema() {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Global Visa Assistance & Certificate Attestation",
-                "description": "Fast tourist and business visa assistance, MEA apostille, and embassy certificate attestation support."
+                "description": "Fast tourist and business visa assistance, MEA apostille, and embassy certificate attestation support in Alappuzha."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Pilgrimage Desks",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Hajj & Umrah Pilgrimage Packages",
+                "description": "Dedicated sacred pilgrimage packages to Makkah and Madinah with hotels close to Haram and experienced guides."
               }
             }
           ]
@@ -199,9 +257,6 @@ export function getTravelAgencySchema() {
   };
 }
 
-/**
- * Generates Organization Schema with founder tribute and trust signals
- */
 export function getOrganizationSchema() {
   return {
     "@context": "https://schema.org",
@@ -213,7 +268,10 @@ export function getOrganizationSchema() {
     "foundingDate": "1985",
     "founder": {
       "@type": "Person",
-      "name": "Late Kunjumon Ismail"
+      "name": "Late Kunjumon Ismail",
+      "jobTitle": "Founder & Visionary",
+      "image": `${SITE_URL}/founder-late-kunjumon-ismail-jeseem-tours-alappuzha.png`,
+      "description": "Visionary founder of Jeseem Tours & Travels who established the agency in 1985 in Alappuzha, Kerala."
     },
     "description": "Founded in 1985, Jeseem Tours & Travels is a leading travel consultancy in Alappuzha, Kerala providing reliable travel logistics, group flight ticketing, holiday packages, and visa assistance.",
     "contactPoint": [
@@ -232,15 +290,24 @@ export function getOrganizationSchema() {
         "availableLanguage": ["en", "ml", "hi", "ar"]
       }
     ],
+    "knowsAbout": [
+      "Best travel agency in Alappuzha Kerala",
+      "Group flight bookings Kerala",
+      "Dubai tour packages from Kerala",
+      "Maldives honeymoon packages Kerala",
+      "Georgia tour packages Kerala",
+      "Malaysia tour packages Kerala",
+      "Kerala backwater houseboats Alappuzha",
+      "Global visa assistance Kerala",
+      "Certificate attestation Alappuzha",
+      "Hajj and Umrah packages Kerala"
+    ],
     "sameAs": [
       COMPANY_DETAILS.socials.instagram
     ]
   };
 }
 
-/**
- * Generates BreadcrumbList Schema
- */
 export function getBreadcrumbSchema(items: BreadcrumbItem[]) {
   return {
     "@context": "https://schema.org",
@@ -254,9 +321,6 @@ export function getBreadcrumbSchema(items: BreadcrumbItem[]) {
   };
 }
 
-/**
- * Generates FAQPage Schema for rich results & AI Search
- */
 export function getFaqSchema(faqs: FaqItem[]) {
   return {
     "@context": "https://schema.org",
@@ -272,9 +336,6 @@ export function getFaqSchema(faqs: FaqItem[]) {
   };
 }
 
-/**
- * Generates Service Schema for specific travel service offerings
- */
 export function getServiceSchema(service: {
   name: string;
   description: string;

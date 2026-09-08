@@ -21,7 +21,7 @@ const PACKAGES = [
     duration: "Flexible Dates",
     category: "Flights",
     desc: "Seamless group flight ticketing and specialized series fares on premium airlines. Ideal for family tour delegations, pilgrim groups, expatriates, and corporate travel from Kerala.",
-    image: "/service_01.jpg",
+    image: "/group-flight-ticket-booking-series-fares-alappuzha.jpg",
     alt: "Group flight ticket booking and series fares in Alappuzha Kerala - Jeseem Tours",
     highlights: [
       "Group bookings up to 100+ passengers",
@@ -38,7 +38,7 @@ const PACKAGES = [
     duration: "6 Days / 5 Nights",
     category: "Holidays",
     desc: "Explore Kerala's backwaters in Alappuzha, emerald hill stations in Munnar, and pristine Kovalam beaches with local private guides, luxury houseboats, and premium stays.",
-    image: "/kerala_houseboat.jpg",
+    image: "/alappuzha-backwaters-luxury-houseboat-packages-kerala.jpg",
     alt: "Kerala backwater luxury houseboat cruise and Munnar tour package by Jeseem Travels",
     highlights: [
       "Private luxury houseboat cruise in Alappuzha with full dining",
@@ -55,7 +55,7 @@ const PACKAGES = [
     duration: "5 Days / 4 Nights",
     category: "Holidays",
     desc: "Discover the spectacular skyline, luxury malls, cultural landmarks, and thrilling desert safaris of Dubai and Abu Dhabi with custom itineraries and fast visa approvals.",
-    image: "/dubai_safari.jpg",
+    image: "/dubai-desert-safari-holiday-tour-packages-kerala.jpg",
     alt: "Dubai holiday tour package from Kerala with desert safari by Jeseem Tours",
     highlights: [
       "Burj Khalifa 124th & 125th floor VIP observatory entry tickets",
@@ -72,7 +72,7 @@ const PACKAGES = [
     duration: "Fast-Track",
     category: "Visa Desk",
     desc: "Speedy tourist and business visa processing alongside certified attestation services for educational, commercial, and personal documents (HRD, MEA Apostille, Embassy).",
-    image: "/service_03.jpg",
+    image: "/global-tourist-visa-assistance-certificate-attestation-alappuzha.jpg",
     alt: "Global visa assistance and certificate attestation desk in Alappuzha - Jeseem Tours",
     highlights: [
       "Secure document pickup & door-to-door delivery",
@@ -89,7 +89,7 @@ const PACKAGES = [
     duration: "14 Days",
     category: "Pilgrimage",
     desc: "Deeply spiritual, highly coordinated pilgrimage journeys to Makkah and Madinah with hotels close to the holy Haram and premium ground logistics.",
-    image: "/service_04.jpg",
+    image: "/hajj-umrah-pilgrimage-tour-packages-kerala.jpg",
     alt: "Hajj and Umrah pilgrimage package from Kerala - Jeseem Tours and Travels",
     highlights: [
       "Hotels within walking distance of holy mosques in Makkah & Madinah",
@@ -121,10 +121,9 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
   return (
     <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Visual Breadcrumbs */}
+        
         <Breadcrumbs items={breadcrumbItems} />
 
-        {/* Header */}
         <div className="mb-16">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="flex items-center gap-2 mb-4">
@@ -146,7 +145,6 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
           </ScrollReveal>
         </div>
 
-        {/* Category Filter */}
         <div className="flex flex-wrap gap-3 mb-16 border-b border-white/10 pb-6">
           {CATEGORIES.map((cat) => (
             <button
@@ -163,7 +161,6 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
           ))}
         </div>
 
-        {/* Packages Catalogue */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <AnimatePresence mode="popLayout">
             {filteredPackages.map((pkg) => (
@@ -177,7 +174,7 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
                 className="relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl overflow-hidden flex flex-col justify-between group"
               >
                 <TiltCard maxRotation={4} className="flex flex-col h-full w-full">
-                  {/* Visual Header */}
+                  
                   <div className="relative h-[220px] sm:h-[350px] w-full overflow-hidden">
                     <Image
                       src={pkg.image}
@@ -191,7 +188,6 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
                     </span>
                   </div>
 
-                  {/* Body Content */}
                   <div className="p-5 sm:p-8 flex flex-col flex-grow justify-between">
                     <div>
                       <span className="text-xs uppercase tracking-widest text-[var(--foreground-muted)] font-semibold mb-1 block">
@@ -204,7 +200,6 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
                         {pkg.desc}
                       </p>
 
-                      {/* Metadata details */}
                       <div className="flex gap-6 mb-6 text-xs text-[var(--foreground-muted)] border-t border-b border-[var(--border)] py-4">
                         <div className="flex items-center gap-1.5">
                           <Clock className="w-4 h-4 text-[#ff007f]" />
@@ -216,7 +211,6 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
                         </div>
                       </div>
 
-                      {/* Highlights Outings */}
                       <div className="mb-8">
                         <h3 className="text-[10px] uppercase tracking-wider text-[var(--foreground)] font-bold mb-3">
                           Highlights Included
@@ -276,7 +270,6 @@ export default function PackagesClient({ faqItems }: PackagesClientProps) {
           </AnimatePresence>
         </div>
 
-        {/* PACKAGES FAQ SECTION */}
         <FaqAccordion
           items={faqItems}
           title="Tour Packages & Booking FAQs"

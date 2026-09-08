@@ -34,11 +34,11 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
     duration: "1-2 Weeks",
     travelers: "2 Guests",
     budget: "Standard",
-    // Certificate Attestation specific state
+    
     documentType: "Degree / Educational Certificate",
     issuingState: "India (Kerala)",
     attestationType: "UAE Attestation",
-    // Global Visa Assistance specific state
+    
     visaCategory: "Tourist / Visit Visa",
     targetCountry: "UAE / GCC Countries",
     processingUrgency: "Standard Processing (1 Month)",
@@ -54,7 +54,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
 
     setIsSubmitting(true);
 
-    // Simulate API request delay
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -82,10 +81,9 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
   return (
     <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Visual Breadcrumb Navigation */}
+        
         <Breadcrumbs items={breadcrumbItems} />
 
-        {/* Header */}
         <div className="text-center mb-16">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -107,11 +105,10 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
           </ScrollReveal>
         </div>
 
-        {/* Two Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start mb-20">
-          {/* Left Column: Office Details */}
+          
           <ScrollStagger className="lg:col-span-2 space-y-6">
-            {/* Trust and Reviews Card */}
+            
             <ScrollReveal
               variant="fade-up"
               duration={0.6}
@@ -139,7 +136,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
               </p>
             </ScrollReveal>
 
-            {/* Physical Location Address */}
             <ScrollReveal
               variant="fade-up"
               duration={0.6}
@@ -188,7 +184,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
               </div>
             </ScrollReveal>
 
-            {/* Department Contacts Card */}
             <ScrollReveal
               variant="fade-up"
               duration={0.6}
@@ -199,7 +194,7 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
               </h3>
 
               <div className="space-y-4 text-xs">
-                {/* Reservations */}
+                
                 <div className="border-b border-[var(--border)] pb-3">
                   <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">
                     {COMPANY_DETAILS.departments.reservations.label}
@@ -224,7 +219,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                   </p>
                 </div>
 
-                {/* Holidays */}
                 <div className="border-b border-[var(--border)] pb-3">
                   <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">
                     {COMPANY_DETAILS.departments.holidays.label}
@@ -249,7 +243,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                   </p>
                 </div>
 
-                {/* Visa & Attestation Team */}
                 <div className="border-b border-[var(--border)] pb-3">
                   <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">
                     Visa & Attestation Desk
@@ -265,7 +258,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                   </p>
                 </div>
 
-                {/* Admin */}
                 <div>
                   <p className="font-bold text-[#c4007b] uppercase tracking-wider text-[10px]">
                     {COMPANY_DETAILS.departments.admin.label}
@@ -293,7 +285,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
             </ScrollReveal>
           </ScrollStagger>
 
-          {/* Right Column: Inquiry Form */}
           <div className="lg:col-span-3 relative bg-[var(--card-bg)] border border-[var(--border)] rounded-3xl p-5 sm:p-8 md:p-12 overflow-hidden shadow-sm">
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
@@ -331,7 +322,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                     </select>
                   </div>
 
-                  {/* DYNAMIC TOP 3 INPUT FIELDS */}
                   <AnimatePresence mode="wait">
                     {isAttestation ? (
                       <motion.div
@@ -650,7 +640,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                     )}
                   </AnimatePresence>
 
-                  {/* Personal Information */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[var(--border)]">
                     <div className="flex flex-col gap-2">
                       <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">
@@ -698,7 +687,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                     </div>
                   </div>
 
-                  {/* Additional Notes */}
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--foreground-muted)] font-bold">
                       {isAttestation
@@ -724,7 +712,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
                     />
                   </div>
 
-                  {/* Submit Action */}
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-[var(--border)]">
                     <span className="text-[10px] text-[var(--foreground-muted)] flex items-center gap-1">
                       <ShieldAlert className="w-3.5 h-3.5 text-[#ff007f]" />
@@ -772,7 +759,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
           </div>
         </div>
 
-        {/* EMBEDDED GOOGLE MAP FOR LOCAL SEO */}
         <section
           aria-label="Google Map Location of Jeseem Tours & Travels in Alappuzha"
           className="w-full rounded-3xl overflow-hidden border border-[var(--border)] shadow-xl mb-20 bg-[var(--card-bg)] p-6"
@@ -812,7 +798,6 @@ export default function ContactClient({ faqItems }: ContactClientProps) {
           </div>
         </section>
 
-        {/* CONTACT FAQ SECTION */}
         <FaqAccordion
           items={faqItems}
           title="Contact & Consultation FAQs"

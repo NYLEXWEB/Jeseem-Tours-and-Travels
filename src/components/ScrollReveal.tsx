@@ -58,7 +58,7 @@ export default function ScrollReveal({
           transition={{
             duration,
             delay,
-            ease: [0.16, 1, 0.3, 1], // Custom premium easeOutExpo
+            ease: [0.16, 1, 0.3, 1], 
           }}
         >
           {children}
@@ -76,7 +76,7 @@ export default function ScrollReveal({
       transition={{
         duration,
         delay,
-        ease: [0.16, 1, 0.3, 1], // Custom premium easeOutExpo
+        ease: [0.16, 1, 0.3, 1], 
       }}
       className={className}
     >

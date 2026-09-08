@@ -34,14 +34,13 @@ import FaqAccordion from "@/components/FaqAccordion";
 import { COMPANY_DETAILS } from "@/constants/company";
 import { FaqItem } from "@/lib/schema";
 
-// Curated Assets and Details with SEO-rich content
 const DESTINATIONS = [
   {
     id: "kerala",
     name: "Kerala Backwaters & Hills",
     country: "Kerala, India",
     desc: "Pristine houseboats in Alappuzha, emerald tea gardens in Munnar, and peaceful backwater retreats.",
-    image: "/destinations/Kerala.png",
+    image: "/destinations/kerala-backwaters-houseboat-munnar-tourism-packages.png",
     coords: "10.8505° N, 76.2711° E",
     alt: "Kerala backwater luxury houseboat cruise in Alappuzha by Jeseem Tours",
   },
@@ -50,7 +49,7 @@ const DESTINATIONS = [
     name: "Lakshadweep Islands",
     country: "India",
     desc: "Crystal-clear turquoise lagoons, vibrant coral reefs, and tranquil white sand island beaches.",
-    image: "/destinations/Lakshadweep.png",
+    image: "/destinations/lakshadweep-islands-scuba-diving-tour-packages-kerala.png",
     coords: "10.5667° N, 72.6417° E",
     alt: "Lakshadweep pristine island beach holiday package from Kerala",
   },
@@ -59,7 +58,7 @@ const DESTINATIONS = [
     name: "Georgia & Caucasus",
     country: "Caucasus / Europe",
     desc: "Historic monasteries, snow-capped Caucasus peaks, and rich European-Asian cultural heritage.",
-    image: "/destinations/Georgia.png",
+    image: "/destinations/georgia-caucasus-mountain-tour-packages-kerala.png",
     coords: "41.7151° N, 44.8271° E",
     alt: "Georgia Caucasus holiday tour package from Kerala by Jeseem Travels",
   },
@@ -68,7 +67,7 @@ const DESTINATIONS = [
     name: "Maldives Luxury Atolls",
     country: "Indian Ocean",
     desc: "Luxury overwater bungalows, vibrant marine life sanctuaries, and private romantic island resorts.",
-    image: "/destinations/Maldives.png",
+    image: "/destinations/maldives-overwater-villa-honeymoon-packages-kerala.png",
     coords: "3.2028° N, 73.2207° E",
     alt: "Maldives overwater villa honeymoon package from Kerala by Jeseem Tours",
   },
@@ -77,7 +76,7 @@ const DESTINATIONS = [
     name: "Dubai & Desert Safari",
     country: "UAE",
     desc: "Futuristic Burj Khalifa architecture, desert dune safaris, and premier luxury shopping getaways.",
-    image: "/destinations/Dubai.png",
+    image: "/destinations/dubai-abu-dhabi-desert-safari-tour-packages-kerala.png",
     coords: "25.2048° N, 55.2708° E",
     alt: "Dubai desert safari and holiday package from Kerala by Jeseem Tours",
   },
@@ -86,7 +85,7 @@ const DESTINATIONS = [
     name: "Malaysia & Langkawi",
     country: "Southeast Asia",
     desc: "Iconic Petronas Twin Towers, ancient tropical rainforests, and Langkawi island beach resorts.",
-    image: "/destinations/Malaysia.png",
+    image: "/destinations/malaysia-kuala-lumpur-langkawi-tour-packages-kerala.png",
     coords: "3.1390° N, 101.6869° E",
     alt: "Malaysia holiday tour package from Kerala by Jeseem Travels",
   },
@@ -100,7 +99,7 @@ const PACKAGES = [
     price: "Best Rates Guaranteed",
     duration: "Flexible Dates",
     desc: "Get exclusive access to lowest group flight bookings, special airline promotions, and series fares from Kerala to UAE, GCC, Europe, and worldwide destinations.",
-    image: "/service_01.jpg",
+    image: "/group-flight-ticket-booking-series-fares-alappuzha.jpg",
     alt: "Group flight ticket bookings and special series fares by Jeseem Tours in Alappuzha Kerala",
   },
 ];
@@ -110,28 +109,28 @@ const SERVICES = [
     number: "01",
     title: "Flight & Ticket Bookings",
     desc: "Access competitive group booking options, special fares, and series fares on all major domestic and international airlines.",
-    image: "/service_01.jpg",
+    image: "/group-flight-ticket-booking-series-fares-alappuzha.jpg",
     alt: "Flight ticket booking desk in Alappuzha Kerala - Jeseem Tours",
   },
   {
     number: "02",
     title: "Domestic & International Holidays",
     desc: "Completely customized holiday packages, honeymoon specials to Maldives & Dubai, and corporate retreats tailored to your timeline and budget.",
-    image: "/service_02.jpg",
+    image: "/international-domestic-holiday-tour-packages-kerala.jpg",
     alt: "International and domestic holiday packages from Kerala - Jeseem Tours",
   },
   {
     number: "03",
     title: "Global Visa & Document Support",
     desc: "Hassle-free tourist, business & visit visa assistance, MEA certificate attestation, and emigration clearance support.",
-    image: "/service_03.jpg",
+    image: "/global-tourist-visa-assistance-certificate-attestation-alappuzha.jpg",
     alt: "Global visa assistance and certificate attestation desk in Alappuzha",
   },
   {
     number: "04",
     title: "Pilgrimage, Hajj & Umrah Services",
     desc: "Dedicated coordinates and premium hotel arrangements close to holy mosques for sacred Hajj & Umrah journeys.",
-    image: "/service_04.jpg",
+    image: "/hajj-umrah-pilgrimage-tour-packages-kerala.jpg",
     alt: "Hajj and Umrah pilgrimage tour packages from Kerala - Jeseem Travels",
   },
 ];
@@ -141,28 +140,28 @@ const STEPS = [
     number: "01",
     title: "Save & Plan",
     desc: "Consult our senior travel advisors to lock in group airline rates, lowest flight tickets, and customized itineraries.",
-    image: "/step_01.jpg",
+    image: "/save-and-plan-travel-consultation-alappuzha.jpg",
     alt: "Save and plan travel consultation - Jeseem Tours Alappuzha",
   },
   {
     number: "02",
     title: "Visa & Clearances",
     desc: "Our documents desk processes your global visa assistance, certificate attestation, and emigration clearances seamlessly.",
-    image: "/step_02.jpg",
+    image: "/fast-visa-processing-document-attestation-kerala.jpg",
     alt: "Visa processing and document clearance support - Jeseem Travels",
   },
   {
     number: "03",
     title: "Go & Experience",
     desc: "Embark on your journey confidently with pre-arranged airport transfers, comprehensive travel insurance, and 24/7 hotline support.",
-    image: "/step_03.jpg",
+    image: "/worldwide-holiday-travel-experience-concierge.jpg",
     alt: "Travel experience with 24/7 concierge support - Jeseem Tours",
   },
   {
     number: "04",
     title: "Return & Review",
     desc: "Arrive home with unforgettable memories. Our travel desks remain ready to assist with your future tickets and packages.",
-    image: "/step_04.jpg",
+    image: "/memorable-return-journey-verified-travel-desk.jpg",
     alt: "Return home with lifelong travel memories - Jeseem Tours",
   },
 ];
@@ -287,7 +286,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
 
     let animationId: number;
     let lastTime = performance.now();
-    const speed = 0.035; // Pixels per ms
+    const speed = 0.035; 
 
     const step = (time: number) => {
       if (el && isAutoScrollingRef.current) {
@@ -337,7 +336,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
     };
   }, []);
 
-  // States for interactive UI elements
   const [activeServiceIdx, setActiveServiceIdx] = useState(0);
   const [activeStepIdx, setActiveStepIdx] = useState(0);
   const [activeMobileReviewIdx, setActiveMobileReviewIdx] = useState(0);
@@ -358,11 +356,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
     );
   };
 
-  // Refs for tracking sticky steps
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Setup Step Intersection Observers
   useEffect(() => {
     const observers = stepRefs.current.map((ref, idx) => {
       if (!ref) return null;
@@ -385,13 +381,13 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
 
   return (
     <div ref={containerRef} className="relative w-full bg-[var(--background)]">
-      {/* 1. HERO SECTION */}
+      
       <section
         ref={heroRef}
         aria-label="Welcome to Jeseem Tours & Travels"
         className="relative min-h-screen min-h-[100svh] h-screen w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-4 sm:px-8 md:px-12"
       >
-        {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
+        
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
           <HeroBackgroundCarousel
             onSlideChange={setHeroSlideIndex}
@@ -399,7 +395,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
           />
         </div>
 
-        {/* Hero Central Content (Adaptive & visible across ALL 3 slides) */}
         <div className="relative max-w-7xl mx-auto w-full z-20 flex-1 flex flex-col justify-end items-start pb-6 sm:pb-8 md:pb-10 min-h-[260px]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -411,8 +406,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               className="flex flex-col items-start w-full max-w-3xl"
             >
 
-              {/* Main H1 Headline */}
-              {/* Main H1 Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -433,7 +426,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 }
               </motion.h1>
 
-              {/* SEO-Optimized Expanded Description Paragraph */}
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -449,7 +441,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 }
               </motion.p>
 
-              {/* Action Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -502,7 +493,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Interactive Slide Indicator Dots */}
           <div className="mt-8 flex items-center gap-2.5 z-20">
             {[0, 1, 2].map((idx) => (
               <button
@@ -519,31 +509,28 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
           </div>
         </div>
 
-
       </section>
 
-      {/* SINGLE STATIC FULL-SCREEN FIXED BACKGROUND CANVAS */}
       <div className="fixed inset-0 w-full h-screen z-0 pointer-events-none bg-black" />
 
-      {/* 2. OUR TRAVEL PHILOSOPHY & FOUNDER TRIBUTE SECTION */}
       <section
         aria-label="Our Travel Philosophy and Founder Heritage"
         className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-12 overflow-hidden flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent"
       >
-        {/* Continuous Black Fade Overlay: Seamlessly merges top of Section 2 with bottom of Hero section */}
+        
         <div className="absolute top-0 left-0 right-0 h-40 sm:h-56 md:h-72 pointer-events-none z-10 bg-gradient-to-b from-white via-white/40 to-transparent" />
 
         <div className="max-w-6xl mx-auto w-full relative z-20">
-          {/* Philosophy Statement */}
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-24">
-            {/* Left Column: Visual Image */}
+            
             <ScrollReveal
               variant="fade-up"
               duration={0.8}
               className="relative w-full h-[360px] sm:h-[440px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl border border-black/10"
             >
               <Image
-                src="/travel_image.png"
+                src="/international-holiday-packages-visa-assistance-kerala.png"
                 alt="Jeseem Tours and Travels philosophy - Premier travel agency in Alappuzha Kerala"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -553,7 +540,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
             </ScrollReveal>
 
-            {/* Right Column: Philosophy Details */}
             <div className="flex flex-col items-start text-left">
               <ScrollReveal variant="fade-up" duration={0.8}>
                 <span className="text-xs uppercase tracking-widest text-sky-600 font-bold mb-4 block">
@@ -587,7 +573,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </div>
           </div>
 
-          {/* MISSION & VISION & QUALITY ASSURANCE */}
           <div className="mb-20">
             <div className="text-center mb-12">
               <ScrollReveal variant="fade-up" duration={0.8}>
@@ -602,9 +587,8 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               </ScrollReveal>
             </div>
 
-            {/* Grid of Mission & Vision */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-              {/* Mission Card */}
+              
               <ScrollReveal variant="fade-up" duration={0.8} delay={0.1}>
                 <motion.div
                   whileHover={{ y: -8 }}
@@ -660,7 +644,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 </motion.div>
               </ScrollReveal>
 
-              {/* Vision Card */}
               <ScrollReveal variant="fade-up" duration={0.8} delay={0.25}>
                 <motion.div
                   whileHover={{ y: -8 }}
@@ -717,7 +700,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               </ScrollReveal>
             </div>
 
-            {/* 100% QUALITY ASSURANCE BANNER CARD */}
             <ScrollReveal variant="fade-up" duration={1.0} delay={0.3}>
               <motion.div
                 whileHover={{ scale: 1.01 }}
@@ -757,13 +739,12 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </ScrollReveal>
           </div>
 
-          {/* FOUNDER TRIBUTE CARD */}
           <ScrollReveal variant="fade-up" duration={1.0} delay={0.2}>
             <div className="relative w-full rounded-3xl overflow-hidden bg-[var(--card-bg)] text-zinc-900 p-5 sm:p-8 md:p-14 border border-sky-600/30 shadow-md flex flex-col lg:flex-row items-center gap-10 md:gap-14">
-              {/* Founder Image Frame */}
+              
               <div className="relative w-48 h-56 sm:w-60 sm:h-72 md:w-64 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-sky-600/40 shadow-xl group bg-purple-50">
                 <Image
-                  src="/Father photo.png"
+                  src="/founder-late-kunjumon-ismail-jeseem-tours-alappuzha.png"
                   alt="Late KUNJUMON ISMAIL - Founder & Visionary of Jeseem Tours & Travels Alappuzha"
                   fill
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -776,7 +757,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 </div>
               </div>
 
-              {/* Founder Bio & Tribute Content */}
               <div className="flex-1 flex flex-col justify-center items-start text-left">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-gradient-light border border-sky-600/30 text-sky-600 text-xs uppercase tracking-widest font-mono font-bold mb-4">
                   <Award className="w-3.5 h-3.5 text-sky-600" />
@@ -859,7 +839,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 3. DESTINATIONS SECTION (Horizontal showcase) */}
       <section
         aria-label="Popular Holiday Destinations from Kerala"
         className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
@@ -888,7 +867,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </Link>
           </motion.div>
 
-          {/* Scrollable Track Container with Chevron Arrows */}
           <div className="relative w-full">
             <div className="absolute top-1/2 -translate-y-1/2 left-4 z-30 pointer-events-none md:left-8">
               <button
@@ -969,7 +947,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 4. FEATURED FLIGHT TICKETING SERVICE */}
       <section
         aria-label="Flight Ticket Booking and Group Airline Deals"
         className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
@@ -1104,13 +1081,12 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 5. INTERACTIVE SERVICES */}
       <section
         aria-label="Core Travel Services in Alappuzha Kerala"
         className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 overflow-hidden min-h-[90vh] flex flex-col justify-center z-10 bg-transparent"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-20 w-full flex flex-col lg:flex-row gap-16">
-          {/* Text List Column */}
+          
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1197,7 +1173,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </ScrollStagger>
           </motion.div>
 
-          {/* Interactive Graphic Column */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1238,7 +1213,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 5.5. WHY CHOOSE US SECTION */}
       <section
         aria-label="Why Choose Jeseem Tours and Travels"
         className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 overflow-hidden z-10 bg-transparent"
@@ -1340,13 +1314,12 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 6. SCROLL STORYTELLING SECTION */}
       <section
         aria-label="Our Travel Methodology"
         className="relative py-16 sm:py-24 md:py-32 border-t border-[var(--border)] px-4 sm:px-6 md:px-8 min-h-screen z-10 bg-transparent"
       >
         <div className="max-w-7xl mx-auto relative z-20 w-full flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          {/* Sticky Left Column: Image Showcase */}
+          
           <div className="hidden lg:block w-full lg:w-1/2 sticky top-28 h-[520px] self-start rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl bg-black/90">
             <div className="relative w-full h-full">
               <AnimatePresence mode="wait">
@@ -1379,7 +1352,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </div>
           </div>
 
-          {/* Right Column: Step Descriptions */}
           <div className="w-full lg:w-1/2 flex flex-col gap-16 lg:gap-28 py-4 lg:py-8 pb-16 lg:pb-32">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#C72F62] font-bold block mb-4">
@@ -1425,7 +1397,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                     {step.title}
                   </h3>
 
-                  {/* Mobile inline fallback image */}
                   <div className="relative w-full h-[240px] rounded-2xl overflow-hidden border border-[var(--border)] my-4 block lg:hidden shadow-md">
                     <Image
                       src={step.image}
@@ -1450,14 +1421,13 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 7. PREMIUM REVIEWS (Google Styled Reviews) */}
       <section
         id="reviews"
         aria-label="Google Customer Reviews & Testimonials"
         className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 bg-transparent z-10"
       >
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 relative z-20">
-          {/* Left Column: Sticky Title & Info */}
+          
           <div className="lg:w-1/3 lg:sticky lg:top-32 self-start space-y-6">
             <div className="flex items-center gap-2">
               <svg
@@ -1498,7 +1468,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               packages, and visa coordination.
             </p>
 
-            {/* Google Rating Badge */}
             <div className="p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md shadow-sm space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10">
@@ -1560,9 +1529,8 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             </div>
           </div>
 
-          {/* Right Column: Reviews Grid */}
           <div className="lg:w-2/3">
-            {/* Mobile View */}
+            
             <div className="md:hidden flex flex-col items-center w-full">
               <div className="relative w-full flex items-center justify-between gap-1">
                 <button
@@ -1685,7 +1653,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               </div>
             </div>
 
-            {/* Desktop View: Staggered Grid */}
             <div className="hidden md:grid grid-cols-2 gap-6">
               <div className="flex flex-col gap-6">
                 {REVIEWS.filter((_, idx) => idx % 2 === 0).map((rev, idx) => (
@@ -1793,7 +1760,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         </div>
       </section>
 
-      {/* 7.5. AI-SEARCH OPTIMIZED ACCORDION FAQ */}
       <FaqAccordion
         items={faqItems}
         title="Travel & Booking FAQs"
@@ -1801,7 +1767,6 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         badge="GOOGLE & AI SEARCH FAQ GUIDE"
       />
 
-      {/* 8. CALL TO ACTION */}
       <section
         aria-label="Call to Action - Plan Your Travel"
         className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden border-t border-white/5 z-10 bg-transparent"

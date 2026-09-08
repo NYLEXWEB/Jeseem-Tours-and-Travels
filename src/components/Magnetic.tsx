@@ -27,19 +27,18 @@ export default function Magnetic({
     const centerX = left + width / 2;
     const centerY = top + height / 2;
 
-    // Calculate distance from center
     const distanceX = clientX - centerX;
     const distanceY = clientY - centerY;
     const distance = Math.hypot(distanceX, distanceY);
 
     if (distance < range) {
-      // Pull element toward cursor (scaled by strength)
+      
       setPosition({
         x: distanceX * strength,
         y: distanceY * strength,
       });
     } else {
-      // Reset position if cursor is out of magnetic range
+      
       setPosition({ x: 0, y: 0 });
     }
   };

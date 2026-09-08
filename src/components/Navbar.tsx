@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,31 +11,29 @@ import { COMPANY_DETAILS } from "@/constants/company";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Keep navbar visible near top, or hide on fast scroll down and show on scroll up
       if (currentScrollY < 50) {
         setIsVisible(true);
       } else {
-        if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        if (currentScrollY > lastScrollYRef.current && currentScrollY > 150) {
           setIsVisible(false);
         } else {
           setIsVisible(true);
         }
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -65,7 +63,7 @@ export default function Navbar() {
         transition={{ type: "spring", damping: 24, stiffness: 160 }}
       >
         <div className="w-full flex items-center justify-between">
-            {/* Transparent Logo without box container */}
+            
             <Link
               href="/"
               className="relative inline-flex items-center justify-center transition-transform duration-300 hover:scale-102 shrink-0 py-1"
@@ -83,7 +81,6 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop Navigation Links & CTA (Moved to Right Side) */}
             <div className="hidden md:flex items-center gap-7 lg:gap-9">
               <div className="flex items-center gap-6 lg:gap-8">
                 {navLinks.map((link) => (
@@ -112,7 +109,6 @@ export default function Navbar() {
               </Magnetic>
             </div>
 
-            {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2.5 rounded-xl border-none bg-transparent hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center"
@@ -147,11 +143,10 @@ export default function Navbar() {
           </div>
         </motion.nav>
 
-      {/* Mobile Screen Takeover */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop Blur Overlay */}
+            
             <motion.div
               className="fixed inset-0 bg-black/60 backdrop-blur-md z-30 md:hidden"
               initial={{ opacity: 0 }}
@@ -161,7 +156,6 @@ export default function Navbar() {
               aria-hidden="true"
             />
 
-            {/* Menu Sliding Panel */}
             <motion.div
               className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[360px] sm:max-w-[400px] bg-[var(--background)]/98 border-l border-[var(--border)] z-30 flex flex-col justify-between p-6 pt-20 pb-8 sm:p-8 sm:pt-28 md:hidden shadow-2xl overflow-y-auto max-h-screen"
               initial={{ x: "100%" }}

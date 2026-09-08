@@ -6,7 +6,7 @@ import { getFaqSchema, getServiceSchema, FaqItem, SITE_URL } from "@/lib/schema"
 export const metadata: Metadata = {
   title: "Best Travel Agency in Alappuzha Kerala | Jeseem Tours & Travels",
   description:
-    "Trusted since 1985. Jeseem Tours & Travels is the premier travel agency in Alappuzha, Kerala. Expert in group flight bookings, international tour packages (Dubai, Maldives, Georgia), visa assistance & certificate attestation.",
+    "Trusted since 1985. Jeseem Tours & Travels is the premier travel agency in Alappuzha, Kerala. Expert in group flight bookings, series fares, international tour packages (Dubai, Maldives, Georgia), visa assistance & certificate attestation.",
   alternates: {
     canonical: "/",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Jeseem Tours & Travels",
     images: [
       {
-        url: "/about.jpg",
+        url: "/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg",
         width: 1200,
         height: 630,
         alt: "Jeseem Tours & Travels - Best Travel Agency in Alappuzha Kerala",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Best Travel Agency in Alappuzha Kerala | Jeseem Tours & Travels",
     description:
       "Trusted travel partner since 1985 in Alappuzha, Kerala. Group flight tickets, holiday packages, and global visa support.",
-    images: ["/about.jpg"],
+    images: ["/best-travel-agency-alappuzha-kerala-jeseem-tours.jpg"],
   },
 };
 

@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Scope cursor hide strictly to fine pointer (mouse) devices */
 @media (pointer: fine) {
 
   html,
@@ -36,7 +35,7 @@ html {
     --foreground: #121212;
     --foreground-muted: #6b7280;
     --accent: #C72F62;
-    /* Client Original Brand Gradient Palette */
+    
     --accent-hover: #B32E65;
     --accent-purple: #912D6B;
     --accent-pink: #D92F60;
@@ -62,14 +61,12 @@ html {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom selection color */
   ::selection {
     background-color: #C72F62;
     color: #ffffff;
   }
 }
 
-/* Custom Brand Logo & Typography Utilities */
 @utility font-apple {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -109,16 +106,14 @@ html {
   border-color: rgba(199, 47, 98, 0.3);
 }
 
-/* Custom Utilities */
 @utility hide-scrollbar {
   -ms-overflow-style: none;
-  /* IE and Edge */
+  
   scrollbar-width: none;
 
-  /* Firefox */
   &::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari and Opera */
+    
   }
 }
 
@@ -130,7 +125,6 @@ html {
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -149,7 +143,6 @@ html {
   background: #333333;
 }
 
-/* Animation utilities for clip-path reveals */
 .clip-path-hero {
   clip-path: inset(0 0 0 0 round 0);
 }
@@ -159,7 +152,6 @@ html {
   color: transparent;
 }
 
-/* Infinite Marquee Loop for Destinations Showcase */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -181,7 +173,6 @@ html {
   animation-play-state: paused;
 }
 
-/* Lenis Smooth Scroll Recommended Optimizations */
 html.lenis,
 html.lenis body {
   height: auto;

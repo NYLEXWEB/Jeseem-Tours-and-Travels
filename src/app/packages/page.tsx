@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Jeseem Tours & Travels",
     images: [
       {
-        url: "/service_01.jpg",
+        url: "/group-flight-ticket-booking-series-fares-alappuzha.jpg",
         width: 1200,
         height: 630,
         alt: "Tour Packages & Flight Deals - Jeseem Tours & Travels",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Tour Packages & Flight Deals | Jeseem Tours & Travels Kerala",
     description:
       "Domestic & international holiday packages, lowest group flight fares, and visa assistance.",
-    images: ["/service_01.jpg"],
+    images: ["/group-flight-ticket-booking-series-fares-alappuzha.jpg"],
   },
 };
 
@@ -73,7 +73,8 @@ export default function PackagesPage() {
         "itemOffered": {
           "@type": "Service",
           "name": "Worldwide Flight Bookings & Group Fares",
-          "description": "Group flight ticketing and series fares on premium airlines from Kerala."
+          "description": "Group flight ticketing and series fares on premium airlines from Kerala.",
+          "image": `${SITE_URL}/group-flight-ticket-booking-series-fares-alappuzha.jpg`
         }
       },
       {
@@ -81,7 +82,8 @@ export default function PackagesPage() {
         "itemOffered": {
           "@type": "Service",
           "name": "Dubai & Abu Dhabi Desert Safari Package",
-          "description": "5-day holiday tour to Dubai including Burj Khalifa, desert safari, and visa support."
+          "description": "5-day holiday tour to Dubai including Burj Khalifa, desert safari, and visa support.",
+          "image": `${SITE_URL}/dubai-desert-safari-holiday-tour-packages-kerala.jpg`
         }
       },
       {
@@ -89,7 +91,8 @@ export default function PackagesPage() {
         "itemOffered": {
           "@type": "Service",
           "name": "Kerala Backwater & Houseboat Holiday",
-          "description": "6-day God's Own Country tour across Alappuzha backwaters, Munnar, and Kovalam."
+          "description": "6-day God's Own Country tour across Alappuzha backwaters, Munnar, and Kovalam.",
+          "image": `${SITE_URL}/alappuzha-backwaters-luxury-houseboat-packages-kerala.jpg`
         }
       },
       {
@@ -97,7 +100,8 @@ export default function PackagesPage() {
         "itemOffered": {
           "@type": "Service",
           "name": "Global Visa & Certificate Attestation Desk",
-          "description": "Fast tourist and business visa processing, MEA Apostille, and embassy attestation."
+          "description": "Fast tourist and business visa processing, MEA Apostille, and embassy attestation.",
+          "image": `${SITE_URL}/global-tourist-visa-assistance-certificate-attestation-alappuzha.jpg`
         }
       },
       {
@@ -105,7 +109,8 @@ export default function PackagesPage() {
         "itemOffered": {
           "@type": "Service",
           "name": "Hajj & Umrah Pilgrimage Tour Packages",
-          "description": "14-day coordinated holy pilgrimage to Makkah and Madinah with close hotel stays."
+          "description": "14-day coordinated holy pilgrimage to Makkah and Madinah with close hotel stays.",
+          "image": `${SITE_URL}/hajj-umrah-pilgrimage-tour-packages-kerala.jpg`
         }
       }
     ]

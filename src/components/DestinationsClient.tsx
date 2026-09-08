@@ -14,7 +14,7 @@ const DESTINATIONS = [
     id: "dubai",
     name: "Dubai & Abu Dhabi Tour Packages",
     country: "UAE",
-    image: "/destinations/Dubai.png",
+    image: "/destinations/dubai-abu-dhabi-desert-safari-tour-packages-kerala.png",
     coords: "25.2048° N, 55.2708° E",
     bestTime: "October – April",
     description:
@@ -31,7 +31,7 @@ const DESTINATIONS = [
     id: "maldives",
     name: "Maldives Honeymoon & Luxury Resort Packages",
     country: "Indian Ocean",
-    image: "/destinations/Maldives.png",
+    image: "/destinations/maldives-overwater-villa-honeymoon-packages-kerala.png",
     coords: "3.2028° N, 73.2207° E",
     bestTime: "November – April",
     description:
@@ -48,7 +48,7 @@ const DESTINATIONS = [
     id: "georgia",
     name: "Georgia Caucasus Mountain & Culture Packages",
     country: "Caucasus / Europe",
-    image: "/destinations/Georgia.png",
+    image: "/destinations/georgia-caucasus-mountain-tour-packages-kerala.png",
     coords: "41.7151° N, 44.8271° E",
     bestTime: "May – October",
     description:
@@ -65,7 +65,7 @@ const DESTINATIONS = [
     id: "malaysia",
     name: "Malaysia & Langkawi Island Tour Packages",
     country: "Southeast Asia",
-    image: "/destinations/Malaysia.png",
+    image: "/destinations/malaysia-kuala-lumpur-langkawi-tour-packages-kerala.png",
     coords: "3.1390° N, 101.6869° E",
     bestTime: "Year-Round",
     description:
@@ -82,7 +82,7 @@ const DESTINATIONS = [
     id: "kerala",
     name: "Kerala Tourism & Luxury Backwater Houseboat Packages",
     country: "India",
-    image: "/destinations/Kerala.png",
+    image: "/destinations/kerala-backwaters-houseboat-munnar-tourism-packages.png",
     coords: "10.8505° N, 76.2711° E",
     bestTime: "September – March",
     description:
@@ -99,7 +99,7 @@ const DESTINATIONS = [
     id: "lakshadweep",
     name: "Lakshadweep Island Marine Sanctuary Packages",
     country: "India",
-    image: "/destinations/Lakshadweep.png",
+    image: "/destinations/lakshadweep-islands-scuba-diving-tour-packages-kerala.png",
     coords: "10.5667° N, 72.6417° E",
     bestTime: "October – May",
     description:
@@ -126,10 +126,9 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
   return (
     <div className="bg-[var(--background)] pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Visual Breadcrumb Navigation */}
+        
         <Breadcrumbs items={breadcrumbItems} />
 
-        {/* Header */}
         <div className="mb-20">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="flex items-center gap-2 mb-4">
@@ -151,7 +150,6 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
           </ScrollReveal>
         </div>
 
-        {/* Destination List */}
         <div className="flex flex-col gap-28">
           {DESTINATIONS.map((dest, idx) => (
             <section
@@ -167,7 +165,7 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
                   idx % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                {/* Destination Image Showcase */}
+                
                 <div className="w-full lg:w-1/2 relative aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 group shadow-xl">
                   <Image
                     src={dest.image}
@@ -182,7 +180,6 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
                   </span>
                 </div>
 
-                {/* Destination Text Content */}
                 <div className="w-full lg:w-1/2 flex flex-col items-start">
                   <span className="text-xs uppercase tracking-widest text-[#ff007f] font-bold mb-2">
                     {dest.country}
@@ -194,7 +191,6 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
                     {dest.description}
                   </p>
 
-                  {/* Best Season */}
                   <div className="flex items-center gap-2 mb-6 text-xs text-[var(--foreground)] bg-[var(--card-bg)] px-4 py-2.5 rounded-full border border-[var(--border)]">
                     <CloudSun className="w-4 h-4 text-[#ff007f]" />
                     <span>
@@ -202,7 +198,6 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
                     </span>
                   </div>
 
-                  {/* Key Highlights */}
                   <div className="w-full border-t border-[var(--border)] pt-6 mb-8">
                     <h3 className="text-xs uppercase tracking-widest text-[var(--foreground)] font-bold mb-4">
                       Curated Tour Highlights
@@ -249,7 +244,6 @@ export default function DestinationsClient({ faqItems }: DestinationsClientProps
           ))}
         </div>
 
-        {/* CUSTOM DESTINATION INQUIRY BANNER */}
         <div className="mt-28 border-t border-[var(--border)] pt-20">
           <ScrollReveal variant="fade-up" duration={0.8}>
             <div className="bg-[var(--card-bg)] border border-[#c4007b]/30 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
