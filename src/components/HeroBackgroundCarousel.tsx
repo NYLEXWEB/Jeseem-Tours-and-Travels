@@ -136,11 +136,11 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
             </div>
 
             {/* Multi-layered Contrast Protection Scrim Overlays */}
-            {/* 1. Bottom-up gradient: Keep bottom dark fade for buttons/text contrast, fading to transparent at the top */}
-            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+            {/* 1. Left/Bottom dark scrim for crisp text readability */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-tr from-black/75 via-black/30 to-transparent max-w-5xl" />
             
-            {/* 2. Left-to-right gradient overlay for text readability on desktop and mobile */}
-            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/70 via-black/30 to-transparent max-w-4xl" />
+            {/* 2. Seamless Bottom Edge Transition: Feathered fade into the next section (eliminates sharp cutting line) */}
+            <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-40 md:h-52 z-10 pointer-events-none bg-gradient-to-b from-transparent via-white/50 to-white" />
         </div>
     );
 }

@@ -536,7 +536,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 2. OUR TRAVEL PHILOSOPHY & FOUNDER TRIBUTE SECTION */}
       <section
         aria-label="Our Travel Philosophy and Founder Heritage"
-        className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-12 overflow-hidden border-t border-black/5 flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-12 overflow-hidden flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent"
       >
         <div className="max-w-6xl mx-auto w-full relative z-20">
           {/* Philosophy Statement */}
