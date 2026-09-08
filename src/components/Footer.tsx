@@ -51,11 +51,11 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative z-10 bg-[var(--background)] border-t border-[var(--border)] pt-20 pb-10 text-[var(--foreground-muted)]"
+      className="relative z-10 bg-[var(--background)] border-t border-neutral-200 pt-16 pb-12 text-neutral-800"
       role="contentinfo"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-12 md:gap-8 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-12 md:gap-8 pb-14">
           {/* Brand & Local NAP Details */}
           <div className="md:col-span-2">
             <Link
@@ -70,7 +70,7 @@ export default function Footer() {
                 className="object-contain object-left"
               />
             </Link>
-            <p className="text-sm max-w-sm leading-relaxed mt-4 text-neutral-400">
+            <p className="text-sm max-w-sm leading-relaxed mt-4 text-neutral-700 font-normal">
               Trusted travel consultancy in Alappuzha, Kerala since{" "}
               {COMPANY_DETAILS.established}. Specialized in worldwide group
               flight tickets, bespoke holiday packages, fast-track visa
@@ -78,23 +78,23 @@ export default function Footer() {
             </p>
 
             {/* Semantic NAP for Local SEO */}
-            <address className="not-italic mt-6 text-xs flex flex-col gap-2.5 text-neutral-300">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#ff007f] shrink-0 mt-0.5" />
-                <span>
-                  <strong className="text-white font-medium">
+            <address className="not-italic mt-6 text-xs flex flex-col gap-3 text-neutral-800">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#C72F62] shrink-0 mt-0.5" />
+                <span className="leading-snug">
+                  <strong className="text-neutral-950 font-bold">
                     Office Address:
                   </strong>{" "}
                   {COMPANY_DETAILS.address}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#ff007f] shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#C72F62] shrink-0" />
                 <span>
-                  <strong className="text-white font-medium">Phone:</strong>{" "}
+                  <strong className="text-neutral-950 font-bold">Phone:</strong>{" "}
                   <a
                     href={`tel:${COMPANY_DETAILS.phone}`}
-                    className="hover:text-[#ff007f] transition-colors font-mono"
+                    className="hover:text-[#C72F62] transition-colors font-mono font-medium text-neutral-800"
                   >
                     {COMPANY_DETAILS.phone}
                   </a>{" "}
@@ -103,28 +103,28 @@ export default function Footer() {
                     href={`https://wa.me/919061858416`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-emerald-400 transition-colors font-mono font-semibold"
+                    className="text-emerald-700 hover:text-emerald-800 transition-colors font-mono font-bold"
                   >
                     +91 90618 58416 (WhatsApp)
                   </a>
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#ff007f] shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#C72F62] shrink-0" />
                 <span>
-                  <strong className="text-white font-medium">Email:</strong>{" "}
+                  <strong className="text-neutral-950 font-bold">Email:</strong>{" "}
                   <a
                     href={`mailto:${COMPANY_DETAILS.email}`}
-                    className="hover:text-[#ff007f] transition-colors font-mono"
+                    className="hover:text-[#C72F62] transition-colors font-mono font-medium text-neutral-800"
                   >
                     {COMPANY_DETAILS.email}
                   </a>
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#ff007f] shrink-0" />
+              <div className="flex items-center gap-2.5">
+                <Clock className="w-4 h-4 text-[#C72F62] shrink-0" />
                 <span>
-                  <strong className="text-white font-medium">Hours:</strong>{" "}
+                  <strong className="text-neutral-950 font-bold">Hours:</strong>{" "}
                   {COMPANY_DETAILS.hours} (Mon – Sat)
                 </span>
               </div>
@@ -134,15 +134,15 @@ export default function Footer() {
           {/* Nav Categories */}
           {footerLinks.map((group) => (
             <div key={group.title} className="flex flex-col gap-4">
-              <h3 className="text-xs uppercase tracking-widest text-white font-semibold">
+              <h3 className="text-xs uppercase tracking-widest text-neutral-950 font-bold">
                 {group.title}
               </h3>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-2.5">
                 {group.links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-xs text-neutral-400 hover:text-white transition-colors duration-300"
+                      className="text-xs text-neutral-700 hover:text-[#C72F62] font-medium transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -153,29 +153,29 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="h-[1px] bg-white/10 w-full mb-8" />
+        <div className="h-[1px] bg-neutral-200 w-full mb-8" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-neutral-400">
-          <div className="flex flex-wrap gap-4 text-center md:text-left justify-center md:justify-start">
-            <p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-neutral-700 font-medium">
+          <div className="flex flex-wrap gap-4 text-center md:text-left justify-center md:justify-start items-center">
+            <p className="text-neutral-800">
               &copy; {currentYear} Jeseem Tours & Travels. All rights reserved.
             </p>
-            <span className="hidden md:inline">|</span>
-            <span>Alappuzha, Kerala, India</span>
-            <span>•</span>
+            <span className="hidden md:inline text-neutral-300">|</span>
+            <span className="text-neutral-700">Alappuzha, Kerala, India</span>
+            <span className="text-neutral-300">•</span>
             <Link
               href="/sitemap.xml"
-              className="hover:text-white transition-colors text-[#ff007f]"
+              className="text-[#C72F62] hover:underline font-bold transition-colors"
             >
               HTML/XML Sitemap
             </Link>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 font-semibold">
             <a
               href={COMPANY_DETAILS.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-pink-400 transition-colors duration-300"
+              className="text-neutral-700 hover:text-pink-600 transition-colors duration-200"
             >
               Instagram
             </a>
@@ -183,7 +183,7 @@ export default function Footer() {
               href={COMPANY_DETAILS.socials.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-400 transition-colors duration-300"
+              className="text-neutral-700 hover:text-emerald-600 transition-colors duration-200"
             >
               WhatsApp
             </a>
@@ -191,7 +191,7 @@ export default function Footer() {
               href="https://maps.google.com/?q=Jeseem+Tours+and+Travels+Alappuzha"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 transition-colors duration-300"
+              className="text-neutral-700 hover:text-blue-600 transition-colors duration-200"
             >
               Google Maps Location
             </a>

@@ -116,25 +116,29 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2.5 rounded-xl border-none bg-transparent text-black hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center"
+              className="md:hidden p-2.5 rounded-xl border-none bg-transparent hover:text-[#c4007b] transition-colors z-50 relative flex items-center justify-center"
+              style={{ color: "#000000" }}
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={isOpen}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 h-6">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" className="w-6 h-6">
                 <motion.line
                   x1="4" y1="6" x2="20" y2="6"
+                  stroke="#000000"
                   animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   style={{ originX: "12px", originY: "6px" }}
                 />
                 <motion.line
                   x1="4" y1="12" x2="20" y2="12"
+                  stroke="#000000"
                   animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.2 }}
                   style={{ originX: "12px", originY: "12px" }}
                 />
                 <motion.line
                   x1="4" y1="18" x2="20" y2="18"
+                  stroke="#000000"
                   animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   style={{ originX: "12px", originY: "18px" }}

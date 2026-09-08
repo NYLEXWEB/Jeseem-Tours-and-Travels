@@ -372,7 +372,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             setActiveStepIdx(idx);
           }
         },
-        { threshold: 0.5, rootMargin: "-10% 0px -40% 0px" }
+        { threshold: 0.25, rootMargin: "-15% 0px -35% 0px" }
       );
       observer.observe(ref);
       return observer;
@@ -1348,75 +1348,66 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       {/* 6. SCROLL STORYTELLING SECTION */}
       <section
         aria-label="Our Travel Methodology"
-        className="relative py-16 sm:py-24 md:py-32 border-t border-white/5 px-4 sm:px-6 md:px-8 min-h-screen flex flex-col justify-center z-10 bg-transparent"
+        className="relative py-16 sm:py-24 md:py-32 border-t border-[var(--border)] px-4 sm:px-6 md:px-8 min-h-screen z-10 bg-transparent"
       >
-        <div className="max-w-7xl mx-auto relative z-20 w-full flex flex-col lg:flex-row gap-16 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.8 }}
-            className="hidden lg:block w-full lg:w-1/2 lg:sticky lg:top-32 lg:h-[500px] lg:self-start rounded-3xl overflow-hidden border border-white/10 order-2 lg:order-1 bg-black/40 backdrop-blur-md shadow-2xl min-h-[220px]"
-          >
-            <div className="relative w-full h-full min-h-[220px] lg:min-h-[500px]">
+        <div className="max-w-7xl mx-auto relative z-20 w-full flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Sticky Left Column: Image Showcase */}
+          <div className="hidden lg:block w-full lg:w-1/2 sticky top-28 h-[520px] self-start rounded-3xl overflow-hidden border border-[var(--border)] shadow-2xl bg-black/90">
+            <div className="relative w-full h-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeStepIdx}
-                  initial={{ opacity: 0, scale: 1.02 }}
+                  initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.4 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0"
                 >
-                  <div className="absolute inset-0 bg-neutral-950/35 z-10" />
                   <Image
                     src={STEPS[activeStepIdx].image}
                     alt={STEPS[activeStepIdx].alt}
                     fill
                     className="object-cover"
+                    priority
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
                 </motion.div>
               </AnimatePresence>
-              <div className="absolute bottom-8 left-8 z-20">
-                <span className="text-[10px] uppercase tracking-widest text-[#86868B] font-bold">
-                  STAGE
+              <div className="absolute bottom-8 left-8 right-8 z-20">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C72F62]/20 border border-[#C72F62]/40 text-[#ff719e] text-[11px] font-bold uppercase tracking-widest mb-2 backdrop-blur-md">
+                  STEP {STEPS[activeStepIdx].number} OF 04
                 </span>
-                <p className="text-[#ff007f] text-lg font-bold">
-                  {STEPS[activeStepIdx].number} — {STEPS[activeStepIdx].title}
+                <p className="text-white text-2xl md:text-3xl font-bold drop-shadow-md">
+                  {STEPS[activeStepIdx].title}
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 flex flex-col gap-20 lg:gap-40 py-12 lg:py-24 pb-24 lg:pb-48 order-1 lg:order-2"
-          >
+          {/* Right Column: Step Descriptions */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-16 lg:gap-28 py-4 lg:py-8 pb-16 lg:pb-32">
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#86868B] font-semibold block mb-4">
+              <span className="text-xs uppercase tracking-widest text-[#C72F62] font-bold block mb-4">
                 OUR METHODOLOGY
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-[var(--foreground)] mb-6">
                 Save the money plan for travel go to the destination
               </h2>
-              <p className="text-[#86868B] text-base font-light leading-relaxed max-w-md">
+              <p className="text-[var(--foreground-muted)] text-base font-light leading-relaxed max-w-md">
                 We simplify travel logistics using a smooth four-stage
                 methodology to ensure your journey from Alappuzha is safe,
                 affordable, and memorable.
               </p>
             </div>
 
-            <div className="flex flex-col gap-20 lg:gap-60">
+            <div className="flex flex-col gap-20 lg:gap-44">
               {STEPS.map((step, idx) => (
                 <div
                   key={step.number}
                   ref={(el) => {
                     stepRefs.current[idx] = el;
                   }}
-                  className="flex flex-col gap-4 border-l-2 border-white/10 pl-6 lg:pl-10 relative"
+                  className="flex flex-col gap-4 border-l-2 border-[var(--border)] pl-6 lg:pl-10 relative transition-all duration-300"
                 >
                   {activeStepIdx === idx && (
                     <motion.div
@@ -1425,14 +1416,22 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                     />
                   )}
                   <span
-                    className={`text-sm font-mono font-bold ${activeStepIdx === idx ? "text-[#ff007f]" : "text-white/40"
-                      }`}
+                    className={`text-sm font-mono font-bold transition-colors ${
+                      activeStepIdx === idx ? "text-[#C72F62]" : "text-[var(--foreground-muted)]/50"
+                    }`}
                   >
                     {step.number}
                   </span>
-                  <h3 className="text-2xl text-white font-medium">{step.title}</h3>
+                  <h3
+                    className={`text-2xl font-medium transition-colors ${
+                      activeStepIdx === idx ? "text-[var(--foreground)]" : "text-[var(--foreground-muted)]"
+                    }`}
+                  >
+                    {step.title}
+                  </h3>
 
-                  <div className="relative w-full h-[240px] rounded-2xl overflow-hidden border border-white/10 my-4 block lg:hidden">
+                  {/* Mobile inline fallback image */}
+                  <div className="relative w-full h-[240px] rounded-2xl overflow-hidden border border-[var(--border)] my-4 block lg:hidden shadow-md">
                     <Image
                       src={step.image}
                       alt={step.alt}
@@ -1440,15 +1439,19 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
+                    <div className="absolute bottom-4 left-4 z-20 text-white text-sm font-bold">
+                      {step.number} — {step.title}
+                    </div>
                   </div>
 
-                  <p className="text-[#86868B] text-base leading-relaxed font-light max-w-md">
+                  <p className="text-[var(--foreground-muted)] text-base leading-relaxed font-light max-w-md">
                     {step.desc}
                   </p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
