@@ -426,9 +426,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
               >
                 {
                   [
-                    "Explore the World with Kerala’s Trusted Travel Agency",
-                    "Unforgettable Custom Tour Packages & Family Holidays",
-                    "Fast-Track Visas & Guaranteed Best Flight Ticket Deals",
+                    "SAVE PLAN GO",
+                    "SAVE PLAN GO",
+                    "SAVE PLAN GO",
                   ][heroSlideIndex % 3]
                 }
               </motion.h1>
@@ -485,7 +485,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                       "/about",
                     ][heroSlideIndex % 3]
                   }
-                  className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-xl hover:border-white/60 hover:scale-[1.02] active:scale-95 group"
+                  className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-white hover:bg-white/25 backdrop-blur-md border border-white/30 text-black text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-xl hover:border-white/60 hover:scale-[1.02] active:scale-95 group"
                 >
                   <span>
                     {
@@ -530,6 +530,9 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
         aria-label="Our Travel Philosophy and Founder Heritage"
         className="relative py-16 sm:py-24 md:py-36 px-4 sm:px-6 md:px-12 overflow-hidden flex flex-col items-center justify-center min-h-[85vh] z-10 bg-transparent"
       >
+        {/* Continuous Black Fade Overlay: Seamlessly merges top of Section 2 with bottom of Hero section */}
+        <div className="absolute top-0 left-0 right-0 h-40 sm:h-56 md:h-72 pointer-events-none z-10 bg-gradient-to-b from-white via-white/40 to-transparent" />
+
         <div className="max-w-6xl mx-auto w-full relative z-20">
           {/* Philosophy Statement */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-24">

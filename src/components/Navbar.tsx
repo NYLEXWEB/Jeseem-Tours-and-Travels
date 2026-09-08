@@ -59,7 +59,7 @@ export default function Navbar() {
       <motion.nav
         role="navigation"
         aria-label="Main Navigation"
-        className="pointer-events-auto max-w-7xl mx-auto w-full bg-white border border-neutral-200/90 rounded-2xl shadow-lg shadow-black/5 py-2.5 px-4 sm:px-6 transition-all duration-300"
+        className="pointer-events-auto max-w-7xl mx-auto w-full bg-black border border-neutral-200/90 rounded-2xl shadow-lg shadow-black/5 py-2.5 px-4 sm:px-6 transition-all duration-300"
         initial={{ y: -120 }}
         animate={{ y: isVisible ? 0 : -120 }}
         transition={{ type: "spring", damping: 24, stiffness: 160 }}
