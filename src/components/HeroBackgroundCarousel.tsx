@@ -139,9 +139,9 @@ export default function HeroBackgroundCarousel({ onSlideChange, activeSlideIndex
                 </AnimatePresence>
             </div>
 
-            {/* Subtle Dark Gradient Overlay for Readability */}
-            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-white/80 via-white/40 to-white/20" />
-            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white/70 via-white/30 to-transparent max-w-4xl" />
+            {/* Subtle Dark Scrim Overlay for Readability matching Reference Image */}
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-white/75 via-white/35 to-white/20" />
+            <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-white/65 via-white/25 to-transparent max-w-4xl" />
         </div>
     );
 }
