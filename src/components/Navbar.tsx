@@ -55,17 +55,16 @@ export default function Navbar() {
   ];
 
   return (
-    <header role="banner">
-      <div className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-8 py-3 md:py-4 transition-all duration-500 pointer-events-none">
-        <motion.nav
-          role="navigation"
-          aria-label="Main Navigation"
-          className="pointer-events-auto max-w-7xl mx-auto w-full transition-all duration-300 bg-transparent border-transparent shadow-none py-2 px-2"
-          initial={{ y: -100 }}
-          animate={{ y: isVisible ? 0 : -100 }}
-          transition={{ type: "spring", damping: 22, stiffness: 140 }}
-        >
-          <div className="w-full flex items-center justify-between">
+    <header role="banner" className="fixed top-0 left-0 right-0 z-50 w-full bg-white border-b border-neutral-200/80 shadow-xs transition-all duration-300">
+      <motion.nav
+        role="navigation"
+        aria-label="Main Navigation"
+        className="max-w-7xl mx-auto w-full px-4 sm:px-8 py-2.5 md:py-3"
+        initial={{ y: -100 }}
+        animate={{ y: isVisible ? 0 : -100 }}
+        transition={{ type: "spring", damping: 22, stiffness: 140 }}
+      >
+        <div className="w-full flex items-center justify-between">
             {/* Transparent Logo without box container */}
             <Link
               href="/"
@@ -147,7 +146,6 @@ export default function Navbar() {
             </button>
           </div>
         </motion.nav>
-      </div>
 
       {/* Mobile Screen Takeover */}
       <AnimatePresence>
