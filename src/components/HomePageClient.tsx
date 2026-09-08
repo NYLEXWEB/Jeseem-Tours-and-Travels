@@ -412,22 +412,23 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
             >
 
               {/* Main H1 Headline */}
+              {/* Main H1 Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl text-neutral-900"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-0.02em] leading-[1.15] max-w-2xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]"
                 style={{
-                  color: "#ffffffff",
+                  color: "#FFFFFF",
                   fontFamily:
                     "var(--font-cormorant), 'Playfair Display', Georgia, serif",
                 }}
               >
                 {
                   [
-                    "SAVE PLAN GO",
-                    "SAVE PLAN GO",
-                    "SAVE PLAN GO",
+                    "Explore the World with Kerala’s Trusted Travel Agency",
+                    "Unforgettable Custom Tour Packages & Family Holidays",
+                    "Fast-Track Visas & Guaranteed Best Flight Ticket Deals",
                   ][heroSlideIndex % 3]
                 }
               </motion.h1>
@@ -437,7 +438,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-3 font-medium text-xs sm:text-sm md:text-base max-w-xl leading-relaxed text-black"
+                className="mt-3 font-medium text-xs sm:text-sm md:text-base max-w-xl leading-relaxed text-slate-100 drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]"
               >
                 {
                   [
@@ -463,7 +464,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                       "/contact",
                     ][heroSlideIndex % 3]
                   }
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-neutral-950 text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 group"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-neutral-950 text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-xl hover:shadow-amber-400/30 hover:scale-[1.02] active:scale-95 group"
                 >
                   <span>
                     {
@@ -484,7 +485,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                       "/about",
                     ][heroSlideIndex % 3]
                   }
-                  className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-black/80 hover:bg-white hover:text-black backdrop-blur-md border border-neutral-300 text-neutral-900 text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-95 group"
+                  className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm uppercase tracking-wider font-bold transition-all shadow-xl hover:border-white/60 hover:scale-[1.02] active:scale-95 group"
                 >
                   <span>
                     {
@@ -495,7 +496,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                       ][heroSlideIndex % 3]
                     }
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-neutral-900 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -510,8 +511,8 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
                 aria-label={`Switch to slide ${idx + 1}`}
                 className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${
                   heroSlideIndex % 3 === idx
-                    ? "w-9 bg-neutral-900 shadow-sm"
-                    : "w-2.5 bg-neutral-400/60 hover:bg-neutral-700"
+                    ? "w-9 bg-amber-400 shadow-md shadow-amber-400/40"
+                    : "w-2.5 bg-white/40 hover:bg-white/75"
                 }`}
               />
             ))}
