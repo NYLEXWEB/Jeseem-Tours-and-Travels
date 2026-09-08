@@ -389,7 +389,7 @@ export default function HomePageClient({ faqItems }: HomePageClientProps) {
       <section
         ref={heroRef}
         aria-label="Welcome to Jeseem Tours & Travels"
-        className="relative w-full min-h-[85vh] sm:min-h-[90vh] md:min-h-[80vh] lg:min-h-[85vh] xl:aspect-[16/9] xl:max-h-[90vh] flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-4 sm:px-8 md:px-12"
+        className="relative min-h-screen min-h-[100svh] h-screen w-full flex flex-col justify-between overflow-hidden z-10 bg-transparent pt-24 pb-12 md:pt-28 px-4 sm:px-8 md:px-12"
       >
         {/* Background Layer (Animated Directional Slide-Over Image Carousel) */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none">
